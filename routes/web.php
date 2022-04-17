@@ -6,6 +6,7 @@ use App\Http\Controllers\ExamController;
 use App\Http\Controllers\MaterialController;
 use App\Http\Controllers\ExaminationController;
 use App\Http\Controllers\RepController;
+use App\Http\Controllers\OrderController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -70,3 +71,6 @@ Route::get('/create_exam', [ExamController::class, 'create'])->name('create_exam
 Route::get('/testProc', [ExamController::class, 'testProc']);
 
 Route::get('/admin', [App\Http\Controllers\HomeController::class, 'admin'])->name('admin');
+
+//Order Routes
+Route::get('/order', [App\Http\Controllers\OrderController::class, 'index'])->name('order');

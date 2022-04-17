@@ -24,7 +24,7 @@
             <div class="card-header">
                 <h3 class="card-title">Захиалгын мэдээлэл</h3>
                 <div class="card-tools">
-                    <button class="btn btn-primary btn-small right"  onclick="depEdit()" data-toggle="modal" data-target="#depModal"><i class="fa fa-plus"></i> Байгууллага нэмэх</button>
+                    <button class="btn btn-primary btn-small right"  onclick="depEdit()" data-toggle="modal" data-target="#depModal"><i class="fa fa-plus"></i> Захиалга нэмэх</button>
                 </div>
             </div>
             <div class="card-body">
@@ -57,7 +57,7 @@
 </div>
         <!-- Modal -->
         <div class="modal fade" id="depModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel"></h5>
@@ -81,19 +81,19 @@
                         <div class="col-4">
                             <div class="form-group">
                                 <label for="jobname">Хариуцсан ажилтан</label>
-                                <input type="text" class="form-control" id="department_name" name="department_name" placeholder="Товч тушаал">
+                                <input type="text" class="form-control" id="department_name" name="departmennt_name" placeholder="Хариуцсан ажилтан">
                             </div>
                         </div>
                         <div class="col-4">
                             <div class="form-group">
                                 <label for="jobname">Албан тушаал</label>
-                                <input type="text" class="form-control" id="department_abbr" name="department_abbr" placeholder="Товч тушаал">
+                                <input type="text" class="form-control" id="department_abbr" name="department_abbr" placeholder="Албан тушаал">
                             </div>
                         </div>
                         <div class="col-12">
                             <div class="form-group">
                                 <label for="jobname">Баланс код</label>
-                                <input type="text" class="form-control" id="balance_code" name="balance_code" placeholder="Товч тушаал">
+                                <input type="text" class="form-control" id="balance_code" name="balance_code" placeholder="Албан тушаал">
                             </div>
                         </div>
                     </div>
@@ -145,7 +145,7 @@
                 $('#balance_code').val(data[0].balance_code);
                 $('#hid').val(data[0].depid);
                 $('#flg').val(1);
-                document.getElementById("exampleModalLabel").innerHTML="Байгуулагын мэдээллийг засварлах";
+                document.getElementById("exampleModalLabel").innerHTML="Захиалгын мэдээллийг засварлах";
             });
         } else {
              $('#p_abbr').val(0);
@@ -154,13 +154,13 @@
                 $('#balance_code').val('');
                 $('#hid').val(0);
                 $('#flg').val(0);
-                document.getElementById("exampleModalLabel").innerHTML="Шинээр байгуулга нэмэх";
+                document.getElementById("exampleModalLabel").innerHTML="Шинээр захиалга нэмэх";
         }
     }
 
 
     function depDel(hid,dname){
-        if(confirm(dname+' нэртэй байгуулагыг устгах уу?'))
+        if(confirm(dname+' нэртэй захиалгыг устгах уу?'))
         {
            $.get('{{ route("delDep") }}/'+hid , function (data) 
             {
