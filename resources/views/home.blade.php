@@ -18,7 +18,7 @@
                 </div>
             </div>
             <div class="card-body">
-            <iframe src="{{url('assets/upload/EXAMUBTZ.pdf')}}" id="fileviewer" height="600px" width="100%"></iframe>
+            <iframe src="" id="fileviewer" height="600px" width="100%"></iframe>
             </div>
         </div>
 @stop
