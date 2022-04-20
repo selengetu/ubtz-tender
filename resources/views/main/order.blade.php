@@ -24,7 +24,7 @@
             <div class="card-header">
                 <h3 class="card-title">Захиалгын мэдээлэл</h3>
                 <div class="card-tools">
-                    <button class="btn btn-primary btn-small right"  onclick="depEdit()" data-toggle="modal" data-target="#depModal"><i class="fa fa-plus"></i> Захиалга нэмэх</button>
+                    <button class="btn btn-primary btn-small right"  onclick="depEdit()" data-toggle="modal" data-target="#depModal"><i class="fa fa-plus"></i> </button>
                 </div>
             </div>
             <div class="card-body">
@@ -67,6 +67,7 @@
                 </div>
                 <form method="POST" id="formSub" action={{ route('saveDep') }}>
                 <div class="modal-body">
+               
                     <div class="row">
                         <div class="col-4">
                             <div class="form-group">
@@ -87,13 +88,79 @@
                         <div class="col-4">
                             <div class="form-group">
                                 <label for="jobname">Албан тушаал</label>
-                                <input type="text" class="form-control" id="department_abbr" name="department_abbr" placeholder="Албан тушаал">
+                                <input type="text" class="form-control" id="department_abbr" name="department_abbr" >
                             </div>
                         </div>
                         <div class="col-12">
                             <div class="form-group">
-                                <label for="jobname">Баланс код</label>
+                                <label for="jobname">Худалдан авах ажил, үйлчилгээний нэр</label>
+                                <input type="text" class="form-control" id="balance_code" name="balance_code" >
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="form-group">
+                                <label for="jobname">Хэмжих нэгж</label>
+                                <select class="form-control" name="p_abbr" id="p_abbr" >
+                                @foreach ($unit as $item)
+                                        <option value="{{ $item->unit_id }}">{{ $item->unit_name }}</option>
+                                    @endforeach
+                            </select>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="form-group">
+                                <label for="jobname">Тоо хэмжээ</label>
+                                <input type="number" class="form-control" id="balance_code" name="balance_code">
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="form-group">
+                                <label for="jobname">Мөрдөх журам</label>
+                                <select class="form-control" name="p_abbr" id="p_abbr" >
+                                @foreach ($selection as $item)
+                                        <option value="{{ $item->tenderselectioncode }}">{{ $item->tenderselectionabbr }}</option>
+                                    @endforeach
+                            </select>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="form-group">
+                                <label for="jobname">Эх үүсвэр</label>
                                 <input type="text" class="form-control" id="balance_code" name="balance_code" placeholder="Албан тушаал">
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label for="jobname">Төсөвт өртөг</label>
+                                <input type="text" class="form-control" id="balance_code" name="balance_code" placeholder="Албан тушаал">
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label for="jobname">Тухайн онд санхүүжих</label>
+                                <input type="text" class="form-control" id="balance_code" name="balance_code" placeholder="Албан тушаал">
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label for="jobname">Төлөв</label>
+                                <select class="form-control" name="p_abbr" id="p_abbr" >
+                                @foreach ($mstate as $item)
+                                        <option value="{{ $item->state_id }}">{{ $item->state_name }}</option>
+                                    @endforeach
+                            </select>
+                            </div>
+                        </div> 
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label for="jobname">Захиалга өгсөн</label>
+                                <input type="date" class="form-control" id="balance_code" name="balance_code" >
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label for="jobname">Тайлбар</label>
+                                <input type="text" class="form-control" id="balance_code" name="balance_code" placeholder="Тайлбар">
                             </div>
                         </div>
                     </div>
