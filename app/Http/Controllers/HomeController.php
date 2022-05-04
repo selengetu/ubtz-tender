@@ -109,15 +109,15 @@ class HomeController extends Controller
     }
     public function job()
     {
-        $jobs=DB::select("select * from CONST_JOB");
+        $jobs=DB::select("select * from EXAMUBTZ.CONST_JOB");
         return view('const.job',compact('jobs'));
     }
     public function getJobs($hid=0)
     {
         if(strlen($hid)>1){
-            return DB::select("select * from CONST_JOB where hid='$hid'");
+            return DB::select("select * from EXAMUBTZ.CONST_JOB where hid='$hid'");
         } else {
-            return DB::select("select * from CONST_JOB");
+            return DB::select("select * from EXAMUBTZ.CONST_JOB");
         }
 
     }
@@ -125,16 +125,16 @@ class HomeController extends Controller
     public function getPersons($depid, $type)
     {
         if($type == 1){
-            return DB::select("select * from V_PERSON t where t.DEPARTMENT_PAR='$depid'");
+            return DB::select("select * from EXAMUBTZ.V_PERSON t where t.DEPARTMENT_PAR='$depid'");
         }
         else{
-            return DB::select("select * from V_PERSON t where t.DEPID='$depid'");
+            return DB::select("select * from EXAMUBTZ.V_PERSON t where t.DEPID='$depid'");
         }
 
     }
     public function getPerson($hid)
     {
-        return DB::select("select * from V_PERSON t where t.hid='$hid'");
+        return DB::select("select * from EXAMUBTZ.V_PERSON t where t.hid='$hid'");
     }
 
     public function perDel(Request $request)

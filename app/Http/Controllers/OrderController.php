@@ -21,5 +21,16 @@ class OrderController extends Controller {
         $unit= DB::select("select * from CONST_UNIT t ");
         return view('main.order',compact('dep','ostate','mstate','source','selection','unit'));
     }
- 
+    public function saveOrder(Request $request)
+    {
+       
+        DB::insert("insert into ORDERS
+        (ORDER_DEP, ORDER_EMPLOYEE, ORDER_JOB, ORDER_NAME, ORDER_DATE, ORDER_UNIT, ORDER_COUNT, ORDER_SELECTION, ORDER_BUDGET_SOURCE, ORDER_BUDGET, ORDER_THISYEAR, ORDER_STATE, ORDER_MAIN_STATE, ORDER_COMMENT)
+        values
+        ($request->order_dep, $request->order_employee, '$request->order_job', '$request->order_name', '$request->order_date', $request->order_unit, '$request->order_count', '$request->order_selection', '$request->order_budget_source'
+        , '$request->order_budget','$request->order_thisyear', $request->order_state,'$request->order_main_state', $request->order_comment)");
+        return 1;
+
+
+    }
 }

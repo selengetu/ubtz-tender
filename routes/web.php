@@ -49,7 +49,7 @@ Route::get('/material',  [MaterialController::class, 'index'])->name('material')
 Route::post('/addTrainingFile', [MaterialController::class, 'addTrainingFile'])->name('addTrainingFile');
 Route::get('/show-training-file/{hid?}', [MaterialController::class, 'showTrainingFile'])->name('show-training-file');
 Route::get('/getsgroup/{id?}',function($id = 0){
-    return DB::table('trainingtype')->where('parentid','=',$id)->get();
+    return DB::table('EXAMUBTZ.trainingtype')->where('parentid','=',$id)->get();
 });
 Route::get('/delmat/{hid?}',[MaterialController::class,'delmat'])->name('delmat');
 // Route::get('/gettraining/{id?}',function($id = 0){
@@ -57,7 +57,7 @@ Route::get('/delmat/{hid?}',[MaterialController::class,'delmat'])->name('delmat'
 //     return $dt;
 // });
  Route::get('/getmaterial/{id?}',function($id = 0){
-     $dt=DB::table('V_TRAINING')->where('trid','=',$id)->get();
+     $dt=DB::table('EXAMUBTZ.V_TRAINING')->where('trid','=',$id)->get();
     return $dt;
  });
 
@@ -74,3 +74,4 @@ Route::get('/admin', [App\Http\Controllers\HomeController::class, 'admin'])->nam
 
 //Order Routes
 Route::get('/order', [App\Http\Controllers\OrderController::class, 'index'])->name('order');
+Route::post('/saveOrder', [App\Http\Controllers\OrderController::class, 'saveOrder'])->name('saveOrder');
