@@ -28,6 +28,19 @@
                 </div>
             </div>
             <div class="card-body">
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Захиалга</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Тендер</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Гэрээ</a>
+                </li>
+                </ul>
+                <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                 <div class="table-responsive">
                     <table class="table table-bordered table-striped" id="myTable">
                         <thead >
@@ -51,6 +64,60 @@
                         </tbody>
                     </table>
                 </div>
+                </div>
+                <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped" id="myTable1">
+                        <thead >
+                            <th>#</th>
+                            <th>Шалгаруулалтын төрөл</th>
+                            <th>Тендерийн №</th>
+                            <th>Төрөл</th>
+                            <th>Зарлагдсан огноо</th>
+                            <th>Батлагдсан төсөвт өртөг</th>
+                            <th>Урилгын №</th>
+                            <th>Урилгын огноо </th>
+                            <th>Тендер нээх хугацаа</th>
+                            <th>Хүчинтэй хугацаа </th>
+                            <th>Багцын тоо </th>
+                            <th>Үнэлгээ</th>
+                            <th>Тайлбар</th>
+                        </thead>
+                        <tbody id="tbody">
+                    
+                        
+                        </tbody>
+                    </table>
+                </div>
+                </div>
+                <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped" id="myTable1">
+                        <thead >
+                            <th>#</th>
+                            <th>Шалгаруулалтын төрөл</th>
+                            <th>Тендерийн №</th>
+                            <th>Төрөл</th>
+                            <th>Зарлагдсан огноо</th>
+                            <th>Батлагдсан төсөвт өртөг</th>
+                            <th>Урилгын №</th>
+                            <th>Урилгын огноо </th>
+                            <th>Тендер нээх хугацаа</th>
+                            <th>Хүчинтэй хугацаа </th>
+                            <th>Багцын тоо </th>
+                            <th>Үнэлгээ</th>
+                            <th>Тайлбар</th>
+                        </thead>
+                        <tbody id="tbody">
+                    
+                        
+                        </tbody>
+                    </table>
+                </div>
+                </div>
+                </div>
+              
             </div>
         </div>
     </div>
@@ -182,7 +249,7 @@
 
 <script>
    $(document).ready( function () {
-    $('#myTable').DataTable(
+    $('table').DataTable(
         {
             stateSave: true,
             "language": {
