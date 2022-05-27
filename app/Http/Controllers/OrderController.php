@@ -19,7 +19,8 @@ class OrderController extends Controller {
         $selection= DB::select("select * from CONST_TENDER_SELECTIONS t ");
         $dep= DB::select("select * from EXAMUBTZ.V_DEPART t ");
         $unit= DB::select("select * from CONST_UNIT t ");
-        return view('main.order',compact('dep','ostate','mstate','source','selection','unit'));
+        $order= DB::select("select * from V_ORDERS t ");
+        return view('main.order',compact('dep','ostate','mstate','source','selection','unit','order'));
     }
     public function saveOrder(Request $request)
     {

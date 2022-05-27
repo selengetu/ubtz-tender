@@ -24,7 +24,7 @@
             <div class="card-header">
                 <h3 class="card-title">Захиалгын мэдээлэл</h3>
                 <div class="card-tools">
-                    <button class="btn btn-primary btn-small right"  onclick="depEdit()" data-toggle="modal" data-target="#depModal"><i class="fa fa-plus"></i> </button>
+                    <button class="btn btn-primary btn-xs right"  onclick="depEdit()" data-toggle="modal" data-target="#depModal"><i class="fa fa-plus"></i> </button>
                 </div>
             </div>
             <div class="card-body">
@@ -57,9 +57,31 @@
                             <th>Төлөв </th>
                             <th>Захиалга өгсөн</th>
                             <th>Тайлбар</th>
+                            <th></th>
                         </thead>
                         <tbody id="tbody">
-                    
+                        <?php $no = 1; ?>
+                         @foreach ($order as $item )
+                        <tr>
+                            <td>{{$no}}</td>
+                            <td>{{$item->order_dep}}</td>
+                            <td>{{$item->order_employee}}</td>
+                            <td>{{$item->order_name}}</td>
+                            <td>{{$item->unit_name}}</td>
+                            <td>{{$item->order_count}}</td>
+                            <td>{{$item->tenderselectionname}}</td>
+                            <td>{{$item->order_budget_source_name}}</td>
+                            <td>{{$item->order_budget}}</td>
+                            <td>{{$item->order_thisyear}}</td>
+                            <td>{{$item->order_state_name}}</td>
+                            <td>{{$item->order_date}}</td>
+                            <td>{{$item->order_comment}}</td>
+                            <td>  <button class='btn btn-primary btn-xs'><i class='fa fa-pen'></i></button></td>
+                         
+                        </tr>
+                        <?php $no++; ?>
+                        @endforeach
+                        
                         
                         </tbody>
                     </table>
@@ -110,8 +132,7 @@
                             <th>Тайлбар</th>
                         </thead>
                         <tbody id="tbody">
-                    
-                        
+                      
                         </tbody>
                     </table>
                 </div>
