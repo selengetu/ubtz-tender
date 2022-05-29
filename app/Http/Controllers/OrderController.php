@@ -34,4 +34,8 @@ class OrderController extends Controller {
 
 
     }
+    public function getOrder($hid)
+    {
+        return DB::select("select * from V_ORDERS t where t.order_id='$hid'");
+    }
 }
