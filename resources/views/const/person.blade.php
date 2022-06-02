@@ -15,62 +15,8 @@
 
 @section('content')
 <div class="row">
-    <div class="col-md-3">
-        <div class="card">
-            <div class="card-body scroll">
-                <div id="jstree" style="font-size:14px;">
-                    <ul>
-                      @foreach ($departs as $item)
-                      <li><span onclick="changeDep('{{ $item->hid }}', 1)">{{ $item->department_name }}</span>
-                        @if(count($item->childs)>0)
-                            <ul>
-                                @foreach ($item->childs as $child )
-                                <li onclick="changeDep('{{ $child->hid }}', 2)" id="child_node_{{ $child->hid }}" data-jstree='{"icon":"{{ asset("/img/child.png") }}"}'><span >{{ $child->department_abbr }}</span></li>
-                                @endforeach
-                            </ul>
-                        @endif
-                      </li>
-                      @endforeach
-                    </ul>
-                  </div>
-               {{--   <nav class="">
-                    <ul class="nav nav-pills nav-sidebar flex-column " data-widget="treeview" role="menu"
-                        data-accordion="false" style="font-size:11px;">
-                            <li class="nav-header">Байгууллага</li>
-                            @foreach ($departs as $item)
-                                <li class="nav-item has-treeview">
-                                <a href="#" class="nav-link">
-                                    <i class="nav-icon fa fa-folder"></i>
-                                    <p>
-                                        {{ $item->department_name }}
-                                        @if(count($item->childs)>0) <i class="fa fa-angle-left right"></i>@endif
-                                    </p>
-                                </a>
-                                @if(count($item->childs)>0)
-                                <ul class="nav nav-treeview" >
-                                    @foreach ($item->childs as $child )
-                                    <li class="nav-item has-treeview">
-                                        <a href="#" style='margin-left:0.3rem;' class="nav-link">
-                                            <i class="nav-icon fa fa-file"></i>
-                                            <p>
-                                                {{ $child->department_name}}
-                                            </p>
-                                        </a>
-                                    </li>
-                                    @endforeach
-                                </ul>
-                                @endif
-                            </li>
-                            @endforeach
-
-
-
-                    </ul>
-                </nav>--}}
-            </div>
-        </div>
-    </div>
-    <div class="col-md-9">
+ 
+    <div class="col-md-12">
         <div class="card" style="font-size:14px;">
             <div class="card-header">
                 <h3 class="card-title">Хэрэглэгчийн мэдэээлэл</h3>
@@ -246,49 +192,7 @@
     });
     </script>
 <script>
-    if(localStorage.getItem('perDep')>0){
-        let depid=localStorage.getItem('perDep');
-        changeDep(depid,1);
-    } else {
-        localStorage.setItem('perDep', 151);
-    }
-    function changeDep(depid, type){
-        $('#pleaseWaitDialog').modal('show');
-        if(type ==1){
-            $('#btnper').hide();
-        }
-        else{
-            $('#btnper').show();
-        }
-        $('#depid').val(depid);
-        localStorage.setItem('perDep', depid);
-        $('#tbody').empty();
-        $.get('getPersons/' + depid +'/'+ type, function (data) {
-            if(data.length==0){
-                $("#tbody").append("<tr><td align='center' colspan=7>Ажилтан бүртгэгдээгүй байна.</td></tr>");
-            }
-            var lvl="Админ";
-            $.each(data, function (i, qwe) {
-             if(qwe.userlevel == 1){
-                lvl="Админ";
-             }
-             if(qwe.userlevel == 2){
-                lvl="Дэд админ";
-             }
-             if(qwe.userlevel == 3){
-                lvl="Менежер";
-             }
-             if(qwe.userlevel == 4){
-                lvl="Хэрэглэгч";
-             }
-                $("#tbody").append("<tr><td>" + parseInt(i + 1) + "</td><td>" + qwe.department_abbr +  "</td><td>" + qwe.workname +
-                    "</td><td>" + qwe.jobabbr +"</td><td>"+qwe.lname+" "+qwe.fname+"</td><td>"+lvl+"</td><td>"+qwe.mailadd+"</td><td>"+qwe.phonenumber+"</td><td><button class='btn btn-primary btn-xs' onclick=perEdit('"+qwe.hid+"') data-toggle='modal' data-target='#personModal'><i class='fa fa-edit'></i></button>    <button class='btn btn-primary btn-xs' onclick=perDel('"+qwe.hid+"')><i class='fa fa-trash'></i></button></td></tr>");
-            });
-        }).done(function() {
-            $('#pleaseWaitDialog').modal('hide');
-           });;
-    }
-
+  
     function perEdit(hid){
         if(hid){
             $.get('getPerson/' + hid, function (data) {
