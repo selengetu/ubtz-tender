@@ -96,7 +96,7 @@
             $.each(data, function (i, qwe) {
                 $("#tbody").append("<tr><td>" + parseInt(i + 1) + "</td><td>" + qwe.jobname +
                     "</td><td>" + qwe.jobshname +
-                    "</td><td><button class='btn btn-primary btn-xs' onclick=jobEdit('"+qwe.hid+"') data-toggle='modal' data-target='#jobModal'><i class='fa fa-edit'></i></button>   <button class='btn btn-primary btn-xs' onclick=jobDel('"+qwe.hid+"')><i class='fa fa-trash'></i></button></td></tr>");
+                    "</td><td><button class='btn btn-primary btn-xs' onclick=jobEdit('"+qwe.jobcode+"') data-toggle='modal' data-target='#jobModal'><i class='fa fa-edit'></i></button>   <button class='btn btn-primary btn-xs' onclick=jobDel('"+qwe.jobcode+"')><i class='fa fa-trash'></i></button></td></tr>");
             });
         });
     }

@@ -24,7 +24,7 @@
             <div class="card-header">
                 <h3 class="card-title">Байгуулагын мэдээлэл</h3>
                 <div class="card-tools">
-                    <button class="btn btn-primary btn-small right"  onclick="depEdit()" data-toggle="modal" data-target="#depModal"><i class="fa fa-plus"></i> Байгууллага нэмэх</button>
+                
                 </div>
             </div>
             <div class="card-body">
@@ -36,10 +36,8 @@
                             <th>Байгууллагын нэр</th>
                             <th>Товч нэр</th>
                             <th>Баланс код</th>
-                            <th>Бүртгэсэн</th>
-                            @if((Auth::user()->userlevel<>4) )
-                            <th>Үйлдлүүд</th>
-                            @endif
+                          
+                          
                         </thead>
                         <tbody id="tbody">
                         <?php $no = 1; ?>
@@ -50,13 +48,8 @@
                             <td>{{$item->department_name}}</td>
                             <td>{{$item->department_abbr}}</td>
                             <td>{{$item->balance_code}}</td>
-                            <td>{{$item->usr_name}}</td>
-                            @if((Auth::user()->userlevel<>4) )
-                        <td>
-                            <button class='btn btn-primary btn-xs' onclick=depEdit('{{$item->depid}}') data-toggle='modal' data-target='#depModal' title='Засах'><i class='fa fa-edit'></i></button> 
-                            <button class='btn btn-primary btn-xs' onclick="depDel('{{$item->depid}}','{{$item->department_name}}')" data-toggle='modal' title='Устгах'><i class='fa fa-trash-alt'></i></button>
-                        </td>
-                        @endif
+                            
+                        
                         </tr>
                         <?php $no++; ?>
 
@@ -70,58 +63,7 @@
     </div>
 </div>
         <!-- Modal -->
-        <div class="modal fade" id="depModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel"></h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <form method="POST" id="formSub" action={{ route('saveDep') }}>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="form-group">
-                                <label for="jobname">Харьяа байгууллага</label>
-                                <select class="form-control" name="p_abbr" id="p_abbr" >
-                                @foreach ($dep as $item)
-                                        <option value="{{ $item->depid }}">{{ $item->department_abbr }}</option>
-                                    @endforeach
-                            </select>
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <div class="form-group">
-                                <label for="jobname">Байгууллагын нэр</label>
-                                <input type="text" class="form-control" id="department_name" name="department_name" placeholder="Товч тушаал">
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <div class="form-group">
-                                <label for="jobname">Товч нэр</label>
-                                <input type="text" class="form-control" id="department_abbr" name="department_abbr" placeholder="Товч тушаал">
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <div class="form-group">
-                                <label for="jobname">Баланс код</label>
-                                <input type="text" class="form-control" id="balance_code" name="balance_code" placeholder="Товч тушаал">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <input type="hidden"  id="hid" name="hid">
-                    <input type="hidden"  id="flg" name="flg">
-                    @csrf
-                    <button type="submit" class="btn btn-primary">Хадгалах</button>
-                </div>
-                </form>
-            </div>
-        </div>
-        </div>
+    
 @stop
 
 @section('script')

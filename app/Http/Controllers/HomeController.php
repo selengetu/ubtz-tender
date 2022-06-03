@@ -109,15 +109,15 @@ class HomeController extends Controller
     }
     public function job()
     {
-        $jobs=DB::select("select * from EXAMUBTZ.CONST_JOB");
+        $jobs=DB::select("select * from CONST_JOB");
         return view('const.job',compact('jobs'));
     }
     public function getJobs($hid=0)
     {
         if(strlen($hid)>1){
-            return DB::select("select * from EXAMUBTZ.CONST_JOB where hid='$hid'");
+            return DB::select("select * from CONST_JOB where jobcode='$hid'");
         } else {
-            return DB::select("select * from EXAMUBTZ.CONST_JOB");
+            return DB::select("select * from CONST_JOB");
         }
 
     }
