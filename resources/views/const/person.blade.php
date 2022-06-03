@@ -68,19 +68,8 @@
                 <form method="POST" id="formSub" action={{ route('savePerson') }} enctype="multipart/form-data">
                 <div class="modal-body">
                     <div class="row">
-                        <div class="col-6">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Байгууллага</label>
-                                <select class="form-control" name="depid" id="depid">
-                                        @foreach ($departs as $parents)
-                                            @foreach ($parents->childs as $child)
-                                                <option value="{{ $child->hid }}">{{ $child->department_name }}</option>
-                                            @endforeach
-                                        @endforeach
-                                </select>
-                            @csrf
-                            </div>
-                        </div>
+                    @csrf
+                     
                         <div class="col-6">
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Албан тушаал</label>
@@ -90,24 +79,6 @@
                                         @endforeach
                                 </select>
                             @csrf
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <div class="form-group">
-                                <label for="jobname">Цех , тасаг</label>
-                                <input type="text" class="form-control" id="workname" name="workname" placeholder="Цех , тасаг">
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <div class="form-group">
-                                <label for="jobname">Албан тушаал нэршил</label>
-                                <input type="text" class="form-control" id="jobname" name="jobname" placeholder="Албан тушаал">
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <div class="form-group">
-                                <label for="jobname">Товч нэршил</label>
-                                <input type="text" class="form-control" id="jobname_abbr" name="jobname_abbr" placeholder="Товч нэршил">
                             </div>
                         </div>
                         <div class="col-6">
@@ -132,12 +103,6 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-6">
-                            <div class="form-group">
-                                <label for="phonenumber">Регистер №</label>
-                                <input type="text" class="form-control" name="registerno" id="registerno" placeholder="Регистер">
-                            </div>
-                        </div>
                         <div class="col-6">
                             <div class="form-group">
                                 <label for="phonenumber">Цахим хаяг</label>
@@ -175,22 +140,7 @@
 
 @section('script')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/jstree.min.js"></script>
-<script>
-    $(function () {
-      // 6 create an instance when the DOM is ready
-      $('#jstree').jstree({
-        "core" : {
-          "themes" : {
-            "variant" : "middle"
-          }
-        },
-        "plugins" : [ "wholerow" ]
-      });
-      // 7 bind to events triggered on the tree
-      $('#jstree').on("changed.jstree", function (e, data) {
-      });
-    });
-    </script>
+
 <script>
   
     function perEdit(hid){
@@ -199,14 +149,11 @@
                 $('#lname').val(data[0].lname);
                 $('#fname').val(data[0].fname);
                 $('#phonenumber').val(data[0].phonenumber);
-                $('#depid').val(data[0].depid);
                 $('#workname').val(data[0].workname);
                 $('#jobcode').val(data[0].jobcode);
                 $('#jobname').val(data[0].jobabbr);
                 $('#jobname_abbr').val(data[0].jobabbr_s);
-                $('#registerno').val(data[0].registerno);
                 $('#mailadd').val(data[0].mailadd);
-               // $('#file').val(data[0].picture);
                 $('#hid').val(data[0].hid);
                 $('#flg').val(1);
             });
@@ -216,11 +163,9 @@
                 $('#fname').val('');
                 $('#phonenumber').val('');
                 $('#workname').val('');
-              //  $('#depid').val(0);
                 $('#jobcode').val(228);
                 $('#jobname').val('');
                 $('#jobname_abbr').val('');
-                $('#registerno').val('');
                 $('#mailadd').val('');
                 $('#hid').val(0);
                 $('#flg').val(0);

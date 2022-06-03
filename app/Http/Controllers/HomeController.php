@@ -235,10 +235,6 @@ class HomeController extends Controller
         }
 
     }
-    public function admin()
-    {
-        $user=DB::select("select * from Users where is_logged=1 order by email");
-        return view('admin',compact('user'));
-    }
+ 
 
 }
