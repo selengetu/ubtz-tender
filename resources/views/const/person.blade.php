@@ -37,8 +37,6 @@
                     <table class="table table-bordered table-striped">
                         <thead>
                             <th>#</th>
-                            <th>Алба салбар нэгж</th>
-                            <th>Цех , тасаг</th>
                             <th>Албан тушаал</th>
                             <th>Овог нэр</th>
                             <th>Хэрэглэгчийн эрх</th>
@@ -47,7 +45,24 @@
                             <th></th>
                         </thead>
                         <tbody id="tbody">
+                        <?php $no = 1; ?>
+                        @foreach ($user as $item )
+                        <tr>
+                        <td>{{$no}}</td>
+                        <td>{{$item->jobid}}</td>
+                        <td>{{$item->name}}</td>
+                        <td>{{$item->userlevel}}</td>
+                        <td>{{$item->email}}</td>
+                        <td>{{$item->phone}}</td>
+                 
+                        <td>  
+                        <button class='btn btn-primary btn-xs' onclick="perEdit('{{$item->id}}')" data-toggle='modal' data-target='#personModal' title='Засах'><i class='fa fa-edit'></i></button>
+                        <button class='btn btn-primary btn-xs' onclick="perDel('{{$item->id}}','{{$item->name}}')" data-toggle='modal' title='Устгах'><i class='fa fa-trash-alt'></i></button>  </td>
+                        </tr>
+                        <?php $no++; ?>
 
+                        @endforeach
+                        
                         </tbody>
                     </table>
                 </div>
@@ -57,7 +72,7 @@
 </div>
         <!-- Modal -->
         <div class="modal fade" id="personModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Хэрэглэгч нэмэх</h5>
@@ -69,8 +84,14 @@
                 <div class="modal-body">
                     <div class="row">
                     @csrf
-                     
-                        <div class="col-6">
+                  
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label for="fname">Нэр</label>
+                                <input type="text" class="form-control" id="fname" name="fname" placeholder="Нэр">
+                            </div>
+                        </div>
+                        <div class="col-4">
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Албан тушаал</label>
                                 <select class="form-control" name="jobcode" id="jobcode">
@@ -80,38 +101,22 @@
                                 </select>
                             @csrf
                             </div>
+                            
                         </div>
-                        <div class="col-6">
-                            <div class="form-group">
-                                <label for="phonenumber">Утас</label>
-                                <input type="number" class="form-control" name="phonenumber" id="phonenumber" placeholder="Утас">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-6">
-                            <div class="form-group">
-                                <label for="lname">Овог</label>
-                                <input type="text" class="form-control" id="lname" name="lname" placeholder="Овог">
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <div class="form-group">
-                                <label for="fname">Нэр</label>
-                                <input type="text" class="form-control" id="fname" name="fname" placeholder="Нэр">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-6">
+                        <div class="col-4">
                             <div class="form-group">
                                 <label for="phonenumber">Цахим хаяг</label>
                                 <input type="text" class="form-control" name="mailadd" id="mailadd" placeholder="Цахим хаяг">
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-6">
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label for="phonenumber">Утас</label>
+                                <input type="number" class="form-control" name="phonenumber" id="phonenumber" placeholder="Утас">
+                            </div>
+                        </div>
+                      
+                        <div class="col-4">
                             <div class="form-group">
                                 <label for="exampleInputFile">Хэрэглэгч зураг</label>
                                 <div class="input-group">
@@ -125,7 +130,6 @@
                         </div>
                       
                     </div>
-
                 </div>
                 <div class="modal-footer">
                     <input type="hidden"  id="hid" name="hid">
@@ -149,10 +153,7 @@
                 $('#lname').val(data[0].lname);
                 $('#fname').val(data[0].fname);
                 $('#phonenumber').val(data[0].phonenumber);
-                $('#workname').val(data[0].workname);
                 $('#jobcode').val(data[0].jobcode);
-                $('#jobname').val(data[0].jobabbr);
-                $('#jobname_abbr').val(data[0].jobabbr_s);
                 $('#mailadd').val(data[0].mailadd);
                 $('#hid').val(data[0].hid);
                 $('#flg').val(1);
@@ -164,8 +165,6 @@
                 $('#phonenumber').val('');
                 $('#workname').val('');
                 $('#jobcode').val(228);
-                $('#jobname').val('');
-                $('#jobname_abbr').val('');
                 $('#mailadd').val('');
                 $('#hid').val(0);
                 $('#flg').val(0);

@@ -99,13 +99,11 @@ class HomeController extends Controller
         $lvl = Auth::user()->userlevel;
         $userdep = Auth::user()->depid;
 
-            $dep=DB::select("select * from EXAMUBTZ.v_depart");
-            $departs=DB::select("select depid,hid,UPPER(department_name) as department_name,department_par from EXAMUBTZ.v_depart t where t.department_par=0 and t.hid<>0"); // root ULAANBAATAR RAILWAY -->enenees yalgaatai      
+        $dep=DB::select("select * from EXAMUBTZ.v_depart");
+        $user=DB::select("select * from USERS"); // root ULAANBAATAR RAILWAY -->enenees yalgaatai      
         $jobs=DB::select("select * from CONST_JOB");
-        foreach($departs as $depart) {
-            $depart->childs=DB::select("select hid,department_name,department_par,department_abbr from EXAMUBTZ.v_depart t where department_par='$depart->hid' and t.hid<>t.department_par ");
-        }
-        return view('const.person',compact('departs','jobs'));
+       
+        return view('const.person',compact('dep','jobs','user'));
     }
     public function job()
     {
@@ -121,20 +119,10 @@ class HomeController extends Controller
         }
 
     }
-   
-    public function getPersons($depid, $type)
-    {
-        if($type == 1){
-            return DB::select("select * from EXAMUBTZ.V_PERSON t where t.DEPARTMENT_PAR='$depid'");
-        }
-        else{
-            return DB::select("select * from EXAMUBTZ.V_PERSON t where t.DEPID='$depid'");
-        }
 
-    }
     public function getPerson($hid)
     {
-        return DB::select("select * from EXAMUBTZ.V_PERSON t where t.hid='$hid'");
+        return DB::select("select * from USERS t where t.id='$hid'");
     }
 
     public function perDel(Request $request)
