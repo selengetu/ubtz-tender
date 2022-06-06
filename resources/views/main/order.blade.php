@@ -24,7 +24,7 @@
             <div class="card-header">
                 <h3 class="card-title">Захиалгын мэдээлэл</h3>
                 <div class="card-tools">
-                  
+                <button class="btn btn-info btn-xs right"  onclick="orderEdit()" data-toggle="modal" data-target="#depModal"><i class="fa fa-plus"></i> </button>
                 </div>
             </div>
             <div class="card-body">
@@ -33,11 +33,9 @@
                     <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Захиалга</a>
                 </li>
                 <li class="nav-item menuli1 disabled disabledTab">
-                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Тендер</a>
+                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Дэлгэрэнгүй</a>
                 </li>
-                <li class="nav-item menuli1 disabled disabledTab">
-                    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Гэрээ</a>
-                </li>
+              
                 </ul>
                 <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
@@ -105,7 +103,7 @@
                             <th>Төлөв </th>
                             <th>Захиалга өгсөн</th>
                             <th>Тайлбар</th>
-                            <th>  <button class="btn btn-info btn-xs right"  onclick="orderEdit()" data-toggle="modal" data-target="#depModal"><i class="fa fa-plus"></i> </button></th>
+                            <th></th>
                         </thead>
                         <tbody id="tbody">                   
                         </tbody>
@@ -127,7 +125,7 @@
                             <th>Багцын тоо </th>
                             <th>Үнэлгээ</th>
                             <th>Тайлбар</th>
-                            <th> <button class='btn btn-info btn-xs' data-toggle="modal" data-target="#contractModal"><i class='fa fa-plus'></i></button></th>
+                            <th> <button class='btn btn-info btn-xs' data-toggle="modal" data-target="#tenderModal"><i class='fa fa-plus'></i></button></th>
                         </thead>
                         <tbody id="tbody">
                     
@@ -136,31 +134,7 @@
                     </table>
                 </div>
                 </div>
-                <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-
-                <div class="table-responsive">
-                    <table class="table table-bordered table-striped">
-                        <thead >
-                            <th>#</th>
-                            <th>Шалгаруулалтын төрөл</th>
-                            <th>Тендерийн №</th>
-                            <th>Төрөл</th>
-                            <th>Зарлагдсан огноо</th>
-                            <th>Батлагдсан төсөвт өртөг</th>
-                            <th>Урилгын №</th>
-                            <th>Урилгын огноо </th>
-                            <th>Тендер нээх хугацаа</th>
-                            <th>Хүчинтэй хугацаа </th>
-                            <th>Багцын тоо </th>
-                            <th>Үнэлгээ</th>
-                            <th>Тайлбар</th>
-                        </thead>
-                        <tbody id="tbody">
-                      
-                        </tbody>
-                    </table>
-                </div>
-                </div>
+            
                 </div>
               
             </div>
@@ -269,6 +243,118 @@
                                 <input type="date" class="form-control" id="order_date" name="order_date" >
                             </div>
                         </div>
+                        <div class="col-8">
+                            <div class="form-group">
+                                <label for="jobname">Захиалга батлагдсан</label>
+                                <input class="form-control" type="file" id="formFile">
+                            </div>
+                        </div>
+                     
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label for="jobname">Тайлбар</label>
+                                <input type="text" class="form-control" id="order_comment" name="order_comment" placeholder="Тайлбар">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="hidden"  id="hid" name="hid">
+                    <input type="hidden"  id="flg" name="flg">
+                    @csrf
+                    <button type="submit" class="btn btn-primary">Хадгалах</button>
+                </div>
+                </form>
+            </div>
+        </div>
+        </div>
+        <div class="modal fade" id="tenderModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Тендер бүртгэл</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form method="POST" id="formSub" action={{ route('saveOrder') }}>
+                <div class="modal-body">
+               
+                    <div class="row">
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label for="jobname">Шалгаруулалтын төрөл</label>
+                                <select class="form-control" name="order_dep" id="order_dep" >
+                                @foreach ($dep as $item)
+                                        <option value="{{ $item->depid }}">{{ $item->department_abbr }}</option>
+                                    @endforeach
+                            </select>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label for="jobname">Тендерийн №</label>
+                                <input type="text" class="form-control" id="order_employee" name="order_employee" placeholder="Тендерийн №">
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label for="jobname">Төрөл</label>
+                                <select class="form-control" name="order_dep" id="order_dep" >
+                                @foreach ($dep as $item)
+                                        <option value="{{ $item->depid }}">{{ $item->department_abbr }}</option>
+                                    @endforeach
+                            </select>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label for="jobname">Зарлагдсан огноо</label>
+                                <input type="date" class="form-control" id="order_name" name="order_name" >
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="form-group">
+                                <label for="jobname">Батлагдсан төсөвт өртөг</label>
+                                <input type="number" class="form-control" id="order_name" name="order_name" >
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="form-group">
+                                <label for="jobname">Урилгын №</label>
+                                <input type="text" class="form-control" id="order_count" name="order_count">
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="form-group">
+                                <label for="jobname">Урилгын огноо</label>
+                                <input type="date" class="form-control" id="order_name" name="order_name" >
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="form-group">
+                                <label for="jobname">Тендер нээх хугацаа</label>
+                                <input type="date" class="form-control" id="order_budget_source" name="order_budget_source">
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label for="jobname">Хүчинтэй хугацаа</label>
+                                <input type="date" class="form-control" id="order_budget" name="order_budget">
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label for="jobname">Багцын тоо</label>
+                                <input type="number" class="form-control" id="order_thisyear" name="order_thisyear">
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label for="jobname">Үнэлгээ</label>
+                                <input type="text" class="form-control" id="order_thisyear" name="order_thisyear">
+                            </div>
+                        </div> 
                         <div class="col-12">
                             <div class="form-group">
                                 <label for="jobname">Тайлбар</label>
