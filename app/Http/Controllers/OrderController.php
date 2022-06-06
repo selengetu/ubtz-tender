@@ -15,12 +15,15 @@ class OrderController extends Controller {
     {
         $mstate= DB::select("select * from CONST_MAIN_STATE t order by state_name");
         $ostate= DB::select("select * from CONST_ORDER_STATE t order by state_name");
-        $source= DB::select("select * from CONST_TENDER_BUDGET_SOURCE t ");
-        $selection= DB::select("select * from CONST_TENDER_SELECTIONS t ");
+        $source= DB::select("select * from CONST_ORDER_BUDGET_SOURCE t ");
+        $selection= DB::select("select * from CONST_ORDER_SELECTIONS t ");
         $dep= DB::select("select * from EXAMUBTZ.V_DEPART t ");
         $unit= DB::select("select * from CONST_UNIT t ");
         $order= DB::select("select * from V_ORDERS t ");
-        return view('main.order',compact('dep','ostate','mstate','source','selection','unit','order'));
+        $type= DB::select("select * from CONST_TENDER_TYPES t ");
+        $tendertype= DB::select("select * from CONST_CONTRACT_TYPES t ");
+        $tenderstate= DB::select("select t.* from CONST_TENDER_STATE t ");
+        return view('main.order',compact('dep','ostate','mstate','source','selection','unit','order','type','tendertype','tenderstate'));
     }
     public function saveOrder(Request $request)
     {
@@ -31,8 +34,17 @@ class OrderController extends Controller {
         ($request->order_dep, $request->order_employee, '$request->order_job', '$request->order_name', '$request->order_date', $request->order_unit, '$request->order_count', '$request->order_selection', '$request->order_budget_source'
         , '$request->order_budget','$request->order_thisyear', $request->order_state,'$request->order_main_state', $request->order_comment)");
         return 1;
-
-
+    }
+    public function saveTender(Request $request)
+    {
+        DB::insert("insert into Tenders
+        (TENDERNO, TENDERTYPECODE, TENDERSELECTIONCODE, TENDER_CALL_AT, TENDER_OPEN_AT, TENDER_BUDGET, TENDER_BUDGET_SOURCE, TENDERTITLE, TENDER_INVITATIONCODE, TENDER_INVITATION_AT, TENDER_VALIDDATE, PACKCOUNT,
+         ASSESSMENT, TENDER_PLAYER,TENDER_STATE, ASSESSMENT_AT,STATEMENT_AT,CONTRACT_AT,SUSPENDED_AT,COMPLAINT_AT)
+        values
+        ($request->tenderno, $request->tendertypecode, '$request->tenderselectioncode', '$request->tender_call_at', '$request->tender_open_at', $request->tender_budget, '$request->tender_budget_source', '$request->tendertitle', '$request->tender_invitationcode',
+        '$request->tender_invitation_at','$request->tender_validdate', $request->packcount,'$request->assessment', '$request->tender_player',$request->tender_state, '$request->assesstment_at','$request->statement_at',
+       '$request->contract_at','$request->suspended_at','$request->complaint_at')");
+        return 1;
     }
     public function getOrder($hid)
     {

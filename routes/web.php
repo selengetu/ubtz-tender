@@ -76,3 +76,6 @@ Route::get('/admin', [App\Http\Controllers\HomeController::class, 'admin'])->nam
 Route::get('/order', [App\Http\Controllers\OrderController::class, 'index'])->name('order');
 Route::post('/saveOrder', [App\Http\Controllers\OrderController::class, 'saveOrder'])->name('saveOrder');
 Route::get('/getorder/{hid?}', [App\Http\Controllers\OrderController::class, 'getorder'])->name('getorder');
+
+//Tender Routes
+Route::post('/saveTender', [App\Http\Controllers\OrderController::class, 'saveTender'])->name('saveTender');
