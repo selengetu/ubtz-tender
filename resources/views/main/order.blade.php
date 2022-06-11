@@ -295,6 +295,7 @@
                             <div class="form-group">
                                 <label for="jobname">Тендерийн №</label>
                                 <input type="text" class="form-control" id="tenderno" name="tenderno" placeholder="Тендерийн №">
+                                <input type="hidden" class="form-control" id="order_id" name="order_id" placeholder="Тендерийн №">
                             </div>
                         </div>
                         <div class="col-4">
@@ -464,6 +465,7 @@
 
 $('.orderinformation').on('click',function(){
     var itag=$(this).attr('tag');
+    $('#order_id').val(itag);
     $("#infonews tbody").empty();    
     $( ".menuli1" ).removeClass("disabled disabledTab");
     $.get('getorder/'+itag,function(data){
