@@ -133,6 +133,35 @@
                         </tbody>
                     </table>
                 </div>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped" id="infocontract">
+                        <thead >
+                          
+                            <th>Гэрээний №</th>
+                            <th>Гэрээ байгуулсан огноо</th>
+                            <th>Хүчинтэй хугацаа</th>
+                            <th>Валют</th>
+                            <th>Гэрээний дүн</th>
+                            <th>Төлбөрийн нөхцөл</th>
+                            <th>Төлбөрийн огноо </th>
+                            <th>Төлбөр хийх хугацаа</th>
+                            <th>Нийлүүлэх нөхцөл </th>
+                            <th>Нийлүүлэх хугацаа </th>
+                            <th>Нийлүүлэгч</th>
+                            <th>Алдангийн нөхцөл</th>
+                            <th>Гэрээний хэрэгжилт</th>
+                            <th>Тодруулга</th>
+                            <th>Дүгнэлт</th>
+                            <th>Санамж</th>
+                            <th>Гэрээний төлөв</th>
+                            <th> <button class='btn btn-info btn-xs' data-toggle="modal" data-target="#contractModal"><i class='fa fa-plus'></i></button></th>
+                        </thead>
+                        <tbody id="tbody">
+                    
+                        
+                        </tbody>
+                    </table>
+                </div>
                 </div>
             
                 </div>
