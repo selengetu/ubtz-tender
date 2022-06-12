@@ -78,4 +78,5 @@ Route::post('/saveOrder', [App\Http\Controllers\OrderController::class, 'saveOrd
 Route::get('/getorder/{hid?}', [App\Http\Controllers\OrderController::class, 'getorder'])->name('getorder');
 
 //Tender Routes
-Route::post('/saveTender', [App\Http\Controllers\OrderController::class, 'saveTender'])->name('saveTender');
+Route::post('/saveTender', [App\Http\Controllers\TenderController::class, 'saveTender'])->name('saveTender');
+Route::get('/getTenders/{hid?}', [App\Http\Controllers\TenderController::class, 'getTenders'])->name('getTenders');

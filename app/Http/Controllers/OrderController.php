@@ -23,7 +23,7 @@ class OrderController extends Controller {
         $type= DB::select("select * from CONST_TENDER_TYPES t ");
         $tendertype= DB::select("select * from CONST_CONTRACT_TYPES t ");
         $tenderstate= DB::select("select t.* from CONST_TENDER_STATE t ");
-        return view('main.order',compact('dep','ostate','mstate','source','selection','unit','order','type','tendertype','tenderstate'));
+        return view('order.order',compact('dep','ostate','mstate','source','selection','unit','order','type','tendertype','tenderstate'));
     }
     public function saveOrder(Request $request)
     {
@@ -33,17 +33,6 @@ class OrderController extends Controller {
         values
         ($request->order_dep, $request->order_employee, '$request->order_job', '$request->order_name', '$request->order_date', $request->order_unit, '$request->order_count', '$request->order_selection', '$request->order_budget_source'
         , '$request->order_budget','$request->order_thisyear', $request->order_state,'$request->order_main_state', $request->order_comment)");
-        return 1;
-    }
-    public function saveTender(Request $request)
-    {
-        DB::insert("insert into Tenders
-        (TENDERNO, TENDERTYPECODE, TENDERSELECTIONCODE, TENDER_CALL_AT, TENDER_OPEN_AT, TENDER_BUDGET, TENDER_BUDGET_SOURCE, TENDERTITLE, TENDER_INVITATIONCODE, TENDER_INVITATION_AT, TENDER_VALIDDATE, PACKCOUNT,
-         ASSESSMENT, TENDER_PLAYER,TENDER_STATE, ASSESSMENT_AT,STATEMENT_AT,CONTRACT_AT,SUSPENDED_AT,COMPLAINT_AT,ORDER_ID)
-        values
-        ($request->tenderno, $request->tendertypecode,$request->tenderselectioncode, '$request->tender_call_at', '$request->tender_open_at', $request->tender_budget, '1', '$request->tendertitle', '$request->tender_invitationcode',
-        '$request->tender_invitation_at','$request->tender_validdate', $request->packcount,'$request->assessment', '$request->tender_player',$request->tender_state, '$request->assesstment_at','$request->statement_at',
-       '$request->contract_at','$request->suspended_at','$request->complaint_at','$request->order_id')");
         return 1;
     }
     public function getOrder($hid)
