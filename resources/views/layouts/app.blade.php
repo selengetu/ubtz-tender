@@ -23,12 +23,16 @@
 <link href="https://fonts.googleapis.com/css2?family=PT+Sans+Narrow&display=swap" rel="stylesheet">
     <style>
     thead{
-        background:#80bdff
+        background:#ced4d7
     }
     .navbar-lightblue {
-        background-color: #3c8dbc !important;
+        background-color: #6e7e87 !important;
         color: #fff !important;
     }
+    .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+    color: #ffffff;
+    background-color: #6e7e87;
+}
     </style>
     @yield('style')
 </head>
@@ -66,7 +70,7 @@
             <a href="/" class="brand-link">
                 <img src="{{ asset('vendor/adminlte/dist/img/AdminLTELogo.png') }}" alt="EXAM"
                     class="brand-image img-circle elevation-3" {{--style="opacity: .8"--}}>
-                <span class="brand-text font-weight-light">{{ config('app.name', 'EXAM UBTZ') }}</span>
+                <span class="brand-text font-weight-light">{{ config('app.name', 'TENDER UBTZ') }}</span>
             </a>
 
             <!-- Sidebar -->
@@ -141,7 +145,7 @@
                 NCH Department
             </div>
             <!-- Default to the left -->
-            <strong>Copyright &copy; 2021 <a href="ubtz.mn">UBTZ MN</a>.</strong> All rights reserved.
+            <strong>Copyright &copy; 2022 <a href="ubtz.mn">UBTZ MN</a>.</strong> All rights reserved.
         </footer>
         <div class="modal " id="pleaseWaitDialog" data-backdrop="static" data-keyboard="false">
             <div class="modal-body" style='margin-top:400px;'>
