@@ -170,12 +170,413 @@
         </div>
     </div>
 </div>
-        <!-- Modal -->
-   
-        @component('order.modal.ordermodal')
-        @endcomponent 
-        @component('order.modal.tendermodal')
-        @endcomponent
+<div class="modal fade" id="depModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel"></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form method="POST" id="formSub" action={{ route('saveOrder') }}>
+                <div class="modal-body">
+               
+                    <div class="row">
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label for="jobname">Байгууллага</label>
+                                <select class="form-control" name="order_dep" id="order_dep" >
+                                @foreach ($dep as $item)
+                                        <option value="{{ $item->depid }}">{{ $item->department_abbr }}</option>
+                                    @endforeach
+                            </select>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label for="jobname">Хариуцсан ажилтан</label>
+                                <input type="text" class="form-control" id="order_employee" name="order_employee" placeholder="Хариуцсан ажилтан">
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label for="jobname">Албан тушаал</label>
+                                <input type="text" class="form-control" id="order_job" name="order_job" >
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label for="jobname">Худалдан авах ажил, үйлчилгээний нэр</label>
+                                <input type="text" class="form-control" id="order_name" name="order_name" >
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="form-group">
+                                <label for="jobname">Хэмжих нэгж</label>
+                                <select class="form-control" name="order_unit" id="order_unit" >
+                                @foreach ($unit as $item)
+                                        <option value="{{ $item->unit_id }}">{{ $item->unit_name }}</option>
+                                    @endforeach
+                            </select>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="form-group">
+                                <label for="jobname">Тоо хэмжээ</label>
+                                <input type="number" class="form-control" id="order_count" name="order_count">
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="form-group">
+                                <label for="jobname">Мөрдөх журам</label>
+                                <select class="form-control" name="order_selection" id="order_selection" >
+                                @foreach ($selection as $item)
+                                        <option value="{{ $item->tenderselectioncode }}">{{ $item->tenderselectionabbr }}</option>
+                                    @endforeach
+                            </select>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="form-group">
+                                <label for="jobname">Эх үүсвэр</label>
+                                <input type="text" class="form-control" id="order_budget_source" name="order_budget_source">
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label for="jobname">Төсөвт өртөг</label>
+                                <input type="text" class="form-control" id="order_budget" name="order_budget">
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label for="jobname">Тухайн онд санхүүжих</label>
+                                <input type="text" class="form-control" id="order_thisyear" name="order_thisyear">
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label for="jobname">Төлөв</label>
+                                <select class="form-control" name="order_state" id="order_state" >
+                                @foreach ($mstate as $item)
+                                        <option value="{{ $item->state_id }}">{{ $item->state_name }}</option>
+                                    @endforeach
+                            </select>
+                            </div>
+                        </div> 
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label for="jobname">Захиалга өгсөн</label>
+                                <input type="date" class="form-control" id="order_date" name="order_date" >
+                            </div>
+                        </div>
+                        <div class="col-8">
+                            <div class="form-group">
+                                <label for="jobname">Захиалга батлагдсан</label>
+                                <input class="form-control" type="file" id="formFile">
+                            </div>
+                        </div>
+                     
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label for="jobname">Тайлбар</label>
+                                <input type="text" class="form-control" id="order_comment" name="order_comment" placeholder="Тайлбар">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="hidden"  id="hid" name="hid">
+                    <input type="hidden"  id="flg" name="flg">
+                    @csrf
+                    <button type="submit" class="btn btn-primary">Хадгалах</button>
+                </div>
+                </form>
+            </div>
+        </div>
+        </div>
+        <div class="modal fade" id="tenderModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Тендер бүртгэл</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form method="POST" id="formTender" action={{ route('saveTender') }}>
+                <div class="modal-body">
+               
+                    <div class="row">
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label for="jobname">Шалгаруулалтын төрөл</label>
+                                <select class="form-control" name="tenderselectioncode" id="tenderselectioncode" >
+                                @foreach ($tendertype as $item)
+                                        <option value="{{ $item->contracttypecode }}">{{ $item->contracttypename }}</option>
+                                    @endforeach
+                            </select>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label for="jobname">Тендерийн №</label>
+                                <input type="text" class="form-control" id="tenderno" name="tenderno" placeholder="Тендерийн №">
+                                <input type="hidden" class="form-control" id="order_id" name="order_id" placeholder="Тендерийн №">
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label for="jobname">Төрөл</label>
+                                <select class="form-control" name="tendertypecode" id="tendertypecode" >
+                                @foreach ($type as $item)
+                                        <option value="{{ $item->tendertypecode }}">{{ $item->tendertypename }}</option>
+                                    @endforeach
+                            </select>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label for="jobname">Зарлагдсан огноо</label>
+                                <input type="date" class="form-control" id="tender_call_at" name="tender_call_at" >
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label for="jobname">Батлагдсан төсөвт өртөг</label>
+                                <input type="number" class="form-control" id="tender_budget" name="tender_budget" >
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label for="jobname">Урилгын №</label>
+                                <input type="text" class="form-control" id="tender_invitationcode" name="tender_invitationcode">
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="form-group">
+                                <label for="jobname">Урилгын огноо</label>
+                                <input type="date" class="form-control" id="tender_invitation_at" name="tender_invitation_at" >
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="form-group">
+                                <label for="jobname">Тендер нээх хугацаа</label>
+                                <input type="date" class="form-control" id="tender_open_at" name="tender_open_at">
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="form-group">
+                                <label for="jobname">Хүчинтэй хугацаа</label>
+                                <input type="date" class="form-control" id="tender_validdate" name="tender_validdate">
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="form-group">
+                                <label for="jobname">Багцын тоо</label>
+                                <input type="number" class="form-control" id="packcount" name="packcount">
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label for="jobname">Үнэлгээ</label>
+                                <input type="text" class="form-control" id="assessment" name="assessment">
+                            </div>
+                        </div> 
+                        <div class="col-8">
+                            <div class="form-group">
+                                <label for="jobname">Тендерт оролцогч</label>
+                                <input type="text" class="form-control" id="tender_player" name="tender_player" placeholder="Тендерт оролцогч">
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label for="jobname">Тендерийн явц</label>
+                                <select class="form-control" name="tender_state" id="tender_state" >
+                                @foreach ($tenderstate as $item)
+                                        <option value="{{ $item->state_id }}">{{ $item->state_name }}</option>
+                                    @endforeach
+                            </select>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label for="jobname">Үнэлгээ хийсэн огноо</label>
+                                <input type="date" class="form-control" id="assessment_at" name="assessment_at" >
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label for="jobname">Мэдэгдэл тараасан огноо</label>
+                                <input type="date" class="form-control" id="statement_at" name="statement_at" >
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label for="jobname">Гэрээ байгуулах эрх огноо</label>
+                                <input type="date" class="form-control" id="contract_at" name="contract_at" >
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label for="jobname">Түдгэлзүүлсэн огноо</label>
+                                <input type="date" class="form-control" id="suspended_at" name="suspended_at" >
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label for="jobname">Гомдол гаргасан огноо</label>
+                                <input type="date" class="form-control" id="complaint_at" name="complaint_at" >
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label for="jobname">Тайлбар</label>
+                                <input type="text" class="form-control" id="tender_comment" name="tender_comment" placeholder="Тайлбар">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="hidden"  id="hid" name="hid">
+                    <input type="hidden"  id="flg" name="flg">
+                    @csrf
+                    <button type="submit" class="btn btn-primary">Хадгалах</button>
+                </div>
+                </form>
+            </div>
+        </div>
+        </div>
+        <div class="modal fade" id="contractModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Гэрээ бүртгэл</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form method="POST" id="formContract" action={{ route('saveContract') }}>
+                <div class="modal-body">
+               
+                    <div class="row">
+                        
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label for="jobname">Гэрээний №</label>
+                                <input type="text" class="form-control" id="tenderno" name="tenderno" placeholder="Тендерийн №">
+                                <input type="hidden" class="form-control" id="order_id" name="order_id" placeholder="Тендерийн №">
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label for="jobname">Гэрээ байгуулсан огноо</label>
+                                <input type="date" class="form-control" id="tender_call_at" name="tender_call_at" >
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label for="jobname">Хүчинтэй хугацааг</label>
+                                <input type="date" class="form-control" id="tender_budget" name="tender_budget" >
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label for="jobname">Валют</label>
+                                <input type="text" class="form-control" id="tender_invitationcode" name="tender_invitationcode">
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label for="jobname">Гэрээний дүн</label>
+                                <input type="number" class="form-control" id="tender_invitation_at" name="tender_invitation_at" >
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label for="jobname">Төлбөрийн нөхцөл</label>
+                                <input type="text" class="form-control" id="tender_open_at" name="tender_open_at">
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label for="jobname">Төлбөрийн огноо</label>
+                                <input type="date" class="form-control" id="tender_validdate" name="tender_validdate">
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label for="jobname">Төлбөр хийх хугацаа</label>
+                                <input type="number" class="form-control" id="packcount" name="packcount">
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label for="jobname">Нийлүүлэх нөхцөл</label>
+                                <input type="text" class="form-control" id="assessment" name="assessment">
+                            </div>
+                        </div> 
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label for="jobname">Нийлүүлэх хугацаа</label>
+                                <input type="date" class="form-control" id="tender_player" name="tender_player" placeholder="Тендерт оролцогч">
+                            </div>
+                        </div>
+                        <div class="col-8">
+                            <div class="form-group">
+                                <label for="jobname">Нийлүүлэгч</label>
+                                <input type="text" class="form-control" id="assessment_at" name="assessment_at" >
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label for="jobname">Алдангийн нөхцөл</label>
+                                <input type="text" class="form-control" id="assessment_at" name="assessment_at" >
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label for="jobname">Гэрээний хэрэгжилт</label>
+                                <input type="text" class="form-control" id="statement_at" name="statement_at" >
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label for="jobname">Тодруулга</label>
+                                <input type="text" class="form-control" id="contract_at" name="contract_at" >
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label for="jobname">Дүгнэлт</label>
+                                <input type="text" class="form-control" id="suspended_at" name="suspended_at" >
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label for="jobname">Санамж</label>
+                                <input type="text" class="form-control" id="complaint_at" name="complaint_at" >
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label for="jobname">Гэрээний төлөв</label>
+                                <input type="text" class="form-control" id="tender_comment" name="tender_comment" placeholder="Тайлбар">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="hidden"  id="hid" name="hid">
+                    <input type="hidden"  id="flg" name="flg">
+                    @csrf
+                    <button type="submit" class="btn btn-primary">Хадгалах</button>
+                </div>
+                </form>
+            </div>
+        </div>
+        </div>
 @stop
 <style type="text/css">
               .disabledTab {
@@ -293,17 +694,14 @@ $('.orderinformation').on('click',function(){
                 document.getElementById("exampleModalLabel").innerHTML="Захиалгын мэдээллийг засварлах";
             });
         } else {
-                $('#order_dep').val('');
+               
                 $('#order_employee').val('');
                 $('#order_job').val('');
                 $('#order_name').val('');
                 $('#order_unit').val('');
                 $('#order_count').val('');
-                $('#order_budget_source').val('');
-                $('#order_selection').val('');
                 $('#order_budget').val('');
                 $('#order_thisyear').val('');
-                $('#order_state').val('');
                 $('#order_date').val('');
                 $('#order_comment').val('');
                 $('#hid').val(0);

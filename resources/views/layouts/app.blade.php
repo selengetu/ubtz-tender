@@ -21,19 +21,7 @@
     <link rel="stylesheet" href="{{ asset('vendor/select2/select2.css') }}">
     <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=PT+Sans+Narrow&display=swap" rel="stylesheet">
-    <style>
-    thead{
-        background:#ced4d7
-    }
-    .navbar-lightblue {
-        background-color: #6e7e87 !important;
-        color: #fff !important;
-    }
-    .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-    color: #ffffff;
-    background-color: #6e7e87;
-}
-    </style>
+
     @yield('style')
 </head>
 
