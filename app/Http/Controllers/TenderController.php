@@ -24,7 +24,10 @@ class TenderController extends Controller {
     }
     public function getTenders($hid)
     {
-        return DB::select("select * from TENDERS t where t.order_id='$hid'");
+        return DB::select("select * from V_TENDERS t where t.order_id='$hid'");
     }
-  
+    public function getTender($hid)
+    {
+        return DB::select("select * from V_TENDERS t where t.tenderid='$hid'");
+    }
 }

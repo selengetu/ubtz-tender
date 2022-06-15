@@ -548,8 +548,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <input type="hidden"  id="hid" name="hid">
-                    <input type="hidden"  id="flg" name="flg">
+                    <input type="hidden"  id="hid1" name="hid">
+                    <input type="hidden"  id="flg1" name="flg">
                     @csrf
                     <button type="submit" class="btn btn-primary">Хадгалах</button>
                 </div>
@@ -646,7 +646,7 @@ $('.orderinformation').on('click',function(){
          "   <td class='m2'>" + qwe.assessment + "</td>" +
         "   <td class='m3'>" + qwe.tender_comment + "</td>" +
       
-         "   <td class='m3'> <button class='btn btn-primary btn-xs' data-toggle='modal' onclick='tenderEdit("+ qwe.tenderid +")' data-target='#depModal'><i class='fa fa-pen'></i></button></td>"+
+         "   <td class='m3'> <button class='btn btn-primary btn-xs' data-toggle='modal' onclick='tenderEdit("+ qwe.tenderid +")' data-target='#tenderModal'><i class='fa fa-pen'></i></button></td>"+
         "</tr>";
 
         $("#infotender tbody").append(sHtml);
@@ -691,7 +691,57 @@ $('.orderinformation').on('click',function(){
                 document.getElementById("exampleModalLabel").innerHTML="Шинээр захиалга нэмэх";
         }
     }
-
+    function tenderEdit(hid){
+        if(hid){
+            $.get('gettender/' + hid, function (data) {
+                $('#tenderno').val(data[0].tenderno);
+                $('#tendertypecode').val(data[0].tendertypecode).trigger('change');
+                $('#tenderselectioncode').val(data[0].tenderselectioncode).trigger('change');
+                $('#tender_call_at').val(data[0].order_name);
+                $('#tender_open_at').val(data[0].order_unit);
+                $('#tender_budget').val(data[0].order_count);
+                $('#tender_budget_source').val(data[0].tender_budget_source).trigger('change');
+                $('#tendertitle').val(data[0].order_selection);
+                $('#tender_invitationcode').val(data[0].tender_invitationcode);
+                $('#tender_invitation_at').val(data[0].tender_invitation_at);
+                $('#tender_validdate').val(data[0].tender_validdate);
+                $('#packcount').val(data[0].packcount);
+                $('#assessment').val(data[0].assessment);
+                $('#tender_player').val(data[0].tender_player);
+                $('#tender_state').val(data[0].tender_state).trigger('change');
+                $('#assessment_at').val(data[0].assessment_at);
+                $('#statement_at').val(data[0].statement_at);
+                $('#contract_at').val(data[0].contract_at);
+                $('#suspended_at').val(data[0].suspended_at);
+                $('#tender_comment').val(data[0].tender_comment);
+                $('#order_id').val(data[0].order_id);
+                $('#hid1').val(data[0].tender_id);
+                $('#flg1').val(1);
+                document.getElementById("exampleModalLabel").innerHTML="Захиалгын мэдээллийг засварлах";
+            });
+        } else {
+                $('#tenderno').val('');
+                $('#tender_call_at').val('');
+                $('#tender_open_at').val('');
+                $('#tender_budget').val('');
+                $('#tendertitle').val('');
+                $('#tender_invitationcode').val('');
+                $('#tender_invitation_at').val('');
+                $('#tender_validdate').val('');
+                $('#packcount').val('');
+                $('#assessment').val('');
+                $('#tender_player').val('');
+                $('#assessment_at').val('');
+                $('#statement_at').val('');
+                $('#contract_at').val('');
+                $('#suspended_at').val('');
+                $('#tender_comment').val('');
+                $('#order_id').val('');
+                $('#hid1').val(0);
+                $('#flg1').val(0);
+                document.getElementById("exampleModalLabel").innerHTML="Шинээр захиалга нэмэх";
+        }
+    }
 
     function depDel(hid,dname){
         if(confirm(dname+' нэртэй захиалгыг устгах уу?'))
