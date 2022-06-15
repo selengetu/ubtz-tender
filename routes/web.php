@@ -80,6 +80,7 @@ Route::get('/getorder/{hid?}', [App\Http\Controllers\OrderController::class, 'ge
 //Tender Routes
 Route::post('/saveTender', [App\Http\Controllers\TenderController::class, 'saveTender'])->name('saveTender');
 Route::get('/getTenders/{hid?}', [App\Http\Controllers\TenderController::class, 'getTenders'])->name('getTenders');
+Route::get('/getTender/{hid?}', [App\Http\Controllers\TenderController::class, 'getTender'])->name('getTender');
 
 Route::post('/saveContract', [App\Http\Controllers\ContractController::class, 'saveContract'])->name('saveContract');
 Route::get('/getContracts/{hid?}', [App\Http\Controllers\ContractController::class, 'getContracts'])->name('getContracts');

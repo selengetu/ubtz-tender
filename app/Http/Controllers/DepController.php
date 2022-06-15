@@ -42,25 +42,5 @@ class DepController extends Controller {
     {
         return DB::select("select * from V_DEPART t where t.hid='$hid'");
     }
-    public function delDep(Request $request)
-    {
-        $bindings = [
-            'flg'  =>2,
-            'v_hid' => $request->hid,
-            'v_department_name'  =>'',
-            'v_department_abbr'  => '',
-            'v_department_name_ru'  => '',
-            'v_department_par'  =>'',
-            'v_department_type'  => 1,
-            'v_balance_code'  => 0,
-            'v_orderid'  => 0,
-            'v_usid'=>Auth::user()->id,
-        ];
-            try {
-                $rep = DB::executeProcedure('pr_depart', $bindings);
-            } catch (\Exception $e) {
-                return 'Алдаа гарлаа. '.$e->getMessage();
-            }
-            return 1;    
-    }
+
 }

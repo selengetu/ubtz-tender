@@ -693,7 +693,7 @@ $('.orderinformation').on('click',function(){
     }
     function tenderEdit(hid){
         if(hid){
-            $.get('gettender/' + hid, function (data) {
+            $.get('getTender/' + hid, function (data) {
                 $('#tenderno').val(data[0].tenderno);
                 $('#tendertypecode').val(data[0].tendertypecode).trigger('change');
                 $('#tenderselectioncode').val(data[0].tenderselectioncode).trigger('change');
