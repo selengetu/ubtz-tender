@@ -580,7 +580,7 @@
    $(document).ready( function () {
     $('#myTable tfoot th').each(function () {
         var title = $(this).text();
-        $(this).html('<input type="text" placeholder="Хайх ' + title + '" />');
+        $(this).html('<input type="text" placeholder="' + title + ' хайх" />');
     });
     $('#myTable').DataTable(
         {
