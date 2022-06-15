@@ -43,8 +43,6 @@
                     <table class="table table-bordered table-striped" id="myTable">
                         <thead >
                             <th>#</th>
-                            <th>Харьяа байгууллага</th>
-                            <th>Захиалагч</th>
                             <th>Нэр</th>
                             <th>Хэмжих нэгж</th>
                             <th>Тоо хэмжээ</th>
@@ -62,8 +60,6 @@
                          @foreach ($order as $item )
                          <tr class="orderinformation" onclick="$('#profile-tab').trigger('click')" data-id="{{$item->order_id}}" tag="{{$item->order_id}}" >
                             <td>{{$no}}</td>
-                            <td>{{$item->order_dep}}</td>
-                            <td>{{$item->order_employee}}</td>
                             <td>{{$item->order_name}}</td>
                             <td>{{$item->unit_name}}</td>
                             <td>{{$item->order_count}}</td>
@@ -89,10 +85,7 @@
                 <div class="table-responsive">
                     <br>
                     <table class="table table-bordered table-striped" id="infonews">
-                        <thead >
-          
-                            <th>Харьяа байгууллага</th>
-                            <th>Захиалагч</th>
+                        <thead >                        
                             <th>Нэр</th>
                             <th>Хэмжих нэгж</th>
                             <th>Тоо хэмжээ</th>
@@ -183,28 +176,7 @@
                 <div class="modal-body">
                
                     <div class="row">
-                        <div class="col-4">
-                            <div class="form-group">
-                                <label for="jobname">Байгууллага</label>
-                                <select class="form-control" name="order_dep" id="order_dep" >
-                                @foreach ($dep as $item)
-                                        <option value="{{ $item->depid }}">{{ $item->department_abbr }}</option>
-                                    @endforeach
-                            </select>
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <div class="form-group">
-                                <label for="jobname">Хариуцсан ажилтан</label>
-                                <input type="text" class="form-control" id="order_employee" name="order_employee" placeholder="Хариуцсан ажилтан">
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <div class="form-group">
-                                <label for="jobname">Албан тушаал</label>
-                                <input type="text" class="form-control" id="order_job" name="order_job" >
-                            </div>
-                        </div>
+                       
                         <div class="col-12">
                             <div class="form-group">
                                 <label for="jobname">Худалдан авах ажил, үйлчилгээний нэр</label>
@@ -628,8 +600,6 @@ $('.orderinformation').on('click',function(){
     $.get('getorder/'+itag,function(data){
         $.each(data,function(i,qwe){
             var sHtml = "<tr>" +
-            "   <td class='m1'>" + qwe.order_dep + "</td>" +
-        "   <td class='m2'>" + qwe.order_employee + "</td>" +
         "   <td class='m3'>" + qwe.order_name + "</td>" +
          "   <td class='m3'>" + qwe.unit_name + "</td>"+
          "   <td class='m1'>" + qwe.order_count + "</td>" +
