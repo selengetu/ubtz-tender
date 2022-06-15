@@ -53,7 +53,6 @@
                             <th>Төлөв </th>
                             <th>Захиалга өгсөн</th>
                             <th>Тайлбар</th>
-                         
                         </thead>
                         <tbody id="tbody">
                         <?php $no = 1; ?>
@@ -69,15 +68,24 @@
                             <td>{{$item->order_thisyear}}</td>
                             <td>{{$item->order_state_name}}</td>
                             <td>{{$item->order_date}}</td>
-                            <td>{{$item->order_comment}}</td>
-                           
-                         
+                            <td>{{$item->order_comment}}</td>      
                         </tr>
                         <?php $no++; ?>
                         @endforeach
-                        
-                        
                         </tbody>
+                        <tfoot>
+                            <th>#</th>
+                            <th>Нэр</th>
+                            <th>Хэмжих нэгж</th>
+                            <th>Тоо хэмжээ</th>
+                            <th>Мөрдөх журам</th>
+                            <th>Хөрөнгө оруулалт </th>
+                            <th>Төсөвт өртөг</th>
+                            <th>Тухайн онд санхүүжих </th>
+                            <th>Төлөв </th>
+                            <th>Захиалга өгсөн</th>
+                            <th>Тайлбар</th>
+                        </tfoot>
                     </table>
                 </div>
                 </div>
@@ -570,6 +578,10 @@
 
 <script>
    $(document).ready( function () {
+    $('#myTable tfoot th').each(function () {
+        var title = $(this).text();
+        $(this).html('<input type="text" placeholder="Хайх ' + title + '" />');
+    });
     $('#myTable').DataTable(
         {
             stateSave: true,
