@@ -33,9 +33,11 @@
                     <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Захиалга</a>
                 </li>
                 <li class="nav-item menuli1 disabled disabledTab">
-                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Дэлгэрэнгүй</a>
+                    <a class="nav-link" id="tender-tab" data-toggle="tab" href="#tender" role="tab" aria-controls="tender" aria-selected="false">Тендер</a>
                 </li>
-              
+                <li class="nav-item menuli1 disabled disabledTab">
+                    <a class="nav-link" id="contract-tab" data-toggle="tab" href="#contract" role="contract" aria-controls="contract" aria-selected="false">Гэрээ</a>
+                </li>
                 </ul>
                 <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
@@ -57,7 +59,7 @@
                         <tbody id="tbody">
                         <?php $no = 1; ?>
                          @foreach ($order as $item )
-                         <tr class="orderinformation" onclick="$('#profile-tab').trigger('click')" data-id="{{$item->order_id}}" tag="{{$item->order_id}}" >
+                         <tr class="orderinformation" onclick="$('#tender-tab').trigger('click')" data-id="{{$item->order_id}}" tag="{{$item->order_id}}" >
                             <td>{{$no}}</td>
                             <td>{{$item->order_name}}</td>
                             <td>{{$item->unit_name}}</td>
@@ -89,7 +91,7 @@
                     </table>
                 </div>
                 </div>
-                <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                <div class="tab-pane fade" id="tender" role="tabpanel" aria-labelledby="tender-tab">
                 <div class="table-responsive">
                     <br>
                     <table class="table table-bordered table-striped" id="infonews">
@@ -134,6 +136,10 @@
                         </tbody>
                     </table>
                 </div>
+        
+                </div>
+                <div class="tab-pane fade" id="contract" role="tabpanel" aria-labelledby="contract-tab">
+          
                 <div class="table-responsive">
                     <table class="table table-bordered table-striped" id="infocontract">
                         <thead >
@@ -164,7 +170,6 @@
                     </table>
                 </div>
                 </div>
-            
                 </div>
               
             </div>
