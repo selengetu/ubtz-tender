@@ -24,7 +24,7 @@
             <div class="card-header">
                 <h3 class="card-title">Захиалгын мэдээлэл</h3>
                 <div class="card-tools">
-                <button class="btn btn-info btn-xs right"  onclick="orderEdit()" data-toggle="modal" data-target="#depModal"><i class="fa fa-plus"></i> </button>
+                <button id="addorderbutton" class="btn btn-info btn-xs right"  onclick="orderEdit()" data-toggle="modal" data-target="#depModal"><i class="fa fa-plus"></i> </button>
                 </div>
             </div>
             <div class="card-body">
@@ -41,6 +41,7 @@
                 </ul>
                 <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                    <br>
                 <div class="table-responsive">
                     <table class="table table-bordered table-striped" id="myTable">
                         <thead >
@@ -92,7 +93,16 @@
                 </div>
                 </div>
                 <div class="tab-pane fade" id="tender" role="tabpanel" aria-labelledby="tender-tab">
-                <div class="table-responsive">
+                    <br>
+                <div class="card" style="font-size:12px;">
+                    <div class="card-header">
+                        <h3 class="card-title">Захиалгын мэдээлэл</h3>
+                        <div class="card-tools">
+                       
+                        </div>
+                    </div>
+                    <div class="card-body">
+                    <div class="table-responsive">
                     <br>
                     <table class="table table-bordered table-striped" id="infonews">
                         <thead >                        
@@ -112,7 +122,40 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="table-responsive">
+                    </div>
+                </div>
+                <div class="card" style="font-size:12px;">
+                    <div class="card-header">
+                        <h3 class="card-title">Захиалгын дэлгэрэнгүй</h3>
+                        <div class="card-tools">
+                       
+                        </div>
+                    </div>
+                    <div class="card-body">
+                    <div class="table-responsive">
+                    <br>
+                    <table class="table table-bordered table-striped" id="infodetails">
+                        <thead >                        
+                            <th>Алба</th>
+                            <th>Тоо хэмжээ</th>
+                            <th>Төсөвт өртөг</th>
+                            <th></th>
+                        </thead>
+                        <tbody id="tbody">                   
+                        </tbody>
+                    </table>
+                </div>
+                    </div>
+                </div>
+                <div class="card" style="font-size:12px;">
+                    <div class="card-header">
+                        <h3 class="card-title">Тендерийн мэдээлэл</h3>
+                        <div class="card-tools">
+                        <button class='btn btn-info btn-xs' data-toggle="modal" data-target="#tenderModal"><i class='fa fa-plus'></i></button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                    <div class="table-responsive">
                     <table class="table table-bordered table-striped" id="infotender">
                         <thead >
                           
@@ -128,7 +171,7 @@
                             <th>Багцын тоо </th>
                             <th>Үнэлгээ</th>
                             <th>Тайлбар</th>
-                            <th> <button class='btn btn-info btn-xs' data-toggle="modal" data-target="#tenderModal"><i class='fa fa-plus'></i></button></th>
+                            <th></th>
                         </thead>
                         <tbody id="tbody">
                     
@@ -136,11 +179,25 @@
                         </tbody>
                     </table>
                 </div>
+                    
+                    </div>
+                </div>
+           
+             
         
                 </div>
                 <div class="tab-pane fade" id="contract" role="tabpanel" aria-labelledby="contract-tab">
-          
-                <div class="table-responsive">
+                <br>
+                <div class="card" style="font-size:12px;">
+            <div class="card-header">
+                <h3 class="card-title">Гэрээний мэдээлэл</h3>
+                <div class="card-tools">
+                <button class="btn btn-info btn-xs right"  onclick="orderEdit()" data-toggle="modal" data-target="#depModal"><i class="fa fa-plus"></i> </button>
+                </div>
+            </div>
+            <div class="card-body">
+             
+            <div class="table-responsive">
                     <table class="table table-bordered table-striped" id="infocontract">
                         <thead >
                           
@@ -169,6 +226,10 @@
                         </tbody>
                     </table>
                 </div>
+              
+            </div>
+        </div>
+     
                 </div>
                 </div>
               
@@ -608,8 +669,12 @@
         } 
     );
 } );
+$('#home-tab').on('click',function(){
+    $('#addorderbutton').show();
+});
 $('.orderinformation').on('click',function(){
     var itag=$(this).attr('tag');
+    $('#addorderbutton').hide();
     $('#order_id').val(itag);
     $("#infonews tbody").empty();    
     $("#infotender tbody").empty();    
