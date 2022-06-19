@@ -39,4 +39,17 @@ class OrderController extends Controller {
     {
         return DB::select("select * from V_ORDERS t where t.order_id='$hid'");
     }
+    public function saveOrderDetail(Request $request)
+    {
+       
+        DB::insert("insert into ORDER_DETAIL
+        ( ORDER_ID, DEP_ID, ORDER_COUNT, ORDER_BUDGET)
+        values
+        ( '$request->dorder_id', '$request->ddep_id', '$request->dorder_count','$request->dorder_budget')");
+        return 1;
+    }
+    public function getorderdetail($hid)
+    {
+        return DB::select("select * from V_ORDER_DETAIL t where t.order_id='$hid'");
+    }
 }

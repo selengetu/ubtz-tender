@@ -273,6 +273,7 @@ button, input, optgroup, select, textarea {
                             <th>Тухайн онд санхүүжих </th>
                             <th>Төлөв </th>
                             <th>Захиалга өгсөн</th>
+                            <th>Ажилтан</th>
                             <th>Тайлбар</th>
                         </thead>
                         <tbody id="tbody">
@@ -289,24 +290,13 @@ button, input, optgroup, select, textarea {
                             <td>{{$item->order_thisyear}}</td>
                             <td>{{$item->order_state_name}}</td>
                             <td>{{$item->order_date}}</td>
+                            <td>{{$item->name}}</td>
                             <td>{{$item->order_comment}}</td>      
                         </tr>
                         <?php $no++; ?>
                         @endforeach
                         </tbody>
-                        <tfoot>
-                            <th>#</th>
-                            <th>Нэр</th>
-                            <th>Хэмжих нэгж</th>
-                            <th>Тоо хэмжээ</th>
-                            <th>Мөрдөх журам</th>
-                            <th>Хөрөнгө оруулалт </th>
-                            <th>Төсөвт өртөг</th>
-                            <th>Тухайн онд санхүүжих </th>
-                            <th>Төлөв </th>
-                            <th>Захиалга өгсөн</th>
-                            <th>Тайлбар</th>
-                        </tfoot>
+                       
                     </table>
                 </div>
                 </div>
@@ -883,6 +873,51 @@ button, input, optgroup, select, textarea {
             </div>
         </div>
         </div>
+        <div class="modal fade" id="detailModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Захиалгын дэлгэрэнгүй мэдээллийн бүртгэл</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form method="POST" id="formDetail" action={{ route('saveOrderDetail') }}>
+                <div class="modal-body">
+               
+                    <div class="row">
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label for="jobname">Алба хэлтэс</label>
+                                <input type="date" class="form-control" id="ddep_id" name="ddep_id" >
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label for="jobname">Тоо хэмжээ</label>
+                                <input type="date" class="form-control" id="dorder_count" name="dorder_count" >
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label for="jobname">Төсөвт өртөг</label>
+                                <input type="hidden" class="form-control" id="dorder_id" name="dorder_id">
+                                <input type="text" class="form-control" id="dorder_budget" name="dorder_budget">
+                            </div>
+                        </div>
+                      
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="hidden"  id="hid1" name="hid">
+                    <input type="hidden"  id="flg1" name="flg">
+                    @csrf
+                    <button type="submit" class="btn btn-primary">Хадгалах</button>
+                </div>
+                </form>
+            </div>
+        </div>
+        </div>
 @stop
 <style type="text/css">
               .disabledTab {
@@ -937,7 +972,8 @@ $('.orderinformation').on('click',function(){
     $('#addorderbutton').hide();
     $('#order_id').val(itag);
     $("#infonews tbody").empty();    
-    $("#infotender tbody").empty();    
+    $("#infotender tbody").empty();   
+    $("#infodetails tbody").empty();    
     $( ".menuli1" ).removeClass("disabled disabledTab");
     $.get('getorder/'+itag,function(data){
         $.each(data,function(i,qwe){
@@ -956,6 +992,20 @@ $('.orderinformation').on('click',function(){
         "</tr>";
 
         $("#infonews tbody").append(sHtml);
+               
+               
+         });
+        });
+        $.get('getorderdetail/'+itag,function(data){
+        $.each(data,function(i,qwe){
+            var sHtml = "<tr>" +
+        "   <td class='m3'>" + qwe.dep_id + "</td>" +
+         "   <td class='m3'>" + qwe.order_count + "</td>" +
+        "   <td class='m3'>" + qwe.order_budget + "</td>" +
+         "   <td class='m3'> <button class='btn btn-primary btn-xs' data-toggle='modal' onclick='orderdetailEdit("+ qwe.order_detail_id +")' data-target='#detailModal'><i class='fa fa-pen'></i></button></td>"+
+        "</tr>";
+
+        $("#infodetails tbody").append(sHtml);
                
                
          });
