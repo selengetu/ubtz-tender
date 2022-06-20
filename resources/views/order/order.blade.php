@@ -246,7 +246,8 @@ button, input, optgroup, select, textarea {
                 </div>
             </div>
             <div class="card-body">
-            <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <ul class="nav nav-tabs" id="myTab" role="tablist" style="font-size:14px">
+            
                 <li class="nav-item">
                     <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Захиалга</a>
                 </li>
@@ -302,37 +303,59 @@ button, input, optgroup, select, textarea {
                 </div>
                 <div class="tab-pane fade" id="tender" role="tabpanel" aria-labelledby="tender-tab">
                     <br>
-                <div class="card" style="font-size:12px;">
+                    <div class="row">
+                    <div class="col-md-3">
+                    <div class="card card-primary" >
                     <div class="card-header">
-                        <h3 class="card-title">Захиалгын мэдээлэл</h3>
+                        <h3 class="card-title" id="t_order_name"></h3>
                         <div class="card-tools">
                        
                         </div>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body" style="font-size:14px">
                     <div class="table-responsive">
                     <br>
-                    <table class="table table-bordered table-striped" id="infonews">
-                        <thead >                        
-                            <th>Нэр</th>
-                            <th>Хэмжих нэгж</th>
-                            <th>Тоо хэмжээ</th>
-                            <th>Мөрдөх журам</th>
-                            <th>Хөрөнгө оруулалт </th>
-                            <th>Төсөвт өртөг</th>
-                            <th>Тухайн онд санхүүжих </th>
-                            <th>Төлөв </th>
-                            <th>Захиалга өгсөн</th>
-                            <th>Тайлбар</th>
-                            <th></th>
-                        </thead>
-                        <tbody id="tbody">                   
+                    <table class="table table-bordered table-striped">
+                       
+                        <tbody id="tbody">   
+                            <tr><td>Хэмжих нэгж:</td><td id="t_order_unit"></td></tr>    
+                            <tr><td>Тоо хэмжээ:</td><td id="t_order_count"></td></tr>    
+                            <tr><td>Мөрдөх журам:</td><td id="t_order_selection"></td></tr> 
+                            <tr><td>Хөрөнгө оруулалт:</td><td id="t_order_budget_source"></td></tr> 
+                            <tr><td>Төсөвт өртөг:</td><td  id="t_order_budget"></td></tr> 
+                            <tr><td>Тухайн онд санхүүжих:</td><td id="t_order_thisyear"></td></tr> 
+                            <tr><td>Төлөв:</td><td id="t_order_state"></td></tr> 
+                            <tr><td>Захиалга өгсөн:</td><td id="t_order_date"></td></tr> 
+                            <tr><td>Тайлбар:</td><td id="t_order_date"></td></tr> 
                         </tbody>
                     </table>
                 </div>
+                       
                     </div>
                 </div>
-                <div class="card" style="font-size:12px;">
+                <div class="card card-primary card-outline"  style="font-size:14px">
+                       
+                        <div class="card-body">
+                        <div class="callout callout-success">
+                        <h5>Захиалгын дэлгэрэнгүй</h5>
+                        </div>
+                        <div class="callout callout-danger">
+                        <h5>  Багц </h5>
+                        </div>
+                        <div class="callout callout-warning">
+                        <h5>     Багцын мэдээлэл </h5>
+                        </div>
+                        <div class="callout callout-info">
+                        <h5>  Явцын мэдээлэл </h5>
+                        </div>
+                        <div class="callout callout-success">
+                        <h5>   Үнэлгээ/мэдэгдэл</h5>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                        <div class="col-md-9">
+                        <div class="card card-primary" style="font-size:12px;">
                     <div class="card-header">
                         <h3 class="card-title">Захиалгын дэлгэрэнгүй</h3>
                         <div class="card-tools">
@@ -342,7 +365,7 @@ button, input, optgroup, select, textarea {
                     <div class="card-body">
                     <div class="table-responsive">
                     <br>
-                    <table class="table table-bordered table-striped" id="infodetails">
+                    <table class="table table-bordered table-hover table-striped" id="infodetails">
                         <thead >                        
                             <th>Алба</th>
                             <th>Тоо хэмжээ</th>
@@ -355,41 +378,11 @@ button, input, optgroup, select, textarea {
                 </div>
                     </div>
                 </div>
-                <div class="card" style="font-size:12px;">
-                    <div class="card-header">
-                        <h3 class="card-title">Тендерийн мэдээлэл</h3>
-                        <div class="card-tools">
-                        <button class='btn btn-info btn-xs' data-toggle="modal" data-target="#tenderModal"><i class='fa fa-plus'></i></button>
                         </div>
                     </div>
-                    <div class="card-body">
-                    <div class="table-responsive">
-                    <table class="table table-bordered table-striped" id="infotender">
-                        <thead >
-                          
-                            <th>Шалгаруулалтын төрөл</th>
-                            <th>Тендерийн №</th>
-                            <th>Төрөл</th>
-                            <th>Зарлагдсан огноо</th>
-                            <th>Батлагдсан төсөвт өртөг</th>
-                            <th>Урилгын №</th>
-                            <th>Урилгын огноо </th>
-                            <th>Тендер нээх хугацаа</th>
-                            <th>Хүчинтэй хугацаа </th>
-                            <th>Багцын тоо </th>
-                            <th>Үнэлгээ</th>
-                            <th>Тайлбар</th>
-                            <th></th>
-                        </thead>
-                        <tbody id="tbody">
-                    
-                        
-                        </tbody>
-                    </table>
-                </div>
-                    
-                    </div>
-                </div>
+                
+             
+     
            
              
         
@@ -437,6 +430,41 @@ button, input, optgroup, select, textarea {
               
             </div>
         </div>
+        <div class="card" style="font-size:12px;">
+                    <div class="card-header">
+                        <h3 class="card-title">Тендерийн мэдээлэл</h3>
+                        <div class="card-tools">
+                        <button class='btn btn-info btn-xs' data-toggle="modal" data-target="#tenderModal"><i class='fa fa-plus'></i></button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                    <div class="table-responsive">
+                    <table class="table table-bordered table-striped" id="infotender">
+                        <thead >
+                          
+                            <th>Шалгаруулалтын төрөл</th>
+                            <th>Тендерийн №</th>
+                            <th>Төрөл</th>
+                            <th>Зарлагдсан огноо</th>
+                            <th>Батлагдсан төсөвт өртөг</th>
+                            <th>Урилгын №</th>
+                            <th>Урилгын огноо </th>
+                            <th>Тендер нээх хугацаа</th>
+                            <th>Хүчинтэй хугацаа </th>
+                            <th>Багцын тоо </th>
+                            <th>Үнэлгээ</th>
+                            <th>Тайлбар</th>
+                            <th></th>
+                        </thead>
+                        <tbody id="tbody">
+                    
+                        
+                        </tbody>
+                    </table>
+                </div>
+                    
+                    </div>
+                </div>
         <div class="card card-bordered">
               <div class="card-header">
                 <h4 class="card-title"><strong>Сэтгэгдэл</strong></h4>
@@ -975,27 +1003,22 @@ $('.orderinformation').on('click',function(){
     $("#infotender tbody").empty();   
     $("#infodetails tbody").empty();    
     $( ".menuli1" ).removeClass("disabled disabledTab");
-    $.get('getorder/'+itag,function(data){
-        $.each(data,function(i,qwe){
-            var sHtml = "<tr>" +
-        "   <td class='m3'>" + qwe.order_name + "</td>" +
-         "   <td class='m3'>" + qwe.unit_name + "</td>"+
-         "   <td class='m1'>" + qwe.order_count + "</td>" +
-        "   <td class='m2'>" + qwe.tenderselectionname + "</td>" +
-        "   <td class='m2'>" + qwe.order_budget_source_name + "</td>" +
-        "   <td class='m3'>" + qwe.order_budget + "</td>" +
-         "   <td class='m3'>" + qwe.order_thisyear + "</td>"+
-         "   <td class='m2'>" + qwe.order_state_name + "</td>" +
-        "   <td class='m3'>" + qwe.order_date + "</td>" +
-         "   <td class='m3'>" + qwe.order_comment + "</td>"+
-         "   <td class='m3'> <button class='btn btn-primary btn-xs' data-toggle='modal' onclick='orderEdit("+ qwe.order_id +")' data-target='#depModal'><i class='fa fa-pen'></i></button></td>"+
-        "</tr>";
+    $.get('getorder/' + itag, function (data) {
+                $('#t_order_name').text(data[0].order_name);
+                $('#t_order_unit').text(data[0].unit_name);
+                $('#t_order_count').text(data[0].order_count);
+                $('#t_order_budget_source').text(data[0].order_budget_source_name);
+                $('#t_order_selection').text(data[0].tenderselectionabbr);
+                $('#t_order_budget').text(data[0].order_budget);
+                $('#t_order_thisyear').text(data[0].order_thisyear);
+                $('#t_order_state').text(data[0].order_main_state_name);
+                $('#t_order_date').text(data[0].order_date);
+                $('#t_order_comment').text(data[0].order_comment);
+                $('#hid').val(data[0].order_id);
+                $('#flg').val(1);
+                document.getElementById("exampleModalLabel").innerHTML="Захиалгын мэдээллийг засварлах";
+            });
 
-        $("#infonews tbody").append(sHtml);
-               
-               
-         });
-        });
         $.get('getorderdetail/'+itag,function(data){
         $.each(data,function(i,qwe){
             var sHtml = "<tr>" +
