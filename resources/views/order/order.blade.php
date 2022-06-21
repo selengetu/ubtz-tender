@@ -263,7 +263,7 @@ button, input, optgroup, select, textarea {
                     <br>
                 <div class="table-responsive">
                     <table class="table table-bordered table-striped" id="myTable">
-                        <thead >
+                        <thead style="background-color:#007bff; color:white;">
                             <th>#</th>
                             <th>Нэр</th>
                             <th>Хэмжих нэгж</th>
@@ -336,26 +336,71 @@ button, input, optgroup, select, textarea {
                 <div class="card card-primary card-outline"  style="font-size:14px">
                        
                         <div class="card-body">
-                        <div class="callout callout-success">
-                        <h5>Захиалгын дэлгэрэнгүй</h5>
-                        </div>
-                        <div class="callout callout-danger">
-                        <h5>  Багц </h5>
-                        </div>
-                        <div class="callout callout-warning">
-                        <h5>     Багцын мэдээлэл </h5>
-                        </div>
-                        <div class="callout callout-info">
-                        <h5>  Явцын мэдээлэл </h5>
-                        </div>
-                        <div class="callout callout-success">
-                        <h5>   Үнэлгээ/мэдэгдэл</h5>
-                        </div>
+                        <table class="table table-bordered" >
+                            <tbody >
+                            <tr>
+                            <td style="padding:0.15rem"> <button type="button" class="btn btn-block btn-primary" style="text-align:left"><i class="fa fa-paper-plane"> Захиалгын дэлгэрэнгүй</i></button></td>
+                            </tr>
+                            <tr>
+                            <td style="padding:0.15rem"><button type="button" class="btn btn-block btn-primary" style="text-align:left"><i class="fa fa-save"> Тендер</i></button></td>
+                            </tr>
+                            <tr><td style="padding:0.15rem"><button type="button" class="btn btn-block btn-primary" style="text-align:left"><i class="fa fa-id-card" > Багц</i></button></td>
+                            </tr>
+                            <tr>
+                            <td style="padding:0.15rem"><button type="button" class="btn btn-block btn-primary" style="text-align:left"><i class="fa fa-check-square"> Багцын мэдээлэл</i></button></td>
+                            </tr>
+                            <tr>
+                            <td style="padding:0.15rem">
+                            <button type="button" class="btn btn-block btn-primary" style="text-align:left"><i class="fa fa-file"> Явцын мэдээлэл</i></button>
+                            </td>
+                            </tr>
+                            <tr>
+                            <td style="padding:0.15rem">
+                            <button type="button" class="btn btn-block btn-primary" style="text-align:left"><i class="fa fa-window-close"> Үнэлгээ/мэдэгдэл</i></button>
+                            </td>
+                            </tr>
+                            </tbody></table>
+                      
                         </div>
                         </div>
                         </div>
                         <div class="col-md-9">
                         <div class="card card-primary" style="font-size:12px;">
+                    <div class="card-header">
+                        <h3 class="card-title">Тендерийн мэдээлэл</h3>
+                        <div class="card-tools">
+                        <button class='btn btn-info btn-xs' data-toggle="modal" data-target="#tenderModal"><i class='fa fa-plus'></i></button>
+                        </div>
+                    </div>
+                    <div class="card-body" id="cardtender">
+                    <div class="table-responsive">
+                    <table class="table table-bordered table-striped" id="infotender">
+                        <thead >
+                          
+                            <th>Шалгаруулалтын төрөл</th>
+                            <th>Тендерийн №</th>
+                            <th>Төрөл</th>
+                            <th>Зарлагдсан огноо</th>
+                            <th>Батлагдсан төсөвт өртөг</th>
+                            <th>Урилгын №</th>
+                            <th>Урилгын огноо </th>
+                            <th>Тендер нээх хугацаа</th>
+                            <th>Хүчинтэй хугацаа </th>
+                            <th>Багцын тоо </th>
+                            <th>Үнэлгээ</th>
+                            <th>Тайлбар</th>
+                            <th></th>
+                        </thead>
+                        <tbody id="tbody">
+                    
+                        
+                        </tbody>
+                    </table>
+                </div>
+                    
+                    </div>
+                </div>
+                        <div class="card card-primary" style="font-size:12px;" id="carddetail">
                     <div class="card-header">
                         <h3 class="card-title">Захиалгын дэлгэрэнгүй</h3>
                         <div class="card-tools">
@@ -370,6 +415,34 @@ button, input, optgroup, select, textarea {
                             <th>Алба</th>
                             <th>Тоо хэмжээ</th>
                             <th>Төсөвт өртөг</th>
+                            <th>Гүйцэтгэл </th>
+                            <th></th>
+                        </thead>
+                        <tbody id="tbody">                   
+                        </tbody>
+                    </table>
+                </div>
+                    </div>
+                </div>
+                <div class="card card-primary" style="font-size:12px;" id="cardpack">
+                    <div class="card-header">
+                        <h3 class="card-title">Багцын мэдээлэл</h3>
+                        <div class="card-tools">
+                        <button class='btn btn-info btn-xs' data-toggle="modal" data-target="#packModal"><i class='fa fa-plus'></i></button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                    <div class="table-responsive">
+                    <br>
+                    <table class="table table-bordered table-hover table-striped" id="infopack">
+                        <thead >                        
+                            <th>Багцын нэр</th>
+                            <th>Огноо</th>
+                            <th>Төсөвт өртөг</th>
+                            <th>Төлөв</th>
+                            <th>Гэрээ байгуулах эрх огноо</th>
+                            <th>Түдгэлзүүлсэн огноо</th>
+                            <th>Гомдол гаргасан огноо</th>
                             <th></th>
                         </thead>
                         <tbody id="tbody">                   
@@ -380,16 +453,44 @@ button, input, optgroup, select, textarea {
                 </div>
                         </div>
                     </div>
-                
-             
-     
-           
-             
-        
                 </div>
                 <div class="tab-pane fade" id="contract" role="tabpanel" aria-labelledby="contract-tab">
                 <br>
-                <div class="card" style="font-size:12px;">
+                <div class="row">
+                <div class="col-md-3">
+                    <div class="card card-primary" >
+                    <div class="card-header">
+                        <h3 class="card-title" id="t_order_name">Тендерийн мэдээлэл</h3>
+                        <div class="card-tools">
+                       
+                        </div>
+                    </div>
+                    <div class="card-body" style="font-size:14px">
+                    <div class="table-responsive">
+                    <br>
+                    <table class="table table-bordered table-striped">
+                       
+                        <tbody id="tbody">   
+                            <tr><td>Шалгаруулалтын төрөл:</td><td id="t_order_unit"></td></tr>    
+                            <tr><td>Тендерийн №:</td><td id="t_order_count"></td></tr>    
+                            <tr><td>Төрөл:</td><td id="t_order_selection"></td></tr> 
+                            <tr><td>Зарлагдсан огноо:</td><td id="t_order_budget_source"></td></tr> 
+                            <tr><td>Батлагдсан төсөвт өртөг:</td><td  id="t_order_budget"></td></tr> 
+                            <tr><td>Урилгын №:</td><td id="t_order_thisyear"></td></tr> 
+                            <tr><td>Урилгын огноо:</td><td id="t_order_state"></td></tr> 
+                            <tr><td>Тендер нээх хугацаа:</td><td id="t_order_date"></td></tr> 
+                            <tr><td>Хүчинтэй хугацаа:</td><td id="t_order_date"></td></tr> 
+                            <tr><td>Багцын тоо:</td><td id="t_order_date"></td></tr> 
+                            <tr><td>Үнэлгээ:</td><td id="t_order_date"></td></tr> 
+                        </tbody>
+                    </table>
+                </div>
+                       
+                    </div>
+                    </div>
+                </div>
+                <div class="col-md-9">
+                <div class="card card-primary" style="font-size:12px;" id="cardcontract">
             <div class="card-header">
                 <h3 class="card-title">Гэрээний мэдээлэл</h3>
                 <div class="card-tools">
@@ -430,41 +531,10 @@ button, input, optgroup, select, textarea {
               
             </div>
         </div>
-        <div class="card" style="font-size:12px;">
-                    <div class="card-header">
-                        <h3 class="card-title">Тендерийн мэдээлэл</h3>
-                        <div class="card-tools">
-                        <button class='btn btn-info btn-xs' data-toggle="modal" data-target="#tenderModal"><i class='fa fa-plus'></i></button>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                    <div class="table-responsive">
-                    <table class="table table-bordered table-striped" id="infotender">
-                        <thead >
-                          
-                            <th>Шалгаруулалтын төрөл</th>
-                            <th>Тендерийн №</th>
-                            <th>Төрөл</th>
-                            <th>Зарлагдсан огноо</th>
-                            <th>Батлагдсан төсөвт өртөг</th>
-                            <th>Урилгын №</th>
-                            <th>Урилгын огноо </th>
-                            <th>Тендер нээх хугацаа</th>
-                            <th>Хүчинтэй хугацаа </th>
-                            <th>Багцын тоо </th>
-                            <th>Үнэлгээ</th>
-                            <th>Тайлбар</th>
-                            <th></th>
-                        </thead>
-                        <tbody id="tbody">
-                    
-                        
-                        </tbody>
-                    </table>
                 </div>
-                    
-                    </div>
                 </div>
+  
+       
         <div class="card card-bordered">
               <div class="card-header">
                 <h4 class="card-title"><strong>Сэтгэгдэл</strong></h4>
@@ -1025,6 +1095,7 @@ $('.orderinformation').on('click',function(){
         "   <td class='m3'>" + qwe.dep_id + "</td>" +
          "   <td class='m3'>" + qwe.order_count + "</td>" +
         "   <td class='m3'>" + qwe.order_budget + "</td>" +
+        "   <td class='m3'>" +  + "</td>" +
          "   <td class='m3'> <button class='btn btn-primary btn-xs' data-toggle='modal' onclick='orderdetailEdit("+ qwe.order_detail_id +")' data-target='#detailModal'><i class='fa fa-pen'></i></button></td>"+
         "</tr>";
 
