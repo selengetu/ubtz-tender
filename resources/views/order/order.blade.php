@@ -18,6 +18,9 @@
 .icondetail{
     width:25px;
 }
+.ButtonClicked {
+    background-color:#4da3ff;
+}
 .ps-container {
     -ms-touch-action: auto;
     touch-action: auto;
@@ -332,24 +335,18 @@ button, input, optgroup, select, textarea {
                         </tbody>
                     </table>
                 </div>
-                       
+                <a href="#" style="text-align:right">Дэлгэрэнгүй</a>
                     </div>
                 </div>
-                <div class="card card-primary card-outline"  style="font-size:14px">
+                <div class="card card-primary card-outline"  style="font-size:12px">
                        
                         <div class="card-body">
                         <table class="table table-bordered" >
                             <tbody >
                             <tr>
-                            <td style="padding:0.15rem"> <button type="button" class="btn btn-block" style="text-align:left">  <img src="{{ asset('img/order.png') }}" class="icondetail" > Захиалгын дэлгэрэнгүй</button></td>
-                            </tr>
-                            <tr>
                             <td style="padding:0.15rem"><button type="button" class="btn btn-block" style="text-align:left">  <img src="{{ asset('img/tender.png') }}" class="icondetail">  Тендер</button></td>
                             </tr>
                             <tr><td style="padding:0.15rem"><button type="button" class="btn btn-block" style="text-align:left"><img src="{{ asset('img/package.png') }}" class="icondetail"> Багц</button></td>
-                            </tr>
-                            <tr>
-                            <td style="padding:0.15rem"><button type="button" class="btn btn-block" style="text-align:left"><img src="{{ asset('img/detail.png') }}" class="icondetail">  Багцын мэдээлэл</button></td>
                             </tr>
                             <tr>
                             <td style="padding:0.15rem">
@@ -398,8 +395,9 @@ button, input, optgroup, select, textarea {
                         
                         </tbody>
                     </table>
+
                 </div>
-                    
+                   
                     </div>
                 </div>
                         <div class="card card-primary" style="font-size:12px;" id="carddetail">
@@ -1063,6 +1061,10 @@ button, input, optgroup, select, textarea {
             "pageLength": 25
         } 
     );
+    $('.btn-block').on('click',function(){
+    $('.btn-block').removeClass('ButtonClicked');
+    $(this).toggleClass('ButtonClicked');
+});
 } );
 $('#home-tab').on('click',function(){
     $('#addorderbutton').show();
