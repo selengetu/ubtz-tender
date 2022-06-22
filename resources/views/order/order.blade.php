@@ -21,6 +21,10 @@
 .ButtonClicked {
     background-color:#4da3ff;
 }
+.btn-list {
+    background-color:#4da3ff;
+}
+.orderinformation {cursor: context-menu;}
 .ps-container {
     -ms-touch-action: auto;
     touch-action: auto;
@@ -285,9 +289,9 @@ button, input, optgroup, select, textarea {
                         <tbody id="tbody">
                         <?php $no = 1; ?>
                          @foreach ($order as $item )
-                         <tr class="orderinformation" onclick="$('#tender-tab').trigger('click')" data-id="{{$item->order_id}}" tag="{{$item->order_id}}" >
+                         <tr>
                             <td>{{$no}}</td>
-                            <td>{{$item->order_name}}</td>
+                            <td class="orderinformation" onclick="$('#tender-tab').trigger('click')" data-id="{{$item->order_id}}" tag="{{$item->order_id}}" ><b><u>{{$item->order_name}}</u></b></td>
                             <td>{{$item->unit_name}}</td>
                             <td>{{$item->order_count}}</td>
                             <td>{{$item->tenderselectionname}}</td>
@@ -335,7 +339,7 @@ button, input, optgroup, select, textarea {
                         </tbody>
                     </table>
                 </div>
-                <a href="#" style="text-align:right">Дэлгэрэнгүй</a>
+                <a href="#" style="text-align:right" id="btn_detail" class="btn-block">Дэлгэрэнгүй</a>
                     </div>
                 </div>
                 <div class="card card-primary card-outline"  style="font-size:12px">
@@ -344,18 +348,18 @@ button, input, optgroup, select, textarea {
                         <table class="table table-bordered" >
                             <tbody >
                             <tr>
-                            <td style="padding:0.15rem"><button type="button" class="btn btn-block" style="text-align:left">  <img src="{{ asset('img/tender.png') }}" class="icondetail">  Тендер</button></td>
+                            <td style="padding:0.15rem"><button type="button" class="btn btn-block" style="text-align:left" id="btn_1">  <img src="{{ asset('img/tender.png') }}" class="icondetail">  Тендер</button></td>
                             </tr>
-                            <tr><td style="padding:0.15rem"><button type="button" class="btn btn-block" style="text-align:left"><img src="{{ asset('img/package.png') }}" class="icondetail"> Багц</button></td>
+                            <tr><td style="padding:0.15rem"><button type="button" class="btn btn-block" style="text-align:left" id="btn_2"><img src="{{ asset('img/package.png') }}" class="icondetail"> Багц</button></td>
                             </tr>
                             <tr>
                             <td style="padding:0.15rem">
-                            <button type="button" class="btn btn-block" style="text-align:left"><img src="{{ asset('img/ywts.png') }}" class="icondetail">  Явцын мэдээлэл</button>
+                            <button type="button" class="btn btn-block" style="text-align:left" id="btn_3"><img src="{{ asset('img/ywts.png') }}" id="btn_3" class="icondetail">  Явцын мэдээлэл</button>
                             </td>
                             </tr>
                             <tr>
                             <td style="padding:0.15rem">
-                            <button type="button" class="btn btn-block" style="text-align:left"><img src="{{ asset('img/warning.png') }}" class="icondetail"> Үнэлгээ/мэдэгдэл</button>
+                            <button type="button" class="btn btn-block" style="text-align:left" id="btn_4"><img src="{{ asset('img/warning.png') }}" id="btn_4" class="icondetail"> Үнэлгээ/мэдэгдэл</button>
                             </td>
                             </tr>
                             </tbody></table>
@@ -364,14 +368,14 @@ button, input, optgroup, select, textarea {
                         </div>
                         </div>
                         <div class="col-md-9">
-                        <div class="card card-primary" style="font-size:12px;">
+                        <div class="card card-primary card-list" style="font-size:12px; display:none" id="card_1">
                     <div class="card-header">
                         <h3 class="card-title">Тендерийн мэдээлэл</h3>
                         <div class="card-tools">
                         <button class='btn btn-info btn-xs' data-toggle="modal" data-target="#tenderModal"><i class='fa fa-plus'></i></button>
                         </div>
                     </div>
-                    <div class="card-body" id="cardtender">
+                    <div class="card-body">
                     <div class="table-responsive">
                     <table class="table table-bordered table-striped" id="infotender">
                         <thead >
@@ -400,7 +404,7 @@ button, input, optgroup, select, textarea {
                    
                     </div>
                 </div>
-                        <div class="card card-primary" style="font-size:12px;" id="carddetail">
+                        <div class="card card-primary card-list" style="font-size:12px;" id="card_detail">
                     <div class="card-header">
                         <h3 class="card-title">Захиалгын дэлгэрэнгүй</h3>
                         <div class="card-tools">
@@ -415,7 +419,7 @@ button, input, optgroup, select, textarea {
                             <th>Алба</th>
                             <th>Тоо хэмжээ</th>
                             <th>Төсөвт өртөг</th>
-                            <th>Гүйцэтгэл </th>
+                            <th>Гүйцэтгэл</th>
                             <th></th>
                         </thead>
                         <tbody id="tbody">                   
@@ -424,9 +428,62 @@ button, input, optgroup, select, textarea {
                 </div>
                     </div>
                 </div>
-                <div class="card card-primary" style="font-size:12px;" id="cardpack">
+                <div class="card card-primary card-list" style="font-size:12px; display:none"  id="card_2">
                     <div class="card-header">
                         <h3 class="card-title">Багцын мэдээлэл</h3>
+                        <div class="card-tools">
+                        <button class='btn btn-info btn-xs' data-toggle="modal" data-target="#packModal"><i class='fa fa-plus'></i></button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                    <div class="table-responsive">
+                    <br>
+                    <table class="table table-bordered table-hover table-striped" id="infopack">
+                        <thead >                        
+                            <th>Багцын нэр</th>
+                            <th>Огноо</th>
+                            <th>Төсөвт өртөг</th>
+                            <th>Төлөв</th>
+                            <th>Гэрээ байгуулах эрх огноо</th>
+                            <th>Түдгэлзүүлсэн огноо</th>
+                            <th>Гомдол гаргасан огноо</th>
+                            <th></th>
+                        </thead>
+                        <tbody id="tbody">                   
+                        </tbody>
+                    </table>
+                </div>
+                    </div>
+                </div>  <div class="card card-primary card-list" style="font-size:12px; display:none"  id="card_3">
+                    <div class="card-header">
+                        <h3 class="card-title">Явцын мэдээлэл</h3>
+                        <div class="card-tools">
+                        <button class='btn btn-info btn-xs' data-toggle="modal" data-target="#packModal"><i class='fa fa-plus'></i></button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                    <div class="table-responsive">
+                    <br>
+                    <table class="table table-bordered table-hover table-striped" id="infopack">
+                        <thead >                        
+                            <th>Багцын нэр</th>
+                            <th>Огноо</th>
+                            <th>Төсөвт өртөг</th>
+                            <th>Төлөв</th>
+                            <th>Гэрээ байгуулах эрх огноо</th>
+                            <th>Түдгэлзүүлсэн огноо</th>
+                            <th>Гомдол гаргасан огноо</th>
+                            <th></th>
+                        </thead>
+                        <tbody id="tbody">                   
+                        </tbody>
+                    </table>
+                </div>
+                    </div>
+                </div>
+                <div class="card card-primary card-list" style="font-size:12px; display:none"  id="card_4">
+                    <div class="card-header">
+                        <h3 class="card-title">Үнэлгээ/мэдэгдэл</h3>
                         <div class="card-tools">
                         <button class='btn btn-info btn-xs' data-toggle="modal" data-target="#packModal"><i class='fa fa-plus'></i></button>
                         </div>
@@ -1003,7 +1060,12 @@ button, input, optgroup, select, textarea {
                                 <input type="text" class="form-control" id="dorder_budget" name="dorder_budget">
                             </div>
                         </div>
-                      
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label for="jobname">Гүйцэтгэл</label>
+                                <input type="text" class="form-control" id="dorder_performance" name="dorder_performance">
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -1063,8 +1125,32 @@ button, input, optgroup, select, textarea {
     );
     $('.btn-block').on('click',function(){
     $('.btn-block').removeClass('ButtonClicked');
-    $(this).toggleClass('ButtonClicked');
+    $('.card-list').hide();
+    switch ($(this).attr('id')) {
+        case 'btn_detail':
+            $('#card_detail').show();
+            break;
+        case 'btn_1':
+            $('#card_1').show();
+            $(this).toggleClass('ButtonClicked');
+            break;
+        case 'btn_2':
+            $('#card_2').show();
+            $(this).toggleClass('ButtonClicked');
+            break;
+        case 'btn_3':
+            $('#card_3').show();
+            $(this).toggleClass('ButtonClicked');
+            break;
+        case 'btn_4':
+            $('#card_4').show();
+            $(this).toggleClass('ButtonClicked');
+            break;
+        }
+
+  
 });
+
 } );
 $('#home-tab').on('click',function(){
     $('#addorderbutton').show();
@@ -1096,10 +1182,10 @@ $('.orderinformation').on('click',function(){
         $.get('getorderdetail/'+itag,function(data){
         $.each(data,function(i,qwe){
             var sHtml = "<tr>" +
-        "   <td class='m3'>" + qwe.dep_id + "</td>" +
+        "   <td class='m3'>" + qwe.executor_abbr + "</td>" +
          "   <td class='m3'>" + qwe.order_count + "</td>" +
         "   <td class='m3'>" + qwe.order_budget + "</td>" +
-        "   <td class='m3'>" +  + "</td>" +
+        "   <td class='m3'>" + qwe.order_performance + "</td>" +
          "   <td class='m3'> <button class='btn btn-primary btn-xs' data-toggle='modal' onclick='orderdetailEdit("+ qwe.order_detail_id +")' data-target='#detailModal'><i class='fa fa-pen'></i></button></td>"+
         "</tr>";
 
@@ -1111,9 +1197,9 @@ $('.orderinformation').on('click',function(){
         $.get('getTenders/'+itag,function(data){
         $.each(data,function(i,qwe){
             var sHtml = "<tr>" +
-            "   <td class='m1'>" + qwe.tenderselectioncode + "</td>" +
+            "   <td class='m1'>" + qwe.tenderselectionname + "</td>" +
         "   <td class='m2'>" + qwe.tenderno + "</td>" +
-        "   <td class='m3'>" + qwe.tendertypecode + "</td>" +
+        "   <td class='m3'>" + qwe.tendertypename + "</td>" +
          "   <td class='m3'>" + qwe.tender_call_at + "</td>"+
          "   <td class='m1'>" + qwe.tender_budget + "</td>" +
         "   <td class='m2'>" + qwe.tender_invitationcode + "</td>" +
