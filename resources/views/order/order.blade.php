@@ -15,7 +15,9 @@
 .ps-container {
     position: relative;
 }
-
+.icondetail{
+    width:25px;
+}
 .ps-container {
     -ms-touch-action: auto;
     touch-action: auto;
@@ -339,24 +341,24 @@ button, input, optgroup, select, textarea {
                         <table class="table table-bordered" >
                             <tbody >
                             <tr>
-                            <td style="padding:0.15rem"> <button type="button" class="btn btn-block btn-primary" style="text-align:left"><i class="fa fa-paper-plane"> Захиалгын дэлгэрэнгүй</i></button></td>
+                            <td style="padding:0.15rem"> <button type="button" class="btn btn-block" style="text-align:left">  <img src="{{ asset('img/order.png') }}" class="icondetail" > Захиалгын дэлгэрэнгүй</button></td>
                             </tr>
                             <tr>
-                            <td style="padding:0.15rem"><button type="button" class="btn btn-block btn-primary" style="text-align:left"><i class="fa fa-save"> Тендер</i></button></td>
+                            <td style="padding:0.15rem"><button type="button" class="btn btn-block" style="text-align:left">  <img src="{{ asset('img/tender.png') }}" class="icondetail">  Тендер</button></td>
                             </tr>
-                            <tr><td style="padding:0.15rem"><button type="button" class="btn btn-block btn-primary" style="text-align:left"><i class="fa fa-id-card" > Багц</i></button></td>
+                            <tr><td style="padding:0.15rem"><button type="button" class="btn btn-block" style="text-align:left"><img src="{{ asset('img/package.png') }}" class="icondetail"> Багц</button></td>
                             </tr>
                             <tr>
-                            <td style="padding:0.15rem"><button type="button" class="btn btn-block btn-primary" style="text-align:left"><i class="fa fa-check-square"> Багцын мэдээлэл</i></button></td>
+                            <td style="padding:0.15rem"><button type="button" class="btn btn-block" style="text-align:left"><img src="{{ asset('img/detail.png') }}" class="icondetail">  Багцын мэдээлэл</button></td>
                             </tr>
                             <tr>
                             <td style="padding:0.15rem">
-                            <button type="button" class="btn btn-block btn-primary" style="text-align:left"><i class="fa fa-file"> Явцын мэдээлэл</i></button>
+                            <button type="button" class="btn btn-block" style="text-align:left"><img src="{{ asset('img/ywts.png') }}" class="icondetail">  Явцын мэдээлэл</button>
                             </td>
                             </tr>
                             <tr>
                             <td style="padding:0.15rem">
-                            <button type="button" class="btn btn-block btn-primary" style="text-align:left"><i class="fa fa-window-close"> Үнэлгээ/мэдэгдэл</i></button>
+                            <button type="button" class="btn btn-block" style="text-align:left"><img src="{{ asset('img/warning.png') }}" class="icondetail"> Үнэлгээ/мэдэгдэл</button>
                             </td>
                             </tr>
                             </tbody></table>
