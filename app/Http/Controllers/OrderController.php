@@ -23,7 +23,7 @@ class OrderController extends Controller {
         $type= DB::select("select * from CONST_TENDER_TYPES t ");
         $tendertype= DB::select("select * from CONST_CONTRACT_TYPES t ");
         $tenderstate= DB::select("select t.* from CONST_TENDER_STATE t ");
-        $employee= DB::select("select t.* from USERS t ");
+        $employee= DB::select("select t.* from USERS t order by name ");
         return view('order.order',compact('dep','ostate','mstate','source','selection','unit','order','type','tendertype','tenderstate','employee'));
     }
     public function saveOrder(Request $request)
@@ -53,14 +53,26 @@ class OrderController extends Controller {
     public function saveOrderDetail(Request $request)
     {
        
-        DB::insert("insert into ORDER_DETAIL
-        ( ORDER_ID, DEP_ID, ORDER_COUNT, ORDER_BUDGET)
-        values
-        ( '$request->dorder_id', '$request->ddep_id', '$request->dorder_count','$request->dorder_budget')");
-        return 1;
+        if($request->detail_id ==  null){
+            DB::insert("insert into ORDER_DETAIL
+                ( ORDER_ID, DEP_ID, ORDER_COUNT, ORDER_BUDGET, ORDER_PERFORMANCE)
+                values
+                ( '$request->dorder_id', '$request->dep_id', '$request->dorder_count','$request->dorder_budget','$request->dorder_performance')");
+              }
+                else{
+        
+                    $orders = DB::table('ORDER_DETAIL')
+                    ->where('order_detail_id', $request->detail_id)
+                    ->update(['dep_id' => $request->dep_id,'order_count' => $request->dorder_count,'order_budget' => $request->dorder_budget,'order_performance' => $request->dorder_performance]);        
+                }
+                return back();
+    }
+    public function getorderdetails($hid)
+    {
+        return DB::select("select * from V_ORDER_DETAIL t where t.order_id='$hid'");
     }
     public function getorderdetail($hid)
     {
-        return DB::select("select * from V_ORDER_DETAIL t where t.order_id='$hid'");
+        return DB::select("select * from V_ORDER_DETAIL t where t.order_detail_id='$hid'");
     }
 }

@@ -87,3 +87,4 @@ Route::get('/getContracts/{hid?}', [App\Http\Controllers\ContractController::cla
 
 Route::post('/saveOrderDetail', [App\Http\Controllers\OrderController::class, 'saveOrderDetail'])->name('saveOrderDetail');
 Route::get('/getorderdetail/{hid?}', [App\Http\Controllers\OrderController::class, 'getorderdetail'])->name('getorderdetail');
+Route::get('/getorderdetails/{hid?}', [App\Http\Controllers\OrderController::class, 'getorderdetails'])->name('getorderdetails');

@@ -1047,7 +1047,7 @@ button, input, optgroup, select, textarea {
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Захиалгын дэлгэрэнгүй мэдээллийн бүртгэл</h5>
+                    <h5 class="detail-title" id="exampleModalLabel">Захиалгын дэлгэрэнгүй мэдээллийн бүртгэл</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                     </button>
@@ -1059,13 +1059,13 @@ button, input, optgroup, select, textarea {
                         <div class="col-4">
                             <div class="form-group">
                                 <label for="jobname">Алба хэлтэс</label>
-                                <input type="date" class="form-control" id="ddep_id" name="ddep_id" >
+                                <input type="date" class="form-control" id="dep_id" name="dep_id" >
                             </div>
                         </div>
                         <div class="col-4">
                             <div class="form-group">
                                 <label for="jobname">Тоо хэмжээ</label>
-                                <input type="date" class="form-control" id="dorder_count" name="dorder_count" >
+                                <input type="date" class="form-control" id="dorder_count_detail" name="dorder_count_detail" >
                             </div>
                         </div>
                         <div class="col-4">
@@ -1084,8 +1084,7 @@ button, input, optgroup, select, textarea {
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <input type="hidden"  id="hid1" name="hid">
-                    <input type="hidden"  id="flg1" name="flg">
+                    <input type="hidden"  id="detail_id" name="detail_id">
                     @csrf
                     <button type="submit" class="btn btn-primary">Хадгалах</button>
                 </div>
@@ -1194,7 +1193,7 @@ $('.orderinformation').on('click',function(){
                 document.getElementById("exampleModalLabel").innerHTML="Захиалгын мэдээллийг засварлах";
             });
 
-        $.get('getorderdetail/'+itag,function(data){
+        $.get('getorderdetails/'+itag,function(data){
         $.each(data,function(i,qwe){
             var sHtml = "<tr>" +
         "   <td class='m3'>" + qwe.executor_abbr + "</td>" +
@@ -1263,6 +1262,26 @@ $('.orderinformation').on('click',function(){
                 $('#order_date').val('');
                 $('#order_comment').val('');
                 $('#order_id').val(0);
+                document.getElementById("exampleModalLabel").innerHTML="Шинээр захиалга нэмэх";
+        }
+    }
+    function orderdetailEdit(hid){
+        if(hid){
+            $.get('getorderdetail/' + hid, function (data) {
+                $('#dep_id').val(data[0].dep_id).trigger('change');
+                $('#dorder_count_detail').val(data[0].order_count);
+                $('#dorder_budget').val(data[0].order_unit);
+                $('#dorder_performance').val(data[0].order_count);
+                $('#detail_id').val(data[0].order_detail_id);
+                document.getElementById("exampleModalLabel").innerHTML="Захиалгын мэдээллийг засварлах";
+            });
+        } else {
+               
+            $('#dep_id').val('1').trigger('change');
+                $('#dorder_count_detail').val('');
+                $('#dorder_budget').val('');
+                $('#dorder_performance').val('');
+                $('#detail_id').val('');
                 document.getElementById("exampleModalLabel").innerHTML="Шинээр захиалга нэмэх";
         }
     }
