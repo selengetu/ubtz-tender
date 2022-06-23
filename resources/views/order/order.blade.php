@@ -251,7 +251,7 @@ button, input, optgroup, select, textarea {
             <div class="card-header">
                 <h3 class="card-title">Захиалгын мэдээлэл</h3>
                 <div class="card-tools">
-                <button id="addorderbutton" class="btn btn-info btn-xs right"  onclick="orderEdit()" data-toggle="modal" data-target="#depModal"><i class="fa fa-plus"></i> </button>
+                <button id="addorderbutton" class="btn btn-primary btn-xs right"  onclick="orderEdit()" data-toggle="modal" data-target="#depModal"><i class="fa fa-plus"></i> </button>
                 </div>
             </div>
             <div class="card-body">
@@ -274,6 +274,7 @@ button, input, optgroup, select, textarea {
                     <table class="table table-bordered table-striped" id="myTable">
                         <thead style="background-color:#007bff; color:white;">
                             <th>#</th>
+                            <th>#</th>
                             <th>Нэр</th>
                             <th>Хэмжих нэгж</th>
                             <th>Тоо хэмжээ</th>
@@ -291,6 +292,7 @@ button, input, optgroup, select, textarea {
                          @foreach ($order as $item )
                          <tr>
                             <td>{{$no}}</td>
+                            <td class='m3'><button class='btn btn-primary btn-xs' data-toggle='modal' onclick='orderEdit({{$item->order_id}})' data-target='#depModal'><i class='fa fa-pen'></i></button></td>    
                             <td class="orderinformation" onclick="$('#tender-tab').trigger('click')" data-id="{{$item->order_id}}" tag="{{$item->order_id}}" ><b><u>{{$item->order_name}}</u></b></td>
                             <td>{{$item->unit_name}}</td>
                             <td>{{$item->order_count}}</td>
@@ -301,7 +303,8 @@ button, input, optgroup, select, textarea {
                             <td>{{$item->order_state_name}}</td>
                             <td>{{$item->order_date}}</td>
                             <td>{{$item->name}}</td>
-                            <td>{{$item->order_comment}}</td>      
+                            <td>{{$item->order_comment}}</td> 
+                           
                         </tr>
                         <?php $no++; ?>
                         @endforeach
@@ -372,7 +375,7 @@ button, input, optgroup, select, textarea {
                     <div class="card-header">
                         <h3 class="card-title">Тендерийн мэдээлэл</h3>
                         <div class="card-tools">
-                        <button class='btn btn-info btn-xs' data-toggle="modal" data-target="#tenderModal"><i class='fa fa-plus'></i></button>
+                        <button class='btn btn-primary btn-xs' data-toggle="modal" data-target="#tenderModal"><i class='fa fa-plus'></i></button>
                         </div>
                     </div>
                     <div class="card-body">
@@ -408,7 +411,7 @@ button, input, optgroup, select, textarea {
                     <div class="card-header">
                         <h3 class="card-title">Захиалгын дэлгэрэнгүй</h3>
                         <div class="card-tools">
-                        <button class='btn btn-info btn-xs' data-toggle="modal" data-target="#detailModal"><i class='fa fa-plus'></i></button>
+                        <button class='btn btn-primary btn-xs' data-toggle="modal" data-target="#detailModal"><i class='fa fa-plus'></i></button>
                         </div>
                     </div>
                     <div class="card-body">
@@ -432,7 +435,7 @@ button, input, optgroup, select, textarea {
                     <div class="card-header">
                         <h3 class="card-title">Багцын мэдээлэл</h3>
                         <div class="card-tools">
-                        <button class='btn btn-info btn-xs' data-toggle="modal" data-target="#packModal"><i class='fa fa-plus'></i></button>
+                        <button class='btn btn-primary btn-xs' data-toggle="modal" data-target="#packModal"><i class='fa fa-plus'></i></button>
                         </div>
                     </div>
                     <div class="card-body">
@@ -458,7 +461,7 @@ button, input, optgroup, select, textarea {
                     <div class="card-header">
                         <h3 class="card-title">Явцын мэдээлэл</h3>
                         <div class="card-tools">
-                        <button class='btn btn-info btn-xs' data-toggle="modal" data-target="#packModal"><i class='fa fa-plus'></i></button>
+                        <button class='btn btn-primary btn-xs' data-toggle="modal" data-target="#packModal"><i class='fa fa-plus'></i></button>
                         </div>
                     </div>
                     <div class="card-body">
@@ -485,7 +488,7 @@ button, input, optgroup, select, textarea {
                     <div class="card-header">
                         <h3 class="card-title">Үнэлгээ/мэдэгдэл</h3>
                         <div class="card-tools">
-                        <button class='btn btn-info btn-xs' data-toggle="modal" data-target="#packModal"><i class='fa fa-plus'></i></button>
+                        <button class='btn btn-primary btn-xs' data-toggle="modal" data-target="#packModal"><i class='fa fa-plus'></i></button>
                         </div>
                     </div>
                     <div class="card-body">
@@ -551,7 +554,7 @@ button, input, optgroup, select, textarea {
             <div class="card-header">
                 <h3 class="card-title">Гэрээний мэдээлэл</h3>
                 <div class="card-tools">
-                <button class="btn btn-info btn-xs right"  onclick="orderEdit()" data-toggle="modal" data-target="#depModal"><i class="fa fa-plus"></i> </button>
+                <button class="btn btn-primary btn-xs right"  onclick="orderEdit()" data-toggle="modal" data-target="#depModal"><i class="fa fa-plus"></i> </button>
                 </div>
             </div>
             <div class="card-body">
@@ -577,7 +580,7 @@ button, input, optgroup, select, textarea {
                             <th>Дүгнэлт</th>
                             <th>Санамж</th>
                             <th>Гэрээний төлөв</th>
-                            <th> <button class='btn btn-info btn-xs' data-toggle="modal" data-target="#contractModal"><i class='fa fa-plus'></i></button></th>
+                            <th> <button class='btn btn-primary btn-xs' data-toggle="modal" data-target="#contractModal"><i class='fa fa-plus'></i></button></th>
                         </thead>
                         <tbody id="tbody">
                     
@@ -691,7 +694,12 @@ button, input, optgroup, select, textarea {
                         <div class="col-3">
                             <div class="form-group">
                                 <label for="jobname">Эх үүсвэр</label>
-                                <input type="text" class="form-control" id="order_budget_source" name="order_budget_source">
+                                <select class="form-control" name="order_budget_source" id="order_budget_source" >
+                                @foreach ($source as $item)
+                                        <option value="{{ $item->source_id }}">{{ $item->source_name }}</option>
+                                    @endforeach
+                            </select>
+                             
                             </div>
                         </div>
                         <div class="col-4">
@@ -722,13 +730,24 @@ button, input, optgroup, select, textarea {
                                 <input type="date" class="form-control" id="order_date" name="order_date" >
                             </div>
                         </div>
-                        <div class="col-8">
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label for="jobname">Ажилтан</label>
+                                <select class="form-control" name="order_employee" id="order_employee" >
+                                @foreach ($employee as $item)
+                                        <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                    @endforeach
+                            </select>
+                             
+                            </div>
+                        </div>
+                        <div class="col-4">
                             <div class="form-group">
                                 <label for="jobname">Захиалга батлагдсан</label>
                                 <input class="form-control" type="file" id="formFile">
                             </div>
                         </div>
-                     
+                       
                         <div class="col-12">
                             <div class="form-group">
                                 <label for="jobname">Тайлбар</label>
@@ -738,8 +757,7 @@ button, input, optgroup, select, textarea {
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <input type="hidden"  id="hid" name="hid">
-                    <input type="hidden"  id="flg" name="flg">
+                    <input type="hidden"  id="order_id" name="order_id">
                     @csrf
                     <button type="submit" class="btn btn-primary">Хадгалах</button>
                 </div>
@@ -774,7 +792,7 @@ button, input, optgroup, select, textarea {
                             <div class="form-group">
                                 <label for="jobname">Тендерийн №</label>
                                 <input type="text" class="form-control" id="tenderno" name="tenderno" placeholder="Тендерийн №">
-                                <input type="hidden" class="form-control" id="order_id" name="order_id" placeholder="Тендерийн №">
+                                <input type="hidden" class="form-control" id="torder_id" name="torder_id" placeholder="Тендерийн №">
                             </div>
                         </div>
                         <div class="col-4">
@@ -890,8 +908,7 @@ button, input, optgroup, select, textarea {
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <input type="hidden"  id="hid" name="hid">
-                    <input type="hidden"  id="flg" name="flg">
+                    <input type="hidden"  id="tender_id" name="tender_id">
                     @csrf
                     <button type="submit" class="btn btn-primary">Хадгалах</button>
                 </div>
@@ -917,7 +934,6 @@ button, input, optgroup, select, textarea {
                             <div class="form-group">
                                 <label for="jobname">Гэрээний №</label>
                                 <input type="text" class="form-control" id="tenderno" name="tenderno" placeholder="Тендерийн №">
-                                <input type="hidden" class="form-control" id="order_id" name="order_id" placeholder="Тендерийн №">
                             </div>
                         </div>
                         <div class="col-4">
@@ -1019,8 +1035,7 @@ button, input, optgroup, select, textarea {
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <input type="hidden"  id="hid1" name="hid">
-                    <input type="hidden"  id="flg1" name="flg">
+                    <input type="hidden"  id="contract_id" name="contract_id">
                     @csrf
                     <button type="submit" class="btn btn-primary">Хадгалах</button>
                 </div>
@@ -1222,9 +1237,7 @@ $('.orderinformation').on('click',function(){
     function orderEdit(hid){
         if(hid){
             $.get('getorder/' + hid, function (data) {
-                $('#order_dep').val(data[0].order_dep).trigger('change');
-                $('#order_employee').val(data[0].order_employee);
-                $('#order_job').val(data[0].order_job);
+                $('#order_employee').val(data[0].order_employee).trigger('change');
                 $('#order_name').val(data[0].order_name);
                 $('#order_unit').val(data[0].order_unit);
                 $('#order_count').val(data[0].order_count);
@@ -1235,8 +1248,7 @@ $('.orderinformation').on('click',function(){
                 $('#order_state').val(data[0].order_state).trigger('change');
                 $('#order_date').val(data[0].order_date);
                 $('#order_comment').val(data[0].order_comment);
-                $('#hid').val(data[0].order_id);
-                $('#flg').val(1);
+                $('#order_id').val(data[0].order_id);
                 document.getElementById("exampleModalLabel").innerHTML="Захиалгын мэдээллийг засварлах";
             });
         } else {
@@ -1250,8 +1262,7 @@ $('.orderinformation').on('click',function(){
                 $('#order_thisyear').val('');
                 $('#order_date').val('');
                 $('#order_comment').val('');
-                $('#hid').val(0);
-                $('#flg').val(0);
+                $('#order_id').val(0);
                 document.getElementById("exampleModalLabel").innerHTML="Шинээр захиалга нэмэх";
         }
     }
