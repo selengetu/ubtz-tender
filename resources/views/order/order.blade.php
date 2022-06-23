@@ -293,7 +293,7 @@ button, input, optgroup, select, textarea {
                          <tr>
                             <td>{{$no}}</td>
                             <td class='m3'><button class='btn btn-primary btn-xs' data-toggle='modal' onclick='orderEdit({{$item->order_id}})' data-target='#depModal'><i class='fa fa-pen'></i></button></td>    
-                            <td class="orderinformation" onclick="$('#tender-tab').trigger('click')" data-id="{{$item->order_id}}" tag="{{$item->order_id}}" ><b><u>{{$item->order_name}}</u></b></td>
+                            <td class="orderinformation" onclick="$('#tender-tab').trigger('click')" data-id="{{$item->order_id}}" tag="{{$item->order_id}}" ><b style="color:#007bff"><u>{{$item->order_name}}</u></b></td>
                             <td>{{$item->unit_name}}</td>
                             <td>{{$item->order_count}}</td>
                             <td>{{$item->tenderselectionname}}</td>
@@ -351,18 +351,18 @@ button, input, optgroup, select, textarea {
                         <table class="table table-bordered" >
                             <tbody >
                             <tr>
-                            <td style="padding:0.15rem"><button type="button" class="btn btn-block" style="text-align:left" id="btn_1">  <img src="{{ asset('img/tender.png') }}" class="icondetail">  Тендер</button></td>
+                            <td style="padding:0rem;"><button type="button" style="font-size:0.8rem;text-align:left" class="btn btn-block" style="text-align:left" id="btn_1">  <img src="{{ asset('img/tender.png') }}" class="icondetail">  Тендер</button></td>
                             </tr>
-                            <tr><td style="padding:0.15rem"><button type="button" class="btn btn-block" style="text-align:left" id="btn_2"><img src="{{ asset('img/package.png') }}" class="icondetail"> Багц</button></td>
+                            <tr><td style="padding:0rem"><button type="button" style="font-size:0.8rem;text-align:left" class="btn btn-block" style="text-align:left" id="btn_2"><img src="{{ asset('img/package.png') }}" class="icondetail"> Багц</button></td>
                             </tr>
                             <tr>
-                            <td style="padding:0.15rem">
-                            <button type="button" class="btn btn-block" style="text-align:left" id="btn_3"><img src="{{ asset('img/ywts.png') }}" id="btn_3" class="icondetail">  Явцын мэдээлэл</button>
+                            <td style="padding:0rem">
+                            <button type="button" class="btn btn-block" style="font-size:0.8rem;text-align:left" id="btn_3"><img src="{{ asset('img/ywts.png') }}" id="btn_3" class="icondetail">  Явцын мэдээлэл</button>
                             </td>
                             </tr>
                             <tr>
-                            <td style="padding:0.15rem">
-                            <button type="button" class="btn btn-block" style="text-align:left" id="btn_4"><img src="{{ asset('img/warning.png') }}" id="btn_4" class="icondetail"> Үнэлгээ/мэдэгдэл</button>
+                            <td style="padding:0rem">
+                            <button type="button" class="btn btn-block"style="font-size:0.8rem;text-align:left" id="btn_4"><img src="{{ asset('img/warning.png') }}" id="btn_4" class="icondetail"> Үнэлгээ/мэдэгдэл</button>
                             </td>
                             </tr>
                             </tbody></table>
