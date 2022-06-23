@@ -411,7 +411,7 @@ button, input, optgroup, select, textarea {
                     <div class="card-header">
                         <h3 class="card-title">Захиалгын дэлгэрэнгүй</h3>
                         <div class="card-tools">
-                        <button class='btn btn-primary btn-xs' data-toggle="modal" data-target="#detailModal"><i class='fa fa-plus'></i></button>
+                        <button class='btn btn-primary btn-xs' data-toggle="modal" onclick='orderdetailEdit()' data-target="#detailModal" ><i class='fa fa-plus'></i></button>
                         </div>
                     </div>
                     <div class="card-body">
@@ -1075,7 +1075,7 @@ button, input, optgroup, select, textarea {
                         <div class="col-4">
                             <div class="form-group">
                                 <label for="jobname">Төсөвт өртөг</label>
-                                <input type="hidden" class="form-control" id="dorder_id" name="dorder_id">
+                                <input type="text" class="form-control" id="dorder_id" name="dorder_id">
                                 <input type="text" class="form-control" id="dorder_budget" name="dorder_budget">
                             </div>
                         </div>
@@ -1182,6 +1182,7 @@ $('.orderinformation').on('click',function(){
     $("#infodetails tbody").empty();    
     $( ".menuli1" ).removeClass("disabled disabledTab");
     $.get('getorder/' + itag, function (data) {
+        console.log(data[0]);
                 $('#t_order_name').text(data[0].order_name);
                 $('#t_order_unit').text(data[0].unit_name);
                 $('#t_order_count').text(data[0].order_count);
@@ -1192,6 +1193,7 @@ $('.orderinformation').on('click',function(){
                 $('#t_order_state').text(data[0].order_state_name);
                 $('#t_order_date').text(data[0].order_date);
                 $('#t_order_comment').text(data[0].order_comment);
+                $('#dorder_id').text(data[0].order_id);
                 $('#hid').val(data[0].order_id);
                 $('#flg').val(1);
                 document.getElementById("exampleModalLabel").innerHTML="Захиалгын мэдээллийг засварлах";
@@ -1273,6 +1275,7 @@ $('.orderinformation').on('click',function(){
         if(hid){
             $.get('getorderdetail/' + hid, function (data) {
                 $('#dep_id').val(data[0].dep_id).trigger('change');
+                $('#dorder_id').val(data[0].order_id);
                 $('#dorder_count_detail').val(data[0].order_count);
                 $('#dorder_budget').val(data[0].order_budget);
                 $('#dorder_performance').val(data[0].order_performance);
@@ -1281,7 +1284,7 @@ $('.orderinformation').on('click',function(){
             });
         } else {
                
-            $('#dep_id').val('1').trigger('change');
+                $('#dep_id').val('1').trigger('change');
                 $('#dorder_count_detail').val('');
                 $('#dorder_budget').val('');
                 $('#dorder_performance').val('');
