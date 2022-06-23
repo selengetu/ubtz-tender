@@ -338,7 +338,7 @@ button, input, optgroup, select, textarea {
                             <tr><td>Тухайн онд санхүүжих:</td><td id="t_order_thisyear"></td></tr> 
                             <tr><td>Төлөв:</td><td id="t_order_state"></td></tr> 
                             <tr><td>Захиалга өгсөн:</td><td id="t_order_date"></td></tr> 
-                            <tr><td>Тайлбар:</td><td id="t_order_date"></td></tr> 
+                         
                         </tbody>
                     </table>
                 </div>
@@ -1186,7 +1186,7 @@ $('.orderinformation').on('click',function(){
                 $('#t_order_selection').text(data[0].tenderselectionabbr);
                 $('#t_order_budget').text(data[0].order_budget);
                 $('#t_order_thisyear').text(data[0].order_thisyear);
-                $('#t_order_state').text(data[0].order_main_state_name);
+                $('#t_order_state').text(data[0].order_state_name);
                 $('#t_order_date').text(data[0].order_date);
                 $('#t_order_comment').text(data[0].order_comment);
                 $('#hid').val(data[0].order_id);
