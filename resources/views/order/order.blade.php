@@ -1059,13 +1059,17 @@ button, input, optgroup, select, textarea {
                         <div class="col-4">
                             <div class="form-group">
                                 <label for="jobname">Алба хэлтэс</label>
-                                <input type="date" class="form-control" id="dep_id" name="dep_id" >
+                                <select class="form-control" name="dep_id" id="dep_id" >
+                                @foreach ($dep as $item)
+                                        <option value="{{ $item->executor_id }}">{{ $item->executor_name }}</option>
+                                    @endforeach
+                            </select>
                             </div>
                         </div>
                         <div class="col-4">
                             <div class="form-group">
                                 <label for="jobname">Тоо хэмжээ</label>
-                                <input type="date" class="form-control" id="dorder_count_detail" name="dorder_count_detail" >
+                                <input type="text" class="form-control" id="dorder_count_detail" name="dorder_count_detail" >
                             </div>
                         </div>
                         <div class="col-4">
@@ -1270,8 +1274,8 @@ $('.orderinformation').on('click',function(){
             $.get('getorderdetail/' + hid, function (data) {
                 $('#dep_id').val(data[0].dep_id).trigger('change');
                 $('#dorder_count_detail').val(data[0].order_count);
-                $('#dorder_budget').val(data[0].order_unit);
-                $('#dorder_performance').val(data[0].order_count);
+                $('#dorder_budget').val(data[0].order_budget);
+                $('#dorder_performance').val(data[0].order_performance);
                 $('#detail_id').val(data[0].order_detail_id);
                 document.getElementById("exampleModalLabel").innerHTML="Захиалгын мэдээллийг засварлах";
             });

@@ -17,7 +17,7 @@ class OrderController extends Controller {
         $ostate= DB::select("select * from CONST_ORDER_STATE t order by state_name");
         $source= DB::select("select * from CONST_ORDER_BUDGET_SOURCE t ");
         $selection= DB::select("select * from CONST_ORDER_SELECTIONS t ");
-        $dep= DB::select("select * from EXAMUBTZ.V_DEPART t ");
+        $dep= DB::select("select * from NOKS.CONST_EXECUTOR t ");
         $unit= DB::select("select * from CONST_UNIT t ");
         $order= DB::select("select * from V_ORDERS t ");
         $type= DB::select("select * from CONST_TENDER_TYPES t ");
