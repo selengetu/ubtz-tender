@@ -17,7 +17,7 @@ class OrderController extends Controller {
         $ostate= DB::select("select * from CONST_ORDER_STATE t order by state_name");
         $source= DB::select("select * from CONST_ORDER_BUDGET_SOURCE t ");
         $selection= DB::select("select * from CONST_ORDER_SELECTIONS t ");
-        $dep= DB::select("select * from NOKS.CONST_EXECUTOR t ");
+        $dep= DB::select("select * from MEASINST.V_DEPART t ");
         $unit= DB::select("select * from CONST_UNIT t ");
         $order= DB::select("select * from V_ORDERS t ");
         $type= DB::select("select * from CONST_TENDER_TYPES t ");
@@ -52,7 +52,7 @@ class OrderController extends Controller {
     }
     public function saveOrderDetail(Request $request)
     {
-       dd($request);
+
         if($request->detail_id ==  null){
             DB::insert("insert into ORDER_DETAIL
                 ( ORDER_ID, DEP_ID, ORDER_COUNT, ORDER_BUDGET, ORDER_PERFORMANCE)

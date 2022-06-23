@@ -869,37 +869,8 @@ button, input, optgroup, select, textarea {
                             </select>
                             </div>
                         </div>
-                        <div class="col-4">
-                            <div class="form-group">
-                                <label for="jobname">Үнэлгээ хийсэн огноо</label>
-                                <input type="date" class="form-control" id="assessment_at" name="assessment_at" >
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <div class="form-group">
-                                <label for="jobname">Мэдэгдэл тараасан огноо</label>
-                                <input type="date" class="form-control" id="statement_at" name="statement_at" >
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <div class="form-group">
-                                <label for="jobname">Гэрээ байгуулах эрх огноо</label>
-                                <input type="date" class="form-control" id="contract_at" name="contract_at" >
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <div class="form-group">
-                                <label for="jobname">Түдгэлзүүлсэн огноо</label>
-                                <input type="date" class="form-control" id="suspended_at" name="suspended_at" >
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <div class="form-group">
-                                <label for="jobname">Гомдол гаргасан огноо</label>
-                                <input type="date" class="form-control" id="complaint_at" name="complaint_at" >
-                            </div>
-                        </div>
-                        <div class="col-12">
+                       
+                        <div class="col-8">
                             <div class="form-group">
                                 <label for="jobname">Тайлбар</label>
                                 <input type="text" class="form-control" id="tender_comment" name="tender_comment" placeholder="Тайлбар">
@@ -1061,7 +1032,7 @@ button, input, optgroup, select, textarea {
                                 <label for="jobname">Алба хэлтэс</label>
                                 <select class="form-control" name="dep_id" id="dep_id" >
                                 @foreach ($dep as $item)
-                                        <option value="{{ $item->executor_id }}">{{ $item->executor_name }}</option>
+                                        <option value="{{ $item->dep_id }}">{{ $item->executor_name }}</option>
                                     @endforeach
                             </select>
                             </div>
@@ -1075,7 +1046,7 @@ button, input, optgroup, select, textarea {
                         <div class="col-4">
                             <div class="form-group">
                                 <label for="jobname">Төсөвт өртөг</label>
-                                <input type="text" class="form-control" id="dorder_id" name="dorder_id">
+                                <input type="hidden" class="form-control" id="dorder_id" name="dorder_id">
                                 <input type="text" class="form-control" id="dorder_budget" name="dorder_budget">
                             </div>
                         </div>
@@ -1182,7 +1153,6 @@ $('.orderinformation').on('click',function(){
     $("#infodetails tbody").empty();    
     $( ".menuli1" ).removeClass("disabled disabledTab");
     $.get('getorder/' + itag, function (data) {
-        console.log(data[0]);
                 $('#t_order_name').text(data[0].order_name);
                 $('#t_order_unit').text(data[0].unit_name);
                 $('#t_order_count').text(data[0].order_count);
@@ -1193,7 +1163,7 @@ $('.orderinformation').on('click',function(){
                 $('#t_order_state').text(data[0].order_state_name);
                 $('#t_order_date').text(data[0].order_date);
                 $('#t_order_comment').text(data[0].order_comment);
-                $('#dorder_id').text(data[0].order_id);
+                $('#dorder_id').val(data[0].order_id);
                 $('#hid').val(data[0].order_id);
                 $('#flg').val(1);
                 document.getElementById("exampleModalLabel").innerHTML="Захиалгын мэдээллийг засварлах";
