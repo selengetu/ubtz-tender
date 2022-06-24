@@ -750,7 +750,7 @@ button, input, optgroup, select, textarea {
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <input type="hidden"  id="order_id" name="order_id">
+                    <input type="hidden"  id="order_id" name="order_id" class="order_id">
                     @csrf
                     <button type="submit" class="btn btn-primary">Хадгалах</button>
                 </div>
@@ -785,7 +785,7 @@ button, input, optgroup, select, textarea {
                             <div class="form-group">
                                 <label for="jobname">Тендерийн №</label>
                                 <input type="text" class="form-control" id="tenderno" name="tenderno" placeholder="Тендерийн №">
-                                <input type="hidden" class="form-control" id="torder_id" name="torder_id" placeholder="Тендерийн №">
+                                <input type="hidden" class="form-control" id="torder_id" name="torder_id" class="order_id" placeholder="Тендерийн №">
                             </div>
                         </div>
                         <div class="col-4">
@@ -861,7 +861,7 @@ button, input, optgroup, select, textarea {
                         <div class="col-8">
                             <div class="form-group">
                                 <label for="jobname">Тайлбар</label>
-                                <input type="text" class="form-control" id="tender_comment" name="tender_comment" placeholder="Тайлбар">
+                                <input type="text" class="form-control" id="tender_title" name="tender_title" placeholder="Тайлбар">
                             </div>
                         </div>
                     </div>
@@ -888,57 +888,54 @@ button, input, optgroup, select, textarea {
                 <div class="modal-body">
                
                     <div class="row">
-                        
+                    <div class="col-4">
+                            <div class="form-group">
+                                <label for="jobname">Тендер</label>
+                                <select class="form-control" name="tender_list_id" id="tender_list_id" >
+                            </select>
+                            </div>
+                        </div>
                         <div class="col-4">
                             <div class="form-group">
                                 <label for="jobname">Багцын нэр</label>
-                                <input type="text" class="form-control" id="tenderno" name="tenderno" placeholder="Тендерийн №">
-                                <input type="hidden" class="form-control" id="torder_id" name="torder_id" placeholder="Тендерийн №">
+                                <input type="text" class="form-control" id="pack_name" name="pack_name" placeholder="Багцын нэр">
                             </div>
                         </div>
                     
                         <div class="col-4">
                             <div class="form-group">
                                 <label for="jobname">Огноо</label>
-                                <input type="date" class="form-control" id="tender_call_at" name="tender_call_at" >
+                                <input type="date" class="form-control" id="pack_date" name="pack_date" >
                             </div>
                         </div>
                         <div class="col-4">
                             <div class="form-group">
                                 <label for="jobname">Төсөвт өртөг</label>
-                                <input type="number" class="form-control" id="tender_budget" name="tender_budget" >
-                            </div>
-                        </div>
-                        <div class="col-3">
-                            <div class="form-group">
-                                <label for="jobname">Төлөв</label>
-                                <select class="form-control" name="tender_state" id="tender_state" >
-                               
-                            </select>
+                                <input type="number" class="form-control" id="pack_budget" name="pack_budget" >
                             </div>
                         </div>
                         <div class="col-3">
                             <div class="form-group">
                                 <label for="jobname">Гэрээ байгуулах эрх огноо</label>
-                                <input type="date" class="form-control" id="tender_invitationcode" name="tender_invitationcode">
+                                <input type="date" class="form-control" id="pack_contract_at" name="pack_contract_at">
                             </div>
                         </div>
                         <div class="col-3">
                             <div class="form-group">
                                 <label for="jobname">Түдгэлзүүлсэн огноо</label>
-                                <input type="date" class="form-control" id="tender_invitation_at" name="tender_invitation_at" >
+                                <input type="date" class="form-control" id="pack_suspended_at" name="pack_suspended_at" >
                             </div>
                         </div>
                         <div class="col-3">
                             <div class="form-group">
                                 <label for="jobname">Гомдол гаргасан огноо</label>
-                                <input type="date" class="form-control" id="tender_open_at" name="tender_open_at">
+                                <input type="date" class="form-control" id="pack_complaint_at" name="pack_complaint_at">
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <input type="hidden"  id="tender_id" name="tender_id">
+                    <input type="hidden"  id="pack_id" name="pack_id">
                     @csrf
                     <button type="submit" class="btn btn-primary">Хадгалах</button>
                 </div>
@@ -955,21 +952,21 @@ button, input, optgroup, select, textarea {
                     <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form method="POST" id="formTender" action={{ route('saveTender') }}>
+                <form method="POST" id="formProgress" action={{ route('saveProgress') }}>
                 <div class="modal-body">
                
                     <div class="row">
                         <div class="col-4">
                             <div class="form-group">
                                 <label for="jobname">Огноо</label>
-                                <input type="date" class="form-control" id="tender_call_at" name="tender_call_at" >
+                                <input type="date" class="form-control" id="progress_date" name="progress_date" >
                             </div>
                         </div>
                        
                         <div class="col-4">
                             <div class="form-group">
                                 <label for="jobname">Төлөв</label>
-                                <select class="form-control" name="tender_state" id="tender_state" >
+                                <select class="form-control" name="progress_state" id="progress_state" >
                                
                             </select>
                             </div>
@@ -978,13 +975,13 @@ button, input, optgroup, select, textarea {
                         <div class="col-12">
                             <div class="form-group">
                                 <label for="jobname">Тайлбар</label>
-                                <input type="text" class="form-control" id="tender_open_at" name="tender_open_at">
+                                <input type="text" class="form-control" id="progress_comment" name="progress_comment">
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <input type="hidden"  id="tender_id" name="tender_id">
+                    <input type="hidden"  id="progress_id" name="progress_id">
                     @csrf
                     <button type="submit" class="btn btn-primary">Хадгалах</button>
                 </div>
@@ -1001,7 +998,7 @@ button, input, optgroup, select, textarea {
                     <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form method="POST" id="formTender" action={{ route('saveTender') }}>
+                <form method="POST" id="formComplaint" action={{ route('saveTender') }}>
                 <div class="modal-body">
                
                     <div class="row">
@@ -1009,20 +1006,20 @@ button, input, optgroup, select, textarea {
                     <div class="col-4">
                             <div class="form-group">
                                 <label for="jobname">Огноо</label>
-                                <input type="date" class="form-control" id="tender_call_at" name="tender_call_at" >
+                                <input type="date" class="form-control" id="complaint_date" name="complaint_date" >
                             </div>
                         </div>
                       
                         <div class="col-8">
                             <div class="form-group">
                                 <label for="jobname">Тайлбар</label>
-                                <input type="text" class="form-control" id="tender_open_at" name="tender_open_at">
+                                <input type="text" class="form-control" id="complaint_comment" name="complaint_comment">
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <input type="hidden"  id="tender_id" name="tender_id">
+                    <input type="hidden"  id="complaint_id" name="complaint_id">
                     @csrf
                     <button type="submit" class="btn btn-primary">Хадгалах</button>
                 </div>
@@ -1189,7 +1186,7 @@ button, input, optgroup, select, textarea {
                         <div class="col-4">
                             <div class="form-group">
                                 <label for="jobname">Төсөвт өртөг</label>
-                                <input type="hidden" class="form-control" id="dorder_id" name="dorder_id">
+                                <input type="hidden" class="form-control" id="dorder_id" name="dorder_id" class="order_id">
                                 <input type="text" class="form-control" id="dorder_budget" name="dorder_budget">
                             </div>
                         </div>
@@ -1289,6 +1286,7 @@ $('#home-tab').on('click',function(){
 });
 $('.orderinformation').on('click',function(){
     var itag=$(this).attr('tag');
+    $('#torder_id').val(itag);
     $('#addorderbutton').hide();
     $('#order_id').val(itag);
     $("#infonews tbody").empty();    
@@ -1330,26 +1328,32 @@ $('.orderinformation').on('click',function(){
         $.get('getTenders/'+itag,function(data){
         $.each(data,function(i,qwe){
             var sHtml = "<tr>" +
-            "   <td class='m1'>" + qwe.tenderselectionname + "</td>" +
+            "   <td class='m1'>" + qwe.contracttypename + "</td>" +
         "   <td class='m2'>" + qwe.tenderno + "</td>" +
         "   <td class='m3'>" + qwe.tendertypename + "</td>" +
          "   <td class='m3'>" + qwe.tender_call_at + "</td>"+
          "   <td class='m1'>" + qwe.tender_budget + "</td>" +
         "   <td class='m2'>" + qwe.tender_invitationcode + "</td>" +
         "   <td class='m2'>" + qwe.tender_invitation_at + "</td>" +
-        "   <td class='m3'>" + qwe.tender_validdate + "</td>" +
         "   <td class='m3'>" + qwe.tender_open_at + "</td>" +
+        "   <td class='m3'>" + qwe.tender_validdate + "</td>" +
          "   <td class='m3'>" + qwe.packcount + "</td>"+
          "   <td class='m2'>" + qwe.assessment + "</td>" +
-        "   <td class='m3'>" + qwe.tender_comment + "</td>" +
+        "   <td class='m3'>" + qwe.tendertitle + "</td>" +
       
          "   <td class='m3'> <button class='btn btn-primary btn-xs' data-toggle='modal' onclick='tenderEdit("+ qwe.tenderid +")' data-target='#tenderModal'><i class='fa fa-pen'></i></button></td>"+
         "</tr>";
 
-        $("#infotender tbody").append(sHtml);
-               
-               
+        $("#infotender tbody").append(sHtml);    
          });
+         $('#tender_list_id').empty();
+
+            $.each(data,function(i,qwe){
+                $('#tender_list_id').append($('<option>', {
+                    value: qwe.tenderid,
+                    text: qwe.tenderno
+                }));
+            });
         });
     });
     function orderEdit(hid){
@@ -1366,7 +1370,7 @@ $('.orderinformation').on('click',function(){
                 $('#order_state').val(data[0].order_state).trigger('change');
                 $('#order_date').val(data[0].order_date);
                 $('#order_comment').val(data[0].order_comment);
-                $('#order_id').val(data[0].order_id);
+                $('.order_id').val(data[0].order_id);
                 document.getElementById("exampleModalLabel").innerHTML="Захиалгын мэдээллийг засварлах";
             });
         } else {
@@ -1411,26 +1415,21 @@ $('.orderinformation').on('click',function(){
                 $('#tenderno').val(data[0].tenderno);
                 $('#tendertypecode').val(data[0].tendertypecode).trigger('change');
                 $('#tenderselectioncode').val(data[0].tenderselectioncode).trigger('change');
-                $('#tender_call_at').val(data[0].order_name);
-                $('#tender_open_at').val(data[0].order_unit);
-                $('#tender_budget').val(data[0].order_count);
+                $('#tender_call_at').val(data[0].tender_call_at);
+                $('#tender_open_at').val(data[0].tender_open_at);
+                $('#tender_budget').val(data[0].tender_budget);
                 $('#tender_budget_source').val(data[0].tender_budget_source).trigger('change');
-                $('#tendertitle').val(data[0].order_selection);
+                $('#tendertitle').val(data[0].tendertitle);
                 $('#tender_invitationcode').val(data[0].tender_invitationcode);
                 $('#tender_invitation_at').val(data[0].tender_invitation_at);
                 $('#tender_validdate').val(data[0].tender_validdate);
                 $('#packcount').val(data[0].packcount);
                 $('#assessment').val(data[0].assessment);
-                $('#tender_player').val(data[0].tender_player);
                 $('#tender_state').val(data[0].tender_state).trigger('change');
                 $('#assessment_at').val(data[0].assessment_at);
-                $('#statement_at').val(data[0].statement_at);
-                $('#contract_at').val(data[0].contract_at);
-                $('#suspended_at').val(data[0].suspended_at);
                 $('#tender_comment').val(data[0].tender_comment);
                 $('#order_id').val(data[0].order_id);
-                $('#hid1').val(data[0].tender_id);
-                $('#flg1').val(1);
+                $('#tender_id').val(data[0].tenderid);
                 document.getElementById("exampleModalLabel").innerHTML="Захиалгын мэдээллийг засварлах";
             });
         } else {
@@ -1444,15 +1443,10 @@ $('.orderinformation').on('click',function(){
                 $('#tender_validdate').val('');
                 $('#packcount').val('');
                 $('#assessment').val('');
-                $('#tender_player').val('');
                 $('#assessment_at').val('');
-                $('#statement_at').val('');
-                $('#contract_at').val('');
-                $('#suspended_at').val('');
                 $('#tender_comment').val('');
                 $('#order_id').val('');
-                $('#hid1').val(0);
-                $('#flg1').val(0);
+                $('#tender_id').val(0);
                 document.getElementById("exampleModalLabel").innerHTML="Шинээр захиалга нэмэх";
         }
     }

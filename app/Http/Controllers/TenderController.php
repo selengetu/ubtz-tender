@@ -13,12 +13,25 @@ class TenderController extends Controller {
 
     public function saveTender(Request $request)
     {
-        DB::insert("insert into Tenders
-        (TENDERNO, TENDERTYPECODE, TENDERSELECTIONCODE, TENDER_CALL_AT, TENDER_OPEN_AT, TENDER_BUDGET, TENDERTITLE, TENDER_INVITATIONCODE, TENDER_INVITATION_AT, TENDER_VALIDDATE, PACKCOUNT,
-         ASSESSMENT, TENDER_STATE, ASSESSMENT_AT , STATEMENT_AT, ORDER_ID)
-        values
-        ('$request->tenderno', '$request->tendertypecode','$request->tenderselectioncode', '$request->tender_call_at', '$request->tender_open_at', '$request->tender_budget', '$request->tendertitle', '$request->tender_invitationcode',
-        '$request->tender_invitation_at','$request->tender_validdate', '$request->packcount','$request->assessment','$request->tender_state', '$request->assesstment_at','$request->order_id')");
+        if($request->tender_id ==  null){
+            DB::insert("insert into Tenders
+            (TENDERNO, TENDERTYPECODE, TENDERSELECTIONCODE, TENDER_CALL_AT, TENDER_OPEN_AT, TENDER_BUDGET, TENDERTITLE, TENDER_INVITATIONCODE, TENDER_INVITATION_AT, TENDER_VALIDDATE, PACKCOUNT,
+             ASSESSMENT, TENDER_STATE, ASSESSMENT_AT, ORDER_ID)
+            values
+            ('$request->tenderno', '$request->tendertypecode','$request->tenderselectioncode', TO_DATE('$request->tender_call_at', 'yyyy-mm-dd'), TO_DATE('$request->tender_open_at', 'yyyy-mm-dd'), '$request->tender_budget', '$request->tender_title', '$request->tender_invitationcode',
+            TO_DATE('$request->tender_invitation_at', 'yyyy-mm-dd'), TO_DATE('$request->tender_validdate', 'yyyy-mm-dd'), '$request->packcount','$request->assessment','$request->tender_state', TO_DATE('$request->assesstment_at', 'yyyy-mm-dd'),'$request->torder_id')");
+            
+              }
+                else{
+        
+                    $orders = DB::table('Tenders')
+                    ->where('tenderid', $request->tender_id)
+                    ->update(['tenderselectioncode' => $request->tenderselectioncode,'tenderno' => $request->tenderno,'tendertypecode' => $request->tendertypecode,'tender_call_at' => $request->tender_call_at,
+                    'tender_open_at' =>  $request->tender_open_at,'tender_budget' => $request->tender_budget,'tendertitle' => $request->tender_title,
+                    'tender_invitationcode' => $request->tender_invitationcode,'tender_invitation_at' =>  $request->tender_invitation_at,'tender_validdate' => $request->tender_validdate,'packcount' => $request->packcount
+                    ,'assessment' => $request->assessment,'tender_state' => $request->tender_state,'assessment_at' => $request->assessment_at]);        
+                }
+
         return 1;
     }
     
@@ -34,10 +47,10 @@ class TenderController extends Controller {
     {
         DB::insert("insert into Tenders
         (TENDERNO, TENDERTYPECODE, TENDERSELECTIONCODE, TENDER_CALL_AT, TENDER_OPEN_AT, TENDER_BUDGET, TENDERTITLE, TENDER_INVITATIONCODE, TENDER_INVITATION_AT, TENDER_VALIDDATE, PACKCOUNT,
-         ASSESSMENT, TENDER_STATE, ASSESSMENT_AT , STATEMENT_AT, ORDER_ID)
+         ASSESSMENT, TENDER_STATE, ASSESSMENT_AT ,ORDER_ID)
         values
         ('$request->tenderno', '$request->tendertypecode','$request->tenderselectioncode', '$request->tender_call_at', '$request->tender_open_at', '$request->tender_budget', '$request->tendertitle', '$request->tender_invitationcode',
-        '$request->tender_invitation_at','$request->tender_validdate', '$request->packcount','$request->assessment','$request->tender_state', '$request->assesstment_at','$request->order_id')");
+        '$request->tender_invitation_at','$request->tender_validdate', '$request->packcount','$request->assessment','$request->tender_state', '$request->assesstment_at','$request->dorder_id')");
         return 1;
     }
 }

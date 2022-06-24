@@ -28,6 +28,7 @@ class OrderController extends Controller {
     }
     public function saveOrder(Request $request)
     {
+        
         if($request->order_id ==  null){
         DB::insert("insert into ORDERS
         ( ORDER_NAME, ORDER_DATE, ORDER_UNIT, ORDER_COUNT, ORDER_SELECTION, ORDER_BUDGET_SOURCE, ORDER_BUDGET, ORDER_THISYEAR, ORDER_STATE, ORDER_COMMENT, ORDER_EMPLOYEE)

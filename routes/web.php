@@ -88,3 +88,6 @@ Route::get('/getContracts/{hid?}', [App\Http\Controllers\ContractController::cla
 Route::post('/saveOrderDetail', [App\Http\Controllers\OrderController::class, 'saveOrderDetail'])->name('saveOrderDetail');
 Route::get('/getorderdetail/{hid?}', [App\Http\Controllers\OrderController::class, 'getorderdetail'])->name('getorderdetail');
 Route::get('/getorderdetails/{hid?}', [App\Http\Controllers\OrderController::class, 'getorderdetails'])->name('getorderdetails');
+
+Route::post('/saveProgress', [App\Http\Controllers\TenderController::class, 'saveProgress'])->name('saveProgress');
+Route::post('/saveComplaint', [App\Http\Controllers\TenderController::class, 'saveComplaint'])->name('saveComplaint');
