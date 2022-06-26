@@ -91,3 +91,11 @@ Route::get('/getorderdetails/{hid?}', [App\Http\Controllers\OrderController::cla
 
 Route::post('/saveProgress', [App\Http\Controllers\TenderController::class, 'saveProgress'])->name('saveProgress');
 Route::post('/saveComplaint', [App\Http\Controllers\TenderController::class, 'saveComplaint'])->name('saveComplaint');
+
+Route::post('/savePack', [App\Http\Controllers\PackController::class, 'savePack'])->name('savePack');
+Route::get('/getpack/{hid?}', [App\Http\Controllers\PackController::class, 'getpack'])->name('getpack');
+Route::get('/getpacks/{hid?}', [App\Http\Controllers\PackController::class, 'getpacks'])->name('getpacks');
+
+Route::post('/saveProgress', [App\Http\Controllers\ProgressController::class, 'saveProgress'])->name('saveProgress');
+Route::get('/getprogress/{hid?}', [App\Http\Controllers\ProgressController::class, 'getprogress'])->name('getprogress');
+Route::get('/getprogresses/{hid?}', [App\Http\Controllers\ProgressController::class, 'getprogresses'])->name('getprogresses');

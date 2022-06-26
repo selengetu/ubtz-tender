@@ -15,31 +15,29 @@ class PackController extends Controller {
     {
         if($request->pack_id ==  null){
             DB::insert("insert into tender_pack
-            (pack_name, pack_date, pack_budget, pack_contract_at, pack_suspended_at, pack_complaint_at, pack_tender)
+            (pack_name, pack_date, pack_budget, pack_contract_at, pack_suspended_at, pack_complaint_at, pack_tender, pack_order_id)
             values
-            ('$request->pack_name', '$request->pack_date','$request->pack_budget', TO_DATE('$request->pack_contract_at', 'yyyy-mm-dd'), TO_DATE('$request->pack_suspended_at', 'yyyy-mm-dd'), TO_DATE('$request->pack_complaint_at', 'yyyy-mm-dd'),'$request->pack_tender')");
+            ('$request->pack_name', '$request->pack_date','$request->pack_budget', TO_DATE('$request->pack_contract_at', 'yyyy-mm-dd'), TO_DATE('$request->pack_suspended_at', 'yyyy-mm-dd'), TO_DATE('$request->pack_complaint_at', 'yyyy-mm-dd'),'$request->tender_list_id','$request->pack_order_id')");
             
               }
                 else{
         
                     $orders = DB::table('tender_pack')
-                    ->where('pack_id', $request->tender_id)
-                    ->update(['tenderselectioncode' => $request->tenderselectioncode,'tenderno' => $request->tenderno,'tendertypecode' => $request->tendertypecode,'tender_call_at' => $request->tender_call_at,
-                    'tender_open_at' =>  $request->tender_open_at,'tender_budget' => $request->tender_budget,'tendertitle' => $request->tender_title,
-                    'tender_invitationcode' => $request->tender_invitationcode,'tender_invitation_at' =>  $request->tender_invitation_at,'tender_validdate' => $request->tender_validdate,'packcount' => $request->packcount
-                    ,'assessment' => $request->assessment,'tender_state' => $request->tender_state,'assessment_at' => $request->assessment_at]);        
+                    ->where('pack_id', $request->pack_id)
+                    ->update(['pack_name' => $request->pack_name,'pack_date' => $request->pack_date,'pack_budget' => $request->pack_budget,'pack_contract_at' => $request->pack_contract_at,
+                    'pack_suspended_at' =>  $request->pack_suspended_at,'pack_complaint_at' => $request->pack_complaint_at]);        
                 }
 
         return 1;
     }
     
-    public function getPacks($hid)
+    public function getpacks($hid)
     {
-        return DB::select("select * from V_TENDERS t where t.order_id='$hid'");
+        return DB::select("select * from V_TENDER_PACK t where t.pack_order_id='$hid'");
     }
-    public function getPack($hid)
+    public function getpack($hid)
     {
-        return DB::select("select * from V_TENDERS t where t.tenderid='$hid'");
+        return DB::select("select * from V_TENDER_PACK t where t.pack_id='$hid'");
     }
    
 }

@@ -446,13 +446,12 @@ button, input, optgroup, select, textarea {
                             <th>Багцын нэр</th>
                             <th>Огноо</th>
                             <th>Төсөвт өртөг</th>
-                            <th>Төлөв</th>
                             <th>Гэрээ байгуулах эрх огноо</th>
                             <th>Түдгэлзүүлсэн огноо</th>
                             <th>Гомдол гаргасан огноо</th>
                             <th></th>
                         </thead>
-                        <tbody id="tbody">                   
+                        <tbody id="tbody2">                   
                         </tbody>
                     </table>
                 </div>
@@ -467,7 +466,7 @@ button, input, optgroup, select, textarea {
                     <div class="card-body">
                     <div class="table-responsive">
                     <br>
-                    <table class="table table-bordered table-hover table-striped" id="infopack">
+                    <table class="table table-bordered table-hover table-striped" id="infoprogress">
                         <thead >                        
                             <th>Огноо</th>
                             <th>Явцын төлөв</th>
@@ -475,7 +474,7 @@ button, input, optgroup, select, textarea {
                             <th>Ажилтан</th>
                             <th></th>
                         </thead>
-                        <tbody id="tbody">                   
+                        <tbody id="tbody1">                   
                         </tbody>
                     </table>
                 </div>
@@ -491,7 +490,7 @@ button, input, optgroup, select, textarea {
                     <div class="card-body">
                     <div class="table-responsive">
                     <br>
-                    <table class="table table-bordered table-hover table-striped" id="infopack">
+                    <table class="table table-bordered table-hover table-striped" id="infocomplaint">
                         <thead >                        
                             <th>Огноо</th>
                             <th>Төлөв</th>
@@ -884,7 +883,7 @@ button, input, optgroup, select, textarea {
                     <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form method="POST" id="formTender" action={{ route('saveTender') }}>
+                <form method="POST" id="formTender" action={{ route('savePack') }}>
                 <div class="modal-body">
                
                     <div class="row">
@@ -899,6 +898,7 @@ button, input, optgroup, select, textarea {
                             <div class="form-group">
                                 <label for="jobname">Багцын нэр</label>
                                 <input type="text" class="form-control" id="pack_name" name="pack_name" placeholder="Багцын нэр">
+                                <input type="hidden" class="form-control" id="pack_order_id" name="pack_order_id" placeholder="Багцын нэр">
                             </div>
                         </div>
                     
@@ -998,7 +998,7 @@ button, input, optgroup, select, textarea {
                     <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form method="POST" id="formComplaint" action={{ route('saveTender') }}>
+                <form method="POST" id="formComplaint" action={{ route('saveComplaint') }}>
                 <div class="modal-body">
                
                     <div class="row">
@@ -1289,9 +1289,10 @@ $('.orderinformation').on('click',function(){
     $('#torder_id').val(itag);
     $('#addorderbutton').hide();
     $('#order_id').val(itag);
+    $('#pack_order_id').val(itag);
     $("#infonews tbody").empty();    
     $("#infotender tbody").empty();   
-    $("#infodetails tbody").empty();    
+    $("#infodetails tbody").empty();  
     $( ".menuli1" ).removeClass("disabled disabledTab");
     $.get('getorder/' + itag, function (data) {
                 $('#t_order_name').text(data[0].order_name);
@@ -1321,6 +1322,23 @@ $('.orderinformation').on('click',function(){
         "</tr>";
 
         $("#infodetails tbody").append(sHtml);
+               
+               
+         });
+        });
+        $.get('getpacks/'+itag,function(data){
+        $.each(data,function(i,qwe){
+            var sHtml = "<tr>" +
+        "   <td class='m3'>" + qwe.pack_name + "</td>" +
+         "   <td class='m3'>" + qwe.pack_date + "</td>" +
+        "   <td class='m3'>" + qwe.pack_budget + "</td>" +
+        "   <td class='m3'>" + qwe.pack_contract_at + "</td>" +
+        "   <td class='m3'>" + qwe.pack_suspended_at + "</td>" +
+        "   <td class='m3'>" + qwe.pack_complaint_at + "</td>" +
+         "   <td class='m3'> <button class='btn btn-primary btn-xs' data-toggle='modal' onclick='packEdit("+ qwe.pack_id +")' data-target='#packModal'><i class='fa fa-pen'></i></button></td>"+
+        "</tr>";
+            
+        $("#tbody2").append(sHtml);
                
                
          });
@@ -1355,6 +1373,7 @@ $('.orderinformation').on('click',function(){
                 }));
             });
         });
+    
     });
     function orderEdit(hid){
         if(hid){
@@ -1406,6 +1425,30 @@ $('.orderinformation').on('click',function(){
                 $('#dorder_budget').val('');
                 $('#dorder_performance').val('');
                 $('#detail_id').val('');
+                document.getElementById("exampleModalLabel").innerHTML="Шинээр захиалга нэмэх";
+        }
+    }
+    function packEdit(hid){
+        if(hid){
+            $.get('getpack/' + hid, function (data) {
+                $('#pack_name').val(data[0].pack_name).trigger('change');
+                $('#pack_date').val(data[0].pack_date);
+                $('#pack_budget').val(data[0].pack_budget);
+                $('#pack_contract_at').val(data[0].pack_contract_at);
+                $('#pack_suspended_at').val(data[0].pack_suspended_at);
+                $('#pack_complaint_at').val(data[0].pack_complaint_at);
+                $('#pack_id').val(data[0].pack_id);
+                document.getElementById("exampleModalLabel").innerHTML="Захиалгын мэдээллийг засварлах";
+            });
+        } else {
+               
+                $('#pack_name').val('');
+                $('#pack_date').val('');
+                $('#pack_budget').val('');
+                $('#pack_contract_at').val('');
+                $('#pack_suspended_at').val('');
+                $('#pack_complaint_at').val('');
+                $('#pack_id').val(0);
                 document.getElementById("exampleModalLabel").innerHTML="Шинээр захиалга нэмэх";
         }
     }
