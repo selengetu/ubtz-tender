@@ -17,7 +17,7 @@ class DepController extends Controller {
         $usr_depid=Auth::user()->depid; 
         $parent='';
       
-            $dep= DB::select("select * from EXAMUBTZ.V_DEPART t ");
+        $dep= DB::select("select * from MEASINST.V_DEPART t ");
         return view('const.dep',compact('dep'));
     }
     public function saveDep(Request $request)

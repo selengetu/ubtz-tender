@@ -35,8 +35,6 @@
                             <th>Харьяа байгууллага</th>
                             <th>Байгууллагын нэр</th>
                             <th>Товч нэр</th>
-                            <th>Баланс код</th>
-                          
                           
                         </thead>
                         <tbody id="tbody">
@@ -44,11 +42,9 @@
                         @foreach ($dep as $item )
                         <tr>
                             <td>{{$no}}</td>
-                            <td>{{$item->p_abbr}}</td>
-                            <td>{{$item->department_name}}</td>
+                            <td>{{$item->executor_abbr}}</td>
+                            <td>{{$item->executor_name}}</td>
                             <td>{{$item->department_abbr}}</td>
-                            <td>{{$item->balance_code}}</td>
-                            
                         
                         </tr>
                         <?php $no++; ?>
