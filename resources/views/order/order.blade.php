@@ -319,7 +319,7 @@ button, input, optgroup, select, textarea {
                     <div class="col-md-3">
                     <div class="card card-primary" >
                     <div class="card-header">
-                        <h3 class="card-title" id="t_order_name"></h3>
+                        <h3 class="card-title">Захиалгын мэдээлэл</h3>
                         <div class="card-tools">
                        
                         </div>
@@ -330,6 +330,7 @@ button, input, optgroup, select, textarea {
                     <table class="table table-bordered table-striped">
                        
                         <tbody id="tbody">   
+                            <tr><td>Захиалгын нэр:</td><td id="t_order_name"></td></tr>  
                             <tr><td>Хэмжих нэгж:</td><td id="t_order_unit"></td></tr>    
                             <tr><td>Тоо хэмжээ:</td><td id="t_order_count"></td></tr>    
                             <tr><td>Мөрдөх журам:</td><td id="t_order_selection"></td></tr> 
