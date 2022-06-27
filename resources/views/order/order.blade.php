@@ -21,10 +21,14 @@
 .ButtonClicked {
     background-color:#4da3ff;
 }
+.TableClicked {
+    background-color:#4da3ff;
+}
 .btn-list {
     background-color:#4da3ff;
 }
 .orderinformation {cursor: context-menu;}
+.tenderinfo {cursor: context-menu;}
 .ps-container {
     -ms-touch-action: auto;
     touch-action: auto;
@@ -263,7 +267,7 @@ button, input, optgroup, select, textarea {
                 <li class="nav-item menuli1 disabled disabledTab">
                     <a class="nav-link" id="tender-tab" data-toggle="tab" href="#tender" role="tab" aria-controls="tender" aria-selected="false">Тендер</a>
                 </li>
-                <li class="nav-item menuli1 disabled disabledTab">
+                <li class="nav-item menuli disabled disabledTab">
                     <a class="nav-link" id="contract-tab" data-toggle="tab" href="#contract" role="contract" aria-controls="contract" aria-selected="false">Гэрээ</a>
                 </li>
                 </ul>
@@ -298,8 +302,8 @@ button, input, optgroup, select, textarea {
                             <td>{{$item->order_count}}</td>
                             <td>{{$item->tenderselectionname}}</td>
                             <td>{{$item->order_budget_source_name}}</td>
-                            <td>{{$item->order_budget}}</td>
-                            <td>{{$item->order_thisyear}}</td>
+                            <td>{{ number_format($item->order_budget, 2)}}</td>
+                            <td>{{ number_format($item->order_thisyear, 2)}}</td>
                             <td>{{$item->order_state_name}}</td>
                             <td>{{$item->order_date}}</td>
                             <td>{{$item->name}}</td>
@@ -319,7 +323,7 @@ button, input, optgroup, select, textarea {
                     <div class="col-md-3">
                     <div class="card card-primary" >
                     <div class="card-header">
-                        <h3 class="card-title">Захиалгын мэдээлэл</h3>
+                        <h3 class="card-title">Тендерийн мэдээлэл</h3>
                         <div class="card-tools">
                        
                         </div>
@@ -329,21 +333,23 @@ button, input, optgroup, select, textarea {
                     <br>
                     <table class="table table-bordered table-striped">
                        
+                     
                         <tbody id="tbody">   
-                            <tr><td>Захиалгын нэр:</td><td id="t_order_name"></td></tr>  
-                            <tr><td>Хэмжих нэгж:</td><td id="t_order_unit"></td></tr>    
-                            <tr><td>Тоо хэмжээ:</td><td id="t_order_count"></td></tr>    
-                            <tr><td>Мөрдөх журам:</td><td id="t_order_selection"></td></tr> 
-                            <tr><td>Хөрөнгө оруулалт:</td><td id="t_order_budget_source"></td></tr> 
-                            <tr><td>Төсөвт өртөг:</td><td  id="t_order_budget"></td></tr> 
-                            <tr><td>Тухайн онд санхүүжих:</td><td id="t_order_thisyear"></td></tr> 
-                            <tr><td>Төлөв:</td><td id="t_order_state"></td></tr> 
-                            <tr><td>Захиалга өгсөн:</td><td id="t_order_date"></td></tr> 
-                         
+                            <tr><td>Шалгаруулалтын төрөл:</td><td id="t_tender_selection"></td></tr>    
+                            <tr><td>Тендерийн №:</td><td id="t_tender_no"></td></tr>    
+                            <tr><td>Төрөл:</td><td id="t_tender_type"></td></tr> 
+                            <tr><td>Зарлагдсан огноо:</td><td id="t_tender_called_at"></td></tr> 
+                            <tr><td>Батлагдсан төсөв11т өртөг:</td><td  id="t_tender_budget"></td></tr> 
+                            <tr><td>Урилгын №:</td><td id="t_tender_invitation"></td></tr> 
+                            <tr><td>Урилгын огноо:</td><td id="t_tender_invitation_at"></td></tr> 
+                            <tr><td>Тендер нээх хугацаа:</td><td id="t_tender_open_at"></td></tr> 
+                            <tr><td>Хүчинтэй хугацаа:</td><td id="t_tender_validdate"></td></tr> 
+                            <tr><td>Багцын тоо:</td><td id="t_tender_packcount"></td></tr> 
+                            <tr><td>Үнэлгээ:</td><td id="t_tender_assessment"></td></tr> 
                         </tbody>
                     </table>
                 </div>
-                <a href="#" style="text-align:right" id="btn_detail" class="btn-block">Дэлгэрэнгүй</a>
+              
                     </div>
                 </div>
                 <div class="card card-primary card-outline"  style="font-size:12px">
@@ -351,6 +357,9 @@ button, input, optgroup, select, textarea {
                         <div class="card-body">
                         <table class="table table-bordered" >
                             <tbody >
+                            <tr>
+                            <td style="padding:0rem;"><button type="button" style="font-size:0.8rem;text-align:left" class="btn btn-block" style="text-align:left" id="btn_detail">  <img src="{{ asset('img/order.png') }}" class="icondetail">Захиалгын дэлгэрэнгүй</button></td>
+                            </tr>
                             <tr>
                             <td style="padding:0rem;"><button type="button" style="font-size:0.8rem;text-align:left" class="btn btn-block" style="text-align:left" id="btn_1">  <img src="{{ asset('img/tender.png') }}" class="icondetail">  Тендер</button></td>
                             </tr>
@@ -408,6 +417,51 @@ button, input, optgroup, select, textarea {
                    
                     </div>
                 </div>
+                <div class="card card-primary card-list" style="font-size:12px;" id="card_main">
+                    <div class="card-header">
+                        <h3 class="card-title">Захиалгын мэдээлэл</h3>
+                        <div class="card-tools">
+                        <button class='btn btn-primary btn-xs' data-toggle="modal" onclick='orderdetailEdit()' data-target="#detailModal" ><i class='fa fa-plus'></i></button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        
+                       
+                        <div class="table-responsive">
+                    <br>
+                    <table class="table table-bordered table-striped">
+                    <thead >                        
+                            <th>Захиалгын нэр</th>
+                            <th>Хэмжих нэгж</th>
+                            <th>Тоо хэмжээ</th>
+                            <th>Мөрдөх журам</th>
+                            <th>Хөрөнгө оруулалт:</th>
+                            <th>Төсөвт өртөг:</th>
+                            <th>Тухайн онд санхүүжих:</th>
+                            <th>Төлөв:</th>
+                            <th>Захиалга өгсөн:</th>
+                        
+                        </thead>
+                        <tbody id="tbody">   
+                            <tr><td id="t_order_name"></td>
+                            <td id="t_order_unit"></td>
+                            <td id="t_order_count"></td>  
+                            <td id="t_order_selection"></td>
+                            <td id="t_order_budget_source"></td>
+                            <td id="t_order_budget"></td>
+                            <td id="t_order_thisyear"></td>
+                            <td id="t_order_state"></td>
+                            <td id="t_order_date"></td></tr> 
+                         
+                        </tbody>
+                    </table>
+                </div>
+                             </div>
+                      
+               
+                   
+                
+                </div>
                         <div class="card card-primary card-list" style="font-size:12px;" id="card_detail">
                     <div class="card-header">
                         <h3 class="card-title">Захиалгын дэлгэрэнгүй</h3>
@@ -415,8 +469,8 @@ button, input, optgroup, select, textarea {
                         <button class='btn btn-primary btn-xs' data-toggle="modal" onclick='orderdetailEdit()' data-target="#detailModal" ><i class='fa fa-plus'></i></button>
                         </div>
                     </div>
-                    <div class="card-body">
-                    <div class="table-responsive">
+                    <div class="card-body">           
+                        <div class="table-responsive">
                     <br>
                     <table class="table table-bordered table-hover table-striped" id="infodetails">
                         <thead >                        
@@ -430,6 +484,7 @@ button, input, optgroup, select, textarea {
                         </tbody>
                     </table>
                 </div>
+
                     </div>
                 </div>
                 <div class="card card-primary card-list" style="font-size:12px; display:none"  id="card_2">
@@ -523,19 +578,7 @@ button, input, optgroup, select, textarea {
                     <br>
                     <table class="table table-bordered table-striped">
                        
-                        <tbody id="tbody">   
-                            <tr><td>Шалгаруулалтын төрөл:</td><td id="t_order_unit"></td></tr>    
-                            <tr><td>Тендерийн №:</td><td id="t_order_count"></td></tr>    
-                            <tr><td>Төрөл:</td><td id="t_order_selection"></td></tr> 
-                            <tr><td>Зарлагдсан огноо:</td><td id="t_order_budget_source"></td></tr> 
-                            <tr><td>Батлагдсан төсөвт өртөг:</td><td  id="t_order_budget"></td></tr> 
-                            <tr><td>Урилгын №:</td><td id="t_order_thisyear"></td></tr> 
-                            <tr><td>Урилгын огноо:</td><td id="t_order_state"></td></tr> 
-                            <tr><td>Тендер нээх хугацаа:</td><td id="t_order_date"></td></tr> 
-                            <tr><td>Хүчинтэй хугацаа:</td><td id="t_order_date"></td></tr> 
-                            <tr><td>Багцын тоо:</td><td id="t_order_date"></td></tr> 
-                            <tr><td>Үнэлгээ:</td><td id="t_order_date"></td></tr> 
-                        </tbody>
+                      
                     </table>
                 </div>
                        
@@ -1260,6 +1303,8 @@ button, input, optgroup, select, textarea {
     switch ($(this).attr('id')) {
         case 'btn_detail':
             $('#card_detail').show();
+            $('#card_main').show();
+            $(this).toggleClass('ButtonClicked');
             break;
         case 'btn_1':
             $('#card_1').show();
@@ -1286,13 +1331,16 @@ button, input, optgroup, select, textarea {
 $('#home-tab').on('click',function(){
     $('#addorderbutton').show();
 });
+$('в').on('click',function(){
+    $('#addorderbutton').show();
+});
 $('.orderinformation').on('click',function(){
     var itag=$(this).attr('tag');
     $('#torder_id').val(itag);
     $('#addorderbutton').hide();
     $('#order_id').val(itag);
     $('#pack_order_id').val(itag)
-    $('#progress_order').val(itag);;
+    $('#progress_order').val(itag);
     $('#complaint_order').val(itag);
     $("#infonews tbody").empty();    
     $("#infotender tbody").empty();   
@@ -1376,23 +1424,24 @@ $('.orderinformation').on('click',function(){
                
          });
         });
+  
         $.get('getTenders/'+itag,function(data){
         $.each(data,function(i,qwe){
-            var sHtml = "<tr>" +
-            "   <td class='m1'>" + qwe.contracttypename + "</td>" +
-        "   <td class='m2'>" + qwe.tenderno + "</td>" +
-        "   <td class='m3'>" + qwe.tendertypename + "</td>" +
-         "   <td class='m3'>" + qwe.tender_call_at + "</td>"+
-         "   <td class='m1'>" + qwe.tender_budget + "</td>" +
-        "   <td class='m2'>" + qwe.tender_invitationcode + "</td>" +
-        "   <td class='m2'>" + qwe.tender_invitation_at + "</td>" +
-        "   <td class='m3'>" + qwe.tender_open_at + "</td>" +
-        "   <td class='m3'>" + qwe.tender_validdate + "</td>" +
-         "   <td class='m3'>" + qwe.packcount + "</td>"+
-         "   <td class='m2'>" + qwe.assessment + "</td>" +
-        "   <td class='m3'>" + qwe.tendertitle + "</td>" +
+            var sHtml = "<tr  onclick=gettenderinfo("+ qwe.tenderid +") tag='"+ qwe.tenderid +"'>" +
+        "   <td>" + qwe.contracttypename + "</td>" +
+        "   <td><b style='color:#007bff'><u>" + qwe.tenderno + "</u></b></td>" +
+        "    <td>" + qwe.tendertypename + "</td>" +
+         "   <td>" + qwe.tender_call_at + "</td>"+
+         "   <td>" + qwe.tender_budget + "</td>" +
+        "   <td>" + qwe.tender_invitationcode + "</td>" +
+        "   <td>" + qwe.tender_invitation_at + "</td>" +
+        "    <td>" + qwe.tender_open_at + "</td>" +
+        "   <td>" + qwe.tender_validdate + "</td>" +
+         "   <td>" + qwe.packcount + "</td>"+
+         "    <td>" + qwe.assessment + "</td>" +
+        "   <td>" + qwe.tendertitle + "</td>" +
       
-         "   <td class='m3'> <button class='btn btn-primary btn-xs' data-toggle='modal' onclick='tenderEdit("+ qwe.tenderid +")' data-target='#tenderModal'><i class='fa fa-pen'></i></button></td>"+
+         "   <td> <button class='btn btn-primary btn-xs' data-toggle='modal' onclick='tenderEdit("+ qwe.tenderid +")' data-target='#tenderModal'><i class='fa fa-pen'></i></button></td>"+
         "</tr>";
 
         $("#infotender tbody").append(sHtml);    
@@ -1408,6 +1457,22 @@ $('.orderinformation').on('click',function(){
         });
     
     });
+    function gettenderinfo(hid){
+        $.get('getTender/' + hid, function (data) {
+                $('#t_tender_id').text(data[0].tenderid);
+                $('#t_tender_no').text(data[0].tenderno);
+                $('#t_tender_selection').text(data[0].contracttypename);
+                $('#t_tender_type').text(data[0].tendertypename);
+                $('#t_tender_called_at').text(data[0].tender_call_at);
+                $('#t_tender_budget').text(data[0].tender_budget);
+                $('#t_tender_invitation').text(data[0].tender_invitationcode);
+                $('#t_tender_invitation_at').text(data[0].tender_invitation_at);
+                $('#t_tender_validdate').text(data[0].tender_validdate);
+                $('#t_tender_open_at').text(data[0].tender_open_at);
+                $('#t_tender_packcount').text(data[0].packcount);
+                $('#t_tender_assessment').text(data[0].assessment);
+            });
+    }
     function orderEdit(hid){
         if(hid){
             $.get('getorder/' + hid, function (data) {
