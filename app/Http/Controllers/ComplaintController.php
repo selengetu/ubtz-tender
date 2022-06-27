@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use Auth;
-class PackController extends Controller {
+class ComplaintController extends Controller {
 
     public function __construct() {
         $this->middleware('auth');

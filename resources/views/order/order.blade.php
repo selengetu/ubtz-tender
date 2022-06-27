@@ -467,7 +467,7 @@ button, input, optgroup, select, textarea {
                     <div class="card-body">
                     <div class="table-responsive">
                     <br>
-                    <table class="table table-bordered table-hover table-striped" id="infoprogress">
+                    <table class="table table-bordered table-hover table-striped" id="tbody3">
                         <thead >                        
                             <th>Огноо</th>
                             <th>Явцын төлөв</th>
@@ -491,7 +491,7 @@ button, input, optgroup, select, textarea {
                     <div class="card-body">
                     <div class="table-responsive">
                     <br>
-                    <table class="table table-bordered table-hover table-striped" id="infocomplaint">
+                    <table class="table table-bordered table-hover table-striped" id="tbody4">
                         <thead >                        
                             <th>Огноо</th>
                             <th>Төлөв</th>
@@ -961,15 +961,15 @@ button, input, optgroup, select, textarea {
                             <div class="form-group">
                                 <label for="jobname">Огноо</label>
                                 <input type="date" class="form-control" id="progress_date" name="progress_date" >
+                                <input type="text" class="form-control" id="progress_order" name="progress_order" >
                             </div>
                         </div>
                        
                         <div class="col-4">
                             <div class="form-group">
                                 <label for="jobname">Төлөв</label>
-                                <select class="form-control" name="progress_state" id="progress_state" >
-                               
-                            </select>
+                                <input type="text" class="form-control" id="progress_state" name="progress_state" >
+                              
                             </div>
                         </div>
                       
@@ -1013,6 +1013,7 @@ button, input, optgroup, select, textarea {
                       
                         <div class="col-8">
                             <div class="form-group">
+                                <input type="text" class="form-control" id="complaint_order" name="complaint_order" >
                                 <label for="jobname">Тайлбар</label>
                                 <input type="text" class="form-control" id="complaint_comment" name="complaint_comment">
                             </div>
@@ -1290,7 +1291,9 @@ $('.orderinformation').on('click',function(){
     $('#torder_id').val(itag);
     $('#addorderbutton').hide();
     $('#order_id').val(itag);
-    $('#pack_order_id').val(itag);
+    $('#pack_order_id').val(itag)
+    $('#progress_order').val(itag);;
+    $('#complaint_order').val(itag);
     $("#infonews tbody").empty();    
     $("#infotender tbody").empty();   
     $("#infodetails tbody").empty();  
@@ -1340,6 +1343,35 @@ $('.orderinformation').on('click',function(){
         "</tr>";
             
         $("#tbody2").append(sHtml);
+               
+               
+         });
+        });
+        $.get('getprogresses/'+itag,function(data){
+        $.each(data,function(i,qwe){
+            var sHtml = "<tr>" +
+        "   <td class='m3'>" + qwe.progress_date + "</td>" +
+         "   <td class='m3'>" + qwe.progress_state + "</td>" +
+        "   <td class='m3'>" + qwe.progress_comment + "</td>" +
+        "   <td class='m3'>" + qwe.progress_employee + "</td>" +
+         "   <td class='m3'> <button class='btn btn-primary btn-xs' data-toggle='modal' onclick='progressEdit("+ qwe.progress_id +")' data-target='#progressModal'><i class='fa fa-pen'></i></button></td>"+
+        "</tr>";
+            
+        $("#tbody3").append(sHtml);
+               
+               
+         });
+        });
+        $.get('getcomplaints/'+itag,function(data){
+        $.each(data,function(i,qwe){
+            var sHtml = "<tr>" +
+        "   <td class='m3'>" + qwe.complaint_date + "</td>" +
+         "   <td class='m3'>" + qwe.complaint_state + "</td>" +
+        "   <td class='m3'>" + qwe.complaint_comment+ "</td>" +
+         "   <td class='m3'> <button class='btn btn-primary btn-xs' data-toggle='modal' onclick='complaintEdit("+ qwe.complaint_id +")' data-target='#complaintModal'><i class='fa fa-pen'></i></button></td>"+
+        "</tr>";
+            
+        $("#tbody4").append(sHtml);
                
                
          });
@@ -1431,7 +1463,7 @@ $('.orderinformation').on('click',function(){
     }
     function packEdit(hid){
         if(hid){
-            $.get('getpack/' + hid, function (data) {
+            $.get('getpacks/' + hid, function (data) {
                 $('#pack_name').val(data[0].pack_name).trigger('change');
                 $('#pack_date').val(data[0].pack_date);
                 $('#pack_budget').val(data[0].pack_budget);
@@ -1451,6 +1483,43 @@ $('.orderinformation').on('click',function(){
                 $('#pack_complaint_at').val('');
                 $('#pack_id').val(0);
                 document.getElementById("exampleModalLabel").innerHTML="Шинээр захиалга нэмэх";
+        }
+    }
+    function progressEdit(hid){
+        if(hid){
+            $.get('getprogresses/' + hid, function (data) {
+                $('#progress_date').val(data[0].progress_date);
+                $('#progress_state').val(data[0].progress_state);
+                $('#progress_comment').val(data[0].progress_comment);
+                $('#progress_employee').val(data[0].progress_employee);
+                $('#progress_id').val(data[0].progress_id);
+              
+            });
+        } else {
+               
+                $('#progress_date').val('');
+                $('#progress_state').val('');
+                $('#progress_comment').val('');
+                $('#progress_employee').val('');
+                $('#progress_id').val(0);
+        }
+    }
+    function complaintEdit(hid){
+        if(hid){
+            $.get('getcomplaints/' + hid, function (data) {
+                $('#complaint_date').val(data[0].complaint_date);
+                $('#complaint_state').val(data[0].complaint_state);
+                $('#complaint_comment').val(data[0].complaint_comment);
+                $('#complaint_id').val(data[0].complaint_id);
+           
+            });
+        } else {
+               
+                $('#complaint_date').val('');
+                $('#complaint_state').val('');
+                $('#complaint_comment').val('');
+                $('#complaint_id').val(0);
+
         }
     }
     function tenderEdit(hid){

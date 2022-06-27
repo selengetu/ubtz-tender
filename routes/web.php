@@ -99,3 +99,7 @@ Route::get('/getpacks/{hid?}', [App\Http\Controllers\PackController::class, 'get
 Route::post('/saveProgress', [App\Http\Controllers\ProgressController::class, 'saveProgress'])->name('saveProgress');
 Route::get('/getprogress/{hid?}', [App\Http\Controllers\ProgressController::class, 'getprogress'])->name('getprogress');
 Route::get('/getprogresses/{hid?}', [App\Http\Controllers\ProgressController::class, 'getprogresses'])->name('getprogresses');
+
+Route::post('/saveComplaint', [App\Http\Controllers\ComplaintController::class, 'saveComplaint'])->name('saveComplaint');
+Route::get('/getcomplaint/{hid?}', [App\Http\Controllers\ComplaintController::class, 'getcomplaint'])->name('getcomplaint');
+Route::get('/getcomplaints/{hid?}', [App\Http\Controllers\ComplaintController::class, 'getcomplaints'])->name('getcomplaints');

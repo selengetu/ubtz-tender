@@ -25,7 +25,7 @@ class ProgressController extends Controller {
                     $orders = DB::table('tender_progress')
                     ->where('progress_id', $request->progress_id)
                     ->update(['progress_state' => $request->progress_state,'progress_date' => $request->progress_date,'progress_comment' => $request->progress_comment,'progress_employee' => $request->progress_employee,
-                    'progress_tender' =>  $request->progress_tender,'progress_order' => $request->progress_order]);        
+                    'progress_tender' =>  $request->progress_tender]);        
                 }
 
         return 1;
