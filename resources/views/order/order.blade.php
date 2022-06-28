@@ -339,7 +339,7 @@ button, input, optgroup, select, textarea {
                             <tr><td>Тендерийн №:</td><td id="t_tender_no"></td></tr>    
                             <tr><td>Төрөл:</td><td id="t_tender_type"></td></tr> 
                             <tr><td>Зарлагдсан огноо:</td><td id="t_tender_called_at"></td></tr> 
-                            <tr><td>Батлагдсан төсөв11т өртөг:</td><td  id="t_tender_budget"></td></tr> 
+                            <tr><td>Батлагдсан төсөвт өртөг:</td><td  id="t_tender_budget"></td></tr> 
                             <tr><td>Урилгын №:</td><td id="t_tender_invitation"></td></tr> 
                             <tr><td>Урилгын огноо:</td><td id="t_tender_invitation_at"></td></tr> 
                             <tr><td>Тендер нээх хугацаа:</td><td id="t_tender_open_at"></td></tr> 
@@ -927,22 +927,16 @@ button, input, optgroup, select, textarea {
                     <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form method="POST" id="formTender" action={{ route('savePack') }}>
+                <form method="POST" id="formPack" action={{ route('savePack') }}>
                 <div class="modal-body">
                
                     <div class="row">
-                    <div class="col-4">
-                            <div class="form-group">
-                                <label for="jobname">Тендер</label>
-                                <select class="form-control" name="tender_list_id" id="tender_list_id" >
-                            </select>
-                            </div>
-                        </div>
                         <div class="col-4">
                             <div class="form-group">
                                 <label for="jobname">Багцын нэр</label>
-                                <input type="text" class="form-control" id="pack_name" name="pack_name" placeholder="Багцын нэр">
-                                <input type="hidden" class="form-control" id="pack_order_id" name="pack_order_id" placeholder="Багцын нэр">
+                                <input type="text" class="form-control" id="pack_name" name="pack_name">
+                                <input type="hidden" class="form-control" id="pack_order_id" name="pack_order_id">
+                                <input type="text" class="form-control" id="tender_list_id" name="tender_list_id" >
                             </div>
                         </div>
                     
@@ -1004,7 +998,8 @@ button, input, optgroup, select, textarea {
                             <div class="form-group">
                                 <label for="jobname">Огноо</label>
                                 <input type="date" class="form-control" id="progress_date" name="progress_date" >
-                                <input type="text" class="form-control" id="progress_order" name="progress_order" >
+                                <input type="hidden" class="form-control" id="progress_order" name="progress_order" >
+                                <input type="hidden" class="form-control" id="progress_tender" name="progress_tender" >
                             </div>
                         </div>
                        
@@ -1056,7 +1051,8 @@ button, input, optgroup, select, textarea {
                       
                         <div class="col-8">
                             <div class="form-group">
-                                <input type="text" class="form-control" id="complaint_order" name="complaint_order" >
+                                <input type="hidden" class="form-control" id="complaint_tender" name="complaint_tender" >
+                                <input type="hidden" class="form-control" id="complaint_order" name="complaint_order" >
                                 <label for="jobname">Тайлбар</label>
                                 <input type="text" class="form-control" id="complaint_comment" name="complaint_comment">
                             </div>
@@ -1446,19 +1442,15 @@ $('.orderinformation').on('click',function(){
 
         $("#infotender tbody").append(sHtml);    
          });
-         $('#tender_list_id').empty();
-
-            $.each(data,function(i,qwe){
-                $('#tender_list_id').append($('<option>', {
-                    value: qwe.tenderid,
-                    text: qwe.tenderno
-                }));
-            });
+ 
         });
     
     });
     function gettenderinfo(hid){
         $.get('getTender/' + hid, function (data) {
+                $('#tender_list_id').val(data[0].tenderid);
+                $('#progress_tender').val(data[0].tenderid);
+                $('#complaint_tender').val(data[0].tenderid);
                 $('#t_tender_id').text(data[0].tenderid);
                 $('#t_tender_no').text(data[0].tenderno);
                 $('#t_tender_selection').text(data[0].contracttypename);
