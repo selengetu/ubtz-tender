@@ -357,9 +357,7 @@ button, input, optgroup, select, textarea {
                         <div class="card-body">
                         <table class="table table-bordered" >
                             <tbody >
-                            <tr>
-                            <td style="padding:0rem;"><button type="button" style="font-size:0.8rem;text-align:left" class="btn btn-block" style="text-align:left" id="btn_detail">  <img src="{{ asset('img/order.png') }}" class="icondetail">Захиалгын дэлгэрэнгүй</button></td>
-                            </tr>
+                           
                             <tr>
                             <td style="padding:0rem;"><button type="button" style="font-size:0.8rem;text-align:left" class="btn btn-block" style="text-align:left" id="btn_1">  <img src="{{ asset('img/tender.png') }}" class="icondetail">  Тендер</button></td>
                             </tr>
@@ -374,6 +372,9 @@ button, input, optgroup, select, textarea {
                             <td style="padding:0rem">
                             <button type="button" class="btn btn-block"style="font-size:0.8rem;text-align:left" id="btn_4"><img src="{{ asset('img/warning.png') }}" id="btn_4" class="icondetail"> Үнэлгээ/мэдэгдэл</button>
                             </td>
+                            </tr>
+                            <tr>
+                            <td style="padding:0rem;"><button type="button" style="font-size:0.8rem;text-align:left" class="btn btn-block" style="text-align:left" id="btn_detail">  <img src="{{ asset('img/order.png') }}" class="icondetail">Захиалгын дэлгэрэнгүй</button></td>
                             </tr>
                             </tbody></table>
                       
