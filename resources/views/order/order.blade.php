@@ -381,7 +381,7 @@ button, input, optgroup, select, textarea {
                         </div>
                         </div>
                         <div class="col-md-9">
-                        <div class="card card-primary card-list" style="font-size:12px; display:none" id="card_1">
+                        <div class="card card-primary card-list" style="font-size:12px;" id="card_1">
                     <div class="card-header">
                         <h3 class="card-title">Тендерийн мэдээлэл</h3>
                         <div class="card-tools">
@@ -417,7 +417,7 @@ button, input, optgroup, select, textarea {
                    
                     </div>
                 </div>
-                <div class="card card-primary card-list" style="font-size:12px;" id="card_main">
+                <div class="card card-primary card-list" style="font-size:12px; display:none" id="card_main">
                     <div class="card-header">
                         <h3 class="card-title">Захиалгын мэдээлэл</h3>
                         <div class="card-tools">
@@ -462,7 +462,7 @@ button, input, optgroup, select, textarea {
                    
                 
                 </div>
-                        <div class="card card-primary card-list" style="font-size:12px;" id="card_detail">
+                        <div class="card card-primary card-list" style="font-size:12px; display:none" id="card_detail">
                     <div class="card-header">
                         <h3 class="card-title">Захиалгын дэлгэрэнгүй</h3>
                         <div class="card-tools">
