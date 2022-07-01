@@ -301,8 +301,8 @@ button, input, optgroup, select, textarea {
                             <td>{{$item->order_count}}</td>
                             <td>{{$item->tenderselectionname}}</td>
                             <td>{{$item->order_budget_source_name}}</td>
-                            <td>{{ number_format($item->order_budget, 2)}}</td>
-                            <td>{{ number_format($item->order_thisyear, 2)}}</td>
+                            <td>{{number_format($item->order_budget, 2)}}</td>
+                            <td>{{number_format($item->order_thisyear, 2)}}</td>
                             <td>{{$item->order_date}}</td>
                             <td>{{$item->name}}</td>
                             <td>{{$item->order_comment}}</td> 
@@ -546,7 +546,6 @@ button, input, optgroup, select, textarea {
                     <table class="table table-bordered table-hover table-striped" id="tbody4">
                         <thead >                        
                             <th>Огноо</th>
-                            <th>Төлөв</th>
                             <th>Тайлбар</th>
                             <th></th>
                         </thead>
@@ -878,16 +877,7 @@ button, input, optgroup, select, textarea {
                             </div>
                         </div> 
                        
-                        <div class="col-4">
-                            <div class="form-group">
-                                <label for="jobname">Тендерийн явц</label>
-                                <select class="form-control" name="tender_state" id="tender_state" >
-                                @foreach ($tenderstate as $item)
-                                        <option value="{{ $item->state_id }}">{{ $item->state_name }}</option>
-                                    @endforeach
-                            </select>
-                            </div>
-                        </div>
+                     
                        
                         <div class="col-8">
                             <div class="form-group">
@@ -924,7 +914,7 @@ button, input, optgroup, select, textarea {
                                 <label for="jobname">Багцын нэр</label>
                                 <input type="text" class="form-control" id="pack_name" name="pack_name">
                                 <input type="hidden" class="form-control" id="pack_order_id" name="pack_order_id">
-                                <input type="text" class="form-control" id="tender_list_id" name="tender_list_id" >
+                                <input type="hidden" class="form-control" id="tender_list_id" name="tender_list_id" >
                             </div>
                         </div>
                     
@@ -993,9 +983,12 @@ button, input, optgroup, select, textarea {
                        
                         <div class="col-4">
                             <div class="form-group">
-                                <label for="jobname">Төлөв</label>
-                                <input type="text" class="form-control" id="progress_state" name="progress_state" >
-                              
+                                <label for="jobname">Тендерийн явц</label>
+                                <select class="form-control" name="progress_state" id="progress_state" >
+                                @foreach ($tenderstate as $item)
+                                        <option value="{{ $item->state_id }}">{{ $item->state_name }}</option>
+                                    @endforeach
+                            </select>
                             </div>
                         </div>
                       
@@ -1327,6 +1320,9 @@ $('.orderinformation').on('click',function(){
     $("#infonews tbody").empty();    
     $("#infotender tbody").empty();   
     $("#infodetails tbody").empty();  
+    $("#infopack tbody").empty();   
+    $("#tbody3 tbody").empty();
+    $("#tbody4 tbody").empty();
                 $('#tender_list_id').val('');
                 $('#progress_tender').val('');
                 $('#complaint_tender').val('');
@@ -1406,7 +1402,9 @@ $('.orderinformation').on('click',function(){
     
     });
     function gettenderinfo(hid){
-               
+        $("#tbody2 tbody").empty();
+        $("#tbody3 tbody").empty();
+        $("#tbody4 tbody").empty();
         $.get('getTender/' + hid, function (data) {
                 $('#tender_list_id').val(data[0].tenderid);
                 $('#progress_tender').val(data[0].tenderid);
@@ -1445,7 +1443,7 @@ $('.orderinformation').on('click',function(){
         $.each(data,function(i,qwe){
             var sHtml = "<tr>" +
         "   <td class='m3'>" + qwe.progress_date + "</td>" +
-         "   <td class='m3'>" + qwe.progress_state + "</td>" +
+         "   <td class='m3'>" + qwe.tender_state + "</td>" +
         "   <td class='m3'>" + qwe.progress_comment + "</td>" +
         "   <td class='m3'>" + qwe.progress_employee + "</td>" +
          "   <td class='m3'> <button class='btn btn-primary btn-xs' data-toggle='modal' onclick='progressEdit("+ qwe.progress_id +")' data-target='#progressModal'><i class='fa fa-pen'></i></button></td>"+
@@ -1460,7 +1458,6 @@ $('.orderinformation').on('click',function(){
         $.each(data,function(i,qwe){
             var sHtml = "<tr>" +
         "   <td class='m3'>" + qwe.complaint_date + "</td>" +
-         "   <td class='m3'>" + qwe.complaint_state + "</td>" +
         "   <td class='m3'>" + qwe.complaint_comment+ "</td>" +
          "   <td class='m3'> <button class='btn btn-primary btn-xs' data-toggle='modal' onclick='complaintEdit("+ qwe.complaint_id +")' data-target='#complaintModal'><i class='fa fa-pen'></i></button></td>"+
         "</tr>";
@@ -1499,7 +1496,7 @@ $('.orderinformation').on('click',function(){
                 $('#order_thisyear').val('');
                 $('#order_date').val('');
                 $('#order_comment').val('');
-                $('#order_id').val(0);
+                $('#order_id').val('');
                 document.getElementById("exampleModalLabel").innerHTML="Шинээр захиалга нэмэх";
         }
     }

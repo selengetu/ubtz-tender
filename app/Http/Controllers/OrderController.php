@@ -13,7 +13,7 @@ class OrderController extends Controller {
 
     public function index()
     {
-        $mstate= DB::select("select * from CONST_MAIN_STATE t order by state_name");
+ 
         $ostate= DB::select("select * from CONST_ORDER_STATE t order by state_name");
         $source= DB::select("select * from CONST_ORDER_BUDGET_SOURCE t ");
         $selection= DB::select("select * from CONST_ORDER_SELECTIONS t ");
@@ -24,17 +24,17 @@ class OrderController extends Controller {
         $tendertype= DB::select("select * from CONST_CONTRACT_TYPES t ");
         $tenderstate= DB::select("select t.* from CONST_TENDER_STATE t ");
         $employee= DB::select("select t.* from USERS t order by name ");
-        return view('order.order',compact('dep','ostate','mstate','source','selection','unit','order','type','tendertype','tenderstate','employee'));
+        return view('order.order',compact('dep','ostate','source','selection','unit','order','type','tendertype','tenderstate','employee'));
     }
     public function saveOrder(Request $request)
     {
-        
+      
         if($request->order_id ==  null){
         DB::insert("insert into ORDERS
-        ( ORDER_NAME, ORDER_DATE, ORDER_UNIT, ORDER_COUNT, ORDER_SELECTION, ORDER_BUDGET_SOURCE, ORDER_BUDGET, ORDER_THISYEAR, ORDER_STATE, ORDER_COMMENT, ORDER_EMPLOYEE)
+        ( ORDER_NAME, ORDER_DATE, ORDER_UNIT, ORDER_COUNT, ORDER_SELECTION, ORDER_BUDGET_SOURCE, ORDER_BUDGET, ORDER_THISYEAR, ORDER_COMMENT, ORDER_EMPLOYEE)
         values
         ( '$request->order_name', '$request->order_date', $request->order_unit, '$request->order_count', '$request->order_selection', '$request->order_budget_source'
-        , '$request->order_budget','$request->order_thisyear', $request->order_state, '$request->order_comment', '$request->order_employee')");   
+        , '$request->order_budget','$request->order_thisyear', '$request->order_comment', '$request->order_employee')");   
           }
             else{
     
@@ -42,7 +42,7 @@ class OrderController extends Controller {
                 ->where('order_id', $request->order_id)
                 ->update(['order_name' => $request->order_name,'order_date' => $request->order_date,'order_unit' => $request->order_unit,'order_count' => $request->order_count,
                 'order_selection' => $request->order_selection,'order_budget_source' => $request->order_budget_source,'order_budget' => $request->order_budget,
-                'order_thisyear' => $request->order_thisyear,'order_state' => $request->order_state,'order_comment' => $request->order_comment,'order_employee' => $request->order_employee]);        
+                'order_thisyear' => $request->order_thisyear,'order_comment' => $request->order_comment,'order_employee' => $request->order_employee]);        
             }
       
         return back();
