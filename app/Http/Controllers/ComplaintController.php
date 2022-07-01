@@ -32,11 +32,11 @@ class ComplaintController extends Controller {
     
     public function getcomplaints($hid)
     {
-        return DB::select("select * from TENDER_COMPLAINT t where t.complaint_order='$hid'");
+        return DB::select("select * from V_TENDER_COMPLAINT t where t.complaint_tender='$hid'");
     }
     public function getcomplaint($hid)
     {
-        return DB::select("select * from TENDER_COMPLAINT t where t.complaint_id='$hid'");
+        return DB::select("select * from V_TENDER_COMPLAINT t where t.complaint_id='$hid'");
     }
    
 }

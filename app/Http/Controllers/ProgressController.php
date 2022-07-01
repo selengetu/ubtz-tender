@@ -33,11 +33,11 @@ class ProgressController extends Controller {
     
     public function getprogresses($hid)
     {
-        return DB::select("select * from TENDER_PROGRESS t where t.progress_order='$hid'");
+        return DB::select("select * from V_TENDER_PROGRESS t where t.progress_tender='$hid'");
     }
     public function getprogress($hid)
     {
-        return DB::select("select * from TENDER_PROGRESS t where t.progress_id='$hid'");
+        return DB::select("select * from V_TENDER_PROGRESS t where t.progress_id='$hid'");
     }
    
 }
