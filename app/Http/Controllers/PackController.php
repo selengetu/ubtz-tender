@@ -33,7 +33,7 @@ class PackController extends Controller {
     
     public function getpacks($hid)
     {
-        return DB::select("select * from V_TENDER_PACK t where t.pack_order_id='$hid'");
+        return DB::select("select * from V_TENDER_PACK t where t.pack_tender='$hid'");
     }
     public function getpack($hid)
     {
