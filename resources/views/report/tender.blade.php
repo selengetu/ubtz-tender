@@ -24,11 +24,8 @@
     <div class="col-md-12">
         <div class="card" style="font-size:12px;">
          
-            <div class="card-header">
-            
-            </div>
                 <div class="table-responsive"  id="acontent">
-                    <h4><center><strong>Тендерийн тайлан</strong></center></h4><br>
+                    <h4><center><strong><br>Тендерийн тайлан</strong></center></h4><br>
                     <table class="table table-bordered table-striped" id="myTable">
                         <thead >
                             <th></th>
