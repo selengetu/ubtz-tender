@@ -391,7 +391,7 @@ button, input, optgroup, select, textarea {
                     <div class="table-responsive">
                     <table class="table table-bordered table-striped" id="infotender">
                         <thead >
-                          
+                        <th></th>
                             <th>Шалгаруулалтын төрөл</th>
                             <th>Тендерийн №</th>
                             <th>Төрөл</th>
@@ -404,7 +404,7 @@ button, input, optgroup, select, textarea {
                             <th>Багцын тоо </th>
                             <th>Үнэлгээ</th>
                             <th>Тайлбар</th>
-                            <th></th>
+                            
                         </thead>
                         <tbody id="tbody">
                     
@@ -1274,6 +1274,26 @@ button, input, optgroup, select, textarea {
             "pageLength": 25
         } 
     );
+    $('#formTender').submit(function(event){
+        var order = $('#torder_id').val();
+        event.preventDefault();
+            $.ajax({
+                type: 'POST',
+                url: 'saveTender',
+                data: $('form#formTender').serialize(),
+                success: function(){
+                    alert('Амжилттай');
+                   getTenders(order);
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    if (jqXHR.status == 500) {
+                        alert('Internal error: ' + jqXHR.responseText);
+                    } else {
+                        alert('Unexpected error.');
+                    }
+                }
+            })  
+    });
     $('.btn-block').on('click',function(){
     $('.btn-block').removeClass('ButtonClicked');
     $('.card-list').hide();
@@ -1370,38 +1390,14 @@ $('.orderinformation').on('click',function(){
                
          });
         });
-   
+        getTenders(itag);
   
-        $.get('getTenders/'+itag,function(data){
-           if(data[0]){
-            gettenderinfo(data[0].tenderid);
-           }
-           
-        $.each(data,function(i,qwe){
-            var sHtml = "<tr  onclick=gettenderinfo("+ qwe.tenderid +") tag='"+ qwe.tenderid +"'>" +
-        "   <td>" + qwe.contracttypename + "</td>" +
-        "   <td><b style='color:#007bff'><u>" + qwe.tenderno + "</u></b></td>" +
-        "    <td>" + qwe.tendertypename + "</td>" +
-         "   <td>" + qwe.tender_call_at + "</td>"+
-         "   <td>" + qwe.tender_budget + "</td>" +
-        "   <td>" + qwe.tender_invitationcode + "</td>" +
-        "   <td>" + qwe.tender_invitation_at + "</td>" +
-        "    <td>" + qwe.tender_open_at + "</td>" +
-        "   <td>" + qwe.tender_validdate + "</td>" +
-         "   <td>" + qwe.packcount + "</td>"+
-         "    <td>" + qwe.assessment + "</td>" +
-        "   <td>" + qwe.tendertitle + "</td>" +
       
-         "   <td> <button class='btn btn-primary btn-xs' data-toggle='modal' onclick='tenderEdit("+ qwe.tenderid +")' data-target='#tenderModal'><i class='fa fa-pen'></i></button></td>"+
-        "</tr>";
-
-        $("#infotender tbody").append(sHtml);    
-         });
- 
-        });
     
     });
     function gettenderinfo(hid){
+        
+       
         $("#tbody2 tbody").empty();
         $("#tbody3 tbody").empty();
         $("#tbody4 tbody").empty();
@@ -1466,6 +1462,37 @@ $('.orderinformation').on('click',function(){
                
                
          });
+        });
+    }
+    function getTenders(itag){
+        $("#infotender tbody").empty();    
+        $.get('getTenders/'+itag,function(data){
+           if(data[0]){
+            gettenderinfo(data[0].tenderid);
+           }
+           
+        $.each(data,function(i,qwe){
+            var sHtml = "<tr  onclick=gettenderinfo("+ qwe.tenderid +") tag='"+ qwe.tenderid +"'>" +
+            "   <td> <button class='btn btn-primary btn-xs' data-toggle='modal' onclick='tenderEdit("+ qwe.tenderid +")' data-target='#tenderModal'><i class='fa fa-pen'></i></button></td>"+
+        "   <td>" + qwe.contracttypename + "</td>" +
+        "   <td><b style='color:#007bff'><u>" + qwe.tenderno + "</u></b></td>" +
+        "    <td>" + qwe.tendertypename + "</td>" +
+         "   <td>" + qwe.tender_call_at + "</td>"+
+         "   <td>" + qwe.tender_budget + "</td>" +
+        "   <td>" + qwe.tender_invitationcode + "</td>" +
+        "   <td>" + qwe.tender_invitation_at + "</td>" +
+        "    <td>" + qwe.tender_open_at + "</td>" +
+        "   <td>" + qwe.tender_validdate + "</td>" +
+         "   <td>" + qwe.packcount + "</td>"+
+         "    <td>" + qwe.assessment + "</td>" +
+        "   <td>" + qwe.tendertitle + "</td>" +
+      
+       
+        "</tr>";
+
+        $("#infotender tbody").append(sHtml);    
+         });
+ 
         });
     }
     function orderEdit(hid){
