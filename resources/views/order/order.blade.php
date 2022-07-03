@@ -1294,6 +1294,26 @@ button, input, optgroup, select, textarea {
                 }
             })  
     });
+    $('#formPack').submit(function(event){
+        var tender = $('#tender_list_id').val();
+        event.preventDefault();
+            $.ajax({
+                type: 'POST',
+                url: 'savePack',
+                data: $('form#formPack').serialize(),
+                success: function(){
+                    alert('Амжилттай');
+                    gettenderpacks(tender);
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    if (jqXHR.status == 500) {
+                        alert('Internal error: ' + jqXHR.responseText);
+                    } else {
+                        alert('Unexpected error.');
+                    }
+                }
+            })  
+    });
     $('.btn-block').on('click',function(){
     $('.btn-block').removeClass('ButtonClicked');
     $('.card-list').hide();
@@ -1418,23 +1438,8 @@ $('.orderinformation').on('click',function(){
                 $('#t_tender_packcount').text(data[0].packcount);
                 $('#t_tender_assessment').text(data[0].assessment);
             });
-            $.get('getpacks/'+hid,function(data){
-        $.each(data,function(i,qwe){
-            var sHtml = "<tr>" +
-        "   <td class='m3'>" + qwe.pack_name + "</td>" +
-         "   <td class='m3'>" + qwe.pack_date + "</td>" +
-        "   <td class='m3'>" + qwe.pack_budget + "</td>" +
-        "   <td class='m3'>" + qwe.pack_contract_at + "</td>" +
-        "   <td class='m3'>" + qwe.pack_suspended_at + "</td>" +
-        "   <td class='m3'>" + qwe.pack_complaint_at + "</td>" +
-         "   <td class='m3'> <button class='btn btn-primary btn-xs' data-toggle='modal' onclick='packEdit("+ qwe.pack_id +")' data-target='#packModal'><i class='fa fa-pen'></i></button></td>"+
-        "</tr>";
-            
-        $("#tbody2").append(sHtml);
-               
-               
-         });
-        });
+            gettenderpacks(hid);
+     
         $.get('getprogresses/'+hid,function(data){
         $.each(data,function(i,qwe){
             var sHtml = "<tr>" +
@@ -1495,6 +1500,26 @@ $('.orderinformation').on('click',function(){
  
         });
     }
+    function gettenderpacks(hid){
+        $("#tbody2").empty();
+        $.get('getpacks/'+hid,function(data){
+        $.each(data,function(i,qwe){
+            var sHtml = "<tr>" +
+        "   <td class='m3'>" + qwe.pack_name + "</td>" +
+         "   <td class='m3'>" + qwe.pack_date + "</td>" +
+        "   <td class='m3'>" + qwe.pack_budget + "</td>" +
+        "   <td class='m3'>" + qwe.pack_contract_at + "</td>" +
+        "   <td class='m3'>" + qwe.pack_suspended_at + "</td>" +
+        "   <td class='m3'>" + qwe.pack_complaint_at + "</td>" +
+         "   <td class='m3'> <button class='btn btn-primary btn-xs' data-toggle='modal' onclick='packEdit("+ qwe.pack_id +")' data-target='#packModal'><i class='fa fa-pen'></i></button></td>"+
+        "</tr>";
+            
+        $("#tbody2").append(sHtml);
+               
+               
+         });
+        });
+    }
     function orderEdit(hid){
         if(hid){
             $.get('getorder/' + hid, function (data) {
@@ -1550,8 +1575,8 @@ $('.orderinformation').on('click',function(){
     }
     function packEdit(hid){
         if(hid){
-            $.get('getpacks/' + hid, function (data) {
-                $('#pack_name').val(data[0].pack_name).trigger('change');
+            $.get('getpack/' + hid, function (data) {
+                $('#pack_name').val(data[0].pack_name);
                 $('#pack_date').val(data[0].pack_date);
                 $('#pack_budget').val(data[0].pack_budget);
                 $('#pack_contract_at').val(data[0].pack_contract_at);
