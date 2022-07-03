@@ -488,7 +488,7 @@ button, input, optgroup, select, textarea {
                     <div class="card-header">
                         <h3 class="card-title">Багцын мэдээлэл</h3>
                         <div class="card-tools">
-                        <button class='btn btn-primary btn-xs' data-toggle="modal" data-target="#packModal"><i class='fa fa-plus'></i></button>
+                        <button class='btn btn-primary btn-xs' data-toggle="modal" data-target="#packModal"  onclick='packEdit()'><i class='fa fa-plus'></i></button>
                         </div>
                     </div>
                     <div class="card-body">
@@ -513,7 +513,7 @@ button, input, optgroup, select, textarea {
                     <div class="card-header">
                         <h3 class="card-title">Явцын мэдээлэл</h3>
                         <div class="card-tools">
-                        <button class='btn btn-primary btn-xs' data-toggle="modal" data-target="#progressModal"><i class='fa fa-plus'></i></button>
+                        <button class='btn btn-primary btn-xs' data-toggle="modal" data-target="#progressModal" onclick='progressEdit()'><i class='fa fa-plus'></i></button>
                         </div>
                     </div>
                     <div class="card-body">
@@ -537,7 +537,7 @@ button, input, optgroup, select, textarea {
                     <div class="card-header">
                         <h3 class="card-title">Үнэлгээ/мэдэгдэл</h3>
                         <div class="card-tools">
-                        <button class='btn btn-primary btn-xs' data-toggle="modal" data-target="#complaintModal"><i class='fa fa-plus'></i></button>
+                        <button class='btn btn-primary btn-xs' data-toggle="modal" data-target="#complaintModal" onclick='complaintEdit()'><i class='fa fa-plus'></i></button>
                         </div>
                     </div>
                     <div class="card-body">
@@ -1354,6 +1354,26 @@ button, input, optgroup, select, textarea {
                 }
             })  
     });
+    $('#formDetail').submit(function(event){
+        var order = $('#dorder_id').val();
+        event.preventDefault();
+            $.ajax({
+                type: 'POST',
+                url: 'saveOrderDetail',
+                data: $('form#formDetail').serialize(),
+                success: function(){
+                    alert('Амжилттай');
+                    getorderdetails(order);
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    if (jqXHR.status == 500) {
+                        alert('Internal error: ' + jqXHR.responseText);
+                    } else {
+                        alert('Unexpected error.');
+                    }
+                }
+            })  
+    });
     $('.btn-block').on('click',function(){
     $('.btn-block').removeClass('ButtonClicked');
     $('.card-list').hide();
@@ -1435,6 +1455,14 @@ $('.orderinformation').on('click',function(){
                 document.getElementById("exampleModalLabel").innerHTML="Захиалгын мэдээллийг засварлах";
             });
 
+            getorderdetails(itag);
+        getTenders(itag);
+  
+      
+    
+    });
+    function getorderdetails(itag){
+        $("#infodetails tbody").empty();
         $.get('getorderdetails/'+itag,function(data){
         $.each(data,function(i,qwe){
             var sHtml = "<tr>" +
@@ -1450,11 +1478,8 @@ $('.orderinformation').on('click',function(){
                
          });
         });
-        getTenders(itag);
-  
-      
-    
-    });
+    }
+
     function gettenderinfo(hid){
         
        
@@ -1641,7 +1666,7 @@ $('.orderinformation').on('click',function(){
                 $('#pack_contract_at').val('');
                 $('#pack_suspended_at').val('');
                 $('#pack_complaint_at').val('');
-                $('#pack_id').val(0);
+                $('#pack_id').val('');
                 document.getElementById("exampleModalLabel").innerHTML="Шинээр захиалга нэмэх";
         }
     }
@@ -1661,12 +1686,12 @@ $('.orderinformation').on('click',function(){
                 $('#progress_state').val('');
                 $('#progress_comment').val('');
                 $('#progress_employee').val('');
-                $('#progress_id').val(0);
+                $('#progress_id').val('');
         }
     }
     function complaintEdit(hid){
         if(hid){
-            $.get('getcomplaints/' + hid, function (data) {
+            $.get('getcomplaint/' + hid, function (data) {
                 $('#complaint_date').val(data[0].complaint_date);
                 $('#complaint_state').val(data[0].complaint_state);
                 $('#complaint_comment').val(data[0].complaint_comment);
@@ -1678,7 +1703,7 @@ $('.orderinformation').on('click',function(){
                 $('#complaint_date').val('');
                 $('#complaint_state').val('');
                 $('#complaint_comment').val('');
-                $('#complaint_id').val(0);
+                $('#complaint_id').val('');
 
         }
     }

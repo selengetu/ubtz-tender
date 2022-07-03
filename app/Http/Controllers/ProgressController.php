@@ -16,17 +16,16 @@ class ProgressController extends Controller {
         $id= Auth::user()->id;
         if($request->progress_id ==  null){
             DB::insert("insert into tender_progress
-            (progress_state, progress_date, progress_comment, progress_employee, progress_tender, progress_order, ADDED_USER)
+            (progress_state, progress_date, progress_comment, progress_tender, progress_order, ADDED_USER)
             values
-            ('$request->progress_state', '$request->progress_date','$request->progress_comment','$request->progress_employee','$request->progress_tender','$request->progress_order', '$id')");
+            ('$request->progress_state', '$request->progress_date','$request->progress_comment','$request->progress_tender','$request->progress_order', '$id')");
             
               }
                 else{
         
                     $orders = DB::table('tender_progress')
                     ->where('progress_id', $request->progress_id)
-                    ->update(['progress_state' => $request->progress_state,'progress_date' => $request->progress_date,'progress_comment' => $request->progress_comment,'progress_employee' => $request->progress_employee,
-                    'progress_tender' =>  $request->progress_tender]);        
+                    ->update(['progress_state' => $request->progress_state,'progress_date' => $request->progress_date,'progress_comment' => $request->progress_comment, 'progress_tender' =>  $request->progress_tender]);        
                 }
 
         return 1;

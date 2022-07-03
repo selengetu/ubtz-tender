@@ -66,7 +66,7 @@ class OrderController extends Controller {
                     ->where('order_detail_id', $request->detail_id)
                     ->update(['dep_id' => $request->dep_id,'order_count' => $request->dorder_count_detail,'order_budget' => $request->dorder_budget,'order_performance' => $request->dorder_performance]);        
                 }
-                return back();
+                return 1;
     }
     public function getorderdetails($hid)
     {

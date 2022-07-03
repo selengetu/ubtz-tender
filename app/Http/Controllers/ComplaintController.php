@@ -24,7 +24,7 @@ class ComplaintController extends Controller {
                 else{
         
                     $orders = DB::table('tender_complaint')
-                    ->where('pack_id', $request->pack_id)
+                    ->where('complaint_id', $request->complaint_id)
                     ->update(['complaint_comment' => $request->complaint_comment, 'complaint_date' => $request->complaint_date]);        
                 }
 
