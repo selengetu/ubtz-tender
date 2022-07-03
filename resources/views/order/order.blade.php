@@ -519,7 +519,7 @@ button, input, optgroup, select, textarea {
                     <div class="card-body">
                     <div class="table-responsive">
                     <br>
-                    <table class="table table-bordered table-hover table-striped" id="tbody3">
+                    <table class="table table-bordered table-hover table-striped">
                         <thead >                        
                             <th>Огноо</th>
                             <th>Явцын төлөв</th>
@@ -527,7 +527,7 @@ button, input, optgroup, select, textarea {
                             <th>Ажилтан</th>
                             <th></th>
                         </thead>
-                        <tbody id="tbody1">                   
+                        <tbody id="tbody3">                   
                         </tbody>
                     </table>
                 </div>
@@ -543,13 +543,13 @@ button, input, optgroup, select, textarea {
                     <div class="card-body">
                     <div class="table-responsive">
                     <br>
-                    <table class="table table-bordered table-hover table-striped" id="tbody4">
+                    <table class="table table-bordered table-hover table-striped">
                         <thead >                        
                             <th>Огноо</th>
                             <th>Тайлбар</th>
                             <th></th>
                         </thead>
-                        <tbody id="tbody">                   
+                        <tbody id="tbody4">                   
                         </tbody>
                     </table>
                 </div>
@@ -1314,6 +1314,46 @@ button, input, optgroup, select, textarea {
                 }
             })  
     });
+    $('#formProgress').submit(function(event){
+        var tender = $('#progress_tender').val();
+        event.preventDefault();
+            $.ajax({
+                type: 'POST',
+                url: 'saveProgress',
+                data: $('form#formProgress').serialize(),
+                success: function(){
+                    alert('Амжилттай');
+                    gettenderprogresses(tender);
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    if (jqXHR.status == 500) {
+                        alert('Internal error: ' + jqXHR.responseText);
+                    } else {
+                        alert('Unexpected error.');
+                    }
+                }
+            })  
+    });
+    $('#formComplaint').submit(function(event){
+        var tender = $('#complaint_tender').val();
+        event.preventDefault();
+            $.ajax({
+                type: 'POST',
+                url: 'saveComplaint',
+                data: $('form#formComplaint').serialize(),
+                success: function(){
+                    alert('Амжилттай');
+                    gettendercomplaints(tender);
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    if (jqXHR.status == 500) {
+                        alert('Internal error: ' + jqXHR.responseText);
+                    } else {
+                        alert('Unexpected error.');
+                    }
+                }
+            })  
+    });
     $('.btn-block').on('click',function(){
     $('.btn-block').removeClass('ButtonClicked');
     $('.card-list').hide();
@@ -1361,8 +1401,8 @@ $('.orderinformation').on('click',function(){
     $("#infotender tbody").empty();   
     $("#infodetails tbody").empty();  
     $("#infopack tbody").empty();   
-    $("#tbody3 tbody").empty();
-    $("#tbody4 tbody").empty();
+    $("#tbody3").empty();
+    $("#tbody4").empty();
                 $('#tender_list_id').val('');
                 $('#progress_tender').val('');
                 $('#complaint_tender').val('');
@@ -1418,9 +1458,9 @@ $('.orderinformation').on('click',function(){
     function gettenderinfo(hid){
         
        
-        $("#tbody2 tbody").empty();
-        $("#tbody3 tbody").empty();
-        $("#tbody4 tbody").empty();
+        $("#tbody2").empty();
+        $("#tbody3").empty();
+        $("#tbody4").empty();
         $.get('getTender/' + hid, function (data) {
                 $('#tender_list_id').val(data[0].tenderid);
                 $('#progress_tender').val(data[0].tenderid);
@@ -1439,35 +1479,9 @@ $('.orderinformation').on('click',function(){
                 $('#t_tender_assessment').text(data[0].assessment);
             });
             gettenderpacks(hid);
-     
-        $.get('getprogresses/'+hid,function(data){
-        $.each(data,function(i,qwe){
-            var sHtml = "<tr>" +
-        "   <td class='m3'>" + qwe.progress_date + "</td>" +
-         "   <td class='m3'>" + qwe.tender_state + "</td>" +
-        "   <td class='m3'>" + qwe.progress_comment + "</td>" +
-        "   <td class='m3'>" + qwe.progress_employee + "</td>" +
-         "   <td class='m3'> <button class='btn btn-primary btn-xs' data-toggle='modal' onclick='progressEdit("+ qwe.progress_id +")' data-target='#progressModal'><i class='fa fa-pen'></i></button></td>"+
-        "</tr>";
-            
-        $("#tbody3").append(sHtml);
-               
-               
-         });
-        });
-        $.get('getcomplaints/'+hid,function(data){
-        $.each(data,function(i,qwe){
-            var sHtml = "<tr>" +
-        "   <td class='m3'>" + qwe.complaint_date + "</td>" +
-        "   <td class='m3'>" + qwe.complaint_comment+ "</td>" +
-         "   <td class='m3'> <button class='btn btn-primary btn-xs' data-toggle='modal' onclick='complaintEdit("+ qwe.complaint_id +")' data-target='#complaintModal'><i class='fa fa-pen'></i></button></td>"+
-        "</tr>";
-            
-        $("#tbody4").append(sHtml);
-               
-               
-         });
-        });
+            gettenderprogresses(hid);
+            gettendercomplaints(hid);
+ 
     }
     function getTenders(itag){
         $("#infotender tbody").empty();    
@@ -1515,6 +1529,40 @@ $('.orderinformation').on('click',function(){
         "</tr>";
             
         $("#tbody2").append(sHtml);
+               
+               
+         });
+        });
+    }
+    function gettenderprogresses(hid){
+        $("#tbody3").empty();
+        $.get('getprogresses/'+hid,function(data){
+        $.each(data,function(i,qwe){
+            var sHtml = "<tr>" +
+        "   <td class='m3'>" + qwe.progress_date + "</td>" +
+         "   <td class='m3'>" + qwe.tender_state + "</td>" +
+        "   <td class='m3'>" + qwe.progress_comment + "</td>" +
+        "   <td class='m3'>" + qwe.progress_employee + "</td>" +
+         "   <td class='m3'> <button class='btn btn-primary btn-xs' data-toggle='modal' onclick='progressEdit("+ qwe.progress_id +")' data-target='#progressModal'><i class='fa fa-pen'></i></button></td>"+
+        "</tr>";
+            
+        $("#tbody3").append(sHtml);
+               
+               
+         });
+        });
+    }
+    function gettendercomplaints(hid){
+        $("#tbody4").empty();
+    $.get('getcomplaints/'+hid,function(data){
+        $.each(data,function(i,qwe){
+            var sHtml = "<tr>" +
+        "   <td class='m3'>" + qwe.complaint_date + "</td>" +
+        "   <td class='m3'>" + qwe.complaint_comment+ "</td>" +
+         "   <td class='m3'> <button class='btn btn-primary btn-xs' data-toggle='modal' onclick='complaintEdit("+ qwe.complaint_id +")' data-target='#complaintModal'><i class='fa fa-pen'></i></button></td>"+
+        "</tr>";
+            
+        $("#tbody4").append(sHtml);
                
                
          });
@@ -1599,7 +1647,7 @@ $('.orderinformation').on('click',function(){
     }
     function progressEdit(hid){
         if(hid){
-            $.get('getprogresses/' + hid, function (data) {
+            $.get('getprogress/' + hid, function (data) {
                 $('#progress_date').val(data[0].progress_date);
                 $('#progress_state').val(data[0].progress_state);
                 $('#progress_comment').val(data[0].progress_comment);

@@ -28,13 +28,13 @@ class OrderController extends Controller {
     }
     public function saveOrder(Request $request)
     {
-      
+        $id= Auth::user()->id;
         if($request->order_id ==  null){
         DB::insert("insert into ORDERS
-        ( ORDER_NAME, ORDER_DATE, ORDER_UNIT, ORDER_COUNT, ORDER_SELECTION, ORDER_BUDGET_SOURCE, ORDER_BUDGET, ORDER_THISYEAR, ORDER_COMMENT, ORDER_EMPLOYEE)
+        ( ORDER_NAME, ORDER_DATE, ORDER_UNIT, ORDER_COUNT, ORDER_SELECTION, ORDER_BUDGET_SOURCE, ORDER_BUDGET, ORDER_THISYEAR, ORDER_COMMENT, ORDER_EMPLOYEE, ADDED_USER)
         values
         ( '$request->order_name', '$request->order_date', $request->order_unit, '$request->order_count', '$request->order_selection', '$request->order_budget_source'
-        , '$request->order_budget','$request->order_thisyear', '$request->order_comment', '$request->order_employee')");   
+        , '$request->order_budget','$request->order_thisyear', '$request->order_comment', '$request->order_employee', '$id')");   
           }
             else{
     
@@ -53,12 +53,12 @@ class OrderController extends Controller {
     }
     public function saveOrderDetail(Request $request)
     {
-
+        $id= Auth::user()->id;
         if($request->detail_id ==  null){
             DB::insert("insert into ORDER_DETAIL
-                ( ORDER_ID, DEP_ID, ORDER_COUNT, ORDER_BUDGET, ORDER_PERFORMANCE)
+                ( ORDER_ID, DEP_ID, ORDER_COUNT, ORDER_BUDGET, ORDER_PERFORMANCE, ADDED_USER)
                 values
-                ( '$request->dorder_id', '$request->dep_id', '$request->dorder_count_detail','$request->dorder_budget','$request->dorder_performance')");
+                ( '$request->dorder_id', '$request->dep_id', '$request->dorder_count_detail','$request->dorder_budget','$request->dorder_performance', '$id')");
               }
                 else{
         

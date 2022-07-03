@@ -13,13 +13,14 @@ class TenderController extends Controller {
 
     public function saveTender(Request $request)
     {
+        $id= Auth::user()->id;
         if($request->tender_id ==  null){
             DB::insert("insert into Tenders
             (TENDERNO, TENDERTYPECODE, TENDERSELECTIONCODE, TENDER_CALL_AT, TENDER_OPEN_AT, TENDER_BUDGET, TENDERTITLE, TENDER_INVITATIONCODE, TENDER_INVITATION_AT, TENDER_VALIDDATE, PACKCOUNT,
-             ASSESSMENT, TENDER_STATE, ASSESSMENT_AT, ORDER_ID)
+             ASSESSMENT, TENDER_STATE, ASSESSMENT_AT, ORDER_ID, ADDED_USER)
             values
             ('$request->tenderno', '$request->tendertypecode','$request->tenderselectioncode', TO_DATE('$request->tender_call_at', 'yyyy-mm-dd'), TO_DATE('$request->tender_open_at', 'yyyy-mm-dd'), '$request->tender_budget', '$request->tender_title', '$request->tender_invitationcode',
-            TO_DATE('$request->tender_invitation_at', 'yyyy-mm-dd'), TO_DATE('$request->tender_validdate', 'yyyy-mm-dd'), '$request->packcount','$request->assessment','$request->tender_state', TO_DATE('$request->assesstment_at', 'yyyy-mm-dd'),'$request->torder_id')");
+            TO_DATE('$request->tender_invitation_at', 'yyyy-mm-dd'), TO_DATE('$request->tender_validdate', 'yyyy-mm-dd'), '$request->packcount','$request->assessment','$request->tender_state', TO_DATE('$request->assesstment_at', 'yyyy-mm-dd'),'$request->torder_id', '$id')");
             
               }
                 else{

@@ -13,11 +13,12 @@ class ComplaintController extends Controller {
 
     public function saveComplaint(Request $request)
     {
+        $id= Auth::user()->id;
         if($request->complaint_id ==  null){
             DB::insert("insert into tender_complaint
-            (complaint_comment,complaint_date, complaint_tender, complaint_order)
+            (complaint_comment,complaint_date, complaint_tender, complaint_order, ADDED_USER)
             values
-            ('$request->complaint_comment','$request->complaint_date', '$request->complaint_tender','$request->complaint_order')");
+            ('$request->complaint_comment','$request->complaint_date', '$request->complaint_tender','$request->complaint_order', '$id')");
             
               }
                 else{
