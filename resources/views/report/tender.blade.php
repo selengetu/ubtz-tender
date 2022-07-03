@@ -28,27 +28,48 @@
             
             </div>
                 <div class="table-responsive"  id="acontent">
-                    <h4><center><strong>Давхар хандалт цуцлах</strong></center></h4><br>
+                    <h4><center><strong>Тендерийн тайлан</strong></center></h4><br>
                     <table class="table table-bordered table-striped" id="myTable">
                         <thead >
-                            <th>Д/д</th>    
-                            <th>Email</th>                        
-                            <th>Нэр</th>
                             <th></th>
+                            <th>Захиалга</th>
+                            <th>Шалгаруулалтын төрөл</th>
+                            <th>Тендерийн №</th>
+                            <th>Төрөл</th>
+                            <th>Зарлагдсан огноо</th>
+                            <th>Батлагдсан төсөвт өртөг</th>
+                            <th>Урилгын №</th>
+                            <th>Урилгын огноо </th>
+                            <th>Тендер нээх хугацаа</th>
+                            <th>Хүчинтэй хугацаа </th>
+                            <th>Багцын тоо </th>
+                            <th>Үнэлгээ</th>
+                            <th>Тайлбар</th>
                         </thead>
                         <tbody id="tbody">
                         <?php $no = 1; ?>
-                         @foreach ($user as $item )
+                         @foreach ($tender as $item )
                         <tr>
                             <td>{{$no}}</td>
-                            <td>{{$item->email}}</td>
-                            <td>{{$item->name}}</td>
-                            <td>  <button class='btn btn-primary'><i class='fa fa-pen'></i></button></td>
+                            <td>{{$item->order_name}}</td>
+                            <td>{{$item->contracttypename}}</td>
+                            <td>{{$item->tenderno}}</td>
+                            <td>{{$item->tendertypename}}</td>
+                            <td>{{$item->tender_call_at}}</td>
+                            <td>{{$item->tender_budget}}</td>
+                            <td>{{$item->tender_invitationcode}}</td>
+                            <td>{{$item->tender_invitation_at}}</td>
+                            <td>{{$item->tender_open_at}}</td>
+                            <td>{{$item->tender_validdate}}</td>
+                            <td>{{$item->packcount}}</td>
+                            <td>{{$item->assessment}}</td>
+                            <td>{{$item->tendertitle}}</td>
                          
                         </tr>
                         <?php $no++; ?>
                         @endforeach
                         </tbody>
+                    
                     </table>
                 </div>
             </div>

@@ -103,3 +103,5 @@ Route::get('/getprogresses/{hid?}', [App\Http\Controllers\ProgressController::cl
 Route::post('/saveComplaint', [App\Http\Controllers\ComplaintController::class, 'saveComplaint'])->name('saveComplaint');
 Route::get('/getcomplaint/{hid?}', [App\Http\Controllers\ComplaintController::class, 'getcomplaint'])->name('getcomplaint');
 Route::get('/getcomplaints/{hid?}', [App\Http\Controllers\ComplaintController::class, 'getcomplaints'])->name('getcomplaints');
+
+Route::get('/reportTender', [App\Http\Controllers\ReportController::class, 'reportTender'])->name('reportTender');
