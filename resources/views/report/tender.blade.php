@@ -31,6 +31,7 @@
                             <th></th>
                             <th>Сангийн яам баталсан огноо</th>
                             <th>Захиалга</th>
+                            <th>Захиалагч</th>
                             <th>Тендерийн №</th>
                             <th>Шалгаруулалтын төрөл</th>
                             <th>Төсөвт өртөг</th>
@@ -48,11 +49,15 @@
                         </thead>
                         <tbody id="tbody">
                         <?php $no = 1; ?>
-                         @foreach ($tender as $item )
+                         @foreach ($tenders as $item )
                         <tr>
                             <td>{{$no}}</td>
                             <td>{{$item->order_date}}</td>
                             <td>{{$item->order_name}}</td>
+                            <td>    @foreach ($item->detail as $detailinfo)
+                            {{$detailinfo->executor_abbr}} <br>
+                            @endforeach
+                            </td>
                             <td><b>{{$item->tenderno}}</b></td>
                             <td>{{$item->contracttypename}}</td>
                             <td>{{$item->tender_budget}}</td>
@@ -61,7 +66,10 @@
                             <td>{{$item->tender_invitationcode}}</td>
                             <td>{{$item->tender_invitation_at}}</td>
                             <td>{{$item->tender_validdate}}</td>
-                            <td>{{$item->packcount}}</td>
+                            <td>    @foreach ($item->pack as $packinfo)
+                            {{$packinfo->pack_name}} <br>
+                            @endforeach
+                            </td>
                             <td></td>
                             <td></td>
                             <td></td>

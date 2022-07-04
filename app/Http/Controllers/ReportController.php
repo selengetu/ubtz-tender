@@ -13,8 +13,17 @@ class ReportController extends Controller {
 
     public function reportTender(Request $request)
     {
-        $tender=DB::select("select * from V_TENDERS");
-        return view('report.tender',compact('tender'));
+       
+        $tenders=DB::select("select * from V_TENDERS");
+        foreach ($tenders as $tender) {
+          $tender->pack = DB::select('select * from V_TENDER_PACK t where t.pack_tender=' . $tender->tenderid . '');
+        }
+        foreach ($tenders as $tender) {
+            $tender->detail = DB::select('select * from v_order_detail t where t.order_id=' . $tender->order_id . '');
+
+        }
+    
+        return view('report.tender',compact('tenders'));
     }
 
     public function reportTenderDetail(Request $request)
