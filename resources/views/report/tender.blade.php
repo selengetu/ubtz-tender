@@ -29,39 +29,44 @@
                     <table class="table table-bordered table-striped" id="myTable" >
                     <thead style="background-color:#007bff; color:white;">
                             <th></th>
+                            <th>Сангийн яам баталсан огноо</th>
                             <th>Захиалга</th>
-                            <th>Шалгаруулалтын төрөл</th>
                             <th>Тендерийн №</th>
+                            <th>Шалгаруулалтын төрөл</th>
+                            <th>Төсөвт өртөг</th>
                             <th>Төрөл</th>
                             <th>Зарлагдсан огноо</th>
-                            <th>Батлагдсан төсөвт өртөг</th>
-                            <th>Урилгын №</th>
-                            <th>Урилгын огноо </th>
-                            <th>Тендер нээх хугацаа</th>
+                            <th>Урилгын дугаар</th>
+                            <th>Урилгын огноо</th>
                             <th>Хүчинтэй хугацаа </th>
-                            <th>Багцын тоо </th>
-                            <th>Үнэлгээ</th>
-                            <th>Тайлбар</th>
+                            <th>Багцын мэдээлэл</th>
+                            <th>Гэрээний дугаар</th>
+                            <th>Валют</th>
+                            <th>Гэрээний дүн</th>
+                            <th>Нийлүүлэгч</th>
+                            <th>СЯ уруу төлөвлөгөө явуулсан огноо</th>
                         </thead>
                         <tbody id="tbody">
                         <?php $no = 1; ?>
                          @foreach ($tender as $item )
                         <tr>
                             <td>{{$no}}</td>
+                            <td>{{$item->order_date}}</td>
                             <td>{{$item->order_name}}</td>
-                            <td>{{$item->contracttypename}}</td>
                             <td><b>{{$item->tenderno}}</b></td>
+                            <td>{{$item->contracttypename}}</td>
+                            <td>{{$item->tender_budget}}</td>
                             <td>{{$item->tendertypename}}</td>
                             <td>{{$item->tender_call_at}}</td>
-                            <td>{{$item->tender_budget}}</td>
                             <td>{{$item->tender_invitationcode}}</td>
                             <td>{{$item->tender_invitation_at}}</td>
-                            <td>{{$item->tender_open_at}}</td>
                             <td>{{$item->tender_validdate}}</td>
                             <td>{{$item->packcount}}</td>
-                            <td>{{$item->assessment}}</td>
-                            <td>{{$item->tendertitle}}</td>
-                         
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
                         </tr>
                         <?php $no++; ?>
                         @endforeach
