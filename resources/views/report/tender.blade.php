@@ -27,7 +27,7 @@
                 <div class="table-responsive"  id="acontent">
                     <h4><center><strong><br>Тендерийн тайлан</strong></center></h4><br>
                     <table class="table table-bordered table-striped" id="myTable">
-                        <thead >
+                    <thead style="background-color:#007bff; color:white;">
                             <th></th>
                             <th>Захиалга</th>
                             <th>Шалгаруулалтын төрөл</th>
@@ -50,7 +50,7 @@
                             <td>{{$no}}</td>
                             <td>{{$item->order_name}}</td>
                             <td>{{$item->contracttypename}}</td>
-                            <td>{{$item->tenderno}}</td>
+                            <td><b>{{$item->tenderno}}</b></td>
                             <td>{{$item->tendertypename}}</td>
                             <td>{{$item->tender_call_at}}</td>
                             <td>{{$item->tender_budget}}</td>
