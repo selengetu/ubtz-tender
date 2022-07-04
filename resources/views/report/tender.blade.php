@@ -26,7 +26,7 @@
          
                 <div class="table-responsive"  id="acontent">
                     <h4><center><strong><br>Тендерийн тайлан</strong></center></h4><br>
-                    <table class="table table-bordered table-striped" id="myTable">
+                    <table class="table table-bordered table-striped" id="myTable" >
                     <thead style="background-color:#007bff; color:white;">
                             <th></th>
                             <th>Захиалга</th>

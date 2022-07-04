@@ -16,9 +16,9 @@ class ProgressController extends Controller {
         $id= Auth::user()->id;
         if($request->progress_id ==  null){
             DB::insert("insert into tender_progress
-            (progress_state, progress_date, progress_comment, progress_tender, progress_order, ADDED_USER)
+            (progress_state, progress_date, progress_comment, progress_tender, ADDED_USER)
             values
-            ('$request->progress_state', '$request->progress_date','$request->progress_comment','$request->progress_tender','$request->progress_order', '$id')");
+            ('$request->progress_state', '$request->progress_date','$request->progress_comment','$request->progress_tender', '$id')");
             
               }
                 else{

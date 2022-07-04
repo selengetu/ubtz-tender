@@ -17,4 +17,9 @@ class ReportController extends Controller {
         return view('report.tender',compact('tender'));
     }
 
+    public function reportTenderDetail(Request $request)
+    {
+        $tender=DB::select("select * from V_TENDERS");
+        return view('report.tenderdetail',compact('tender'));
+    }
 }

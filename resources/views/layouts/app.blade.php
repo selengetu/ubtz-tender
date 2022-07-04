@@ -23,6 +23,9 @@
 <link href="https://fonts.googleapis.com/css2?family=PT+Sans+Narrow&display=swap" rel="stylesheet">
 
     @yield('style')
+    <style>
+       table {cursor: pointer;}
+    </style>
 </head>
 
 <body

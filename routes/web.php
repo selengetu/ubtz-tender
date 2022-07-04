@@ -105,3 +105,4 @@ Route::get('/getcomplaint/{hid?}', [App\Http\Controllers\ComplaintController::cl
 Route::get('/getcomplaints/{hid?}', [App\Http\Controllers\ComplaintController::class, 'getcomplaints'])->name('getcomplaints');
 
 Route::get('/reportTender', [App\Http\Controllers\ReportController::class, 'reportTender'])->name('reportTender');
+Route::get('/reportTenderDetail', [App\Http\Controllers\ReportController::class, 'reportTenderDetail'])->name('reportTenderDetail');
