@@ -2,6 +2,7 @@
 @section('style')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/themes/default/style.min.css" />
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css" />
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/jszip-2.5.0/dt-1.10.16/b-1.5.1/b-html5-1.5.1/datatables.min.css"/>
 <style>
     .scroll {
         margin:4px, 4px;
@@ -19,13 +20,43 @@
 
 @section('content')
 <div class="row">
-<div id="editor"></div>
-<button type='button' class="btn btn-default pull-right" onclick="printDiv('printableArea')"><i class="glyphicon glyphicon-print" ></i> ХЭВЛЭХ</button>
+       
+                        <div class="col-sm-2">
+                                <div class="form-group">
+                                    <h6>Байгууллага сонгох :</h6>
+                                    <select class="form-control" name="sdep_id" id="sdep_id" onchange="getDepinfo()">
+                                    @foreach ($dep as $item)
+                                        <option value="{{ $item->dep_id }}">{{ $item->executor_name }}</option>
+                                    @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-sm-2">
+                                <div class="form-group">
+                                    <h6>Шалгаруулалтын төрөл :</h6>
+                                    <select class="form-control" name="tenderselectioncode" id="tenderselectioncode" >
+                                @foreach ($tendertype as $item)
+                                        <option value="{{ $item->contracttypecode }}">{{ $item->contracttypename }}</option>
+                                    @endforeach
+                            </select>
+                                </div>
+                            </div>
+                            <div class="col-sm-2">
+                                <div class="form-group">
+                                    <h6>Төрөл :</h6>
+                                    <select class="form-control" name="tendertypecode" id="tendertypecode" >
+                                @foreach ($type as $item)
+                                        <option value="{{ $item->tendertypecode }}">{{ $item->tendertypename }}</option>
+                                    @endforeach
+                            </select>
+                                </div>
+                            </div>
+                         
     <div class="col-md-12">
         <div class="card" style="font-size:12px;">
          
                 <div class="table-responsive"  id="acontent">
-                    <h4><center><strong><br>Тендерийн тайлан</strong></center></h4><br>
+                    <h4><center><strong><br>Тендерийн судалгаа</strong></center></h4><br>
                     <table class="table table-bordered table-striped" id="myTable" >
                     <thead style="background-color:#007bff; color:white;">
                             <th></th>
@@ -91,7 +122,30 @@
 
 @section('script')
 <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/v/dt/jszip-2.5.0/dt-1.10.16/b-1.5.1/b-html5-1.5.1/datatables.min.js"></script>
 <script type="text/javascript">
+        $('#myTable').DataTable(
+        {
+            "dom": 'Bflrtip',
+            "buttons": [ 'copy', 'excel', 'csv' ],
+            stateSave: true,
+            "language": {
+                "lengthMenu": " _MENU_ бичлэг",
+                "zeroRecords": "Бичлэг олдсонгүй",
+                "info": "_PAGE_ ээс _PAGES_ хуудас" ,
+                "infoEmpty": "Бичлэг олдсонгүй",
+                "infoFiltered": "(filtered from _MAX_ total records)",
+                "search": "Хайлт:",
+                "paginate": {
+                    "first":      "Эхнийх",
+                    "last":       "Сүүлийнх",
+                    "next":       "Дараагийнх",
+                    "previous":   "Өмнөх"
+                },
+            },
+            "pageLength": 25
+        } 
+    );
  function printDiv(printarea) {
      var printContents = document.getElementById('acontent').innerHTML;
      var originalContents = document.body.innerHTML;

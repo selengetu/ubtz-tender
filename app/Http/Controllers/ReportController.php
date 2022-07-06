@@ -13,8 +13,10 @@ class ReportController extends Controller {
 
     public function reportTender(Request $request)
     {
-       
+        $dep= DB::select("select * from MEASINST.V_DEPART t ");
         $tenders=DB::select("select * from V_TENDERS");
+        $type= DB::select("select * from CONST_TENDER_TYPES t ");
+        $tendertype= DB::select("select * from CONST_CONTRACT_TYPES t ");
         foreach ($tenders as $tender) {
           $tender->pack = DB::select('select * from V_TENDER_PACK t where t.pack_tender=' . $tender->tenderid . '');
         }
@@ -23,7 +25,7 @@ class ReportController extends Controller {
 
         }
     
-        return view('report.tender',compact('tenders'));
+        return view('report.tender',compact('tenders','dep','type','tendertype'));
     }
 
     public function reportTenderDetail(Request $request)
