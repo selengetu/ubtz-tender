@@ -69,12 +69,13 @@ class HomeController extends Controller
     {
         $lvl = Auth::user()->userlevel;
         $userdep = Auth::user()->depid;
-
+        
+        $state=DB::select("select * from CONST_USER_STATE");
         $dep=DB::select("select * from EXAMUBTZ.v_depart");
         $user=DB::select("select * from v_users");
         $jobs=DB::select("select * from CONST_JOB");
        
-        return view('const.person',compact('dep','jobs','user'));
+        return view('const.person',compact('dep','jobs','user','state'));
     }
     public function job()
     {

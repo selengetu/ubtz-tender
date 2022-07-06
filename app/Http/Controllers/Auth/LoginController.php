@@ -41,8 +41,16 @@ class LoginController extends Controller
     }
     protected function authenticated(Request $request, $user)
     {
+        $is_active=DB::select("select is_active from USERS t where t.email='$request->email' ")[0]->is_active;
+        //dd($is_logged);
+        if ($is_active != 1) {
+            $this->guard()->logout();
+            return redirect('login')->with('message','Дахин хандана уу');
+       } else {
            Auth::login($user);
            return redirect('home')->with('message','success!');
+       }
+          
       
     }
     public function logout(Request $request)

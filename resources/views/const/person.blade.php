@@ -42,6 +42,7 @@
                             <th>Нэр</th>
                             <th>Цахим шуудан</th>
                             <th>Утас</th>
+                            <th>Төлөв</th>
                             <th></th>
                         </thead>
                         <tbody id="tbody">
@@ -54,9 +55,10 @@
                         <td>{{$item->first_name}}</td>
                         <td>{{$item->email}}</td>
                         <td>{{$item->phone}}</td>
+                        <td>{{$item->state_name}}</td>
                  
                         <td>  
-                        <button class='btn btn-primary btn-xs' onclick="passEdit('{{$item->id}}')" title='Нууц үг солих' ><i class='fa fa-user-circle'></i></button>
+                        <button class='btn btn-primary btn-xs' onclick="passEdit('{{$item->id}}')" title='Нууц үг сэргээх' ><i class='fa fa-user-circle'></i></button>
                         <button class='btn btn-primary btn-xs' onclick="perEdit('{{$item->id}}')" data-toggle='modal' data-target='#personModal' title='Засах'><i class='fa fa-edit'></i></button>
                         <button class='btn btn-primary btn-xs' onclick="perDel('{{$item->id}}','{{$item->first_name}}')" data-toggle='modal' title='Устгах'><i class='fa fa-trash-alt'></i></button>  </td>
                         </tr>
@@ -123,10 +125,11 @@
                         </div>   
                         <div class="col-4">
                             <div class="form-group">
-                                <label for="exampleInputEmail1">идэвхтэй эсэх</label>
+                                <label for="exampleInputEmail1">Төлөв</label>
                                 <select class="form-control" name="is_active" id="is_active">          
-                                            <option value="1">Тийм</option> 
-                                            <option value="0">Үгүй</option>
+                                @foreach ($state as $item)
+                                            <option value="{{ $item->state_id }}">{{ $item->state_name }}</option>
+                                        @endforeach
                                 </select>
                             @csrf
                             </div>
@@ -158,6 +161,7 @@
                 $('#phone').val(data[0].phone);
                 $('#jobid').val(data[0].jobid).trigger('change');
                 $('#email').val(data[0].email);
+                $('#is_active').val(data[0].is_active).trigger('change');
                 $('#hid').val(data[0].id);
             });
         } else {
