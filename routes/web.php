@@ -39,6 +39,7 @@ Route::post('/savePerson', [App\Http\Controllers\HomeController::class, 'savePer
 
 Route::get('/config',  [App\Http\Controllers\HomeController::class,'config'])->name('config');
 Route::post('/passw',  [App\Http\Controllers\HomeController::class,'passw'])->name('passw');
+Route::get('/passEdit/{hid?}',  [App\Http\Controllers\HomeController::class,'passEdit'])->name('passEdit');
 
 Route::get('/job', [App\Http\Controllers\HomeController::class, 'job'])->name('job');
 Route::post('/saveJob', [App\Http\Controllers\HomeController::class, 'saveJob'])->name('saveJob');
@@ -65,10 +66,6 @@ Route::get('/dep', [App\Http\Controllers\DepController::class, 'dep'])->name('de
 Route::post('/saveDep', [App\Http\Controllers\DepController::class, 'saveDep'])->name('saveDep');
 Route::get('/getDep/{hid?}', [App\Http\Controllers\DepController::class, 'getDep'])->name('getDep');
 Route::get('/delDep/{hid?}',[App\Http\Controllers\DepController::class,'delDep'])->name('delDep');
-
-// Exam Routes
-Route::get('/create_exam', [ExamController::class, 'create'])->name('create_exam');
-Route::get('/testProc', [ExamController::class, 'testProc']);
 
 Route::get('/admin', [App\Http\Controllers\HomeController::class, 'admin'])->name('admin');
 

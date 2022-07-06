@@ -23,7 +23,7 @@ class OrderController extends Controller {
         $type= DB::select("select * from CONST_TENDER_TYPES t ");
         $tendertype= DB::select("select * from CONST_CONTRACT_TYPES t ");
         $tenderstate= DB::select("select t.* from CONST_TENDER_STATE t ");
-        $employee= DB::select("select t.* from USERS t order by name ");
+        $employee= DB::select("select t.* from V_USERS t order by first_name ");
         return view('order.order',compact('dep','ostate','source','selection','unit','order','type','tendertype','tenderstate','employee'));
     }
     public function saveOrder(Request $request)

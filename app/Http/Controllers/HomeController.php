@@ -46,7 +46,7 @@ class HomeController extends Controller
 
         }
          if($request->hid ==  null){
-            $cnt=DB::select("select count(*) cnt from v_users t where t.email='$email'")[0]->cnt;
+            $cnt=DB::select("select count(*) cnt from users t where t.email='$email'")[0]->cnt;
             if($cnt>0){
               return redirect('person')->with('message','Хэрэглэгч давхардаж байна!');
             }
@@ -96,10 +96,10 @@ class HomeController extends Controller
         return DB::select("select * from USERS t where t.id='$hid'");
     }
 
-    public function perDel(Request $request)
+    public function perDel($hid)
     {
         $user = DB::table('USERS')
-        ->where('id', $request->id)
+        ->where('id',$hid)
         ->update(['is_active' => 0]);
             return 1;
     }
@@ -170,5 +170,11 @@ class HomeController extends Controller
 
     }
  
-
+    public function passEdit($id)
+    {
+        $method = DB::table('users')
+        ->where('id', $id)
+        ->update(['password' => '$2y$10$FfacvMREjSCrcXbTYrM89uF1gJWrY3iPfsas1tAqz4pCI/n0GEDn.']);
+            return 1;    
+    }
 }

@@ -56,6 +56,7 @@
                         <td>{{$item->phone}}</td>
                  
                         <td>  
+                        <button class='btn btn-primary btn-xs' onclick="passEdit('{{$item->id}}')" title='Нууц үг солих' ><i class='fa fa-user-circle'></i></button>
                         <button class='btn btn-primary btn-xs' onclick="perEdit('{{$item->id}}')" data-toggle='modal' data-target='#personModal' title='Засах'><i class='fa fa-edit'></i></button>
                         <button class='btn btn-primary btn-xs' onclick="perDel('{{$item->id}}','{{$item->first_name}}')" data-toggle='modal' title='Устгах'><i class='fa fa-trash-alt'></i></button>  </td>
                         </tr>
@@ -175,6 +176,19 @@
         if(confirm('Энэ хэрэглэгчийг устгах уу?'))
         {
            $.get('perDel/'+hid , function (data)
+            {
+                if(data==1)
+                {
+                    location.reload();
+                }
+            });
+        }
+
+    }
+    function passEdit(hid){
+        if(confirm('Энэ хэрэглэгчийн нууц үгийн солих уу?'))
+        {
+           $.get('passEdit/'+hid , function (data)
             {
                 if(data==1)
                 {
