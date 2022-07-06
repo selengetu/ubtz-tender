@@ -24,7 +24,7 @@
                         <div class="col-sm-2">
                                 <div class="form-group">
                                     <h6>Байгууллага сонгох :</h6>
-                                    <select class="form-control" name="sdep_id" id="sdep_id" onchange="getDepinfo()">
+                                    <select class="form-control" name="sdep" id="sdep" onchange="javascript:location.href = 'filter_dep/'+this.value;">
                                     @foreach ($dep as $item)
                                         <option value="{{ $item->dep_id }}">{{ $item->executor_name }}</option>
                                     @endforeach
@@ -34,7 +34,7 @@
                             <div class="col-sm-2">
                                 <div class="form-group">
                                     <h6>Шалгаруулалтын төрөл :</h6>
-                                    <select class="form-control" name="tenderselectioncode" id="tenderselectioncode" >
+                                    <select class="form-control" name="sselection" id="sselection"  onchange="javascript:location.href = 'filter_selection/'+this.value;">
                                 @foreach ($tendertype as $item)
                                         <option value="{{ $item->contracttypecode }}">{{ $item->contracttypename }}</option>
                                     @endforeach
@@ -44,7 +44,7 @@
                             <div class="col-sm-2">
                                 <div class="form-group">
                                     <h6>Төрөл :</h6>
-                                    <select class="form-control" name="tendertypecode" id="tendertypecode" >
+                                    <select class="form-control" name="stendertype" id="stendertype"   onchange="javascript:location.href = 'filter_tendertype/'+this.value;">
                                 @foreach ($type as $item)
                                         <option value="{{ $item->tendertypecode }}">{{ $item->tendertypename }}</option>
                                     @endforeach

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use Auth;
+use Illuminate\Support\Facades\Input;
 class ReportController extends Controller {
 
     public function __construct() {
@@ -13,6 +14,10 @@ class ReportController extends Controller {
 
     public function reportTender(Request $request)
     {
+        $sdep = Input::get('sdep');
+        $stendertype = Input::get('stendertype');
+        $sselection = Input::get('sselection');
+        
         $dep= DB::select("select * from MEASINST.V_DEPART t ");
         $tenders=DB::select("select * from V_TENDERS");
         $type= DB::select("select * from CONST_TENDER_TYPES t ");
@@ -32,5 +37,17 @@ class ReportController extends Controller {
     {
         $tender=DB::select("select * from V_TENDERS");
         return view('report.tenderdetail',compact('tender'));
+    }
+    public function filter_dep($sdep) {
+        Session::put('sdep',$sdep);
+        return back();
+    }
+    public function filter_tendertype($season) {
+        Session::put('stendertype',$stendertype);
+        return back();
+    }
+    public function filter_selection($selection) {
+        Session::put('sselection',$sselection);
+        return back();
     }
 }
