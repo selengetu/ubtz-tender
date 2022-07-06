@@ -32,30 +32,9 @@ class HomeController extends Controller
     }
     public function savePerson(Request $request)
     {
-        //DB::getPdo()->lastInsertId();
-       // dd($request);
        $email=$request->email;
-       /*$cnt=DB::select("select count(*) cnt from users u where u.email='$email'")[0]->cnt;
-       if($cnt==0){
-            $perid = DB::select("select seq_id.nextval as perid from dual")[0]->perid;
-            DB::insert("insert into person
-            ( perid,fname, lname, registerno, depid, jobcode, jobname, jobabbr, phonenumber,  mailadd)
-        values
-            ($perid, '$request->fname', '$request->lname', '$request->registerno', $request->depid, 0, '$request->jobname', '$request->jobname', $request->phonenumber, '$request->mailadd')");
 
-            $pass=Hash::make($request->password);
-            DB::insert("insert into users
-            ( name, email, password,  perid, userlevel)
-        values
-            ( '$request->fname', '$request->email',  '$pass', $perid, $request->userlevel)");
-       } else {
-           dd('email duplicate');
-       }*/
-      // dd($request);
-      $cnt=DB::select("select count(*) cnt from users t where t.email='$email'")[0]->cnt;
-      if($cnt>0){
-        return redirect('person')->with('message','Хэрэглэгч давхардаж байна!');
-      }
+     
         $fileName='';
         $fileModel = new File;
         if($request->file()) {
@@ -66,33 +45,25 @@ class HomeController extends Controller
             $request->file->move($path , $fileName, $extension );
 
         }
-       $bindings = [
-        'flg'  =>  $request->flg,
-        'v_hid'  => $request->hid,
-        'v_fname'  => $request->fname,
-        'v_lname'  => $request->lname,
-        'v_registerno'  => $request->registerno,
-        'v_depid'  => $request->depid,
-        'v_workname'  => $request->workname,
-        'v_jobcode'  =>  $request->jobcode,
-        'v_jobabbr'  => $request->jobname,
-        'v_jobabbr_s'  => $request->jobname_abbr,
-        'v_phonenumber'  => $request->phonenumber,
-        'v_sex'  => 0,
-        'v_mailadd'  => $request->mailadd,
-        'v_picture'  => $fileName,
-        'v_userlevel'  => $request->v_userlevel,
-        'v_usid'  => Auth::user()->perid,
-        ];
-
-        try {
-            $rep = DB::executeProcedure('pr_person', $bindings);
-            return 1;
-          } catch (\Exception $e) {
-              return 'Цахим хаяг эсвэл Регистер № давхардаж байна. '.$e->getMessage();
+         if($request->hid ==  null){
+            $cnt=DB::select("select count(*) cnt from v_users t where t.email='$email'")[0]->cnt;
+            if($cnt>0){
+              return redirect('person')->with('message','Хэрэглэгч давхардаж байна!');
+            }
+            DB::insert("insert into users
+            (first_name,last_name, email, is_active, jobid, phone)
+            values
+            ('$request->first_name', '$request->last_name', '$request->email',  '$request->is_active', '$request->jobid', '$request->phone')");
+            
           }
-
-
+            else{
+                $user = DB::table('USERS')
+                ->where('id', $request->hid)
+                ->update(['first_name' => $request->first_name,'last_name' => $request->last_name,'email' => $request->email,
+                'is_active' => $request->is_active,'jobid' => $request->jobid,'phone' => $request->phone]);
+            
+            }
+            return back();
     }
     public function person()
     {
@@ -100,7 +71,7 @@ class HomeController extends Controller
         $userdep = Auth::user()->depid;
 
         $dep=DB::select("select * from EXAMUBTZ.v_depart");
-        $user=DB::select("select * from USERS"); // root ULAANBAATAR RAILWAY -->enenees yalgaatai      
+        $user=DB::select("select * from v_users");
         $jobs=DB::select("select * from CONST_JOB");
        
         return view('const.person',compact('dep','jobs','user'));
@@ -127,43 +98,18 @@ class HomeController extends Controller
 
     public function perDel(Request $request)
     {
-        $bindings = [
-            'flg'  =>  '2',
-            'v_hid'  => $request->hid,
-            'v_fname'  => '',
-            'v_lname'  =>  '',
-            'v_registerno'  =>  '',
-            'v_depid'  =>  '',
-            'v_workname'  =>  '',
-            'v_jobcode'  =>   '',
-            'v_jobabbr'  =>  '',
-            'v_jobabbr_s'  => '',
-            'v_phonenumber'  =>  '',
-            'v_sex'  => 0,
-            'v_mailadd'  =>  '',
-            'v_picture'  =>  '',
-            'v_userlevel'  =>  '',
-            'v_usid'  => Auth::user()->perid,
-            ];
-            try {
-                $rep = DB::executeProcedure('pr_person', $bindings);
-            } catch (\Exception $e) {
-                return 'Алдаа гарлаа. '.$e->getMessage();
-            }
+        $user = DB::table('USERS')
+        ->where('id', $request->id)
+        ->update(['is_active' => 0]);
             return 1;
     }
 
     public function config()
     {
         $uid=Auth::id();
-        $cnt=DB::select("select count(*) cnt from USERS u, v_person p
-        where p.PERID=u.perid and u.id=$uid")[0]->cnt;
+        $cnt=DB::select("select count(*) cnt from V_USERS u where u.id=$uid")[0]->cnt;
         if($cnt>0){
-            $info=DB::select("select u.id,u.email,p.*,
-            case when p.userlevel=1 then 'Админ'
-              when p.userlevel=2 then 'Дэд админ'
-              when p.userlevel=3 then 'Менежир'
-              when p.userlevel=4 then 'Хэрэглэгч' end as level_name from USERS u, v_person p where p.PERID=u.perid and u.id=$uid")[0];
+            $info=DB::select("select * from V_USERS u where u.id=$uid")[0];
             return view('const.config',compact('info'));
         } else {
             dd('Амжилтгүй боллоо. мэдээлэл олдсонгүй');

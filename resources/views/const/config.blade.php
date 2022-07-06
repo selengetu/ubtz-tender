@@ -31,26 +31,22 @@
                     <div class="card-body box-profile">
                         <div class="text-center">
                             <img class="profile-user-img img-fluid img-circle"
-                            @if($info->picture)
-                                src="{{ asset('/img/')}}/{{ $info->picture }}"
-                            @else
+                          
                                 src="{{ asset('/img/user.png')}}"
-                            @endif
+                          
                                 alt="User profile picture">
                         </div>
-                        <h3 class="profile-username text-center">{{ $info->lname }} {{ $info->fname }}</h3>
+                        <h3 class="profile-username text-center">{{ $info->last_name }} {{ $info->first_name }}</h3>
 
                         <p class="text-muted text-center">{{ $info->jobname }}</p>
 
                         <ul class="list-group list-group-unbordered mb-3">
+                          
                             <li class="list-group-item">
-                                <b>Алба, хэлтэс</b> <a class="float-right">{{ $info->department_name }}</a>
+                                <b>Утас № </b> <a class="float-right">{{ $info->phone }}</a>
                             </li>
                             <li class="list-group-item">
-                                <b>Утас № </b> <a class="float-right">{{ $info->phonenumber }}</a>
-                            </li>
-                            <li class="list-group-item">
-                                <b>Хэрэглэгчийн эрх </b> <a class="float-right">{{ $info->level_name }}</a>
+                                <b>Хэрэглэгчийн эрх </b> <a class="float-right">{{ $info->jobname }}</a>
                             </li>
                         </ul>
                     </div>
@@ -81,7 +77,7 @@
                                     <div class="form-group">
                                         <label for="inputName" class="col-sm-2 control-label">Нэр</label>
                                         <div class="col-sm-10">
-                                            <input type="text" class="form-control" value="{{ Auth::user()->name }}"
+                                            <input type="text" class="form-control" value="{{ Auth::user()->first_name }}"
                                                 id="inputName" placeholder="Нэр">
                                         </div>
                                     </div>

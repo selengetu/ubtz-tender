@@ -35,16 +35,16 @@
         <nav class="main-header navbar navbar-expand bg-white navbar-light border-bottom navbar-lightblue">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                  <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars" style="color:white"></i></a>
+                  <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars" style="color:black"></i></a>
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item dropdown" style="align:right;">
-                    <a class="nav-link" href='#' data-toggle="dropdown" aria-expanded="false" style="color:white">
-                        <i class="fa fa-user"></i> {{  Auth::user()->name }}
+                    <a class="nav-link" href='#' data-toggle="dropdown" aria-expanded="false" >
+                        <i class="fa fa-user"></i> {{  Auth::user()->first_name }}
                     </a>
                     <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                        <span class="dropdown-item dropdown-header">Сайн уу  {{  Auth::user()->name }}</span>
+                        <span class="dropdown-item dropdown-header" style="color:black">Сайн уу  {{  Auth::user()->first_name }}</span>
                         <div class="dropdown-divider"></div>
                         <a href="config" class="dropdown-item  dropdown-footer"><i
                                 class="fa fa-gear mr-2"></i><span> Тохиргоо мэдээлэл </span></a>

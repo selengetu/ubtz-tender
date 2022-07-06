@@ -38,8 +38,8 @@
                         <thead>
                             <th>#</th>
                             <th>Албан тушаал</th>
-                            <th>Овог нэр</th>
-                            <th>Хэрэглэгчийн эрх</th>
+                            <th>Овог</th>
+                            <th>Нэр</th>
                             <th>Цахим шуудан</th>
                             <th>Утас</th>
                             <th></th>
@@ -49,15 +49,15 @@
                         @foreach ($user as $item )
                         <tr>
                         <td>{{$no}}</td>
-                        <td>{{$item->jobid}}</td>
-                        <td>{{$item->name}}</td>
-                        <td>{{$item->userlevel}}</td>
+                        <td>{{$item->jobname}}</td>
+                        <td>{{$item->last_name}}</td>
+                        <td>{{$item->first_name}}</td>
                         <td>{{$item->email}}</td>
                         <td>{{$item->phone}}</td>
                  
                         <td>  
                         <button class='btn btn-primary btn-xs' onclick="perEdit('{{$item->id}}')" data-toggle='modal' data-target='#personModal' title='Засах'><i class='fa fa-edit'></i></button>
-                        <button class='btn btn-primary btn-xs' onclick="perDel('{{$item->id}}','{{$item->name}}')" data-toggle='modal' title='Устгах'><i class='fa fa-trash-alt'></i></button>  </td>
+                        <button class='btn btn-primary btn-xs' onclick="perDel('{{$item->id}}','{{$item->first_name}}')" data-toggle='modal' title='Устгах'><i class='fa fa-trash-alt'></i></button>  </td>
                         </tr>
                         <?php $no++; ?>
 
@@ -84,17 +84,22 @@
                 <div class="modal-body">
                     <div class="row">
                     @csrf
-                  
+                    <div class="col-4">
+                            <div class="form-group">
+                                <label for="fname">Овог</label>
+                                <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Овог">
+                            </div>
+                        </div>
                         <div class="col-4">
                             <div class="form-group">
                                 <label for="fname">Нэр</label>
-                                <input type="text" class="form-control" id="fname" name="fname" placeholder="Нэр">
+                                <input type="text" class="form-control" id="first_name" name="first_name" placeholder="Нэр">
                             </div>
                         </div>
                         <div class="col-4">
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Албан тушаал</label>
-                                <select class="form-control" name="jobcode" id="jobcode">
+                                <select class="form-control" name="jobid" id="jobid">
                                         @foreach ($jobs as $item)
                                             <option value="{{ $item->jobcode }}">{{ $item->jobname }}</option>
                                         @endforeach
@@ -106,34 +111,31 @@
                         <div class="col-4">
                             <div class="form-group">
                                 <label for="phonenumber">Цахим хаяг</label>
-                                <input type="text" class="form-control" name="mailadd" id="mailadd" placeholder="Цахим хаяг">
+                                <input type="text" class="form-control" name="email" id="email" placeholder="Цахим хаяг">
                             </div>
                         </div>
                         <div class="col-4">
                             <div class="form-group">
                                 <label for="phonenumber">Утас</label>
-                                <input type="number" class="form-control" name="phonenumber" id="phonenumber" placeholder="Утас">
+                                <input type="number" class="form-control" name="phone" id="phone" placeholder="Утас">
                             </div>
-                        </div>
-                      
+                        </div>   
                         <div class="col-4">
                             <div class="form-group">
-                                <label for="exampleInputFile">Хэрэглэгч зураг</label>
-                                <div class="input-group">
-                                    <div class="custom-file">
-                                    <input type="file" class="custom-file-input" id="file" name="file">
-
-                                    <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                                    </div>
-                                </div>
+                                <label for="exampleInputEmail1">идэвхтэй эсэх</label>
+                                <select class="form-control" name="is_active" id="is_active">          
+                                            <option value="1">Тийм</option> 
+                                            <option value="0">Үгүй</option>
+                                </select>
+                            @csrf
                             </div>
-                        </div>
-                      
+                            
+                        </div>     
                     </div>
                 </div>
                 <div class="modal-footer">
                     <input type="hidden"  id="hid" name="hid">
-                    <input type="hidden"  id="flg" name="flg">
+       
                     <button type="submit" class="btn btn-primary">Хадгалах</button>
                 </div>
                 </form>
@@ -150,13 +152,12 @@
     function perEdit(hid){
         if(hid){
             $.get('getPerson/' + hid, function (data) {
-                $('#lname').val(data[0].lname);
-                $('#fname').val(data[0].fname);
-                $('#phonenumber').val(data[0].phonenumber);
-                $('#jobcode').val(data[0].jobcode);
-                $('#mailadd').val(data[0].mailadd);
-                $('#hid').val(data[0].hid);
-                $('#flg').val(1);
+                $('#last_name').val(data[0].last_name);
+                $('#first_name').val(data[0].first_name);
+                $('#phone').val(data[0].phone);
+                $('#jobid').val(data[0].jobid).trigger('change');
+                $('#email').val(data[0].email);
+                $('#hid').val(data[0].id);
             });
         } else {
 
@@ -164,32 +165,12 @@
                 $('#fname').val('');
                 $('#phonenumber').val('');
                 $('#workname').val('');
-                $('#jobcode').val(228);
+                $('#jobid').val('1');
                 $('#mailadd').val('');
-                $('#hid').val(0);
-                $('#flg').val(0);
+                $('#hid').val('');
         }
     }
-    $( "#formSub" ).submit(function( event ) {
-        event.preventDefault();
-        var form = $(this);
-        var url = form.attr('action');
-        $.ajax({
-               type: "POST",
-               url: url,
-               data: form.serialize(), // serializes the form's elements.
-               success: function(data)
-               {
-                   if(data==1){
-                    let depid=localStorage.getItem('perDep')
-                    changeDep(depid);
-                   } else {
-                       alert(data);
-                   }
-                   $("#personModal").modal("hide");
-               }
-             });
-      });
+
       function perDel(hid){
         if(confirm('Энэ хэрэглэгчийг устгах уу?'))
         {
