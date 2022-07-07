@@ -50,7 +50,7 @@
 .media .avatar {
     flex-shrink: 0;
 }
-
+.highlight{background:#4da3ff !important;}
 .avatar {
     position: relative;
     display: inline-block;
@@ -1481,8 +1481,8 @@ $('.orderinformation').on('click',function(){
     }
 
     function gettenderinfo(hid){
-        
-       
+        $(".tendr").removeClass('highlight');
+        $("#"+hid+"").toggleClass('highlight');
         $("#tbody2").empty();
         $("#tbody3").empty();
         $("#tbody4").empty();
@@ -1516,7 +1516,7 @@ $('.orderinformation').on('click',function(){
            }
            
         $.each(data,function(i,qwe){
-            var sHtml = "<tr  onclick=gettenderinfo("+ qwe.tenderid +") tag='"+ qwe.tenderid +"'>" +
+            var sHtml = "<tr  onclick=gettenderinfo("+ qwe.tenderid +") tag='"+ qwe.tenderid +"' id='"+ qwe.tenderid +"' class='tendr'>" +
             "   <td> <button class='btn btn-primary btn-xs' data-toggle='modal' onclick='tenderEdit("+ qwe.tenderid +")' data-target='#tenderModal'><i class='fa fa-pen'></i></button></td>"+
         "   <td>" + qwe.contracttypename + "</td>" +
         "   <td><b style='color:#007bff'><u>" + qwe.tenderno + "</u></b></td>" +
