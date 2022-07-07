@@ -48,12 +48,12 @@ class ReportController extends Controller {
             Session::put('sselection', $sselection);
         }
         if ($sdep!=NULL && $sdep !=0) {
-            $query.="";
+            $query1 = "where dep_id = '".$sdep."'";
 
         }
         else
         {
-            $query.=" ";
+            $query1.=" ";
 
         }
         if ($stendertype!=NULL && $stendertype !=0) {
@@ -70,7 +70,10 @@ class ReportController extends Controller {
         {
             $query.=" ";
         }
-        $tenders=DB::select("select * from V_TENDERS where 1=1"  .$query."");
+
+        $tenders=DB::select("SELECT * FROM V_TENDERS t
+        WHERE t.order_id IN (select order_id from ORDER_DETAIL t " .$query1." )");
+       
         foreach ($tenders as $tender) {
           $tender->pack = DB::select('select * from V_TENDER_PACK t where t.pack_tender=' . $tender->tenderid . '');
         }
