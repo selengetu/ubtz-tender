@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use DB;
 use Auth;
 use Illuminate\Support\Facades\Input;
+use Session;
 class ReportController extends Controller {
 
     public function __construct() {
@@ -14,14 +15,62 @@ class ReportController extends Controller {
 
     public function reportTender(Request $request)
     {
-        $sdep = Input::get('sdep');
-        $stendertype = Input::get('stendertype');
-        $sselection = Input::get('sselection');
-        
+        $query = "";
+        $query1 = "";
+        $sdep ='';
+        $stendertype = '';
+        $sselection = '';
+
         $dep= DB::select("select * from MEASINST.V_DEPART t ");
-        $tenders=DB::select("select * from V_TENDERS");
+      
         $type= DB::select("select * from CONST_TENDER_TYPES t ");
         $tendertype= DB::select("select * from CONST_CONTRACT_TYPES t ");
+
+        if(Session::has('sdep')) {
+            $sdep = Session::get('sdep');
+
+        }
+        else {
+            Session::put('sdep', $sdep);
+        }
+        if(Session::has('stendertype')) {
+            $stendertype = Session::get('stendertype');
+
+        }
+        else {
+            Session::put('stendertype', $stendertype);
+        }
+        if(Session::has('sselection')) {
+            $sselection = Session::get('sselection');
+
+        }
+        else {
+            Session::put('sselection', $sselection);
+        }
+        if ($sdep!=NULL && $sdep !=0) {
+            $query.="";
+
+        }
+        else
+        {
+            $query.=" ";
+
+        }
+        if ($stendertype!=NULL && $stendertype !=0) {
+            $query.=" and tendertypecode = '".$stendertype."'";
+        }
+        else
+        {
+            $query.=" ";
+        }
+        if ($sselection!=NULL && $sselection !=0) {
+            $query.=" and tenderselectioncode = '".$sselection."'";
+        }
+        else
+        {
+            $query.=" ";
+        }
+        $tenders=DB::select("select * from V_TENDERS where 1=1"  .$query."");
         foreach ($tenders as $tender) {
           $tender->pack = DB::select('select * from V_TENDER_PACK t where t.pack_tender=' . $tender->tenderid . '');
         }
@@ -30,7 +79,7 @@ class ReportController extends Controller {
 
         }
     
-        return view('report.tender',compact('tenders','dep','type','tendertype'));
+        return view('report.tender',compact('tenders','dep','type','tendertype','stendertype','sselection','sdep'));
     }
 
     public function reportTenderDetail(Request $request)
@@ -42,11 +91,11 @@ class ReportController extends Controller {
         Session::put('sdep',$sdep);
         return back();
     }
-    public function filter_tendertype($season) {
+    public function filter_tendertype($stendertype) {
         Session::put('stendertype',$stendertype);
         return back();
     }
-    public function filter_selection($selection) {
+    public function filter_selection($sselection) {
         Session::put('sselection',$sselection);
         return back();
     }

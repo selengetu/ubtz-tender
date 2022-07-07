@@ -25,8 +25,9 @@
                                 <div class="form-group">
                                     <h6>Байгууллага сонгох :</h6>
                                     <select class="form-control" name="sdep" id="sdep" onchange="javascript:location.href = 'filter_dep/'+this.value;">
+                                    <option value="0">Бүгд</option>
                                     @foreach ($dep as $item)
-                                        <option value="{{ $item->dep_id }}">{{ $item->executor_name }}</option>
+                                        <option value="{{ $item->dep_id }}" @if($item->dep_id==$sdep) selected @endif >{{ $item->executor_name }}</option>
                                     @endforeach
                                     </select>
                                 </div>
@@ -35,8 +36,9 @@
                                 <div class="form-group">
                                     <h6>Шалгаруулалтын төрөл :</h6>
                                     <select class="form-control" name="sselection" id="sselection"  onchange="javascript:location.href = 'filter_selection/'+this.value;">
+                                    <option value="0">Бүгд</option>
                                 @foreach ($tendertype as $item)
-                                        <option value="{{ $item->contracttypecode }}">{{ $item->contracttypename }}</option>
+                                        <option value="{{ $item->contracttypecode }}"  @if($item->contracttypecode==$sselection) selected @endif>{{ $item->contracttypename }}</option>
                                     @endforeach
                             </select>
                                 </div>
@@ -45,8 +47,9 @@
                                 <div class="form-group">
                                     <h6>Төрөл :</h6>
                                     <select class="form-control" name="stendertype" id="stendertype"   onchange="javascript:location.href = 'filter_tendertype/'+this.value;">
+                                    <option value="0">Бүгд</option>
                                 @foreach ($type as $item)
-                                        <option value="{{ $item->tendertypecode }}">{{ $item->tendertypename }}</option>
+                                        <option value="{{ $item->tendertypecode }}" @if($item->tendertypecode==$stendertype) selected @endif>{{ $item->tendertypename }}</option>
                                     @endforeach
                             </select>
                                 </div>
@@ -58,7 +61,7 @@
                 <div class="table-responsive"  id="acontent">
                     <h4><center><strong><br>Тендерийн судалгаа</strong></center></h4><br>
                     <table class="table table-bordered table-striped" id="myTable" >
-                    <thead style="background-color:#007bff; color:white;">
+                    <thead>
                             <th></th>
                             <th>Сангийн яам баталсан огноо</th>
                             <th>Захиалга</th>

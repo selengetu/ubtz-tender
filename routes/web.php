@@ -104,6 +104,6 @@ Route::get('/getcomplaints/{hid?}', [App\Http\Controllers\ComplaintController::c
 Route::get('/reportTender', [App\Http\Controllers\ReportController::class, 'reportTender'])->name('reportTender');
 Route::get('/reportTenderDetail', [App\Http\Controllers\ReportController::class, 'reportTenderDetail'])->name('reportTenderDetail');
 
-Route::get('/filter_dep/{id}', [App\Http\Controllers\ReportController::class, 'reportTender'])->name('filter_dep');
-Route::get('/filter_tendertype/{id}', [App\Http\Controllers\ReportController::class, 'reportTenderDetail'])->name('filter_tendertype');
-Route::get('/filter_selection/{id}', [App\Http\Controllers\ReportController::class, 'reportTender'])->name('filter_selection');
+Route::get('/filter_dep/{id?}', [App\Http\Controllers\ReportController::class, 'filter_dep']);
+Route::get('/filter_tendertype/{id?}', [App\Http\Controllers\ReportController::class, 'filter_tendertype']);
+Route::get('/filter_selection/{id?}', [App\Http\Controllers\ReportController::class, 'filter_selection']);
