@@ -151,6 +151,10 @@
             $('#card_4').show();
             $(this).toggleClass('ButtonClicked');
             break;
+        case 'btn_5':
+            $('#card_5').show();
+            $(this).toggleClass('ButtonClicked');
+            break;
         case 'btn_6':
             $('#card_6').show();
             $(this).toggleClass('ButtonClicked');

@@ -119,6 +119,12 @@
                             </tr>
                             <tr><td style="padding:0rem"><button type="button" style="font-size:0.8rem;text-align:left" class="btn btn-block" style="text-align:left" id="btn_2"><img src="{{ asset('img/package.png') }}" class="icondetail"> Багц</button></td>
                             </tr>
+                            
+                            <tr>
+                            <td style="padding:0rem">
+                            <button type="button" class="btn btn-block" style="font-size:0.8rem;text-align:left" id="btn_5"><img src="{{ asset('img/colleague.png') }}" id="btn_5" class="icondetail"> Комисс</button>
+                            </td>
+                            </tr>
                             <tr>
                             <td style="padding:0rem">
                             <button type="button" class="btn btn-block" style="font-size:0.8rem;text-align:left" id="btn_3"><img src="{{ asset('img/ywts.png') }}" id="btn_3" class="icondetail">  Явцын мэдээлэл</button>
@@ -264,7 +270,8 @@
                     </table>
                 </div>
                     </div>
-                </div>  <div class="card card-primary card-list" style="font-size:12px; display:none"  id="card_3">
+                </div> 
+                 <div class="card card-primary card-list" style="font-size:12px; display:none"  id="card_3">
                     <div class="card-header">
                         <h3 class="card-title">Явцын мэдээлэл</h3>
                         <div class="card-tools">
@@ -280,6 +287,30 @@
                             <th>Явцын төлөв</th>
                             <th>Тайлбар</th>
                             <th>Ажилтан</th>
+                            <th></th>
+                        </thead>
+                        <tbody id="tbody3">                   
+                        </tbody>
+                    </table>
+                </div>
+                    </div>
+                </div>
+                <div class="card card-primary card-list" style="font-size:12px; display:none"  id="card_5">
+                    <div class="card-header">
+                        <h3 class="card-title">Комиссийн мэдээлэл</h3>
+                        <div class="card-tools">
+                        <button class='btn btn-primary btn-xs' data-toggle="modal" data-target="#komissModal" onclick='komissEdit()'><i class='fa fa-plus'></i></button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                    <div class="table-responsive">
+                    <br>
+                    <table class="table table-bordered table-hover table-striped">
+                        <thead >                        
+                            <th>Ажилтны нэр</th>
+                            <th>Албан тушаал</th>
+                            <th>Огноо</th>
+                            <th>Тайлбар</th>
                             <th></th>
                         </thead>
                         <tbody id="tbody3">                   
