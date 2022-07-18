@@ -324,9 +324,7 @@ $('.orderinformation').on('click',function(){
         "   <td>" + qwe.tender_validdate + "</td>" +
          "   <td>" + qwe.packcount + "</td>"+
          "    <td>" + qwe.assessment + "</td>" +
-        "   <td>" + qwe.tendertitle + "</td>" +
-      
-       
+        "   <td>" + qwe.tendertitle + "</td>" +   
         "</tr>";
 
         $("#infotender tbody").append(sHtml);    
