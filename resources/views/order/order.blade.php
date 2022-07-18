@@ -267,7 +267,7 @@ button, input, optgroup, select, textarea {
                 <li class="nav-item menuli1 disabled disabledTab">
                     <a class="nav-link" id="tender-tab" data-toggle="tab" href="#tender" role="tab" aria-controls="tender" aria-selected="false">Тендер</a>
                 </li>
-                <li class="nav-item menuli disabled disabledTab">
+                <li class="nav-item menuli1 disabled disabledTab">
                     <a class="nav-link" id="contract-tab" data-toggle="tab" href="#contract" role="contract" aria-controls="contract" aria-selected="false">Гэрээ</a>
                 </li>
                 </ul>
@@ -561,32 +561,14 @@ button, input, optgroup, select, textarea {
                 <div class="tab-pane fade" id="contract" role="tabpanel" aria-labelledby="contract-tab">
                 <br>
                 <div class="row">
-                <div class="col-md-3">
-                    <div class="card card-primary" >
-                    <div class="card-header">
-                        <h3 class="card-title" id="t_order_name">Тендерийн мэдээлэл</h3>
-                        <div class="card-tools">
-                       
-                        </div>
-                    </div>
-                    <div class="card-body" style="font-size:14px">
-                    <div class="table-responsive">
-                    <br>
-                    <table class="table table-bordered table-striped">
-                       
-                      
-                    </table>
-                </div>
-                       
-                    </div>
-                    </div>
-                </div>
+                @include('order.contract_aside')   
+                @include('order.contract_bside')   
                 <div class="col-md-9">
-                <div class="card card-primary" style="font-size:12px;" id="cardcontract">
+                <div class="card card-primary card-list" style="font-size:12px;" id="card_6">
             <div class="card-header">
                 <h3 class="card-title">Гэрээний мэдээлэл</h3>
                 <div class="card-tools">
-                <button class="btn btn-primary btn-xs right"  onclick="orderEdit()" data-toggle="modal" data-target="#depModal"><i class="fa fa-plus"></i> </button>
+                <button class="btn btn-primary btn-xs right"  onclick="orderEdit()" data-toggle="modal" data-target="#contractModal"><i class="fa fa-plus"></i> </button>
                 </div>
             </div>
             <div class="card-body">
@@ -612,7 +594,7 @@ button, input, optgroup, select, textarea {
                             <th>Дүгнэлт</th>
                             <th>Санамж</th>
                             <th>Гэрээний төлөв</th>
-                            <th> <button class='btn btn-primary btn-xs' data-toggle="modal" data-target="#contractModal"><i class='fa fa-plus'></i></button></th>
+                            <th></th>
                         </thead>
                         <tbody id="tbody">
                     
@@ -623,13 +605,9 @@ button, input, optgroup, select, textarea {
               
             </div>
         </div>
-                </div>
-                </div>
-  
-       
-        <div class="card card-bordered">
+        <div class="card card-primary card-list" id="card_7" style=" display:none">
               <div class="card-header">
-                <h4 class="card-title"><strong>Сэтгэгдэл</strong></h4>
+                <h4 class="card-title">Явцын мэдээлэл</h4>
               </div>
               <div class="ps-container ps-theme-default ps-active-y" id="chat-content" style="overflow-y: scroll !important; height:300px !important;">
                 <div class="media media-chat">
@@ -672,563 +650,23 @@ button, input, optgroup, select, textarea {
              </div>
                 </div>
                 </div>
+                </div>
+                </div>
+  
+       
+     
               
             </div>
         </div>
     </div>
 </div>
-<div class="modal fade" id="depModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel"></h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <form method="POST" id="formSub" action={{ route('saveOrder') }}>
-                <div class="modal-body">
-               
-                    <div class="row">
-                       
-                        <div class="col-12">
-                            <div class="form-group">
-                                <label for="jobname">Худалдан авах ажил, үйлчилгээний нэр</label>
-                                <input type="text" class="form-control" id="order_name" name="order_name" >
-                            </div>
-                        </div>
-                        <div class="col-3">
-                            <div class="form-group">
-                                <label for="jobname">Хэмжих нэгж</label>
-                                <select class="form-control" name="order_unit" id="order_unit" >
-                                @foreach ($unit as $item)
-                                        <option value="{{ $item->unit_id }}">{{ $item->unit_name }}</option>
-                                    @endforeach
-                            </select>
-                            </div>
-                        </div>
-                        <div class="col-3">
-                            <div class="form-group">
-                                <label for="jobname">Тоо хэмжээ</label>
-                                <input type="number" class="form-control" id="order_count" name="order_count">
-                            </div>
-                        </div>
-                        <div class="col-3">
-                            <div class="form-group">
-                                <label for="jobname">Мөрдөх журам</label>
-                                <select class="form-control" name="order_selection" id="order_selection" >
-                                @foreach ($selection as $item)
-                                        <option value="{{ $item->tenderselectioncode }}">{{ $item->tenderselectionabbr }}</option>
-                                    @endforeach
-                            </select>
-                            </div>
-                        </div>
-                        <div class="col-3">
-                            <div class="form-group">
-                                <label for="jobname">Эх үүсвэр</label>
-                                <select class="form-control" name="order_budget_source" id="order_budget_source" >
-                                @foreach ($source as $item)
-                                        <option value="{{ $item->source_id }}">{{ $item->source_name }}</option>
-                                    @endforeach
-                            </select>
-                             
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <div class="form-group">
-                                <label for="jobname">Төсөвт өртөг</label>
-                                <input type="text" class="form-control" id="order_budget" name="order_budget">
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <div class="form-group">
-                                <label for="jobname">Тухайн онд санхүүжих</label>
-                                <input type="text" class="form-control" id="order_thisyear" name="order_thisyear">
-                            </div>
-                        </div>
-                     
-                        <div class="col-4">
-                            <div class="form-group">
-                                <label for="jobname">Захиалга өгсөн</label>
-                                <input type="date" class="form-control" id="order_date" name="order_date" >
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <div class="form-group">
-                                <label for="jobname">Ажилтан</label>
-                                <select class="form-control" name="order_employee" id="order_employee" >
-                                @foreach ($employee as $item)
-                                        <option value="{{ $item->id }}">{{ $item->first_name }}</option>
-                                    @endforeach
-                            </select>
-                             
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <div class="form-group">
-                                <label for="jobname">Захиалга батлагдсан</label>
-                                <input class="form-control" type="file" id="formFile">
-                            </div>
-                        </div>
-                       
-                        <div class="col-12">
-                            <div class="form-group">
-                                <label for="jobname">Тайлбар</label>
-                                <input type="text" class="form-control" id="order_comment" name="order_comment" placeholder="Тайлбар">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <input type="hidden"  id="order_id" name="order_id" class="order_id">
-                    @csrf
-                    <button type="submit" class="btn btn-primary">Хадгалах</button>
-                </div>
-                </form>
-            </div>
-        </div>
-        </div>
-        <div class="modal fade" id="tenderModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Тендер бүртгэл</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <form method="POST" id="formTender" action={{ route('saveTender') }}>
-                <div class="modal-body">
-               
-                    <div class="row">
-                        <div class="col-4">
-                            <div class="form-group">
-                                <label for="jobname">Шалгаруулалтын төрөл</label>
-                                <select class="form-control" name="tenderselectioncode" id="tenderselectioncode" >
-                                @foreach ($tendertype as $item)
-                                        <option value="{{ $item->contracttypecode }}">{{ $item->contracttypename }}</option>
-                                    @endforeach
-                            </select>
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <div class="form-group">
-                                <label for="jobname">Тендерийн №</label>
-                                <input type="text" class="form-control" id="tenderno" name="tenderno" placeholder="Тендерийн №">
-                                <input type="hidden" class="form-control" id="torder_id" name="torder_id" class="order_id" placeholder="Тендерийн №">
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <div class="form-group">
-                                <label for="jobname">Төрөл</label>
-                                <select class="form-control" name="tendertypecode" id="tendertypecode" >
-                                @foreach ($type as $item)
-                                        <option value="{{ $item->tendertypecode }}">{{ $item->tendertypename }}</option>
-                                    @endforeach
-                            </select>
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <div class="form-group">
-                                <label for="jobname">Зарлагдсан огноо</label>
-                                <input type="date" class="form-control" id="tender_call_at" name="tender_call_at" >
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <div class="form-group">
-                                <label for="jobname">Батлагдсан төсөвт өртөг</label>
-                                <input type="number" class="form-control" id="tender_budget" name="tender_budget" >
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <div class="form-group">
-                                <label for="jobname">Урилгын №</label>
-                                <input type="text" class="form-control" id="tender_invitationcode" name="tender_invitationcode">
-                            </div>
-                        </div>
-                        <div class="col-3">
-                            <div class="form-group">
-                                <label for="jobname">Урилгын огноо</label>
-                                <input type="date" class="form-control" id="tender_invitation_at" name="tender_invitation_at" >
-                            </div>
-                        </div>
-                        <div class="col-3">
-                            <div class="form-group">
-                                <label for="jobname">Тендер нээх хугацаа</label>
-                                <input type="date" class="form-control" id="tender_open_at" name="tender_open_at">
-                            </div>
-                        </div>
-                        <div class="col-3">
-                            <div class="form-group">
-                                <label for="jobname">Хүчинтэй хугацаа</label>
-                                <input type="date" class="form-control" id="tender_validdate" name="tender_validdate">
-                            </div>
-                        </div>
-                        <div class="col-3">
-                            <div class="form-group">
-                                <label for="jobname">Багцын тоо</label>
-                                <input type="number" class="form-control" id="packcount" name="packcount">
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <div class="form-group">
-                                <label for="jobname">Үнэлгээ</label>
-                                <input type="text" class="form-control" id="assessment" name="assessment">
-                            </div>
-                        </div> 
-                       
-                     
-                       
-                        <div class="col-8">
-                            <div class="form-group">
-                                <label for="jobname">Тайлбар</label>
-                                <input type="text" class="form-control" id="tender_title" name="tender_title" placeholder="Тайлбар">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <input type="hidden"  id="tender_id" name="tender_id">
-                    @csrf
-                    <button type="submit" class="btn btn-primary">Хадгалах</button>
-                </div>
-                </form>
-            </div>
-        </div>
-        </div>
-        <div class="modal fade" id="packModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Багц бүртгэл</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <form method="POST" id="formPack" action={{ route('savePack') }}>
-                <div class="modal-body">
-               
-                    <div class="row">
-                        <div class="col-4">
-                            <div class="form-group">
-                                <label for="jobname">Багцын нэр</label>
-                                <input type="text" class="form-control" id="pack_name" name="pack_name">
-                                <input type="hidden" class="form-control" id="pack_order_id" name="pack_order_id">
-                                <input type="hidden" class="form-control" id="tender_list_id" name="tender_list_id" >
-                            </div>
-                        </div>
-                    
-                        <div class="col-4">
-                            <div class="form-group">
-                                <label for="jobname">Огноо</label>
-                                <input type="date" class="form-control" id="pack_date" name="pack_date" >
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <div class="form-group">
-                                <label for="jobname">Төсөвт өртөг</label>
-                                <input type="number" class="form-control" id="pack_budget" name="pack_budget" >
-                            </div>
-                        </div>
-                        <div class="col-3">
-                            <div class="form-group">
-                                <label for="jobname">Гэрээ байгуулах эрх огноо</label>
-                                <input type="date" class="form-control" id="pack_contract_at" name="pack_contract_at">
-                            </div>
-                        </div>
-                        <div class="col-3">
-                            <div class="form-group">
-                                <label for="jobname">Түдгэлзүүлсэн огноо</label>
-                                <input type="date" class="form-control" id="pack_suspended_at" name="pack_suspended_at" >
-                            </div>
-                        </div>
-                        <div class="col-3">
-                            <div class="form-group">
-                                <label for="jobname">Гомдол гаргасан огноо</label>
-                                <input type="date" class="form-control" id="pack_complaint_at" name="pack_complaint_at">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <input type="hidden"  id="pack_id" name="pack_id">
-                    @csrf
-                    <button type="submit" class="btn btn-primary">Хадгалах</button>
-                </div>
-                </form>
-            </div>
-        </div>
-        </div>
-        <div class="modal fade" id="progressModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Явцын мэдээлэл</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <form method="POST" id="formProgress" action={{ route('saveProgress') }}>
-                <div class="modal-body">
-               
-                    <div class="row">
-                        <div class="col-4">
-                            <div class="form-group">
-                                <label for="jobname">Огноо</label>
-                                <input type="date" class="form-control" id="progress_date" name="progress_date" >
-                                <input type="hidden" class="form-control" id="progress_order" name="progress_order" >
-                                <input type="hidden" class="form-control" id="progress_tender" name="progress_tender" >
-                            </div>
-                        </div>
-                       
-                        <div class="col-4">
-                            <div class="form-group">
-                                <label for="jobname">Тендерийн явц</label>
-                                <select class="form-control" name="progress_state" id="progress_state" >
-                                @foreach ($tenderstate as $item)
-                                        <option value="{{ $item->state_id }}">{{ $item->state_name }}</option>
-                                    @endforeach
-                            </select>
-                            </div>
-                        </div>
-                      
-                        <div class="col-12">
-                            <div class="form-group">
-                                <label for="jobname">Тайлбар</label>
-                                <input type="text" class="form-control" id="progress_comment" name="progress_comment">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <input type="hidden"  id="progress_id" name="progress_id">
-                    @csrf
-                    <button type="submit" class="btn btn-primary">Хадгалах</button>
-                </div>
-                </form>
-            </div>
-        </div>
-        </div>
-        <div class="modal fade" id="complaintModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Мэдэгдэл/Үнэлгээ бүртгэл</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <form method="POST" id="formComplaint" action={{ route('saveComplaint') }}>
-                <div class="modal-body">
-               
-                    <div class="row">
-                        
-                    <div class="col-4">
-                            <div class="form-group">
-                                <label for="jobname">Огноо</label>
-                                <input type="date" class="form-control" id="complaint_date" name="complaint_date" >
-                            </div>
-                        </div>
-                      
-                        <div class="col-8">
-                            <div class="form-group">
-                                <input type="hidden" class="form-control" id="complaint_tender" name="complaint_tender" >
-                                <input type="hidden" class="form-control" id="complaint_order" name="complaint_order" >
-                                <label for="jobname">Тайлбар</label>
-                                <input type="text" class="form-control" id="complaint_comment" name="complaint_comment">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <input type="hidden"  id="complaint_id" name="complaint_id">
-                    @csrf
-                    <button type="submit" class="btn btn-primary">Хадгалах</button>
-                </div>
-                </form>
-            </div>
-        </div>
-        </div>
-        <div class="modal fade" id="contractModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Гэрээ бүртгэл</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <form method="POST" id="formContract" action={{ route('saveContract') }}>
-                <div class="modal-body">
-               
-                    <div class="row">
-                        
-                        <div class="col-4">
-                            <div class="form-group">
-                                <label for="jobname">Гэрээний №</label>
-                                <input type="text" class="form-control" id="tenderno" name="tenderno" placeholder="Тендерийн №">
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <div class="form-group">
-                                <label for="jobname">Гэрээ байгуулсан огноо</label>
-                                <input type="date" class="form-control" id="tender_call_at" name="tender_call_at" >
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <div class="form-group">
-                                <label for="jobname">Хүчинтэй хугацааг</label>
-                                <input type="date" class="form-control" id="tender_budget" name="tender_budget" >
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <div class="form-group">
-                                <label for="jobname">Валют</label>
-                                <input type="text" class="form-control" id="tender_invitationcode" name="tender_invitationcode">
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <div class="form-group">
-                                <label for="jobname">Гэрээний дүн</label>
-                                <input type="number" class="form-control" id="tender_invitation_at" name="tender_invitation_at" >
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <div class="form-group">
-                                <label for="jobname">Төлбөрийн нөхцөл</label>
-                                <input type="text" class="form-control" id="tender_open_at" name="tender_open_at">
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <div class="form-group">
-                                <label for="jobname">Төлбөрийн огноо</label>
-                                <input type="date" class="form-control" id="tender_validdate" name="tender_validdate">
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <div class="form-group">
-                                <label for="jobname">Төлбөр хийх хугацаа</label>
-                                <input type="number" class="form-control" id="packcount" name="packcount">
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <div class="form-group">
-                                <label for="jobname">Нийлүүлэх нөхцөл</label>
-                                <input type="text" class="form-control" id="assessment" name="assessment">
-                            </div>
-                        </div> 
-                        <div class="col-4">
-                            <div class="form-group">
-                                <label for="jobname">Нийлүүлэх хугацаа</label>
-                                <input type="date" class="form-control" id="tender_player" name="tender_player" placeholder="Тендерт оролцогч">
-                            </div>
-                        </div>
-                        <div class="col-8">
-                            <div class="form-group">
-                                <label for="jobname">Нийлүүлэгч</label>
-                                <input type="text" class="form-control" id="assessment_at" name="assessment_at" >
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <div class="form-group">
-                                <label for="jobname">Алдангийн нөхцөл</label>
-                                <input type="text" class="form-control" id="assessment_at" name="assessment_at" >
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <div class="form-group">
-                                <label for="jobname">Гэрээний хэрэгжилт</label>
-                                <input type="text" class="form-control" id="statement_at" name="statement_at" >
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <div class="form-group">
-                                <label for="jobname">Тодруулга</label>
-                                <input type="text" class="form-control" id="contract_at" name="contract_at" >
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <div class="form-group">
-                                <label for="jobname">Дүгнэлт</label>
-                                <input type="text" class="form-control" id="suspended_at" name="suspended_at" >
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <div class="form-group">
-                                <label for="jobname">Санамж</label>
-                                <input type="text" class="form-control" id="complaint_at" name="complaint_at" >
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <div class="form-group">
-                                <label for="jobname">Гэрээний төлөв</label>
-                                <input type="text" class="form-control" id="tender_comment" name="tender_comment" placeholder="Тайлбар">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <input type="hidden"  id="contract_id" name="contract_id">
-                    @csrf
-                    <button type="submit" class="btn btn-primary">Хадгалах</button>
-                </div>
-                </form>
-            </div>
-        </div>
-        </div>
-        <div class="modal fade" id="detailModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="detail-title" id="exampleModalLabel">Захиалгын дэлгэрэнгүй мэдээллийн бүртгэл</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <form method="POST" id="formDetail" action={{ route('saveOrderDetail') }}>
-                <div class="modal-body">
-               
-                    <div class="row">
-                        <div class="col-4">
-                            <div class="form-group">
-                                <label for="jobname">Алба хэлтэс</label>
-                                <select class="form-control" name="dep_id" id="dep_id" >
-                                @foreach ($dep as $item)
-                                        <option value="{{ $item->dep_id }}">{{ $item->executor_name }}</option>
-                                    @endforeach
-                            </select>
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <div class="form-group">
-                                <label for="jobname">Тоо хэмжээ</label>
-                                <input type="text" class="form-control" id="dorder_count_detail" name="dorder_count_detail" >
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <div class="form-group">
-                                <label for="jobname">Төсөвт өртөг</label>
-                                <input type="hidden" class="form-control" id="dorder_id" name="dorder_id" class="order_id">
-                                <input type="text" class="form-control" id="dorder_budget" name="dorder_budget">
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <div class="form-group">
-                                <label for="jobname">Гүйцэтгэл</label>
-                                <input type="text" class="form-control" id="dorder_performance" name="dorder_performance">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <input type="hidden"  id="detail_id" name="detail_id">
-                    @csrf
-                    <button type="submit" class="btn btn-primary">Хадгалах</button>
-                </div>
-                </form>
-            </div>
-        </div>
-        </div>
+@include('order.modal.complaint')   
+@include('order.modal.contract')   
+@include('order.modal.detail')   
+@include('order.modal.order')   
+@include('order.modal.pack')   
+@include('order.modal.progress')   
+@include('order.modal.tender')   
 @stop
 <style type="text/css">
               .disabledTab {
@@ -1399,6 +837,14 @@ button, input, optgroup, select, textarea {
             $('#card_4').show();
             $(this).toggleClass('ButtonClicked');
             break;
+        case 'btn_6':
+            $('#card_6').show();
+            $(this).toggleClass('ButtonClicked');
+            break;
+        case 'btn_7':
+            $('#card_7').show();
+            $(this).toggleClass('ButtonClicked');
+            break;
         }
 
   
@@ -1438,6 +884,22 @@ $('.orderinformation').on('click',function(){
                 $('#t_tender_open_at').text('');
                 $('#t_tender_packcount').text('');
                 $('#t_tender_assessment').text('');
+                    $('#tender_list_id1').val('');
+                    $('#progress_tender1').val('');
+                    $('#complaint_tender1').val('');
+                    $('#t_tender_id1').text('');
+                    $('#t_tender_no1').text('');
+                    $('#t_tender_selection1').text('');
+                    $('#t_tender_type1').text('');
+                    $('#t_tender_called_at1').text('');
+                    $('#t_tender_budget1').text('');
+                    $('#t_tender_invitation1').text('');
+                    $('#t_tender_invitation_at1').text('');
+                    $('#t_tender_validdate1').text('');
+                    $('#t_tender_open_at1').text('');
+                    $('#t_tender_packcount1').text('');
+                    $('#t_tender_assessment1').text('');
+                
     $( ".menuli1" ).removeClass("disabled disabledTab");
     $.get('getorder/' + itag, function (data) {
                 $('#t_order_name').text(data[0].order_name);
@@ -1502,6 +964,21 @@ $('.orderinformation').on('click',function(){
                 $('#t_tender_open_at').text(data[0].tender_open_at);
                 $('#t_tender_packcount').text(data[0].packcount);
                 $('#t_tender_assessment').text(data[0].assessment);
+                    $('#tender_list_id1').val(data[0].tenderid);
+                    $('#progress_tender1').val(data[0].tenderid);
+                    $('#complaint_tender1').val(data[0].tenderid);
+                    $('#t_tender_id1').text(data[0].tenderid);
+                    $('#t_tender_no1').text(data[0].tenderno);
+                    $('#t_tender_selection1').text(data[0].contracttypename);
+                    $('#t_tender_type1').text(data[0].tendertypename);
+                    $('#t_tender_called_at1').text(data[0].tender_call_at);
+                    $('#t_tender_budget1').text(data[0].tender_budget);
+                    $('#t_tender_invitation1').text(data[0].tender_invitationcode);
+                    $('#t_tender_invitation_at1').text(data[0].tender_invitation_at);
+                    $('#t_tender_validdate1').text(data[0].tender_validdate);
+                    $('#t_tender_open_at1').text(data[0].tender_open_at);
+                    $('#t_tender_packcount1').text(data[0].packcount);
+                    $('#t_tender_assessment1').text(data[0].assessment);
             });
             gettenderpacks(hid);
             gettenderprogresses(hid);
