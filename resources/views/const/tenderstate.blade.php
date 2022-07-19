@@ -20,9 +20,9 @@
             <div class="card-header">
                 <h3 class="card-title">Тендерийн явц</h3>
                 <div class="card-tools">
-                    @if(Auth::user()->userlevel==1 ) 
+ 
                     <button class="btn btn-primary btn-small right" onclick="jobEdit()" data-toggle="modal" data-target="#jobModal"><i class="fa fa-plus"></i> Мэдээлэл нэмэх</button>
-                @endif
+  
                 </div>
             </div>
             <div class="card-body">
@@ -75,8 +75,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <input type="hidden"  id="hid" name="hid">
-                    <input type="hidden"  id="flg" name="flg">
+                    <input type="hidden"  id="state_id" name="state_id">
                     @csrf
                     <button type="submit" class="btn btn-primary">Хадгалах</button>
                 </div>
@@ -92,50 +91,15 @@
   
     function jobEdit(hid){
         if(hid){
-            $.get('getJobs/' + hid, function (data) {
-                $('#jobname').val(data[0].jobname);
-                $('#jobshname').val(data[0].jobshname);
-                $('#hid').val(data[0].hid);
-                $('#flg').val(1);
+            $.get('getTenderstates/' + hid, function (data) {
+                $('#state_name').val(data[0].state_name);
+                $('#state_id').val(data[0].state_id);
             });
         } else {
-            $('#jobname').val('');
-            $('#jobshname').val('');
-            $('#hid').val(0);
-            $('#flg').val(0);
+            $('#state_name').val('');
+            $('#state_id').val('');
         }
     }
-    $( "#formSub" ).submit(function( event ) {
-        event.preventDefault();
-        var form = $(this);
-        var url = form.attr('action');
-        $.ajax({
-               type: "POST",
-               url: url,
-               data: form.serialize(), // serializes the form's elements.
-               success: function(data)
-               {
-                   if(data==1){
-                    changeResult();
-                   } else {
-                       alert(data);
-                   }
-                   $("#jobModal").modal("hide");
-               }
-             });
-      });
-      function jobDel(hid){
-        if(confirm('Энэ албан тушаалыг устгах уу?'))
-        {
-           $.get('{{ route("jobDel") }}/'+hid , function (data) 
-            {
-                if(data==1)
-                {
-                    location.reload();
-                }
-            }); 
-        }
 
-    }
 </script>
 @stop
