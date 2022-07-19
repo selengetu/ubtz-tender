@@ -29,20 +29,23 @@ class OrderController extends Controller {
     public function saveOrder(Request $request)
     {
         $id= Auth::user()->id;
+        $order_budget = preg_replace('/[a-zZ-a,]/', '',$request->order_budget);
+        $order_thisyear = preg_replace('/[a-zZ-a,]/', '',$request->order_thisyear);
+
         if($request->order_id ==  null){
         DB::insert("insert into ORDERS
         ( ORDER_NAME, ORDER_DATE, ORDER_UNIT, ORDER_COUNT, ORDER_SELECTION, ORDER_BUDGET_SOURCE, ORDER_BUDGET, ORDER_THISYEAR, ORDER_COMMENT, ORDER_EMPLOYEE, ADDED_USER)
         values
         ( '$request->order_name', '$request->order_date', $request->order_unit, '$request->order_count', '$request->order_selection', '$request->order_budget_source'
-        , '$request->order_budget','$request->order_thisyear', '$request->order_comment', '$request->order_employee', '$id')");   
+        , '$order_budget','$request->order_thisyear', '$request->order_comment', '$request->order_employee', '$id')");   
           }
             else{
     
                 $orders = DB::table('ORDERS')
                 ->where('order_id', $request->order_id)
                 ->update(['order_name' => $request->order_name,'order_date' => $request->order_date,'order_unit' => $request->order_unit,'order_count' => $request->order_count,
-                'order_selection' => $request->order_selection,'order_budget_source' => $request->order_budget_source,'order_budget' => $request->order_budget,
-                'order_thisyear' => $request->order_thisyear,'order_comment' => $request->order_comment,'order_employee' => $request->order_employee]);        
+                'order_selection' => $request->order_selection,'order_budget_source' => $request->order_budget_source,'order_budget' => $order_budget,
+                'order_thisyear' => $order_thisyear,'order_comment' => $request->order_comment,'order_employee' => $request->order_employee]);        
             }
       
         return back();

@@ -101,6 +101,10 @@ Route::post('/saveComplaint', [App\Http\Controllers\ComplaintController::class, 
 Route::get('/getcomplaint/{hid?}', [App\Http\Controllers\ComplaintController::class, 'getcomplaint'])->name('getcomplaint');
 Route::get('/getcomplaints/{hid?}', [App\Http\Controllers\ComplaintController::class, 'getcomplaints'])->name('getcomplaints');
 
+Route::post('/saveKomiss', [App\Http\Controllers\KomissController::class, 'saveKomiss'])->name('saveKomiss');
+Route::get('/getkomiss/{hid?}', [App\Http\Controllers\KomissController::class, 'getkomiss'])->name('getkomiss');
+Route::get('/getkomisses/{hid?}', [App\Http\Controllers\KomissController::class, 'getkomisses'])->name('getkomisses');
+
 Route::get('/reportTender', [App\Http\Controllers\ReportController::class, 'reportTender'])->name('reportTender');
 Route::get('/reportTenderDetail', [App\Http\Controllers\ReportController::class, 'reportTenderDetail'])->name('reportTenderDetail');
 

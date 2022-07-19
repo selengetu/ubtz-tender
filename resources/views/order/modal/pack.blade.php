@@ -29,7 +29,7 @@
                         <div class="col-4">
                             <div class="form-group">
                                 <label for="jobname">Төсөвт өртөг</label>
-                                <input type="number" class="form-control" id="pack_budget" name="pack_budget" >
+                                <input type="text" class="form-control money" id="pack_budget" name="pack_budget" >
                             </div>
                         </div>
                         <div class="col-3">

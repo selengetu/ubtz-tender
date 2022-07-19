@@ -453,6 +453,7 @@
 @include('order.modal.pack')   
 @include('order.modal.progress')   
 @include('order.modal.tender')   
+@include('order.modal.komiss')   
 @stop
 <style type="text/css">
               .disabledTab {

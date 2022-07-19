@@ -1,10 +1,19 @@
 <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
-
+<script type='text/javascript' src="https://rawgit.com/RobinHerbots/jquery.inputmask/3.x/dist/jquery.inputmask.bundle.js"></script>
 <script>
    $(document).ready( function () {
     $('#myTable tfoot th').each(function () {
         var title = $(this).text();
         $(this).html('<input type="text" placeholder="' + title + ' хайх" />');
+    });
+    $('.money').inputmask("numeric", {
+        radixPoint: ".",
+        groupSeparator: ",",
+        digits: 2,
+        autoGroup: true,
+
+        rightAlign: false,
+        oncleared: function () { self.Value(''); }
     });
     $('#myTable').DataTable(
         {
@@ -270,6 +279,7 @@ $('.orderinformation').on('click',function(){
                 $('#tender_list_id').val(data[0].tenderid);
                 $('#progress_tender').val(data[0].tenderid);
                 $('#complaint_tender').val(data[0].tenderid);
+                $('#komiss_tender').val(data[0].tenderid);
                 $('#t_tender_id').text(data[0].tenderid);
                 $('#t_tender_no').text(data[0].tenderno);
                 $('#t_tender_selection').text(data[0].contracttypename);
@@ -285,6 +295,7 @@ $('.orderinformation').on('click',function(){
                     $('#tender_list_id1').val(data[0].tenderid);
                     $('#progress_tender1').val(data[0].tenderid);
                     $('#complaint_tender1').val(data[0].tenderid);
+                    $('#komiss_tender1').val(data[0].tenderid);
                     $('#t_tender_id1').text(data[0].tenderid);
                     $('#t_tender_no1').text(data[0].tenderno);
                     $('#t_tender_selection1').text(data[0].contracttypename);
@@ -461,6 +472,25 @@ $('.orderinformation').on('click',function(){
                 $('#pack_complaint_at').val('');
                 $('#pack_id').val('');
                 document.getElementById("exampleModalLabel").innerHTML="Шинээр захиалга нэмэх";
+        }
+    }
+    function komissEdit(hid){
+        if(hid){
+            $.get('getkomiss/' + hid, function (data) {
+                $('#komiss_employee').val(data[0].komiss_employee);
+                $('#komiss_job').val(data[0].komiss_job);
+                $('#komiss_date').val(data[0].komiss_date);
+                $('#komiss_comment').val(data[0].komiss_comment);
+                $('#komiss_id').val(data[0].komiss_id);
+
+            });
+        } else {
+                ('#komiss_employee').val('');
+                $('#komiss_job').val('');
+                $('#komiss_date').val('');
+                $('#komiss_comment').val('');
+                $('#komiss_id').val('');
+
         }
     }
     function progressEdit(hid){

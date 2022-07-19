@@ -58,13 +58,13 @@
                         <div class="col-4">
                             <div class="form-group">
                                 <label for="jobname">Төсөвт өртөг</label>
-                                <input type="text" class="form-control" id="order_budget" name="order_budget">
+                                <input type="text" class="form-control money" id="order_budget" name="order_budget">
                             </div>
                         </div>
                         <div class="col-4">
                             <div class="form-group">
                                 <label for="jobname">Тухайн онд санхүүжих</label>
-                                <input type="text" class="form-control" id="order_thisyear" name="order_thisyear">
+                                <input type="text" class="form-control money" id="order_thisyear" name="order_thisyear">
                             </div>
                         </div>
                      

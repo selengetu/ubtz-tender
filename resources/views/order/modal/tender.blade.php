@@ -47,7 +47,7 @@
                         <div class="col-4">
                             <div class="form-group">
                                 <label for="jobname">Батлагдсан төсөвт өртөг</label>
-                                <input type="number" class="form-control" id="tender_budget" name="tender_budget" >
+                                <input type="text" class="form-control money" id="tender_budget" name="tender_budget" >
                             </div>
                         </div>
                         <div class="col-4">
