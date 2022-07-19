@@ -31,7 +31,7 @@
                             <div class="form-group">
                                 <label for="jobname">Төсөвт өртөг</label>
                                 <input type="hidden" class="form-control" id="dorder_id" name="dorder_id" class="order_id">
-                                <input type="text" class="form-control" id="dorder_budget" name="dorder_budget">
+                                <input type="text" class="form-control money" id="dorder_budget" name="dorder_budget">
                             </div>
                         </div>
                         <div class="col-4">

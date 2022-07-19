@@ -506,7 +506,7 @@ $('.orderinformation').on('click',function(){
         } else {
                
                 $('#progress_date').val('');
-                $('#progress_state').val('');
+                $('#progress_state').val('1');
                 $('#progress_comment').val('');
                 $('#progress_employee').val('');
                 $('#progress_id').val('');

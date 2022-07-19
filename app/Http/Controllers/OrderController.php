@@ -57,17 +57,18 @@ class OrderController extends Controller {
     public function saveOrderDetail(Request $request)
     {
         $id= Auth::user()->id;
+        $dorder_budget = preg_replace('/[a-zZ-a,]/', '',$request->dorder_budget);
         if($request->detail_id ==  null){
             DB::insert("insert into ORDER_DETAIL
                 ( ORDER_ID, DEP_ID, ORDER_COUNT, ORDER_BUDGET, ORDER_PERFORMANCE, ADDED_USER)
                 values
-                ( '$request->dorder_id', '$request->dep_id', '$request->dorder_count_detail','$request->dorder_budget','$request->dorder_performance', '$id')");
+                ( '$request->dorder_id', '$request->dep_id', '$request->dorder_count_detail','$dorder_budget','$request->dorder_performance', '$id')");
               }
                 else{
         
                     $orders = DB::table('ORDER_DETAIL')
                     ->where('order_detail_id', $request->detail_id)
-                    ->update(['dep_id' => $request->dep_id,'order_count' => $request->dorder_count_detail,'order_budget' => $request->dorder_budget,'order_performance' => $request->dorder_performance]);        
+                    ->update(['dep_id' => $request->dep_id,'order_count' => $request->dorder_count_detail,'order_budget' => $dorder_budget,'order_performance' => $request->dorder_performance]);        
                 }
                 return 1;
     }
