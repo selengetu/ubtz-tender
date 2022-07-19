@@ -14,13 +14,13 @@
                        
                         <div class="col-12">
                             <div class="form-group">
-                                <label for="jobname">Худалдан авах ажил, үйлчилгээний нэр</label>
+                                 <label>Худалдан авах ажил, үйлчилгээний нэр</label>
                                 <input type="text" class="form-control" id="order_name" name="order_name" >
                             </div>
                         </div>
                         <div class="col-3">
                             <div class="form-group">
-                                <label for="jobname">Хэмжих нэгж</label>
+                                 <label>Хэмжих нэгж</label>
                                 <select class="form-control" name="order_unit" id="order_unit" >
                                 @foreach ($unit as $item)
                                         <option value="{{ $item->unit_id }}">{{ $item->unit_name }}</option>
@@ -30,13 +30,13 @@
                         </div>
                         <div class="col-3">
                             <div class="form-group">
-                                <label for="jobname">Тоо хэмжээ</label>
+                                 <label>Тоо хэмжээ</label>
                                 <input type="number" class="form-control" id="order_count" name="order_count">
                             </div>
                         </div>
                         <div class="col-3">
                             <div class="form-group">
-                                <label for="jobname">Мөрдөх журам</label>
+                                 <label>Мөрдөх журам</label>
                                 <select class="form-control" name="order_selection" id="order_selection" >
                                 @foreach ($selection as $item)
                                         <option value="{{ $item->tenderselectioncode }}">{{ $item->tenderselectionabbr }}</option>
@@ -46,7 +46,7 @@
                         </div>
                         <div class="col-3">
                             <div class="form-group">
-                                <label for="jobname">Эх үүсвэр</label>
+                                 <label>Эх үүсвэр</label>
                                 <select class="form-control" name="order_budget_source" id="order_budget_source" >
                                 @foreach ($source as $item)
                                         <option value="{{ $item->source_id }}">{{ $item->source_name }}</option>
@@ -57,26 +57,26 @@
                         </div>
                         <div class="col-4">
                             <div class="form-group">
-                                <label for="jobname">Төсөвт өртөг</label>
+                                 <label>Төсөвт өртөг</label>
                                 <input type="text" class="form-control money" id="order_budget" name="order_budget">
                             </div>
                         </div>
                         <div class="col-4">
                             <div class="form-group">
-                                <label for="jobname">Тухайн онд санхүүжих</label>
+                                 <label>Тухайн онд санхүүжих</label>
                                 <input type="text" class="form-control money" id="order_thisyear" name="order_thisyear">
                             </div>
                         </div>
                      
                         <div class="col-4">
                             <div class="form-group">
-                                <label for="jobname">Захиалга өгсөн</label>
+                                 <label>Захиалга өгсөн</label>
                                 <input type="date" class="form-control" id="order_date" name="order_date" >
                             </div>
                         </div>
                         <div class="col-4">
                             <div class="form-group">
-                                <label for="jobname">Ажилтан</label>
+                                 <label>Ажилтан</label>
                                 <select class="form-control" name="order_employee" id="order_employee" >
                                 @foreach ($employee as $item)
                                         <option value="{{ $item->id }}">{{ $item->first_name }}</option>
@@ -87,14 +87,14 @@
                         </div>
                         <div class="col-4">
                             <div class="form-group">
-                                <label for="jobname">Захиалга батлагдсан</label>
+                                 <label>Захиалга батлагдсан</label>
                                 <input class="form-control" type="file" id="formFile">
                             </div>
                         </div>
                        
                         <div class="col-12">
                             <div class="form-group">
-                                <label for="jobname">Тайлбар</label>
+                                 <label>Тайлбар</label>
                                 <input type="text" class="form-control" id="order_comment" name="order_comment" placeholder="Тайлбар">
                             </div>
                         </div>

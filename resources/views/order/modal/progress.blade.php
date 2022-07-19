@@ -13,7 +13,7 @@
                     <div class="row">
                         <div class="col-4">
                             <div class="form-group">
-                                <label for="jobname">Огноо</label>
+                                 <label>Огноо</label>
                                 <input type="date" class="form-control" id="progress_date" name="progress_date" >
                                 <input type="hidden" class="form-control" id="progress_order" name="progress_order" >
                                 <input type="hidden" class="form-control" id="progress_tender" name="progress_tender" >
@@ -22,7 +22,7 @@
                        
                         <div class="col-4">
                             <div class="form-group">
-                                <label for="jobname">Тендерийн явц</label>
+                                 <label>Тендерийн явц</label>
                                 <select class="form-control" name="progress_state" id="progress_state" >
                                 @foreach ($tenderstate as $item)
                                         <option value="{{ $item->state_id }}">{{ $item->state_name }}</option>
@@ -33,7 +33,7 @@
                       
                         <div class="col-12">
                             <div class="form-group">
-                                <label for="jobname">Тайлбар</label>
+                                 <label>Тайлбар</label>
                                 <input type="text" class="form-control" id="progress_comment" name="progress_comment">
                             </div>
                         </div>

@@ -15,16 +15,17 @@ class OrderController extends Controller {
     {
  
         $ostate= DB::select("select * from CONST_ORDER_STATE t order by state_name");
-        $source= DB::select("select * from CONST_ORDER_BUDGET_SOURCE t ");
-        $selection= DB::select("select * from CONST_ORDER_SELECTIONS t ");
-        $dep= DB::select("select * from MEASINST.V_DEPART t ");
-        $unit= DB::select("select * from CONST_UNIT t ");
-        $order= DB::select("select * from V_ORDERS t ");
-        $type= DB::select("select * from CONST_TENDER_TYPES t ");
-        $tendertype= DB::select("select * from CONST_CONTRACT_TYPES t ");
-        $tenderstate= DB::select("select t.* from CONST_TENDER_STATE t ");
-        $employee= DB::select("select t.* from V_USERS t order by first_name ");
-        return view('order.order',compact('dep','ostate','source','selection','unit','order','type','tendertype','tenderstate','employee'));
+        $source= DB::select("select * from CONST_ORDER_BUDGET_SOURCE t");
+        $selection= DB::select("select * from CONST_ORDER_SELECTIONS t");
+        $dep= DB::select("select * from MEASINST.V_DEPART t");
+        $unit= DB::select("select * from CONST_UNIT t");
+        $order= DB::select("select * from V_ORDERS t");
+        $currency= DB::select("select * from CONST_CURRENCY t order by currency_id");
+        $type= DB::select("select * from CONST_TENDER_TYPES t");
+        $tendertype= DB::select("select * from CONST_CONTRACT_TYPES t");
+        $tenderstate= DB::select("select t.* from CONST_TENDER_STATE t");
+        $employee= DB::select("select t.* from V_USERS t order by first_name");
+        return view('order.order',compact('dep','ostate','source','selection','unit','order','type','tendertype','tenderstate','employee','currency'));
     }
     public function saveOrder(Request $request)
     {

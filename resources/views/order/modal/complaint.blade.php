@@ -14,7 +14,7 @@
                         
                     <div class="col-4">
                             <div class="form-group">
-                                <label for="jobname">Огноо</label>
+                                 <label>Огноо</label>
                                 <input type="date" class="form-control" id="complaint_date" name="complaint_date" >
                             </div>
                         </div>
@@ -23,7 +23,7 @@
                             <div class="form-group">
                                 <input type="hidden" class="form-control" id="complaint_tender" name="complaint_tender" >
                                 <input type="hidden" class="form-control" id="complaint_order" name="complaint_order" >
-                                <label for="jobname">Тайлбар</label>
+                                 <label>Тайлбар</label>
                                 <input type="text" class="form-control" id="complaint_comment" name="complaint_comment">
                             </div>
                         </div>

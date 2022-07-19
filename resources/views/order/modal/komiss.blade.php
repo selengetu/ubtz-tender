@@ -14,26 +14,26 @@
                         
                         <div class="col-4">
                             <div class="form-group">
-                                <label for="jobname">Ажилтаны нэр</label>
+                                 <label>Ажилтаны нэр</label>
                                 <input type="text" class="form-control" id="komiss_employee" name="komiss_employee" >
                             </div>
                         </div>
                         <div class="col-4">
                             <div class="form-group">
-                                <label for="jobname">Албан тушаал</label>
+                                 <label>Албан тушаал</label>
                                 <input type="hidden" class="form-control" id="komiss_tender" name="komiss_tender">
                                 <input type="text" class="form-control" id="komiss_job" name="komiss_job">
                             </div>
                         </div>
                         <div class="col-4">
                             <div class="form-group">
-                                <label for="jobname">Огноо</label>
+                                 <label>Огноо</label>
                                 <input type="text" class="form-control" id="komiss_date" name="komiss_date">
                             </div>
                         </div>
                         <div class="col-4">
                             <div class="form-group">
-                                <label for="jobname">Тайлбар</label>
+                                 <label>Тайлбар</label>
                                 <input type="text" class="form-control" id="komiss_comment" name="komiss_comment">
                             </div>
                         </div>

@@ -115,3 +115,7 @@ Route::get('/filter_selection/{id?}', [App\Http\Controllers\ReportController::cl
 Route::post('/saveTenderState', [App\Http\Controllers\TenderStateController::class, 'saveTenderState'])->name('saveTenderState');
 Route::get('/getTenderState/{hid?}', [App\Http\Controllers\TenderStateController::class, 'getTenderState'])->name('getTenderState');
 Route::get('/tenderstate', [App\Http\Controllers\TenderStateController::class, 'index'])->name('tenderstate');
+
+Route::post('/saveContract', [App\Http\Controllers\ContractController::class, 'saveContract'])->name('saveContract');
+Route::get('/getcontract/{hid?}', [App\Http\Controllers\ContractController::class, 'getcontract'])->name('getcontract');
+Route::get('/getcontracts/{hid?}', [App\Http\Controllers\ContractController::class, 'getcontracts'])->name('getcontracts');

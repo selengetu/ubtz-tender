@@ -67,7 +67,7 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="form-group">
-                                <label for="jobname">Тендерийн явц</label>
+                                 <label>Тендерийн явц</label>
                                 <input type="text" class="form-control" id="state_name" name="state_name" placeholder="Тендерийн явц">
                             </div>
                         </div>

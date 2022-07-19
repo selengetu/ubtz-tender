@@ -14,106 +14,100 @@
                         
                         <div class="col-4">
                             <div class="form-group">
-                                <label for="jobname">Гэрээний №</label>
-                                <input type="text" class="form-control" id="contractno" name="contractno" placeholder="Тендерийн №">
+                                 <label>Гэрээний №</label>
+                                <input type="text" class="form-control" id="contractno" name="contractno" placeholder="Гэрээний №">
                             </div>
                         </div>
                         <div class="col-4">
                             <div class="form-group">
-                                <label for="jobname">Гэрээ байгуулсан огноо</label>
+                                 <label>Гэрээ байгуулсан огноо</label>
                                 <input type="date" class="form-control" id="contract_date" name="contract_date" >
                             </div>
                         </div>
                         <div class="col-4">
                             <div class="form-group">
-                                <label for="jobname">Хүчинтэй хугацаа</label>
-                                <input type="date" class="form-control" id="g" name="g" >
+                                 <label>Хүчинтэй хугацаа</label>
+                                <input type="date" class="form-control" id="contract_duration_days" name="contract_duration_days" >
                             </div>
                         </div>
                         <div class="col-4">
                             <div class="form-group">
-                                <label for="jobname">Валют</label>
-                                <input type="text" class="form-control" id="g" name="g">
+                                 <label>Валют</label>
+                                 <select class="form-control" name="currency" id="currency" >
+                                @foreach ($currency as $item)
+                                        <option value="{{ $item->currency_id }}">{{ $item->currency_abbr_name }}</option>
+                                    @endforeach
+                            </select>
+        
                             </div>
                         </div>
                         <div class="col-4">
                             <div class="form-group">
-                                <label for="jobname">Гэрээний дүн</label>
-                                <input type="number" class="form-control" id="g" name="w" >
+                                 <label>Гэрээний дүн</label>
+                                <input type="number" class="form-control" id="contract_amount" name="contract_amount" >
                             </div>
                         </div>
                         <div class="col-4">
                             <div class="form-group">
-                                <label for="jobname">Төлбөрийн нөхцөл</label>
-                                <input type="text" class="form-control" id="g" name="e">
+                                 <label>Төлбөрийн нөхцөл</label>
+                                <input type="text" class="form-control" id="contract_condition" name="contract_condition">
                             </div>
                         </div>
                         <div class="col-4">
                             <div class="form-group">
-                                <label for="jobname">Төлбөрийн огноо</label>
-                                <input type="date" class="form-control" id="e" name="g">
+                                 <label>Төлбөрийн огноо</label>
+                                <input type="date" class="form-control" id="contract_payment_date" name="contract_payment_date">
                             </div>
                         </div>
                         <div class="col-4">
                             <div class="form-group">
-                                <label for="jobname">Төлбөр хийх хугацаа</label>
-                                <input type="number" class="form-control" id="q" name="w">
+                                 <label>Төлбөр хийх хугацаа</label>
+                                <input type="number" class="form-control" id="contract_end_date" name="contract_end_date">
                             </div>
                         </div>
                         <div class="col-4">
                             <div class="form-group">
-                                <label for="jobname">Нийлүүлэх нөхцөл</label>
-                                <input type="text" class="form-control" id="w" name="w">
+                                 <label>Нийлүүлэх нөхцөл</label>
+                                <input type="text" class="form-control" id="supplier_condition" name="supplier_condition">
                             </div>
                         </div> 
                         <div class="col-4">
                             <div class="form-group">
-                                <label for="jobname">Нийлүүлэх хугацаа</label>
-                                <input type="date" class="form-control" id="q" name="q" placeholder="q оролцогч">
+                                 <label>Нийлүүлэх хугацаа</label>
+                                <input type="date" class="form-control" id="supplier_days" name="supplier_days" placeholder="q оролцогч">
                             </div>
                         </div>
                         <div class="col-8">
                             <div class="form-group">
-                                <label for="jobname">Нийлүүлэгч</label>
-                                <input type="text" class="form-control" id="w" name="w" >
+                                 <label>Нийлүүлэгч</label>
+                                <input type="text" class="form-control" id="supplier_name" name="supplier_name" >
                             </div>
                         </div>
                         <div class="col-4">
                             <div class="form-group">
-                                <label for="jobname">Алдангийн нөхцөл</label>
-                                <input type="text" class="form-control" id="q" name="q" >
+                                 <label>Алдангийн нөхцөл</label>
+                                <input type="text" class="form-control" id="fine_condition" name="fine_condition" >
                             </div>
                         </div>
                         <div class="col-4">
                             <div class="form-group">
-                                <label for="jobname">Гэрээний хэрэгжилт</label>
-                                <input type="text" class="form-control" id="q" name="q" >
+                                 <label>Тодруулга</label>
+                                <input type="text" class="form-control" id="fine_clarification" name="fine_clarification" >
                             </div>
                         </div>
                         <div class="col-4">
                             <div class="form-group">
-                                <label for="jobname">Тодруулга</label>
-                                <input type="text" class="form-control" id="q" name="q" >
+                                 <label>Дүгнэлт</label>
+                                <input type="text" class="form-control" id="fine_conclusion" name="fine_conclusion" >
                             </div>
                         </div>
                         <div class="col-4">
                             <div class="form-group">
-                                <label for="jobname">Дүгнэлт</label>
-                                <input type="text" class="form-control" id="q" name="q" >
+                                 <label>Санамж</label>
+                                <input type="text" class="form-control" id="fine_reminder" name="fine_reminder" >
                             </div>
                         </div>
-                        <div class="col-4">
-                            <div class="form-group">
-                                <label for="jobname">Санамж</label>
-                                <input type="text" class="form-control" id="q" name="q" >
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <div class="form-group">
-                                <label for="jobname">Гэрээний төлөв</label>
-                                <input type="text" class="form-control" id="e" name="q" placeholder="Тайлбар">
-                            </div>
-                        </div>
+                       
                     </div>
                 </div>
                 <div class="modal-footer">

@@ -13,7 +13,7 @@
                     <div class="row">
                         <div class="col-4">
                             <div class="form-group">
-                                <label for="jobname">Шалгаруулалтын төрөл</label>
+                                 <label>Шалгаруулалтын төрөл</label>
                                 <select class="form-control" name="tenderselectioncode" id="tenderselectioncode" >
                                 @foreach ($tendertype as $item)
                                         <option value="{{ $item->contracttypecode }}">{{ $item->contracttypename }}</option>
@@ -23,14 +23,14 @@
                         </div>
                         <div class="col-4">
                             <div class="form-group">
-                                <label for="jobname">Тендерийн №</label>
+                                 <label>Тендерийн №</label>
                                 <input type="text" class="form-control" id="tenderno" name="tenderno" placeholder="Тендерийн №">
                                 <input type="hidden" class="form-control" id="torder_id" name="torder_id" class="order_id" placeholder="Тендерийн №">
                             </div>
                         </div>
                         <div class="col-4">
                             <div class="form-group">
-                                <label for="jobname">Төрөл</label>
+                                 <label>Төрөл</label>
                                 <select class="form-control" name="tendertypecode" id="tendertypecode" >
                                 @foreach ($type as $item)
                                         <option value="{{ $item->tendertypecode }}">{{ $item->tendertypename }}</option>
@@ -40,49 +40,49 @@
                         </div>
                         <div class="col-4">
                             <div class="form-group">
-                                <label for="jobname">Зарлагдсан огноо</label>
+                                 <label>Зарлагдсан огноо</label>
                                 <input type="date" class="form-control" id="tender_call_at" name="tender_call_at" >
                             </div>
                         </div>
                         <div class="col-4">
                             <div class="form-group">
-                                <label for="jobname">Батлагдсан төсөвт өртөг</label>
+                                 <label>Батлагдсан төсөвт өртөг</label>
                                 <input type="text" class="form-control money" id="tender_budget" name="tender_budget" >
                             </div>
                         </div>
                         <div class="col-4">
                             <div class="form-group">
-                                <label for="jobname">Урилгын №</label>
+                                 <label>Урилгын №</label>
                                 <input type="text" class="form-control" id="tender_invitationcode" name="tender_invitationcode">
                             </div>
                         </div>
                         <div class="col-3">
                             <div class="form-group">
-                                <label for="jobname">Урилгын огноо</label>
+                                 <label>Урилгын огноо</label>
                                 <input type="date" class="form-control" id="tender_invitation_at" name="tender_invitation_at" >
                             </div>
                         </div>
                         <div class="col-3">
                             <div class="form-group">
-                                <label for="jobname">Тендер нээх хугацаа</label>
+                                 <label>Тендер нээх хугацаа</label>
                                 <input type="date" class="form-control" id="tender_open_at" name="tender_open_at">
                             </div>
                         </div>
                         <div class="col-3">
                             <div class="form-group">
-                                <label for="jobname">Хүчинтэй хугацаа</label>
+                                 <label>Хүчинтэй хугацаа</label>
                                 <input type="date" class="form-control" id="tender_validdate" name="tender_validdate">
                             </div>
                         </div>
                         <div class="col-3">
                             <div class="form-group">
-                                <label for="jobname">Багцын тоо</label>
+                                 <label>Багцын тоо</label>
                                 <input type="number" class="form-control" id="packcount" name="packcount">
                             </div>
                         </div>
                         <div class="col-4">
                             <div class="form-group">
-                                <label for="jobname">Үнэлгээ</label>
+                                 <label>Үнэлгээ</label>
                                 <input type="text" class="form-control" id="assessment" name="assessment">
                             </div>
                         </div> 
@@ -91,7 +91,7 @@
                        
                         <div class="col-8">
                             <div class="form-group">
-                                <label for="jobname">Тайлбар</label>
+                                 <label>Тайлбар</label>
                                 <input type="text" class="form-control" id="tender_title" name="tender_title" placeholder="Тайлбар">
                             </div>
                         </div>

@@ -73,7 +73,7 @@
                     <div class="row">
                     <div class="col-12">
                             <div class="form-group">
-                                <label for="jobname">Мэдээний төрөл</label>
+                                 <label>Мэдээний төрөл</label>
                                 <select class="form-control" name="infotype" id="infotype">                                 
                                         <option value="1">Шинэ мэдээ</option>
                                         <option value="2">Албан хэрэгцээнд</option>
@@ -82,13 +82,13 @@
                         </div>
                         <div class="col-12">
                             <div class="form-group">
-                                <label for="jobname">Мэдээний гарчиг</label>
+                                 <label>Мэдээний гарчиг</label>
                                 <input type="text" class="form-control" id="infotitle" name="infotitle" maxlength="100">
                             </div>
                         </div>
                         <div class="col-12">
                             <div class="form-group">
-                                <label for="jobname">Мэдээний агуулга</label>
+                                 <label>Мэдээний агуулга</label>
                                 <textarea class="form-control" id="infonews" name="infonews" rows="10" maxlength="1000"></textarea>
                             </div>
                         </div>

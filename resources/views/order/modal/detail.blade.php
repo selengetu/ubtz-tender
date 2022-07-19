@@ -13,7 +13,7 @@
                     <div class="row">
                         <div class="col-4">
                             <div class="form-group">
-                                <label for="jobname">Алба хэлтэс</label>
+                                 <label>Алба хэлтэс</label>
                                 <select class="form-control" name="dep_id" id="dep_id" >
                                 @foreach ($dep as $item)
                                         <option value="{{ $item->dep_id }}">{{ $item->executor_name }}</option>
@@ -23,20 +23,20 @@
                         </div>
                         <div class="col-4">
                             <div class="form-group">
-                                <label for="jobname">Тоо хэмжээ</label>
+                                 <label>Тоо хэмжээ</label>
                                 <input type="text" class="form-control" id="dorder_count_detail" name="dorder_count_detail" >
                             </div>
                         </div>
                         <div class="col-4">
                             <div class="form-group">
-                                <label for="jobname">Төсөвт өртөг</label>
+                                 <label>Төсөвт өртөг</label>
                                 <input type="hidden" class="form-control" id="dorder_id" name="dorder_id" class="order_id">
                                 <input type="text" class="form-control money" id="dorder_budget" name="dorder_budget">
                             </div>
                         </div>
                         <div class="col-4">
                             <div class="form-group">
-                                <label for="jobname">Гүйцэтгэл</label>
+                                 <label>Гүйцэтгэл</label>
                                 <input type="text" class="form-control" id="dorder_performance" name="dorder_performance">
                             </div>
                         </div>

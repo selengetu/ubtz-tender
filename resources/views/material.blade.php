@@ -97,7 +97,7 @@
                                     @csrf
                                     <div class="col-12">
                             <div class="form-group">
-                                <label for="jobname">Байгууллага</label>
+                                 <label>Байгууллага</label>
                                 <select class="form-control" name="depid" id="depid" >                            
                                 @foreach ($dep as $item)
                                                     <option value= "{{$item->depid}}" > @if($item->department_par > 0){{$item->p_abbr}} - {{$item->department_abbr}}
@@ -109,7 +109,7 @@
                         </div>
                                     <div class="col-12">
                                         <div class="form-group">
-                                            <label for="jobname">Төрөл</label>
+                                             <label>Төрөл</label>
                                             <select class="form-control" name="group" id="group">
                                                 @foreach ($datas as $parent)
                                                     <option value="{{ $parent->typeid }}">{{ $parent->typename }}

@@ -58,13 +58,13 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="form-group">
-                                <label for="jobname">Албан тушаал нэршил</label>
+                                 <label>Албан тушаал нэршил</label>
                                 <input type="text" class="form-control" id="jobname" name="jobname" placeholder="Албан тушаал">
                             </div>
                         </div>
                         <div class="col-12">
                             <div class="form-group">
-                                <label for="jobname">Товч нэршил</label>
+                                 <label>Товч нэршил</label>
                                 <input type="text" class="form-control" id="jobshname" name="jobshname" placeholder="Товч тушаал">
                             </div>
                         </div>

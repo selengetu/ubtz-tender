@@ -13,7 +13,7 @@
                     <div class="row">
                         <div class="col-4">
                             <div class="form-group">
-                                <label for="jobname">Багцын нэр</label>
+                                 <label>Багцын нэр</label>
                                 <input type="text" class="form-control" id="pack_name" name="pack_name">
                                 <input type="hidden" class="form-control" id="pack_order_id" name="pack_order_id">
                                 <input type="hidden" class="form-control" id="tender_list_id" name="tender_list_id" >
@@ -22,31 +22,31 @@
                     
                         <div class="col-4">
                             <div class="form-group">
-                                <label for="jobname">Огноо</label>
+                                 <label>Огноо</label>
                                 <input type="date" class="form-control" id="pack_date" name="pack_date" >
                             </div>
                         </div>
                         <div class="col-4">
                             <div class="form-group">
-                                <label for="jobname">Төсөвт өртөг</label>
+                                 <label>Төсөвт өртөг</label>
                                 <input type="text" class="form-control money" id="pack_budget" name="pack_budget" >
                             </div>
                         </div>
                         <div class="col-3">
                             <div class="form-group">
-                                <label for="jobname">Гэрээ байгуулах эрх огноо</label>
+                                 <label>Гэрээ байгуулах эрх огноо</label>
                                 <input type="date" class="form-control" id="pack_contract_at" name="pack_contract_at">
                             </div>
                         </div>
                         <div class="col-3">
                             <div class="form-group">
-                                <label for="jobname">Түдгэлзүүлсэн огноо</label>
+                                 <label>Түдгэлзүүлсэн огноо</label>
                                 <input type="date" class="form-control" id="pack_suspended_at" name="pack_suspended_at" >
                             </div>
                         </div>
                         <div class="col-3">
                             <div class="form-group">
-                                <label for="jobname">Гомдол гаргасан огноо</label>
+                                 <label>Гомдол гаргасан огноо</label>
                                 <input type="date" class="form-control" id="pack_complaint_at" name="pack_complaint_at">
                             </div>
                         </div>
