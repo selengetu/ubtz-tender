@@ -379,7 +379,6 @@
                             <th>Тодруулга</th>
                             <th>Дүгнэлт</th>
                             <th>Санамж</th>
-                            <th></th>
                         </thead>
                         <tbody id="tbody">
                     
