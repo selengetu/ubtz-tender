@@ -13,18 +13,22 @@ class ContractController extends Controller {
 
     public function saveContract(Request $request)
     {
-        DB::insert("insert into Tenders
-        (TENDERNO, TENDERTYPECODE, TENDERSELECTIONCODE, TENDER_CALL_AT, TENDER_OPEN_AT, TENDER_BUDGET, TENDER_BUDGET_SOURCE, TENDERTITLE, TENDER_INVITATIONCODE, TENDER_INVITATION_AT, TENDER_VALIDDATE, PACKCOUNT,
-         ASSESSMENT, TENDER_PLAYER,TENDER_STATE, ASSESSMENT_AT,STATEMENT_AT,CONTRACT_AT,SUSPENDED_AT,COMPLAINT_AT,ORDER_ID)
+        $contract_amount = preg_replace('/[a-zZ-a,]/', '',$request->contract_amount);
+        DB::insert("insert into CONTRACTS
+        (CONTRACTNO, CONTRACT_DATE, CONTRACT_DURATION_DAYS, CONTRACT_END_DATE, CONTRACT_PAYMENT_DATE, CONTRACTOR_NAME, CONTRACT_AMOUNT, CURRENCY, PERFORMANCE_NOTE, PERFORMANCE_PERCENT, FINE_PERCENT,
+        FINE_CONDITION, CONTRACT_STATE,CONTRACT_TITLE, SUPPLIER_CONDITION ,SUPPLIER_DAYS ,SUPPLIER_NAME, CONTRACT_CONDITION ,CONTRACT_CLARIFICATION ,CONTRACT_CONCLUSION, CONTRACT_REMINDER ,TENDERID)
         values
-        ($request->tenderno, $request->tendertypecode,$request->tenderselectioncode, '$request->tender_call_at', '$request->tender_open_at', $request->tender_budget, '1', '$request->tendertitle', '$request->tender_invitationcode',
-        '$request->tender_invitation_at','$request->tender_validdate', $request->packcount,'$request->assessment', '$request->tender_player',$request->tender_state, '$request->assesstment_at','$request->statement_at',
-       '$request->contract_at','$request->suspended_at','$request->complaint_at','$request->order_id')");
+        ('$request->contractno' , TO_DATE('$request->contract_date', 'yyyy-mm-dd'), '$request->contract_duration_days',  TO_DATE('$request->contract_end_date', 'yyyy-mm-dd'), TO_DATE('$request->payment_date', 'yyyy-mm-dd') ,'$request->contractor_name', '$contract_amount',
+        '$request->currency','$request->performance_note', '$request->performance_percent','$request->fine_percent', '$request->fine_condition',TO_DATE('$request->contract_state', 'yyyy-mm-dd'), '$request->contract_title','$request->supplier_condition',
+       '$request->supplier_days','$request->supplier_name','$request->contract_condition','$request->contract_clarification','$request->contract_conclusion','$request->contract_reminder','$request->contract_tender')");
         return 1;
     }
     public function getContracts($hid)
     {
-        return DB::select("select * from TENDERS t where t.order_id='$hid'");
+        return DB::select("select * from CONTRACTS t where t.tenderid='$hid'");
     }
-  
+    public function getContract($hid)
+    {
+        return DB::select("select * from CONTRACTS t where t.contractid='$hid'");
+    }
 }

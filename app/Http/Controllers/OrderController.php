@@ -13,7 +13,6 @@ class OrderController extends Controller {
 
     public function index()
     {
- 
         $ostate= DB::select("select * from CONST_ORDER_STATE t order by state_name");
         $source= DB::select("select * from CONST_ORDER_BUDGET_SOURCE t");
         $selection= DB::select("select * from CONST_ORDER_SELECTIONS t");
@@ -25,7 +24,8 @@ class OrderController extends Controller {
         $tendertype= DB::select("select * from CONST_CONTRACT_TYPES t");
         $tenderstate= DB::select("select t.* from CONST_TENDER_STATE t");
         $employee= DB::select("select t.* from V_USERS t order by first_name");
-        return view('order.order',compact('dep','ostate','source','selection','unit','order','type','tendertype','tenderstate','employee','currency'));
+        $contract_type= DB::select("select t.* from CONST_CONTRACT_TYPES t");
+        return view('order.order',compact('dep','ostate','source','selection','unit','order','type','tendertype','tenderstate','employee','currency','contract_type'));
     }
     public function saveOrder(Request $request)
     {

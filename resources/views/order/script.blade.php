@@ -55,6 +55,26 @@
                 }
             })  
     });
+    $('#formContract').submit(function(event){
+        var tender = $('#contract_tender').val();
+        event.preventDefault();
+            $.ajax({
+                type: 'POST',
+                url: 'saveContract',
+                data: $('form#formContract').serialize(),
+                success: function(){
+                    alert('Амжилттай');
+                    getContracts(tender);
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    if (jqXHR.status == 500) {
+                        alert('Internal error: ' + jqXHR.responseText);
+                    } else {
+                        alert('Unexpected error.');
+                    }
+                }
+            })  
+    });
     $('#formPack').submit(function(event){
         var tender = $('#tender_list_id').val();
         event.preventDefault();
@@ -280,6 +300,7 @@ $('.orderinformation').on('click',function(){
                 $('#progress_tender').val(data[0].tenderid);
                 $('#complaint_tender').val(data[0].tenderid);
                 $('#komiss_tender').val(data[0].tenderid);
+                $('#contract_tender').val(data[0].tenderid);
                 $('#t_tender_id').text(data[0].tenderid);
                 $('#t_tender_no').text(data[0].tenderno);
                 $('#t_tender_selection').text(data[0].contracttypename);
@@ -312,7 +333,7 @@ $('.orderinformation').on('click',function(){
             gettenderpacks(hid);
             gettenderprogresses(hid);
             gettendercomplaints(hid);
- 
+            getContracts(hid);
     }
     function getTenders(itag){
         $("#infotender tbody").empty();    
@@ -339,6 +360,37 @@ $('.orderinformation').on('click',function(){
         "</tr>";
 
         $("#infotender tbody").append(sHtml);    
+         });
+ 
+        });
+    }
+    function getContracts(itag){
+        $("#infocontract tbody").empty();    
+
+        $.get('getContracts/'+itag,function(data){
+           
+        $.each(data,function(i,qwe){
+            var sHtml = "<tr  onclick=getcontractinfo("+ qwe.contractid +") tag='"+ qwe.contractid +"' id='"+ qwe.contractid +"'>" +
+        "   <td> <button class='btn btn-primary btn-xs' data-toggle='modal' onclick='contractEdit("+ qwe.contractid +")' data-target='#contractModal'><i class='fa fa-pen'></i></button></td>"+
+        "   <td>" + qwe.contracttypecode + "</td>" +
+        "   <td>" + qwe.contractno + "</td>" +
+        "    <td>" + qwe.contract_date + "</td>" +
+        "   <td>" + qwe.contract_duration_days + "</td>"+
+        "   <td>" + qwe.currency + "</td>" +
+        "   <td>" + qwe.contract_amount + "</td>" +
+        "   <td>" + qwe.contract_condition + "</td>" +
+        "   <td>" + qwe.contract_payment_date + "</td>" +
+        "   <td>" + qwe.supplier_condition + "</td>" +
+        "   <td>" + qwe.supplier_days + "</td>" +
+        "   <td>" + qwe.supplier_name + "</td>" +
+        "   <td>" + qwe.fine_condition + "</td>" +
+        "   <td>" + qwe.performance_percent + "</td>" +
+        "   <td>" + qwe.contract_clarification + "</td>" +
+        "   <td>" + qwe.contract_conclusion + "</td>" +
+        "   <td>" + qwe.contract_reminder + "</td>" +
+        "</tr>";
+
+        $("#infocontract tbody").append(sHtml);    
          });
  
         });

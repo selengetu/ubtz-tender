@@ -362,7 +362,7 @@
             <div class="table-responsive">
                     <table class="table table-bordered table-striped" id="infocontract">
                         <thead >
-                          
+                            <th></th>
                             <th>Гэрээний №</th>
                             <th>Гэрээ байгуулсан огноо</th>
                             <th>Хүчинтэй хугацаа</th>
@@ -379,7 +379,6 @@
                             <th>Тодруулга</th>
                             <th>Дүгнэлт</th>
                             <th>Санамж</th>
-                            <th>Гэрээний төлөв</th>
                             <th></th>
                         </thead>
                         <tbody id="tbody">

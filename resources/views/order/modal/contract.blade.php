@@ -27,7 +27,7 @@
                         <div class="col-4">
                             <div class="form-group">
                                  <label>Хүчинтэй хугацаа</label>
-                                <input type="date" class="form-control" id="contract_duration_days" name="contract_duration_days" >
+                                <input type="number" class="form-control" id="contract_duration_days" name="contract_duration_days" >
                             </div>
                         </div>
                         <div class="col-4">
@@ -44,13 +44,13 @@
                         <div class="col-4">
                             <div class="form-group">
                                  <label>Гэрээний дүн</label>
-                                <input type="number" class="form-control" id="contract_amount" name="contract_amount" >
+                                <input type="text" class="form-control money" id="contract_amount" name="contract_amount" >
                             </div>
                         </div>
                         <div class="col-4">
                             <div class="form-group">
                                  <label>Төлбөрийн нөхцөл</label>
-                                <input type="text" class="form-control" id="contract_condition" name="contract_condition">
+                                <input type="text" class="form-control" id="contract_condition" name="contract_condition" maxlength="80">
                             </div>
                         </div>
                         <div class="col-4">
@@ -62,49 +62,50 @@
                         <div class="col-4">
                             <div class="form-group">
                                  <label>Төлбөр хийх хугацаа</label>
-                                <input type="number" class="form-control" id="contract_end_date" name="contract_end_date">
+                                <input type="date" class="form-control" id="contract_end_date" name="contract_end_date">
                             </div>
                         </div>
                         <div class="col-4">
                             <div class="form-group">
                                  <label>Нийлүүлэх нөхцөл</label>
-                                <input type="text" class="form-control" id="supplier_condition" name="supplier_condition">
+                                <input type="text" class="form-control" id="supplier_condition" name="supplier_condition" maxlength="180">
                             </div>
                         </div> 
                         <div class="col-4">
                             <div class="form-group">
-                                 <label>Нийлүүлэх хугацаа</label>
-                                <input type="date" class="form-control" id="supplier_days" name="supplier_days" placeholder="q оролцогч">
+                                 <label>Нийлүүлэх хугацаа /өдөр/</label>
+                                <input type="number" class="form-control" id="supplier_days" name="supplier_days" >
                             </div>
                         </div>
                         <div class="col-8">
                             <div class="form-group">
                                  <label>Нийлүүлэгч</label>
-                                <input type="text" class="form-control" id="supplier_name" name="supplier_name" >
+                                <input type="text" class="form-control" id="supplier_name" name="supplier_name" maxlength="80">
                             </div>
                         </div>
                         <div class="col-4">
                             <div class="form-group">
                                  <label>Алдангийн нөхцөл</label>
-                                <input type="text" class="form-control" id="fine_condition" name="fine_condition" >
+                                <input type="text" class="form-control" id="fine_condition" name="fine_condition" maxlength="180">
                             </div>
                         </div>
-                        <div class="col-4">
+                        <div class="col-8">
                             <div class="form-group">
                                  <label>Тодруулга</label>
-                                <input type="text" class="form-control" id="fine_clarification" name="fine_clarification" >
+                                <input type="text" class="form-control" id="contract_clarification" name="contract_clarification" maxlength="180">
                             </div>
                         </div>
-                        <div class="col-4">
+                        <div class="col-12">
                             <div class="form-group">
                                  <label>Дүгнэлт</label>
-                                <input type="text" class="form-control" id="fine_conclusion" name="fine_conclusion" >
+                                <input type="text" class="form-control" id="contract_conclusion" name="contract_conclusion" maxlength="180">
+                                <input type="hidden" class="form-control" id="contract_tender" name="contract_tender" >
                             </div>
                         </div>
-                        <div class="col-4">
+                        <div class="col-12">
                             <div class="form-group">
                                  <label>Санамж</label>
-                                <input type="text" class="form-control" id="fine_reminder" name="fine_reminder" >
+                                <input type="text" class="form-control" id="contract_reminder" name="contract_reminder" maxlength="180">
                             </div>
                         </div>
                        
