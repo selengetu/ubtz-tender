@@ -37,14 +37,14 @@ class OrderController extends Controller {
         DB::insert("insert into ORDERS
         ( ORDER_NAME, ORDER_DATE, ORDER_UNIT, ORDER_COUNT, ORDER_SELECTION, ORDER_BUDGET_SOURCE, ORDER_BUDGET, ORDER_THISYEAR, ORDER_COMMENT, ORDER_EMPLOYEE, ADDED_USER)
         values
-        ( '$request->order_name', '$request->order_date', $request->order_unit, '$request->order_count', '$request->order_selection', '$request->order_budget_source'
-        , '$order_budget','$request->order_thisyear', '$request->order_comment', '$request->order_employee', '$id')");   
+        ( '$request->order_name',  TO_DATE('$request->order_date', 'yyyy-mm-dd'), $request->order_unit, '$request->order_count', '$request->order_selection', '$request->order_budget_source'
+        , '$order_budget','$order_thisyear', '$request->order_comment', '$request->order_employee', '$id')");   
           }
             else{
     
                 $orders = DB::table('ORDERS')
                 ->where('order_id', $request->order_id)
-                ->update(['order_name' => $request->order_name,'order_date' => $request->order_date,'order_unit' => $request->order_unit,'order_count' => $request->order_count,
+                ->update(['order_name' => $request->order_name, 'order_date' =>  TO_DATE('$request->order_date', 'yyyy-mm-dd'),'order_unit' => $request->order_unit,'order_count' => $request->order_count,
                 'order_selection' => $request->order_selection,'order_budget_source' => $request->order_budget_source,'order_budget' => $order_budget,
                 'order_thisyear' => $order_thisyear,'order_comment' => $request->order_comment,'order_employee' => $request->order_employee]);        
             }
@@ -59,7 +59,7 @@ class OrderController extends Controller {
     {
         $id= Auth::user()->id;
         $dorder_budget = preg_replace('/[a-zZ-a,]/', '',$request->dorder_budget);
-        $order_performance = preg_replace('/[a-zZ-a,]/', '',$request->order_performance);
+        $dorder_performance = preg_replace('/[a-zZ-a,]/', '',$request->dorder_performance);
         if($request->detail_id ==  null){
             DB::insert("insert into ORDER_DETAIL
                 ( ORDER_ID, DEP_ID, ORDER_COUNT, ORDER_BUDGET, ORDER_PERFORMANCE, ADDED_USER)
