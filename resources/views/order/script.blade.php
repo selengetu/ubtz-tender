@@ -494,7 +494,7 @@ $('.orderinformation').on('click',function(){
             });
         } else {
                
-                $('#dep_id').val('1').trigger('change');
+                $('#dep_id').val('40').trigger('change');
                 $('#dorder_count_detail').val('');
                 $('#dorder_budget').val('');
                 $('#dorder_performance').val('');
