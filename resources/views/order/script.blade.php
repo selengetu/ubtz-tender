@@ -372,7 +372,6 @@ $('.orderinformation').on('click',function(){
         $.each(data,function(i,qwe){
             var sHtml = "<tr  onclick=getcontractinfo("+ qwe.contractid +") tag='"+ qwe.contractid +"' id='"+ qwe.contractid +"'>" +
         "   <td> <button class='btn btn-primary btn-xs' data-toggle='modal' onclick='contractEdit("+ qwe.contractid +")' data-target='#contractModal'><i class='fa fa-pen'></i></button></td>"+
-        "   <td>" + qwe.contracttypecode + "</td>" +
         "   <td>" + qwe.contractno + "</td>" +
         "    <td>" + qwe.contract_date + "</td>" +
         "   <td>" + qwe.contract_duration_days + "</td>"+
@@ -385,6 +384,7 @@ $('.orderinformation').on('click',function(){
         "   <td>" + qwe.supplier_name + "</td>" +
         "   <td>" + qwe.fine_condition + "</td>" +
         "   <td>" + qwe.performance_percent + "</td>" +
+        "   <td>" + qwe.contract_condition + "</td>" +
         "   <td>" + qwe.contract_clarification + "</td>" +
         "   <td>" + qwe.contract_conclusion + "</td>" +
         "   <td>" + qwe.contract_reminder + "</td>" +
@@ -543,6 +543,48 @@ $('.orderinformation').on('click',function(){
                 $('#komiss_comment').val('');
                 $('#komiss_id').val('');
 
+        }
+    }
+    function contractEdit(hid){
+        if(hid){
+            $.get('getcontract/' + hid, function (data) {
+                $('#contractno').val(data[0].contractno);
+                $('#contract_date').val(data[0].contract_date);
+                $('#contract_duration_days').val(data[0].contract_duration_days);
+                $('#currency').val(data[0].currency);
+                $('#contract_amount').val(data[0].contract_amount);
+                $('#contract_condition').val(data[0].contract_condition);
+                $('#contract_payment_date').val(data[0].contract_payment_date);
+                $('#contract_end_date').val(data[0].contract_end_date);
+                $('#supplier_condition').val(data[0].supplier_condition);
+                $('#supplier_days').val(data[0].supplier_days);
+                $('#supplier_name').val(data[0].supplier_name);
+                $('#fine_condition').val(data[0].fine_condition);
+                $('#contract_clarification').val(data[0].contract_clarification);
+                $('#contract_condition').val(data[0].contract_condition);
+                $('#contract_conclusion').val(data[0].contract_conclusion);
+                $('#contract_reminder').val(data[0].contract_reminder);
+                $('#contract_id').val(data[0].contract_id);
+
+            });
+        } else {
+                $('#contractno').val('');
+                $('#contract_date').val('');
+                $('#contract_duration_days').val('');
+                $('#currency').val('');
+                $('#contract_amount').val('');
+                $('#contract_condition').val('');
+                $('#contract_payment_date').val('');
+                $('#contract_end_date').val('');
+                $('#supplier_condition').val('');
+                $('#supplier_days').val('');
+                $('#supplier_name').val('');
+                $('#fine_condition').val('');
+                $('#contract_condition').val('');
+                $('#contract_clarification').val('');
+                $('#contract_conclusion').val('');
+                $('#contract_reminder').val('');
+                $('#contract_id').val('');
         }
     }
     function progressEdit(hid){
