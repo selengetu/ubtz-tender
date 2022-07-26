@@ -373,7 +373,7 @@ $('.orderinformation').on('click',function(){
             var sHtml = "<tr  onclick=getcontractinfo("+ qwe.contractid +") tag='"+ qwe.contractid +"' id='"+ qwe.contractid +"'>" +
         "   <td> <button class='btn btn-primary btn-xs' data-toggle='modal' onclick='contractEdit("+ qwe.contractid +")' data-target='#contractModal'><i class='fa fa-pen'></i></button></td>"+
         "   <td>" + qwe.contractno + "</td>" +
-        "    <td>" + qwe.contract_date + "</td>" +
+        "   <td>" + qwe.contract_date + "</td>" +
         "   <td>" + qwe.contract_duration_days + "</td>"+
         "   <td>" + qwe.currency + "</td>" +
         "   <td>" + qwe.contract_amount + "</td>" +
@@ -401,12 +401,12 @@ $('.orderinformation').on('click',function(){
         $.each(data,function(i,qwe){
             var sHtml = "<tr>" +
         "   <td class='m3'>" + qwe.pack_name + "</td>" +
-         "   <td class='m3'>" + qwe.pack_date + "</td>" +
+        "   <td class='m3'>" + qwe.pack_date + "</td>" +
         "   <td class='m3'>" + qwe.pack_budget + "</td>" +
         "   <td class='m3'>" + qwe.pack_contract_at + "</td>" +
         "   <td class='m3'>" + qwe.pack_suspended_at + "</td>" +
         "   <td class='m3'>" + qwe.pack_complaint_at + "</td>" +
-         "   <td class='m3'> <button class='btn btn-primary btn-xs' data-toggle='modal' onclick='packEdit("+ qwe.pack_id +")' data-target='#packModal'><i class='fa fa-pen'></i></button></td>"+
+        "   <td class='m3'> <button class='btn btn-primary btn-xs' data-toggle='modal' onclick='packEdit("+ qwe.pack_id +")' data-target='#packModal'><i class='fa fa-pen'></i></button></td>"+
         "</tr>";
             
         $("#tbody2").append(sHtml);
@@ -421,10 +421,10 @@ $('.orderinformation').on('click',function(){
         $.each(data,function(i,qwe){
             var sHtml = "<tr>" +
         "   <td class='m3'>" + qwe.progress_date + "</td>" +
-         "   <td class='m3'>" + qwe.tender_state + "</td>" +
+        "   <td class='m3'>" + qwe.tender_state + "</td>" +
         "   <td class='m3'>" + qwe.progress_comment + "</td>" +
         "   <td class='m3'>" + qwe.progress_employee + "</td>" +
-         "   <td class='m3'> <button class='btn btn-primary btn-xs' data-toggle='modal' onclick='progressEdit("+ qwe.progress_id +")' data-target='#progressModal'><i class='fa fa-pen'></i></button></td>"+
+        "   <td class='m3'> <button class='btn btn-primary btn-xs' data-toggle='modal' onclick='progressEdit("+ qwe.progress_id +")' data-target='#progressModal'><i class='fa fa-pen'></i></button></td>"+
         "</tr>";
             
         $("#tbody3").append(sHtml);
@@ -440,7 +440,7 @@ $('.orderinformation').on('click',function(){
             var sHtml = "<tr>" +
         "   <td class='m3'>" + qwe.complaint_date + "</td>" +
         "   <td class='m3'>" + qwe.complaint_comment+ "</td>" +
-         "   <td class='m3'> <button class='btn btn-primary btn-xs' data-toggle='modal' onclick='complaintEdit("+ qwe.complaint_id +")' data-target='#complaintModal'><i class='fa fa-pen'></i></button></td>"+
+        "   <td class='m3'> <button class='btn btn-primary btn-xs' data-toggle='modal' onclick='complaintEdit("+ qwe.complaint_id +")' data-target='#complaintModal'><i class='fa fa-pen'></i></button></td>"+
         "</tr>";
             
         $("#tbody4").append(sHtml);
@@ -564,7 +564,7 @@ $('.orderinformation').on('click',function(){
                 $('#contract_condition').val(data[0].contract_condition);
                 $('#contract_conclusion').val(data[0].contract_conclusion);
                 $('#contract_reminder').val(data[0].contract_reminder);
-                $('#contract_id').val(data[0].contract_id);
+                $('#contractid').val(data[0].contractid);
 
             });
         } else {

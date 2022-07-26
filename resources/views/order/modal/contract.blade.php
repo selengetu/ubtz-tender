@@ -112,7 +112,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <input type="hidden"  id="contract_id" name="contract_id">
+                    <input type="hidden"  id="contractid" name="contractid">
                     @csrf
                     <button type="submit" class="btn btn-primary">Хадгалах</button>
                 </div>
