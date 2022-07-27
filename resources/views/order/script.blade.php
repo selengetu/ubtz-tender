@@ -192,6 +192,10 @@
             $('#card_7').show();
             $(this).toggleClass('ButtonClicked');
             break;
+            case 'btn_8':
+            $('#card_8').show();
+            $(this).toggleClass('ButtonClicked');
+            break;
         }
 
   
@@ -433,6 +437,25 @@ $('.orderinformation').on('click',function(){
          });
         });
     }
+    function getcontractprogresses(hid){
+        $("#tbody3").empty();
+        $.get('getcontractprogresses/'+hid,function(data){
+        $.each(data,function(i,qwe){
+            var sHtml = "<tr>" +
+        "   <td class='m3'>" + qwe.contract_progress_date + "</td>" +
+        "   <td class='m3'>" + qwe.contract_state + "</td>" +
+        "   <td class='m3'>" + qwe.contract__comment + "</td>" +
+        "   <td class='m3'>" + qwe.contract_employee + "</td>" +
+        "   <td class='m3'> <button class='btn btn-primary btn-xs' data-toggle='modal' onclick='progressEdit("+ qwe.progress_id +")' data-target='#progressModal'><i class='fa fa-pen'></i></button></td>"+
+        "</tr>";
+            
+        $("#tbody3").append(sHtml);
+               
+               
+         });
+        });
+    }
+    
     function gettendercomplaints(hid){
         $("#tbody4").empty();
     $.get('getcomplaints/'+hid,function(data){

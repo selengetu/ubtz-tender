@@ -389,47 +389,35 @@
               
             </div>
         </div>
-        <div class="card card-primary card-list" id="card_7" style=" display:none">
-              <div class="card-header">
-                <h4 class="card-title">Явцын мэдээлэл</h4>
-              </div>
-              <div class="ps-container ps-theme-default ps-active-y" id="chat-content" style="overflow-y: scroll !important; height:300px !important;">
-                <div class="media media-chat">
-                  <img class="avatar" src="https://img.icons8.com/color/36/000000/administrator-male.png" alt="...">
-                  <div class="media-body">
-                    <p>Hi</p>
-                    <p>Гэрээний явц ...???</p>
-                    <p class="meta"><time datetime="2018">09:58</time></p>
-                  </div>
+        <div class="card card-primary card-list" style="font-size:12px; display:none" id="card_7">
+            <div class="card-header">
+                <h3 class="card-title">Гэрээний явцын мэдээлэл</h3>
+                <div class="card-tools">
+                <button class="btn btn-primary btn-xs right"  onclick="contractprogressEdit()" data-toggle="modal" data-target="#contractprogressModal"><i class="fa fa-plus"></i> </button>
                 </div>
-
-                <div class="media media-meta-day">Today</div>
-
-                <div class="media media-chat media-chat-reverse">
-                  <div class="media-body">
-                    <p>Hiii, Явц 70%</p>
-                    <p>Маргааш үлдсэн гарын үсгээ зуруулна</p>
-
-                    <p class="meta"><time datetime="2018">11:06</time></p>
-                  </div>
+            </div>
+            <div class="card-body">
+             
+            <div class="table-responsive">
+                    <table class="table table-bordered table-striped" id="infocontractprogress">
+                        <thead >
+                            <th></th>
+                            <th>Огноо</th>
+                            <th>Явцын төлөв</th>
+                            <th>Тайлбар</th>
+                            <th>Ажилтан</th>
+                        </thead>
+                        <tbody id="tbody">
+                    
+                        
+                        </tbody>
+                    </table>
                 </div>
-
-                <div class="media media-chat">
-                  <img class="avatar" src="https://img.icons8.com/color/36/000000/administrator-male.png" alt="...">
-                  <div class="media-body">
-                    <p>Okay</p>
-                   
-                    <p class="meta"><time datetime="2018">11:07</time></p>
-                  </div>
-                </div>
-              <div class="ps-scrollbar-x-rail" style="left: 0px; bottom: 0px;"><div class="ps-scrollbar-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps-scrollbar-y-rail" style="top: 0px; height: 0px; right: 2px;"><div class="ps-scrollbar-y" tabindex="0" style="top: 0px; height: 2px;"></div></div></div>
-
-              <div class="publisher bt-1 border-light">
-                <img class="avatar avatar-xs" src="https://img.icons8.com/color/36/000000/administrator-male.png" alt="...">
-                <input class="publisher-input" type="text" placeholder="Сэтгэгдэл бичих">
               
-                <a class="publisher-btn text-info" href="#" data-abc="true"><i class="fa fa-paper-plane"></i></a>
-              </div>
+            </div>
+        </div>
+     </div>
+
 
              </div>
                 </div>
@@ -452,6 +440,7 @@
 @include('order.modal.progress')   
 @include('order.modal.tender')   
 @include('order.modal.komiss')   
+@include('order.modal.contractprogress')  
 @stop
 <style type="text/css">
               .disabledTab {
