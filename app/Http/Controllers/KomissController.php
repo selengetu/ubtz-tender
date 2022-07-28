@@ -14,7 +14,7 @@ class KomissController extends Controller {
     public function saveKomiss(Request $request)
     {
         $id= Auth::user()->id;
-        if($request->pack_id ==  null){
+        if($request->komiss_id ==  null){
             DB::insert("insert into tender_komiss
             (komiss_employee, komiss_job, komiss_date, komiss_comment, komiss_tender)
             values

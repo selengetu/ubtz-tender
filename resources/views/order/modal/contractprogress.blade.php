@@ -7,7 +7,7 @@
                     <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form method="POST" id="formProgress" action={{ route('saveProgress') }}>
+                <form method="POST" id="formContractProgress" action={{ route('saveContractProgress') }}>
                 <div class="modal-body">
                
                     <div class="row">
@@ -15,14 +15,13 @@
                             <div class="form-group">
                                  <label>Огноо</label>
                                 <input type="date" class="form-control" id="contract_progress_date" name="contract_progress_date" >
-                                <input type="hidden" class="form-control" id="contract_progress_order" name="contract_progress_order" >
                                 <input type="hidden" class="form-control" id="contract_progress_tender" name="contract_progress_tender" >
                             </div>
                         </div>
                        
                         <div class="col-4">
                             <div class="form-group">
-                                 <label>Тендерийн явц</label>
+                                 <label>Гэрээний явц</label>
                                 <select class="form-control" name="contract_progress_state" id="contract_progress_state" >
                                 @foreach ($tenderstate as $item)
                                         <option value="{{ $item->state_id }}">{{ $item->state_name }}</option>

@@ -55,6 +55,26 @@
                 }
             })  
     });
+    $('#formKomiss').submit(function(event){
+        var tender = $('#komiss_tender').val();
+        event.preventDefault();
+            $.ajax({
+                type: 'POST',
+                url: 'saveKomiss',
+                data: $('form#formKomiss').serialize(),
+                success: function(){
+                    alert('Амжилттай');
+                    gettenderkomisses(tender);
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    if (jqXHR.status == 500) {
+                        alert('Internal error: ' + jqXHR.responseText);
+                    } else {
+                        alert('Unexpected error.');
+                    }
+                }
+            })  
+    });
     $('#formContract').submit(function(event){
         var tender = $('#contract_tender').val();
         event.preventDefault();
@@ -337,6 +357,7 @@ $('.orderinformation').on('click',function(){
             gettenderpacks(hid);
             gettenderprogresses(hid);
             gettendercomplaints(hid);
+            gettenderkomisses(hid);
             getContracts(hid);
     }
     function getTenders(itag){
@@ -467,6 +488,24 @@ $('.orderinformation').on('click',function(){
         "</tr>";
             
         $("#tbody4").append(sHtml);
+               
+               
+         });
+        });
+    }
+    function gettenderkomisses(hid){
+        $("#tbody5").empty();
+    $.get('getkomisses/'+hid,function(data){
+        $.each(data,function(i,qwe){
+            var sHtml = "<tr>" +
+        "   <td class='m3'>" + qwe.komiss_employee + "</td>" +
+        "   <td class='m3'>" + qwe.komiss_job + "</td>" +
+        "   <td class='m3'>" + qwe.komiss_date + "</td>" +
+        "   <td class='m3'>" + qwe.komiss_comment + "</td>" +
+        "   <td class='m3'> <button class='btn btn-primary btn-xs' data-toggle='modal' onclick='komissEdit("+ qwe.komiss_id +")' data-target='#komissModal'><i class='fa fa-pen'></i></button></td>"+
+        "</tr>";
+            
+        $("#tbody5").append(sHtml);
                
                
          });

@@ -28,10 +28,10 @@
                         <div class="col-4">
                             <div class="form-group">
                                  <label>Огноо</label>
-                                <input type="text" class="form-control" id="komiss_date" name="komiss_date">
+                                <input type="date" class="form-control" id="komiss_date" name="komiss_date">
                             </div>
                         </div>
-                        <div class="col-4">
+                        <div class="col-12">
                             <div class="form-group">
                                  <label>Тайлбар</label>
                                 <input type="text" class="form-control" id="komiss_comment" name="komiss_comment">

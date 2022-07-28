@@ -38,7 +38,7 @@ class OrderController extends Controller {
         ( ORDER_NAME, ORDER_DATE, ORDER_UNIT, ORDER_COUNT, ORDER_SELECTION, ORDER_BUDGET_SOURCE, ORDER_BUDGET, ORDER_THISYEAR, ORDER_COMMENT, ORDER_EMPLOYEE, ADDED_USER)
         values
         ( '$request->order_name', TO_DATE('$request->order_date', 'yyyy-mm-dd'), $request->order_unit, '$request->order_count', '$request->order_selection', '$request->order_budget_source'
-        , '$order_budget','$request->order_thisyear', '$request->order_comment', '$request->order_employee', '$id')");   
+        , '$order_budget','$order_thisyear', '$request->order_comment', '$request->order_employee', '$id')");   
           }
             else{
     
@@ -59,7 +59,7 @@ class OrderController extends Controller {
     {
         $id= Auth::user()->id;
         $dorder_budget = preg_replace('/[a-zZ-a,]/', '',$request->dorder_budget);
-        $order_performance = preg_replace('/[a-zZ-a,]/', '',$request->order_performance);
+        $dorder_performance = preg_replace('/[a-zZ-a,]/', '',$request->dorder_performance);
         if($request->detail_id ==  null){
             DB::insert("insert into ORDER_DETAIL
                 ( ORDER_ID, DEP_ID, ORDER_COUNT, ORDER_BUDGET, ORDER_PERFORMANCE, ADDED_USER)

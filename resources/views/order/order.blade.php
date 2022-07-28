@@ -313,7 +313,7 @@
                             <th>Тайлбар</th>
                             <th></th>
                         </thead>
-                        <tbody id="tbody3">                   
+                        <tbody id="tbody5">                   
                         </tbody>
                     </table>
                 </div>
