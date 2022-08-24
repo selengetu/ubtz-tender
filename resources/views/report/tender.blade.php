@@ -76,7 +76,7 @@
                             <th>Хүчинтэй хугацаа </th>
                             <th>Багцын мэдээлэл</th>
                             <th>Гэрээний дугаар</th>
-                            <th>Валют</th>
+                            <th>гэрээний хугацаа</th>
                             <th>Гэрээний дүн</th>
                             <th>Нийлүүлэгч</th>
                             <th>СЯ уруу төлөвлөгөө явуулсан огноо</th>
@@ -104,11 +104,14 @@
                             {{$packinfo->pack_name}} <br>
                             @endforeach
                             </td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            @foreach ($item->contract as $contract)
+                            <td>{{$contract->contractno}}</td>
+                            <td>{{$contract->contract_date}}</td>
+                            <td>{{$contract->contract_amount}}</td>
+                            <td>{{$contract->supplier_name}}</td>
+                          
+                            @endforeach
+                            <td>{{$item->tender_open_at}}</td>
                         </tr>
                         <?php $no++; ?>
                         @endforeach

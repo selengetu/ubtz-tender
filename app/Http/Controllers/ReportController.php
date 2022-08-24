@@ -81,7 +81,11 @@ class ReportController extends Controller {
             $tender->detail = DB::select('select * from v_order_detail t where t.order_id=' . $tender->order_id . '');
 
         }
-    
+        foreach ($tenders as $tender) {
+            $tender->contract = DB::select('select * from v_contracts t where t.tenderid=' . $tender->tenderid . '');
+
+        }
+       
         return view('report.tender',compact('tenders','dep','type','tendertype','stendertype','sselection','sdep'));
     }
 
