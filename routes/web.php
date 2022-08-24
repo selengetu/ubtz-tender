@@ -28,8 +28,8 @@ Route::get('/login', [App\Http\Controllers\Auth\LoginController::class, 'showLog
 
 Route::post('/login', [App\Http\Controllers\Auth\LoginController::class, 'login']);
 Route::get('logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
+Route::get('/home', [App\Http\Controllers\OrderController::class, 'index'])->name('order');
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/person', [App\Http\Controllers\HomeController::class, 'person'])->name('person');
 Route::get('/perDel/{perid}', [App\Http\Controllers\HomeController::class, 'perDel'])->name('perDel');
 Route::get('/dep', [App\Http\Controllers\HomeController::class, 'person'])->name('person');
