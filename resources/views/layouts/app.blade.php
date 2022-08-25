@@ -58,7 +58,7 @@
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar  elevation-4">
             <!-- Brand Logo -->
-            <a href="/" class="brand-link">
+            <a href="{{ route('home') }}" class="brand-link">
                 <img src="{{ asset('vendor/adminlte/dist/img/AdminLTELogo.png') }}" alt="EXAM"
                     class="brand-image img-circle elevation-3" {{--style="opacity: .8"--}}>
                 <span class="brand-text font-weight-light">{{ config('app.name', 'TENDER UBTZ') }}</span>
