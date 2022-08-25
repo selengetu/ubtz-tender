@@ -178,34 +178,47 @@
     $('.btn-block').on('click',function(){
     $('.btn-block').removeClass('ButtonClicked');
     $('.card-list').hide();
+    var id = ($('#tender_list_id').val());
     switch ($(this).attr('id')) {
         case 'btn_detail':
             $('#card_detail').show();
             $('#card_main').show();
             $(this).toggleClass('ButtonClicked');
             break;
-        case 'btn_1':
+        case 'btn_1':    
             $('#card_1').show();
             $(this).toggleClass('ButtonClicked');
             break;
         case 'btn_2':
-            $('#card_2').show();
+            if(id){
+                $('#card_2').show();
+            }
+           
             $(this).toggleClass('ButtonClicked');
             break;
         case 'btn_3':
-            $('#card_3').show();
+            if(id){
+                $('#card_3').show();
+            }
+     
             $(this).toggleClass('ButtonClicked');
             break;
         case 'btn_4':
-            $('#card_4').show();
+            if(id){
+                $('#card_4').show();
+            }
             $(this).toggleClass('ButtonClicked');
             break;
         case 'btn_5':
-            $('#card_5').show();
+            if(id){
+                $('#card_5').show();
+            }
             $(this).toggleClass('ButtonClicked');
             break;
         case 'btn_6':
-            $('#card_6').show();
+            if(id){
+                $('#card_6').show();
+            }
             $(this).toggleClass('ButtonClicked');
             break;
         case 'btn_7':
@@ -319,6 +332,7 @@ $('.orderinformation').on('click',function(){
         $("#tbody2").empty();
         $("#tbody3").empty();
         $("#tbody4").empty();
+        
         $.get('getTender/' + hid, function (data) {
                 $('#tender_list_id').val(data[0].tenderid);
                 $('#progress_tender').val(data[0].tenderid);
@@ -354,6 +368,9 @@ $('.orderinformation').on('click',function(){
                     $('#t_tender_packcount1').text(data[0].packcount);
                     $('#t_tender_assessment1').text(data[0].assessment);
             });
+           if(hid){
+
+           }
             gettenderpacks(hid);
             gettenderprogresses(hid);
             gettendercomplaints(hid);

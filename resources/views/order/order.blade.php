@@ -132,7 +132,7 @@
                             </tr>
                             <tr>
                             <td style="padding:0rem">
-                            <button type="button" class="btn btn-block"style="font-size:0.8rem;text-align:left" id="btn_4"><img src="{{ asset('img/warning.png') }}" id="btn_4" class="icondetail"> Үнэлгээ/мэдэгдэл</button>
+                            <button type="button" class="btn btn-block" style="font-size:0.8rem;text-align:left" id="btn_4"><img src="{{ asset('img/warning.png') }}" id="btn_4" class="icondetail"> Үнэлгээ/мэдэгдэл</button>
                             </td>
                             </tr>
                             <tr>
