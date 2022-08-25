@@ -222,7 +222,9 @@
             $(this).toggleClass('ButtonClicked');
             break;
         case 'btn_7':
-            $('#card_7').show();
+            if(id){
+                $('#card_7').show();
+            }
             $(this).toggleClass('ButtonClicked');
             break;
             case 'btn_8':
