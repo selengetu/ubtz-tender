@@ -99,6 +99,7 @@
                 </div>
                 <div class="modal-footer">
                     <input type="hidden"  id="tender_id" name="tender_id">
+                    <button type="button" class="btn btn-danger" onclick="delTender()">Устгах</button>
                     @csrf
                     <button type="submit" class="btn btn-primary">Хадгалах</button>
                 </div>

@@ -42,6 +42,7 @@
                 <div class="modal-footer">
                     <input type="hidden"  id="komiss_id" name="komiss_id">
                     @csrf
+                    <button type="button" class="btn btn-danger" onclick="delKomiss()">Устгах</button>
                     <button type="submit" class="btn btn-primary">Хадгалах</button>
                 </div>
                 </form>

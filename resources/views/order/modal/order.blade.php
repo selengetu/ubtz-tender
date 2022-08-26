@@ -103,6 +103,7 @@
                 <div class="modal-footer">
                     <input type="hidden"  id="order_id" name="order_id" class="order_id">
                     @csrf
+                    <button type="button" class="btn btn-danger" onclick="delOrder()">Устгах</button>
                     <button type="submit" class="btn btn-primary">Хадгалах</button>
                 </div>
                 </form>

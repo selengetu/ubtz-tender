@@ -55,6 +55,7 @@
                 <div class="modal-footer">
                     <input type="hidden"  id="pack_id" name="pack_id">
                     @csrf
+                    <button type="button" class="btn btn-danger" onclick="delPack()">Устгах</button>
                     <button type="submit" class="btn btn-primary">Хадгалах</button>
                 </div>
                 </form>

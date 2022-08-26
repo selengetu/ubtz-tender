@@ -318,7 +318,7 @@ $('.orderinformation').on('click',function(){
          "   <td class='m3'>" + qwe.order_count + "</td>" +
         "   <td class='m3'>" + qwe.order_budget + "</td>" +
         "   <td class='m3'>" + qwe.order_performance + "</td>" +
-         "   <td class='m3'> <button class='btn btn-primary btn-xs' data-toggle='modal' onclick='orderdetailEdit("+ qwe.order_detail_id +")' data-target='#detailModal'><i class='fa fa-pen'></i></button></td>"+
+         "   <td class='m3'> <button class='btn btn-primary btn-xs' data-toggle='modal' onclick='orderdetailEdit("+ qwe.order_detail_id +")' data-target='#detailModal'><i class='fa fa-pen'></i></button> <button class='btn btn-danger btn-xs' onclick='delDetail("+ qwe.order_detail_id +")'><i class='fa fa-trash'></i></button></td>"+
         "</tr>";
 
         $("#infodetails tbody").append(sHtml);
@@ -760,5 +760,17 @@ $('.orderinformation').on('click',function(){
         }
 
     }
+    function delDetail(hid){
+        if(confirm('Захиалгыг устгах уу?'))
+        {
+           $.get('{{ route("delDetail") }}/'+hid , function (data) 
+            {
+                if(data==1)
+                {
+                    location.reload();
+                }
+            }); 
+        }
 
+    }
 </script>

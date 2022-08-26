@@ -44,6 +44,7 @@
                 </div>
                 <div class="modal-footer">
                     <input type="hidden"  id="detail_id" name="detail_id">
+                    <button type="button" class="btn btn-danger" onclick="delDetail()">Устгах</button>
                     @csrf
                     <button type="submit" class="btn btn-primary">Хадгалах</button>
                 </div>

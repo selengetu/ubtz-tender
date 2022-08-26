@@ -114,6 +114,7 @@
                 <div class="modal-footer">
                     <input type="hidden"  id="contractid" name="contractid">
                     @csrf
+                    <button type="button" class="btn btn-danger" onclick="delContract()">Устгах</button>
                     <button type="submit" class="btn btn-primary">Хадгалах</button>
                 </div>
                 </form>

@@ -32,6 +32,7 @@
                 <div class="modal-footer">
                     <input type="hidden"  id="complaint_id" name="complaint_id">
                     @csrf
+                    <button type="button" class="btn btn-danger" onclick="delComplaint()">Устгах</button>
                     <button type="submit" class="btn btn-primary">Хадгалах</button>
                 </div>
                 </form>
