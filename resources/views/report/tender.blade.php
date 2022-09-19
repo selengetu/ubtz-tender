@@ -104,6 +104,7 @@
                             {{$packinfo->pack_name}} <br>
                             @endforeach
                             </td>
+                            @if($item->contract)
                             @foreach ($item->contract as $contract)
                             <td>{{$contract->contractno}}</td>
                             <td>{{$contract->contract_date}}</td>
@@ -111,6 +112,12 @@
                             <td>{{$contract->supplier_name}}</td>
                           
                             @endforeach
+                            @else
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            @endif
                             <td>{{$item->tender_open_at}}</td>
                         </tr>
                         <?php $no++; ?>
