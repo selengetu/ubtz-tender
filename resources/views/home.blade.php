@@ -23,7 +23,9 @@
 
                   <div class="small-box bg-info">
                   <div class="inner">
-                  <h3>{{$count_order->count}}</h3>
+                  @foreach ($count_order as $item )
+                  <h3>{{$item->count}}</h3>
+                  @endforeach
                   <p>Нийт захиалга</p>
                   </div>
                   <div class="icon">
@@ -37,7 +39,9 @@
 
                   <div class="small-box bg-success">
                   <div class="inner">
-                  <h3>53<sup style="font-size: 20px">%</sup></h3>
+                  @foreach ($count_tender as $item )
+                  <h3>{{$item->count}}</h3>
+                  @endforeach
                   <p>Тендер зарласан</p>
                   </div>
                   <div class="icon">
@@ -51,7 +55,9 @@
 
                   <div class="small-box bg-warning">
                   <div class="inner">
-                  <h3>44</h3>
+                  @foreach ($count_contractbegin as $item )
+                  <h3>{{$item->count}}</h3>
+                  @endforeach
                   <p>Гэрээ байгуулсан </p>
                   </div>
                   <div class="icon">
@@ -65,7 +71,9 @@
 
                   <div class="small-box bg-danger">
                   <div class="inner">
-                  <h3>65</h3>
+                  @foreach ($count_contract as $item )
+                  <h3>{{$item->count}}</h3>
+                  @endforeach
                   <p>Дууссан</p>
                   </div>
                   <div class="icon">
@@ -96,25 +104,35 @@
 
 @section('script')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+<?php
+    $stack = array();
+    $stackValue = array();
+    $stackValue2 = array();
+
+    foreach($t1 as $item)
+    {array_push($stack,$item->executor_abbr); array_push($stackValue,$item->sum_budget);array_push($stackValue2,$item->sum_performance);}
+?>
 <script>
 var xValues = ["Italy", "France", "Spain", "USA", "Argentina"];
 var yValues = [55, 49, 44, 24, 15];
 var barColors = ["red", "green","blue","orange","brown"];
-
+var name = <?php echo json_encode($stack); ?>;
+var cn1 = <?php echo json_encode($stackValue); ?>;
+var cn2 = <?php echo json_encode($stackValue2); ?>;
 new Chart("myChart", {
   type: "bar",
   data: {
     labels: xValues,
     datasets: [{
       backgroundColor: barColors,
-      data: yValues
+      data: cn1
     }]
   },
   options: {
     legend: {display: false},
     title: {
       display: true,
-      text: "World Wine Production 2018"
+      text: "Гэрээний гүйцэтгэл"
     }
   }
 });
@@ -128,16 +146,12 @@ new Chart("myChart1", {
   data: {
     labels: xValues,
     datasets: [{ 
-      data: [860,1140,1060,1060,1070,1110,1330,2210,7830,2478],
+      data: cn1,
       borderColor: "red",
       fill: false
     }, { 
-      data: [1600,1700,1700,1900,2000,2700,4000,5000,6000,7000],
+      data: cn2,
       borderColor: "green",
-      fill: false
-    }, { 
-      data: [300,700,2000,5000,6000,4000,2000,1000,200,100],
-      borderColor: "blue",
       fill: false
     }]
   },
