@@ -28,7 +28,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $count_order= DB::select("select count(order_id) as count from ORDERS t")[0];
+        return view('home',compact('count_order'));
     }
     public function savePerson(Request $request)
     {

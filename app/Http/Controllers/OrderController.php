@@ -25,7 +25,8 @@ class OrderController extends Controller {
         $tenderstate= DB::select("select t.* from CONST_TENDER_STATE t");
         $employee= DB::select("select t.* from V_USERS t order by first_name");
         $contract_type= DB::select("select t.* from CONST_CONTRACT_TYPES t");
-        return view('order.order',compact('dep','ostate','source','selection','unit','order','type','tendertype','tenderstate','employee','currency','contract_type'));
+      
+        return view('order.order',compact('dep','ostate','source','selection','unit','order','type','tendertype','tenderstate','employee','currency','contract_type','count_order'));
     }
     public function saveOrder(Request $request)
     {
@@ -83,4 +84,12 @@ class OrderController extends Controller {
     {
         return DB::select("select * from V_ORDER_DETAIL t where t.order_detail_id='$hid'");
     }
+    public function delDetail($hid)
+    {
+        $user = DB::table('USERS')
+        ->where('id',$hid)
+        ->update(['is_active' => 0]);
+            return 1;
+    }
+
 }

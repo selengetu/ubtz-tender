@@ -28,7 +28,7 @@ Route::get('/login', [App\Http\Controllers\Auth\LoginController::class, 'showLog
 
 Route::post('/login', [App\Http\Controllers\Auth\LoginController::class, 'login']);
 Route::get('logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
-Route::get('/home', [App\Http\Controllers\OrderController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/person', [App\Http\Controllers\HomeController::class, 'person'])->name('person');
 Route::get('/perDel/{perid}', [App\Http\Controllers\HomeController::class, 'perDel'])->name('perDel');
@@ -57,6 +57,7 @@ Route::get('/delmat/{hid?}',[MaterialController::class,'delmat'])->name('delmat'
 //     $dt=DB::table('training_file')->where('trid','=',$id)->get();
 //     return $dt;
 // });
+
  Route::get('/getmaterial/{id?}',function($id = 0){
      $dt=DB::table('EXAMUBTZ.V_TRAINING')->where('trid','=',$id)->get();
     return $dt;
@@ -85,6 +86,7 @@ Route::get('/getContracts/{hid?}', [App\Http\Controllers\ContractController::cla
 Route::post('/saveOrderDetail', [App\Http\Controllers\OrderController::class, 'saveOrderDetail'])->name('saveOrderDetail');
 Route::get('/getorderdetail/{hid?}', [App\Http\Controllers\OrderController::class, 'getorderdetail'])->name('getorderdetail');
 Route::get('/getorderdetails/{hid?}', [App\Http\Controllers\OrderController::class, 'getorderdetails'])->name('getorderdetails');
+Route::get('/delDetail/{hid?}',[App\Http\Controllers\OrderController::class,'delDetail'])->name('delDetail');
 
 Route::post('/saveProgress', [App\Http\Controllers\TenderController::class, 'saveProgress'])->name('saveProgress');
 Route::post('/saveComplaint', [App\Http\Controllers\TenderController::class, 'saveComplaint'])->name('saveComplaint');

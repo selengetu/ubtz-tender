@@ -41,7 +41,7 @@
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item dropdown" style="align:right;">
                     <a class="nav-link" href='#' data-toggle="dropdown" aria-expanded="false" >
-                        <i class="fa fa-user"></i> {{  Auth::user()->first_name }}
+                        <i class="fa fa-user"></i> Миний мэдээлэл
                     </a>
                     <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                         <span class="dropdown-item dropdown-header" style="color:black">Сайн уу  {{  Auth::user()->first_name }}</span>
@@ -59,9 +59,9 @@
         <aside class="main-sidebar  elevation-4">
             <!-- Brand Logo -->
             <a href="{{ route('home') }}" class="brand-link">
-                <img src="{{ asset('vendor/adminlte/dist/img/AdminLTELogo.png') }}" alt="EXAM"
+                <img src="{{ asset('img/contract.png') }}" alt="EXAM"
                     class="brand-image img-circle elevation-3" {{--style="opacity: .8"--}}>
-                <span class="brand-text font-weight-light">{{ config('app.name', 'TENDER UBTZ') }}</span>
+                <span class="brand-text font-weight-light">УБТЗ-ТЕНДЕР</span>
             </a>
 
             <!-- Sidebar -->
@@ -72,7 +72,7 @@
                         <img src="{{ asset('img/avatar.png') }}" class="img-circle elevation-2" alt="User Image">
                     </div>
                     <div class="info">
-                        <a href="#" class="d-block">{{ Auth::user()->name }}</a>
+                        <a href="#" class="d-block" style="color:black">Хэрэглэгч</a>
                     </div>
                 </div>
                 <!-- Sidebar Menu -->
