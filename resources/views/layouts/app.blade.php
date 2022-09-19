@@ -56,7 +56,7 @@
         </nav>
         <!-- /.navbar -->
         <!-- Main Sidebar Container -->
-        <aside class="main-sidebar  elevation-4">
+        <aside class="main-sidebar elevation-4" style="background-color:white;">
             <!-- Brand Logo -->
             <a href="{{ route('home') }}" class="brand-link">
                 <img src="{{ asset('img/contract.png') }}" alt="EXAM"
