@@ -77,7 +77,7 @@ class HomeController extends Controller
         
         $state=DB::select("select * from CONST_USER_STATE");
         $dep=DB::select("select * from EXAMUBTZ.v_depart");
-        $user=DB::select("select * from v_users");
+        $user=DB::select("select * from v_users where jobcode <5");
         $jobs=DB::select("select * from CONST_JOB");
        
         return view('const.person',compact('dep','jobs','user','state'));
