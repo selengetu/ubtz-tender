@@ -94,7 +94,7 @@
                             </td>
                             <td><b>{{$item->tenderno}}</b></td>
                             <td>{{$item->contracttypename}}</td>
-                            <td>{{$item->tender_budget}}</td>
+                            <td>{{number_format($item->tender_budget, 2)}}</td>
                             <td>{{$item->tendertypename}}</td>
                             <td>{{$item->tender_call_at}}</td>
                             <td>{{$item->tender_invitationcode}}</td>
@@ -108,7 +108,7 @@
                             @foreach ($item->contract as $contract)
                             <td>{{$contract->contractno}}</td>
                             <td>{{$contract->contract_date}}</td>
-                            <td>{{$contract->contract_amount}}</td>
+                            <td>{{number_format($contract->contract_amount, 2)}}</td>
                             <td>{{$contract->supplier_name}}</td>
                           
                             @endforeach
