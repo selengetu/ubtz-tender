@@ -72,7 +72,7 @@ class ReportController extends Controller {
         }
 
         $tenders=DB::select("SELECT * FROM V_TENDERS t
-        WHERE t.order_id IN (select order_id from ORDER_DETAIL t " .$query1." )");
+        WHERE t.order_id IN (select order_id from ORDER_DETAIL t " .$query1."" .$query." )");
        
         foreach ($tenders as $tender) {
           $tender->pack = DB::select('select * from V_TENDER_PACK t where t.pack_tender=' . $tender->tenderid . '');
