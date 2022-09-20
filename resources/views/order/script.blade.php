@@ -387,19 +387,19 @@ $('.orderinformation').on('click',function(){
            }
            
         $.each(data,function(i,qwe){
-            var sHtml = "<tr  onclick=gettenderinfo("+ qwe.tenderid +") tag='"+ qwe.tenderid +"' id='"+ qwe.tenderid +"' class='tendr'>" +
-            "   <td> <button class='btn btn-primary btn-xs' data-toggle='modal' onclick='tenderEdit("+ qwe.tenderid +")' data-target='#tenderModal'><i class='fa fa-pen'></i></button></td>"+
+        var sHtml = "<tr  onclick=gettenderinfo("+ qwe.tenderid +") tag='"+ qwe.tenderid +"' id='"+ qwe.tenderid +"' class='tendr'>" +
+        "   <td> <button class='btn btn-primary btn-xs' data-toggle='modal' onclick='tenderEdit("+ qwe.tenderid +")' data-target='#tenderModal'><i class='fa fa-pen'></i></button></td>"+
         "   <td>" + qwe.contracttypename + "</td>" +
         "   <td><b style='color:#007bff'><u>" + qwe.tenderno + "</u></b></td>" +
-        "    <td>" + qwe.tendertypename + "</td>" +
-         "   <td>" + qwe.tender_call_at + "</td>"+
-         "   <td>" + qwe.tender_budget + "</td>" +
+        "   <td>" + qwe.tendertypename + "</td>" +
+        "   <td>" + qwe.tender_call_at + "</td>"+
+        "   <td>" + qwe.tender_budget + "</td>" +
         "   <td>" + qwe.tender_invitationcode + "</td>" +
         "   <td>" + qwe.tender_invitation_at + "</td>" +
-        "    <td>" + qwe.tender_open_at + "</td>" +
+        "   <td>" + qwe.tender_open_at + "</td>" +
         "   <td>" + qwe.tender_validdate + "</td>" +
-         "   <td>" + qwe.packcount + "</td>"+
-         "    <td>" + qwe.assessment + "</td>" +
+        "   <td>" + qwe.packcount + "</td>"+
+        "   <td>" + qwe.assessment + "</td>" +
         "   <td>" + qwe.tendertitle + "</td>" +   
         "</tr>";
 
@@ -549,10 +549,10 @@ $('.orderinformation').on('click',function(){
             });
         } else {
                
-                $('#order_employee').val('');
+                $('#order_employee').val('48');
                 $('#order_job').val('');
                 $('#order_name').val('');
-                $('#order_unit').val('');
+                $('#order_unit').val('1');
                 $('#order_count').val('');
                 $('#order_budget').val('');
                 $('#order_thisyear').val('');

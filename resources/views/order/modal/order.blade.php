@@ -79,7 +79,7 @@
                                  <label>Ажилтан</label>
                                 <select class="form-control" name="order_employee" id="order_employee" >
                                 @foreach ($employee as $item)
-                                        <option value="{{ $item->id }}">{{ $item->first_name }}</option>
+                                        <option value="{{ $item->id }}">{{ $item->fullname }}</option>
                                     @endforeach
                             </select>
                              
