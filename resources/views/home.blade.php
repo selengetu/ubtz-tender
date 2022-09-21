@@ -91,7 +91,9 @@
        <div class="col-md-6">
        <canvas id="myChart1" style="width:100%;max-width:800px"></canvas>
        </div>
-       
+       <div class="col-md-6">
+       <canvas id="myChart2" style="width:100%; max-width:800px;"></canvas>
+       </div>
        </div>
             </div>
         </div>
@@ -103,9 +105,13 @@
     $stack = array();
     $stackValue = array();
     $stackValue2 = array();
-
+    $stackname = array();
+    $stackValue3 = array();
+    $stackValue4 = array();
     foreach($t1 as $item)
     {array_push($stack,$item->executor_abbr); array_push($stackValue,$item->sum_budget);array_push($stackValue2,$item->sum_performance);}
+    foreach($t2 as $item)
+    {array_push($stackname,$item->name); array_push($stackValue3,$item->countwork);}
 ?>
 <script>
 var xValues = ["Italy", "France", "Spain", "USA", "Argentina"];
@@ -128,6 +134,8 @@ var barColors = ["#63b598", "#ce7d78", "#ea9e70", "#a48a9e", "#c6e1e8", "#648177
 var sname = <?php echo json_encode($stack); ?>;
 var cn1 = <?php echo json_encode($stackValue); ?>;
 var cn2 = <?php echo json_encode($stackValue2); ?>;
+var cname = <?php echo json_encode($stackname); ?>;
+var cn3 = <?php echo json_encode($stackValue3); ?>;
 new Chart("myChart", {
   type: "bar",
   data: {
@@ -145,7 +153,23 @@ new Chart("myChart", {
     }
   }
 });
-
+new Chart("myChart2", {
+  type: "bar",
+  data: {
+    labels: cname,
+    datasets: [{
+      backgroundColor: barColors,
+      data: cn3
+    }]
+  },
+  options: {
+    legend: {display: false},
+    title: {
+      display: true,
+      text: "Ажлын гүйцэтгэл"
+    }
+  }
+});
 </script>
 <script>
 var xValues = [100,200,300,400,500,600,700,800,900,1000];
@@ -185,23 +209,6 @@ var xyValues = [
   {x:150, y:15}
 ];
 
-new Chart("myChart2", {
-  type: "scatter",
-  data: {
-    datasets: [{
-      pointRadius: 4,
-      pointBackgroundColor: "rgb(0,0,255)",
-      data: xyValues
-    }]
-  },
-  options: {
-    legend: {display: false},
-    scales: {
-      xAxes: [{ticks: {min: 40, max:160}}],
-      yAxes: [{ticks: {min: 6, max:16}}],
-    }
-  }
-});
 </script>
 <script>
 var xValues = [50,60,70,80,90,100,110,120,130,140,150];
