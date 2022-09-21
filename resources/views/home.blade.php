@@ -131,6 +131,15 @@ var barColors = ["#63b598", "#ce7d78", "#ea9e70", "#a48a9e", "#c6e1e8", "#648177
                                 "#fb21a3", "#51aed9", "#5bb32d", "#807fb", "#21538e", "#89d534", "#d36647",
                                 "#7fb411", "#0023b8", "#3b8c2a", "#986b53", "#f50422", "#983f7a", "#ea24a3",
                                 "#79352c", "#521250", "#c79ed2", "#d6dd92", "#e33e52", "#b2be57", "#fa06ec"];
+var barColors2 = [ "#935b6d" ,"#916988" ,"#513d98" ,"#aead3a", "#9e6d71", "#4b5bdc", "#0cd36d",
+                                "#250662", "#cb5bea", "#228916", "#ac3e1b", "#df514a", "#539397", "#880977",
+                                "#f697c1", "#ba96ce", "#679c9d", "#c6c42c", "#5d2c52", "#48b41b", "#e1cf3b",
+                                "#5be4f0", "#57c4d8", "#a4d17a", "#225b8", "#be608b", "#96b00c", "#088baf",
+                                "#f158bf", "#e145ba", "#ee91e3", "#05d371", "#5426e0", "#4834d0", "#802234",
+                                "#6749e8", "#0971f0", "#8fb413", "#b2b4f0", "#c3c89d", "#c9a941", "#41d158",
+                                "#fb21a3", "#51aed9", "#5bb32d", "#807fb", "#21538e", "#89d534", "#d36647",
+                                "#7fb411", "#0023b8", "#3b8c2a", "#986b53", "#f50422", "#983f7a", "#ea24a3",
+                                "#79352c", "#521250", "#c79ed2", "#d6dd92", "#e33e52", "#b2be57", "#fa06ec"];
 var sname = <?php echo json_encode($stack); ?>;
 var cn1 = <?php echo json_encode($stackValue); ?>;
 var cn2 = <?php echo json_encode($stackValue2); ?>;
@@ -158,7 +167,7 @@ new Chart("myChart2", {
   data: {
     labels: cname,
     datasets: [{
-      backgroundColor: barColors,
+      backgroundColor: barColors2,
       data: cn3
     }]
   },
@@ -166,9 +175,24 @@ new Chart("myChart2", {
     legend: {display: false},
     title: {
       display: true,
-      text: "Ажлын гүйцэтгэл"
+      text: "Ажлын гүйцэтгэл",
+      ticks: {
+                beginAtZero: true   // minimum value will be 0.
+            }
+    },
+    scales: {
+        yAxes: [{
+            display: true,
+            stacked: true,
+            ticks: {
+                min: 0, // minimum value
+               
+            }
+        }]
     }
-  }
+    
+  },
+
 });
 </script>
 <script>
