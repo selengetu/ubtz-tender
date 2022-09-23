@@ -110,6 +110,7 @@ Route::get('/getkomisses/{hid?}', [App\Http\Controllers\KomissController::class,
 Route::get('/reportTender', [App\Http\Controllers\ReportController::class, 'reportTender'])->name('reportTender');
 Route::get('/reportTenderDetail', [App\Http\Controllers\ReportController::class, 'reportTenderDetail'])->name('reportTenderDetail');
 Route::get('/reportContract', [App\Http\Controllers\ReportController::class, 'reportContract'])->name('reportContract');
+Route::get('/reportProgress', [App\Http\Controllers\ReportController::class, 'reportProgress'])->name('reportProgress');
 
 Route::get('/filter_dep/{id?}', [App\Http\Controllers\ReportController::class, 'filter_dep']);
 Route::get('/filter_tendertype/{id?}', [App\Http\Controllers\ReportController::class, 'filter_tendertype']);

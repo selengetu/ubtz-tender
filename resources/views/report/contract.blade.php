@@ -32,74 +32,35 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-sm-2">
-                                <div class="form-group">
-                                    <h6>Шалгаруулалтын төрөл :</h6>
-                                    <select class="form-control" name="sselection" id="sselection"  onchange="javascript:location.href = 'filter_selection/'+this.value;">
-                                    <option value="0">Бүгд</option>
-                                @foreach ($tendertype as $item)
-                                        <option value="{{ $item->contracttypecode }}"  @if($item->contracttypecode==$sselection) selected @endif>{{ $item->contracttypename }}</option>
-                                    @endforeach
-                            </select>
-                                </div>
-                            </div>
+                      
                          
                          
     <div class="col-md-12">
         <div class="card" style="font-size:12px;">
          
                 <div class="table-responsive"  id="acontent">
-                    <h4><center><strong><br>Явцын судалгаа</strong></center></h4><br>
+                    <h4><center><strong><br>Гэрээний судалгаа</strong></center></h4><br>
                     <table class="table table-bordered table-striped" id="myTable" >
                     <thead>
                             <th>№</th>
-                            <th>Худалдан авах бараа, ажил, үйлчилгээний санхүүжилтийн эх үүсвэр, нэр, төрөл, тоо хэмжээ, хүчин чадал</th>
-                            <th>Төсөвт өртөг (мян.төг)</th>
-                            <th>Тухайн онд санхүүжих дүн (мян.төг)</th>
-                            <th>Эрх шилжүүлэх эсэх / ТЕЗ-н нэр/</th>
-                            <th>Худалдан авах ажиллагаанд мөрдөх журам</th>
-                            <th>Үнэлгээний хороо байгуулах огноо</th>
-                            <th>Тендер зарлах огноо</th>
-                            <th>Гэрээ байгуулах эрх олгох огноо</th>
-                            <th>Гэрээ дуусгавар болох, дүгнэх огноо  </th>
-                            <th>Тайлбар, тодруулга</th>
-                            <th>Төлөвлөгөөнд тусгагдсан төрөл </th>
-                            <th>Захиалагч алба</th>
+                            <th>Ажлын нэр</th>
+                            <th>Гэрээний дугаар</th>
+                            <th>Байгуулсан огноо</th>
+                            <th>ААН</th>
+                            <th>Холбоо барих утас</th>
+                            <th>Төсөвт өртөг</th>
+                            <th>Гэрээний нийт дүн</th>
+                            <th>Хэмнэлт</th>
+                            <th>Зураг төсөл, захиалагчийн хяналтын зардал, бусад зардал болон чанарын баталгаа 5% хассан дүн</th>
+                            <th>Чанарын баталгааны хугацаа</th>
+                            <th>Төлбөрийн нөхцөл</th>
+                            <th>Захиалагч</th>
+                            <th>Зардлын эх үүсвэр</th>
+                            <th>Гэрээний биелэлт</th>
                         </thead>
                         <tbody id="tbody">
                         <?php $no = 1; ?>
-                         @foreach ($tenders as $item )
-                        <tr>
-                            <td>{{$no}}</td>
-                            <td>{{$item->order_name}}</td>
-                            <td>{{number_format($item->order_budget, 2)}}</td>
-                            <td>{{number_format($item->order_thisyear, 2)}}</td>
-                            <td></td>
-                            <td><b>{{$item->tenderselectionabbr}}</b></td>
-                            
-                            <td>    @foreach ($item->komiss as $komissinfo)
-                            {{$komissinfo->komiss_date}} <br>
-                            @endforeach
-                            </td>
-                            <td>{{$item->assessment_at}}</td>
-                            @if($item->contract)
-                            @foreach ($item->contract as $contract)
-                            <td>{{$contract->contract_date}}</td>
-                            <td>{{$contract->contract_end_date}}</td>                      
-                            @endforeach
-                            @else
-                            <td></td>
-                            <td></td>   
-                            @endif
-                            <td></td>   
-                            <td>{{$item->order_budget_source_name}}</td>
-                            <td>    @foreach ($item->detail as $detailinfo)
-                            {{$detailinfo->executor_abbr}} <br>
-                            @endforeach
-                            </td>
-                        </tr>
-                        <?php $no++; ?>
-                        @endforeach
+                        
                         </tbody>
                     
                     </table>
