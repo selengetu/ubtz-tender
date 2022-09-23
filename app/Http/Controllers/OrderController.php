@@ -19,6 +19,7 @@ class OrderController extends Controller {
         $dep= DB::select("select * from MEASINST.V_DEPART t");
         $unit= DB::select("select * from CONST_UNIT t");
         $order= DB::select("select * from V_ORDERS t");
+        $count_order= DB::select("select count(order_id) as count from V_ORDERS t")[0];
         $currency= DB::select("select * from CONST_CURRENCY t order by currency_id");
         $type= DB::select("select * from CONST_TENDER_TYPES t");
         $tendertype= DB::select("select * from CONST_CONTRACT_TYPES t");
@@ -26,7 +27,7 @@ class OrderController extends Controller {
         $employee= DB::select("select t.* from V_USERS t where jobcode <5 order by first_name");
         $contract_type= DB::select("select t.* from CONST_CONTRACT_TYPES t");
       
-        return view('order.order',compact('dep','ostate','source','selection','unit','order','type','tendertype','tenderstate','employee','currency','contract_type'));
+        return view('order.order',compact('dep','ostate','source','selection','unit','order','type','tendertype','tenderstate','employee','currency','contract_type','count_order'));
     }
     public function saveOrder(Request $request)
     {

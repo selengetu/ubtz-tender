@@ -32,6 +32,7 @@
                 <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                     <br>
+                   <b> Нийт: {{$count_order->count}} </b> <br><br>
                 <div class="table-responsive">
                     <table class="table table-bordered table-striped" id="myTable">
                         <thead style="background-color:#007bff; color:white;">
