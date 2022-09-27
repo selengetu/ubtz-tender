@@ -46,5 +46,11 @@ class TenderController extends Controller {
     {
         return DB::select("select * from V_TENDERS t where t.tenderid='$hid'");
     }
-
+    public function delTender($hid)
+    {
+        $user = DB::table('TENDERS')
+        ->where('tenderid',$hid)
+        ->update(['is_active' => 0]);
+            return 1;
+    }
 }
