@@ -59,7 +59,7 @@
         <div class="card" style="font-size:12px;">
          
                 <div class="table-responsive"  id="acontent">
-                    <h4><center><strong><br>Тендерийн судалгаа</strong></center></h4><br>
+                    <h4><center><strong><br>Тендерийн явцын мэдээ</strong></center></h4><br>
                     <table class="table table-bordered table-striped" id="myTable" >
                     <thead>
                             <th></th>
