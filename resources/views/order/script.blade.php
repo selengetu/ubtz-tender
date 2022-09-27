@@ -761,9 +761,23 @@ $('.orderinformation').on('click',function(){
 
     }
     function delDetail(hid){
-        if(confirm('Захиалгыг устгах уу?'))
+        if(confirm('Захиалгын дэлгэрэнгүй мэдээллийг устгах уу?'))
         {
            $.get('{{ route("delDetail") }}/'+hid , function (data) 
+            {
+                if(data==1)
+                {
+                    location.reload();
+                }
+            }); 
+        }
+
+    }
+    function delOrder(){
+        var tag = $('#order_id').val();
+        if(confirm('Захиалгыг устгах уу?'))
+        {
+           $.get('{{ route("delOrder") }}/'+tag , function (data) 
             {
                 if(data==1)
                 {
