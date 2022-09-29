@@ -760,10 +760,11 @@ $('.orderinformation').on('click',function(){
         }
 
     }
-    function delDetail(hid){
+    function delDetail(){
+        var tag = $('#detail_id').val();
         if(confirm('Захиалгын дэлгэрэнгүй мэдээллийг устгах уу?'))
         {
-           $.get('{{ route("delDetail") }}/'+hid , function (data) 
+           $.get('{{ route("delDetail") }}/'+tag , function (data) 
             {
                 if(data==1)
                 {
