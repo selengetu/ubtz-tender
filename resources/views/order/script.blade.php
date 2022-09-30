@@ -789,13 +789,29 @@ $('.orderinformation').on('click',function(){
     }
     function delTender(){
         var tag = $('#tender_id').val();
-        if(confirm('Захиалгыг устгах уу?'))
+        var order = $('#torder_id').val();
+        if(confirm('Тендерийг устгах уу?'))
         {
            $.get('{{ route("delTender") }}/'+tag , function (data) 
             {
                 if(data==1)
                 {
-                    location.reload();
+                    getTenders(order);
+                }
+            }); 
+        }
+
+    }
+    function delPack(){
+        var tag = $('#tender_id').val();
+        var order = $('#torder_id').val();
+        if(confirm('Багцыг устгах уу?'))
+        {
+           $.get('{{ route("delPack") }}/'+tag , function (data) 
+            {
+                if(data==1)
+                {
+                    gettenderpacks(order);
                 }
             }); 
         }

@@ -97,6 +97,7 @@ Route::post('/saveComplaint', [App\Http\Controllers\TenderController::class, 'sa
 Route::post('/savePack', [App\Http\Controllers\PackController::class, 'savePack'])->name('savePack');
 Route::get('/getpack/{hid?}', [App\Http\Controllers\PackController::class, 'getpack'])->name('getpack');
 Route::get('/getpacks/{hid?}', [App\Http\Controllers\PackController::class, 'getpacks'])->name('getpacks');
+Route::get('/delPack/{hid?}',[App\Http\Controllers\PackController::class,'delPack'])->name('delPack');
 
 Route::post('/saveProgress', [App\Http\Controllers\ProgressController::class, 'saveProgress'])->name('saveProgress');
 Route::get('/getprogress/{hid?}', [App\Http\Controllers\ProgressController::class, 'getprogress'])->name('getprogress');

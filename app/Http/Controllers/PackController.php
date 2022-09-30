@@ -42,5 +42,12 @@ class PackController extends Controller {
     {
         return DB::select("select * from V_TENDER_PACK t where t.pack_id='$hid'");
     }
+    public function delPack($hid)
+    {
+        $user = DB::table('TENDER_PACK')
+        ->where('pack_id',$hid)
+        ->update(['is_active' => 0]);
+            return 1;
+    }
    
 }
