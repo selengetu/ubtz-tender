@@ -39,5 +39,12 @@ class ComplaintController extends Controller {
     {
         return DB::select("select * from V_TENDER_COMPLAINT t where t.complaint_id='$hid'");
     }
+    public function delComplaint($hid)
+    {
+        $user = DB::table('TENDER_COMPLAINT')
+        ->where('complaint',$hid)
+        ->update(['is_active' => 0]);
+            return 1;
+    }
    
 }

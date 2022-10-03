@@ -571,7 +571,7 @@ $('.orderinformation').on('click',function(){
                 $('#dorder_budget').val(data[0].order_budget);
                 $('#dorder_performance').val(data[0].order_performance);
                 $('#detail_id').val(data[0].order_detail_id);
-                document.getElementById("exampleModalLabel").innerHTML="Захиалгын мэдээллийг засварлах";
+                document.getElementById("exampleModalLabel").innerHTML="Захиалгын дэлгэрэнгүй мэдээллийг засварлах";
             });
         } else {
                
@@ -593,7 +593,7 @@ $('.orderinformation').on('click',function(){
                 $('#pack_suspended_at').val(data[0].pack_suspended_at);
                 $('#pack_complaint_at').val(data[0].pack_complaint_at);
                 $('#pack_id').val(data[0].pack_id);
-                document.getElementById("exampleModalLabel").innerHTML="Захиалгын мэдээллийг засварлах";
+                document.getElementById("exampleModalLabel").innerHTML="Захиалгын багцын мэдээллийг засварлах";
             });
         } else {
                
@@ -604,7 +604,7 @@ $('.orderinformation').on('click',function(){
                 $('#pack_suspended_at').val('');
                 $('#pack_complaint_at').val('');
                 $('#pack_id').val('');
-                document.getElementById("exampleModalLabel").innerHTML="Шинээр захиалга нэмэх";
+                document.getElementById("exampleModalLabel").innerHTML="Шинээр багц нэмэх";
         }
     }
     function komissEdit(hid){
@@ -726,7 +726,7 @@ $('.orderinformation').on('click',function(){
                 $('#tender_comment').val(data[0].tender_comment);
                 $('#order_id').val(data[0].order_id);
                 $('#tender_id').val(data[0].tenderid);
-                document.getElementById("exampleModalLabel").innerHTML="Захиалгын мэдээллийг засварлах";
+                document.getElementById("exampleModalLabel").innerHTML="Тендерийн мэдээллийг засварлах";
             });
         } else {
                 $('#tenderno').val('');
@@ -743,7 +743,7 @@ $('.orderinformation').on('click',function(){
                 $('#tender_comment').val('');
                 $('#order_id').val('');
                 $('#tender_id').val(0);
-                document.getElementById("exampleModalLabel").innerHTML="Шинээр захиалга нэмэх";
+                document.getElementById("exampleModalLabel").innerHTML="Шинээр тендер нэмэх";
         }
     }
 
@@ -803,7 +803,7 @@ $('.orderinformation').on('click',function(){
 
     }
     function delPack(){
-        var tag = $('#tender_id').val();
+        var tag = $('#pack_id').val();
         var order = $('#torder_id').val();
         if(confirm('Багцыг устгах уу?'))
         {
@@ -818,7 +818,7 @@ $('.orderinformation').on('click',function(){
 
     }
     function delProgress(){
-        var tag = $('#tender_id').val();
+        var tag = $('#progress_id').val();
         var order = $('#torder_id').val();
         if(confirm('Явцыг устгах уу?'))
         {
@@ -832,4 +832,20 @@ $('.orderinformation').on('click',function(){
         }
 
     }
+    function delComplaint(){
+        var tag = $('#complaint_id').val();
+        var tender = $('#complaint_tender').val();
+        if(confirm('Үнэлгээг устгах уу?'))
+        {
+           $.get('{{ route("delComplaint") }}/'+tag , function (data) 
+            {
+                if(data==1)
+                {
+                    gettendercomplaints(tender);
+                }
+            }); 
+        }
+
+    }
+    
 </script>
