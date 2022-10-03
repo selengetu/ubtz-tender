@@ -811,7 +811,22 @@ $('.orderinformation').on('click',function(){
             {
                 if(data==1)
                 {
-                    gettenderpacks(order);
+                    gettenderpacks(tag);
+                }
+            }); 
+        }
+
+    }
+    function delProgress(){
+        var tag = $('#tender_id').val();
+        var order = $('#torder_id').val();
+        if(confirm('Явцыг устгах уу?'))
+        {
+           $.get('{{ route("delProgress") }}/'+tag , function (data) 
+            {
+                if(data==1)
+                {
+                    gettenderprogresses(tag);
                 }
             }); 
         }

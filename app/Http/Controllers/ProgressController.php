@@ -39,5 +39,12 @@ class ProgressController extends Controller {
     {
         return DB::select("select * from V_TENDER_PROGRESS t where t.progress_id='$hid'");
     }
-   
+    
+    public function delProgress($hid)
+    {
+        $user = DB::table('TENDER_PROGRESS')
+        ->where('progress_id',$hid)
+        ->update(['is_active' => 0]);
+            return 1;
+    }
 }

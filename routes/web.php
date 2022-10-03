@@ -101,7 +101,8 @@ Route::get('/delPack/{hid?}',[App\Http\Controllers\PackController::class,'delPac
 
 Route::post('/saveProgress', [App\Http\Controllers\ProgressController::class, 'saveProgress'])->name('saveProgress');
 Route::get('/getprogress/{hid?}', [App\Http\Controllers\ProgressController::class, 'getprogress'])->name('getprogress');
-Route::get('/getprogresses/{hid?}', [App\Http\Controllers\ProgressController::class, 'getprogresses'])->name('getprogresses');
+Route::get('/getprogresses/{hid?}', [App\Http\Controllers\ProgressController::class, 'getprogresses'])->name('getprogresses'); 
+Route::get('/delProgress/{hid?}', [App\Http\Controllers\ProgressController::class, 'delProgress'])->name('delProgress');
 
 Route::post('/saveComplaint', [App\Http\Controllers\ComplaintController::class, 'saveComplaint'])->name('saveComplaint');
 Route::get('/getcomplaint/{hid?}', [App\Http\Controllers\ComplaintController::class, 'getcomplaint'])->name('getcomplaint');
