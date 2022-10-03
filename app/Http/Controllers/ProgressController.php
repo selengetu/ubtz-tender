@@ -19,13 +19,19 @@ class ProgressController extends Controller {
             (progress_state, progress_date, progress_comment, progress_tender, ADDED_USER)
             values
             ('$request->progress_state', '$request->progress_date','$request->progress_comment','$request->progress_tender', '$id')");
-            
+           
+            DB::table('Tenders')
+            ->where('tenderid', $request->progress_tender)
+            ->update(['tender_state' => $request->progress_state]);        
               }
                 else{
         
                     $orders = DB::table('tender_progress')
                     ->where('progress_id', $request->progress_id)
-                    ->update(['progress_state' => $request->progress_state,'progress_date' => $request->progress_date,'progress_comment' => $request->progress_comment, 'progress_tender' =>  $request->progress_tender]);        
+                    ->update(['progress_state' => $request->progress_state,'progress_date' => $request->progress_date,'progress_comment' => $request->progress_comment, 'progress_tender' =>  $request->progress_tender]);   
+                    DB::table('Tenders')
+                    ->where('tenderid', $request->progress_tender)
+                    ->update(['tender_state' => $request->progress_state]);       
                 }
 
         return 1;
