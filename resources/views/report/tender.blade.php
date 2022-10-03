@@ -67,6 +67,7 @@
                             <th>Захиалга</th>
                             <th>Захиалагч</th>
                             <th>Тендерийн №</th>
+                            <th>Төлөв</th>
                             <th>Шалгаруулалтын төрөл</th>
                             <th>Төсөвт өртөг</th>
                             <th>Төрөл</th>
@@ -93,6 +94,7 @@
                             @endforeach
                             </td>
                             <td><b>{{$item->tenderno}}</b></td>
+                            <td><b>{{$item->tender_state_name}}</b></td>
                             <td>{{$item->contracttypename}}</td>
                             <td>{{number_format($item->tender_budget, 2)}}</td>
                             <td>{{$item->tendertypename}}</td>
