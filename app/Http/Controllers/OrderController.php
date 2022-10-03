@@ -100,8 +100,8 @@ class OrderController extends Controller {
     }
     public function delDetail($hid)
     {
-        $user = DB::table('USERS')
-        ->where('id',$hid)
+        $user = DB::table('ORDER_DETAIL')
+        ->where('ORDER_DETAIL_ID',$hid)
         ->update(['is_active' => 0]);
             return 1;
     }

@@ -762,13 +762,14 @@ $('.orderinformation').on('click',function(){
     }
     function delDetail(){
         var tag = $('#detail_id').val();
+        var dorder_id = $('#dorder_id').val();
         if(confirm('Захиалгын дэлгэрэнгүй мэдээллийг устгах уу?'))
         {
            $.get('{{ route("delDetail") }}/'+tag , function (data) 
             {
                 if(data==1)
                 {
-                    location.reload();
+                    getorderdetails(dorder_id);
                 }
             }); 
         }
