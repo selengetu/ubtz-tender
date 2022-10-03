@@ -130,6 +130,7 @@ Route::get('/tenderstate', [App\Http\Controllers\TenderStateController::class, '
 Route::post('/saveContract', [App\Http\Controllers\ContractController::class, 'saveContract'])->name('saveContract');
 Route::get('/getcontract/{hid?}', [App\Http\Controllers\ContractController::class, 'getcontract'])->name('getcontract');
 Route::get('/getcontracts/{hid?}', [App\Http\Controllers\ContractController::class, 'getcontracts'])->name('getcontracts');
+Route::get('/delContract/{hid?}',[App\Http\Controllers\ContractController::class,'delContract'])->name('delContract');
 
 Route::post('/saveContractProgress', [App\Http\Controllers\ContractController::class, 'saveContractProgress'])->name('saveContractProgress');
 Route::get('/getcontractprogress/{hid?}', [App\Http\Controllers\ContractController::class, 'getcontractprogress'])->name('getcontractprogress');

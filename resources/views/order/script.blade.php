@@ -848,5 +848,19 @@ $('.orderinformation').on('click',function(){
         }
 
     }
-    
+    function delContract(){
+        var tag = $('#contractid').val();
+        var order = $('#contract_tender').val();
+        if(confirm('Гэрээг устгах уу?'))
+        {
+           $.get('{{ route("delContract") }}/'+tag , function (data) 
+            {
+                if(data==1)
+                {
+                    getContracts(tag);
+                }
+            }); 
+        }
+
+    }
 </script>

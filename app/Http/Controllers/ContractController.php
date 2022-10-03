@@ -47,4 +47,12 @@ class ContractController extends Controller {
     {
         return DB::select("select * from V_CONTRACTS t where t.contractid='$hid'");
     }
+    public function delContract($hid)
+    {
+        $user = DB::table('CONTRACTS')
+        ->where('CONTRACTID',$hid)
+        ->update(['is_active' => 0]);
+            return 1;
+    }
+
 }
