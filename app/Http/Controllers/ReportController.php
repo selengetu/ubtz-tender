@@ -266,4 +266,35 @@ class ReportController extends Controller {
         Session::put('sselection',$sselection);
         return back();
     }
+    public function reportOrder(Request $request)
+    {
+        $jobid= Auth::user()->jobid;
+        $id= Auth::user()->id;
+        $query = "";
+        $ostate= DB::select("select * from CONST_ORDER_STATE t order by state_name");
+        $source= DB::select("select * from CONST_ORDER_BUDGET_SOURCE t");
+        $selection= DB::select("select * from CONST_ORDER_SELECTIONS t");
+        $dep= DB::select("select * from MEASINST.V_DEPART t");
+        $unit= DB::select("select * from CONST_UNIT t");
+        $count_order= DB::select("select count(order_id) as count from V_ORDERS t")[0];
+        $currency= DB::select("select * from CONST_CURRENCY t order by currency_id");
+        $type= DB::select("select * from CONST_TENDER_TYPES t");
+        $tendertype= DB::select("select * from CONST_CONTRACT_TYPES t");
+        $tenderstate= DB::select("select t.* from CONST_TENDER_STATE t");
+        $employee= DB::select("select t.* from V_USERS t where jobcode <5 order by first_name");
+        $contract_type= DB::select("select t.* from CONST_CONTRACT_TYPES t");
+        if ($jobid == 4) {
+            $query.=" and order_employee = '". $id."'";
+
+        }
+        else
+        {
+            $query.=" ";
+
+        }
+        $order= DB::select("select * from V_ORDERS t where 1=1  $query");
+
+      
+        return view('report.order',compact('dep','ostate','source','selection','unit','order','type','tendertype','tenderstate','employee','currency','contract_type','count_order'));
+    }
 }
