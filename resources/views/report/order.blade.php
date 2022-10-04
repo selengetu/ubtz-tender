@@ -52,7 +52,7 @@
                         <tbody id="tbody">
                         <?php $no = 1; ?>
                          @foreach ($order as $item )
-                         <tr>
+                         <tr data-toggle='modal' data-target='#detModal' >
                             <td>{{$no}}</td>
                             <td><b style="color:#007bff"><u>{{$item->order_name}}</u></b></td>
                             <td>{{$item->unit_name}}</td>
@@ -77,6 +77,7 @@
         </div>
     </div>
 </div>
+
 @stop
 
 @section('script')

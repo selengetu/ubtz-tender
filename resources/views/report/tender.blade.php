@@ -85,7 +85,7 @@
                         <tbody id="tbody">
                         <?php $no = 1; ?>
                          @foreach ($tenders as $item )
-                        <tr>
+                         <tr data-toggle='modal' data-target='#detModal' class="orderinformation" data-id="{{$item->order_id}}" tag="{{$item->order_id}}" >
                             <td>{{$no}}</td>
                             <td>{{$item->order_date}}</td>
                             <td>{{$item->order_name}}</td>
@@ -133,34 +133,14 @@
         </div>
     </div>
 </div>
+@include('order.modal.det')   
 @stop
 
 @section('script')
 <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/v/dt/jszip-2.5.0/dt-1.10.16/b-1.5.1/b-html5-1.5.1/datatables.min.js"></script>
 <script type="text/javascript">
-        $('#myTable').DataTable(
-        {
-            "dom": 'Bflrtip',
-            "buttons": [ 'copy', 'excel', 'csv' ],
-            stateSave: true,
-            "language": {
-                "lengthMenu": " _MENU_ бичлэг",
-                "zeroRecords": "Бичлэг олдсонгүй",
-                "info": "_PAGE_ ээс _PAGES_ хуудас" ,
-                "infoEmpty": "Бичлэг олдсонгүй",
-                "infoFiltered": "(filtered from _MAX_ total records)",
-                "search": "Хайлт:",
-                "paginate": {
-                    "first":      "Эхнийх",
-                    "last":       "Сүүлийнх",
-                    "next":       "Дараагийнх",
-                    "previous":   "Өмнөх"
-                },
-            },
-            "pageLength": 25
-        } 
-    );
+
  function printDiv(printarea) {
      var printContents = document.getElementById('acontent').innerHTML;
      var originalContents = document.body.innerHTML;
@@ -173,7 +153,7 @@
 }
 
 </script>
-
+@include('order.script')   
 
 @stop
 
