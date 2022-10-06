@@ -10,7 +10,7 @@
                 <div class="modal-body">
                 <div class="table-responsive">
                 <table class="table table-bordered table-hover table-striped" id="infodetails">
-                        <thead >                        
+                        <thead style="background-color:#87CEFA">                        
                             <th>Алба</th>
                             <th>Тоо хэмжээ</th>
                             <th>Төсөвт өртөг</th>
@@ -25,7 +25,7 @@
                 <div class="table-responsive">
                     <br>
                     <table class="table table-bordered table-hover table-striped" id="infopack">
-                        <thead >                        
+                        <thead style="background-color:#87CEFA">                        
                             <th>Багцын нэр</th>
                             <th>Огноо</th>
                             <th>Төсөвт өртөг</th>
@@ -41,7 +41,7 @@
                 <div class="table-responsive">
                     <br>
                     <table class="table table-bordered table-hover table-striped">
-                        <thead >                        
+                        <thead style="background-color:#87CEFA">                        
                             <th>Огноо</th>
                             <th>Явцын төлөв</th>
                             <th>Тайлбар</th>
@@ -55,7 +55,7 @@
                 <div class="table-responsive">
                     <br>
                     <table class="table table-bordered table-hover table-striped">
-                        <thead >                        
+                        <thead style="background-color:#87CEFA">                        
                             <th>Ажилтны нэр</th>
                             <th>Албан тушаал</th>
                             <th>Огноо</th>
@@ -68,7 +68,7 @@
                 </div>
                  <div class="table-responsive">
                     <table class="table table-bordered table-striped" id="infocontract">
-                        <thead>
+                        <thead style="background-color:#87CEFA">
                             <th></th>
                             <th>Гэрээний №</th>
                             <th>Гэрээ байгуулсан огноо</th>
