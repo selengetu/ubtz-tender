@@ -153,7 +153,7 @@
 }
 
 </script>
-@include('order.script')   
+@include('report.script')   
 
 @stop
 

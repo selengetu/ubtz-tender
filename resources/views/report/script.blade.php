@@ -176,8 +176,7 @@ $('.orderinformation').on('click',function(){
          "   <td class='m3'>" + qwe.order_count + "</td>" +
         "   <td class='m3'>" + qwe.order_budget + "</td>" +
         "   <td class='m3'>" + qwe.order_performance + "</td>" +
-         "   <td class='m3'> <button class='btn btn-primary btn-xs' data-toggle='modal' onclick='orderdetailEdit("+ qwe.order_detail_id +")' data-target='#detailModal'><i class='fa fa-pen'></i></button> <button class='btn btn-danger btn-xs' onclick='delDetail("+ qwe.order_detail_id +")'><i class='fa fa-trash'></i></button></td>"+
-        "</tr>";
+         "</tr>";
 
         $("#infodetails tbody").append(sHtml);
                
@@ -246,7 +245,7 @@ $('.orderinformation').on('click',function(){
            
         $.each(data,function(i,qwe){
         var sHtml = "<tr  onclick=gettenderinfo("+ qwe.tenderid +") tag='"+ qwe.tenderid +"' id='"+ qwe.tenderid +"' class='tendr'>" +
-        "   <td> <button class='btn btn-primary btn-xs' data-toggle='modal' onclick='tenderEdit("+ qwe.tenderid +")' data-target='#tenderModal'><i class='fa fa-pen'></i></button></td>"+
+      
         "   <td>" + qwe.contracttypename + "</td>" +
         "   <td><b style='color:#007bff'><u>" + qwe.tenderno + "</u></b></td>" +
         "   <td>" + qwe.tendertypename + "</td>" +
@@ -273,7 +272,7 @@ $('.orderinformation').on('click',function(){
            
         $.each(data,function(i,qwe){
             var sHtml = "<tr  onclick=getcontractinfo("+ qwe.contractid +") tag='"+ qwe.contractid +"' id='"+ qwe.contractid +"'>" +
-        "   <td> <button class='btn btn-primary btn-xs' data-toggle='modal' onclick='contractEdit("+ qwe.contractid +")' data-target='#contractModal'><i class='fa fa-pen'></i></button></td>"+
+     
         "   <td>" + qwe.contractno + "</td>" +
         "   <td>" + qwe.contract_date + "</td>" +
         "   <td>" + qwe.contract_duration_days + "</td>"+

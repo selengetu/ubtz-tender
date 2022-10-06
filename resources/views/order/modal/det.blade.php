@@ -15,7 +15,7 @@
                             <th>Тоо хэмжээ</th>
                             <th>Төсөвт өртөг</th>
                             <th>Гүйцэтгэл</th>
-                            <th></th>
+                         
                         </thead>
                         <tbody id="tbody">                   
                         </tbody>
@@ -32,7 +32,7 @@
                             <th>Гэрээ байгуулах эрх огноо</th>
                             <th>Түдгэлзүүлсэн огноо</th>
                             <th>Гомдол гаргасан огноо</th>
-                            <th></th>
+                         
                         </thead>
                         <tbody id="tbody2">                   
                         </tbody>
@@ -46,7 +46,7 @@
                             <th>Явцын төлөв</th>
                             <th>Тайлбар</th>
                             <th>Ажилтан</th>
-                            <th></th>
+                  
                         </thead>
                         <tbody id="tbody3">                   
                         </tbody>
@@ -60,7 +60,7 @@
                             <th>Албан тушаал</th>
                             <th>Огноо</th>
                             <th>Тайлбар</th>
-                            <th></th>
+                   
                         </thead>
                         <tbody id="tbody5">                   
                         </tbody>
@@ -69,7 +69,7 @@
                  <div class="table-responsive">
                     <table class="table table-bordered table-striped" id="infocontract">
                         <thead style="background-color:#87CEFA">
-                            <th></th>
+  
                             <th>Гэрээний №</th>
                             <th>Гэрээ байгуулсан огноо</th>
                             <th>Хүчинтэй хугацаа</th>
