@@ -28,7 +28,7 @@ class TenderController extends Controller {
         
                     $orders = DB::table('Tenders')
                     ->where('tenderid', $request->tender_id)
-                    ->update(['tenderselectioncode' => $request->tenderselectioncode,'tenderno' => $request->tenderno,'tendertypecode' => $request->tendertypecode,'tender_call_at' => $request->tender_call_at,
+                    ->update(['tenderselectioncode' => $request->tenderselectioncode,'tenderno' => $request->tenderno,'tendertypecode' => $request->tendertypecode,'tender_call_at' => $request->tender_call_at,'tender_state' => 1,
                     'tender_open_at' =>  $request->tender_open_at,'tender_budget' => $tender_budget,'tendertitle' => $request->tender_title,
                     'tender_invitationcode' => $request->tender_invitationcode,'tender_invitation_at' =>  $request->tender_invitation_at,'tender_validdate' => $request->tender_validdate,'packcount' => $request->packcount
                     ,'assessment' => $request->assessment,'tender_state' => $request->tender_state,'assessment_at' => $request->assessment_at]);        
