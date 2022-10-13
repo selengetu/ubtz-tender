@@ -112,7 +112,6 @@
                             <td>{{$contract->contract_date}}</td>
                             <td>{{number_format($contract->contract_amount, 2)}}</td>
                             <td>{{$contract->supplier_name}}</td>
-                          
                             @endforeach
                             @else
                             <td></td>

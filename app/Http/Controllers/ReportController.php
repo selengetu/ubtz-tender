@@ -154,25 +154,12 @@ class ReportController extends Controller {
         }
 
 
-        $tenders=DB::select("SELECT * FROM V_TENDERS t
-        WHERE t.order_id IN (select order_id from ORDER_DETAIL t where 1=1" .$query1."" .$query." )");
-       
-        foreach ($tenders as $tender) {
-          $tender->pack = DB::select('select * from V_TENDER_PACK t where t.pack_tender=' . $tender->tenderid . '');
-        }
-        foreach ($tenders as $tender) {
-            $tender->detail = DB::select('select * from v_order_detail t where t.order_id=' . $tender->order_id . '');
+        $contracts=DB::select("SELECT * FROM v_contracts t");
+        foreach ($contracts as $contract) {
+            $contract->detail = DB::select('select * from v_order_detail t where t.order_id=' . $contract->order_id . '');
 
         }
-        foreach ($tenders as $tender) {
-            $tender->contract = DB::select('select * from v_contracts t where rownum = 1 and t.tenderid=' . $tender->tenderid . '');
-
-        }
-        foreach ($tenders as $tender) {
-            $tender->komiss = DB::select('select * from V_TENDER_KOMISS t where t.komiss_tender=' . $tender->tenderid . '');
-
-        }
-        return view('report.contract',compact('tenders','dep','type','tendertype','stendertype','sselection','sdep','sorder_budget_source'));
+        return view('report.contract',compact('contracts','dep','type','tendertype','stendertype','sselection','sdep','sorder_budget_source'));
     }
     public function reportProgress(Request $request)
     {

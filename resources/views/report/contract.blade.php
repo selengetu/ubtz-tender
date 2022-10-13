@@ -49,7 +49,6 @@
                             <th>ААН</th>
                             <th>Холбоо барих утас</th>
                             <th>Төсөвт өртөг</th>
-                            <th>Гэрээний нийт дүн</th>
                             <th>Хэмнэлт</th>
                             <th>Зураг төсөл, захиалагчийн хяналтын зардал, бусад зардал болон чанарын баталгаа 5% хассан дүн</th>
                             <th>Чанарын баталгааны хугацаа</th>
@@ -60,6 +59,29 @@
                         </thead>
                         <tbody id="tbody">
                         <?php $no = 1; ?>
+                         @foreach ($contracts as $item )
+                        <tr>
+                            <td>{{$no}}</td>
+                            <td>{{$item->order_name}}</td>
+                            <td>{{$item->contractno}}</td>
+                            <td>{{$item->contract_date}}</td>
+                            <td>{{$item->supplier_name}}</td>
+                            <td></td>
+                            <td>{{number_format($item->order_budget, 2)}}</td>
+                            <td></td>
+                            <td></td>
+                            <td>{{$item->supplier_days}}</td>
+                            <td>{{$item->contract_condition}}</td>
+                            <td>    @foreach ($item->detail as $detailinfo)
+                            {{$detailinfo->executor_abbr}} <br>
+                            @endforeach
+                            </td>
+                            <td>{{$item->tenderselectionabbr}}</td>
+                            <td></td>
+                           
+                        </tr>
+                        <?php $no++; ?>
+                        @endforeach
                         
                         </tbody>
                     
