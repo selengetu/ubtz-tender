@@ -61,7 +61,7 @@ class OrderController extends Controller {
                 ->where('order_id', $request->order_id)
                 ->update(['order_name' => $request->order_name,'order_date' => $request->order_date,'order_unit' => $request->order_unit,'order_count' => $request->order_count,
                 'order_selection' => $request->order_selection,'order_budget_source' => $request->order_budget_source,'order_budget' => $order_budget,
-                'order_thisyear' => $order_thisyear,'order_comment' => $request->order_comment,'order_employee' => $request->order_employee]);        
+                'order_thisyear' => $order_thisyear,'order_comment' => $request->order_comment]);        
             }
       
         return back();
