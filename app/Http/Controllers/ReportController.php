@@ -71,8 +71,7 @@ class ReportController extends Controller {
             $query.=" ";
         }
 
-        $tenders=DB::select("SELECT * FROM V_TENDERS t
-        WHERE t.order_id IN (select order_id from ORDER_DETAIL t where 1=1 " .$query1."" .$query." )");
+        $tenders=DB::select("SELECT * FROM V_TENDERS t WHERE 1=1" .$query." )");
        
         foreach ($tenders as $tender) {
           $tender->pack = DB::select('select * from V_TENDER_PACK t where t.pack_tender=' . $tender->tenderid . '');
@@ -221,8 +220,7 @@ class ReportController extends Controller {
         }
 
 
-        $tenders=DB::select("SELECT * FROM V_TENDERS t
-        WHERE t.order_id IN (select order_id from ORDER_DETAIL t where 1=1" .$query1."" .$query." )");
+        $tenders=DB::select("SELECT * FROM V_TENDERS t WHERE 1=1" .$query." )");
        
         foreach ($tenders as $tender) {
           $tender->pack = DB::select('select * from V_TENDER_PACK t where t.pack_tender=' . $tender->tenderid . '');

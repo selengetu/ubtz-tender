@@ -42,7 +42,7 @@ class ComplaintController extends Controller {
     public function delComplaint($hid)
     {
         $user = DB::table('TENDER_COMPLAINT')
-        ->where('complaint',$hid)
+        ->where('complaint_id',$hid)
         ->update(['is_active' => 0]);
             return 1;
     }
