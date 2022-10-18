@@ -32,7 +32,7 @@ class HomeController extends Controller
         $count_tender= DB::select("select count(tenderid) as count from V_TENDERS");
         $count_contractbegin= DB::select("select count(contractid) as count from V_Contracts t");
         $count_contract= DB::select("select count(contractid) as count from V_Contracts t where contract_end_date is not null");
-        $t1= DB::select("select executor_abbr, sum(order_budget) as sum_budget,  NVL(sum(t.order_performance), '0')  as sum_performance from V_ORDER_DETAIL t group by executor_abbr");
+        $t1= DB::select("select executor_abbr, count(order_budget) as sum_budget,  NVL(count(t.order_performance), '0')  as sum_performance from V_ORDER_DETAIL t group by executor_abbr");
         $t2= DB::select("select name,  count(t.order_id) as countwork from V_ORDERS t group by name");
         return view('home',compact('count_order','count_tender', 'count_contract', 'count_contractbegin', 't1', 't2'));
     }

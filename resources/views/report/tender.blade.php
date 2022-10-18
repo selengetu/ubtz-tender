@@ -81,6 +81,7 @@
                             <th>Гэрээний дүн</th>
                             <th>Нийлүүлэгч</th>
                             <th>СЯ уруу төлөвлөгөө явуулсан огноо</th>
+                            <th>Тайлбар</th>
                         </thead>
                         <tbody id="tbody">
                         <?php $no = 1; ?>
@@ -120,6 +121,7 @@
                             <td></td>
                             @endif
                             <td>{{$item->tender_open_at}}</td>
+                            <td>{{$item->order_comment}}</td>
                         </tr>
                         <?php $no++; ?>
                         @endforeach
