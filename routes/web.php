@@ -133,6 +133,6 @@ Route::get('/getcontract/{hid?}', [App\Http\Controllers\ContractController::clas
 Route::get('/getcontracts/{hid?}', [App\Http\Controllers\ContractController::class, 'getcontracts'])->name('getcontracts');
 Route::get('/delContract/{hid?}',[App\Http\Controllers\ContractController::class,'delContract'])->name('delContract');
 
-Route::post('/saveContractProgress', [App\Http\Controllers\ContractController::class, 'saveContractProgress'])->name('saveContractProgress');
-Route::get('/getcontractprogress/{hid?}', [App\Http\Controllers\ContractController::class, 'getcontractprogress'])->name('getcontractprogress');
-Route::get('/getcontractprogresses/{hid?}', [App\Http\Controllers\ContractController::class, 'getcontractprogresses'])->name('getcontractprogresses');
+Route::post('/saveContractProgress', [App\Http\Controllers\ContractprogressController::class, 'saveContractProgress'])->name('saveContractProgress');
+Route::get('/getcontractprogress/{hid?}', [App\Http\Controllers\ContractprogressController::class, 'getcontractprogress'])->name('getcontractprogress');
+Route::get('/getcontractprogresses/{hid?}', [App\Http\Controllers\ContractprogressController::class, 'getcontractprogresses'])->name('getcontractprogresses');
