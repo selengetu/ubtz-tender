@@ -404,9 +404,8 @@
                             <th>Огноо</th>
                             <th>Явцын төлөв</th>
                             <th>Тайлбар</th>
-                            <th>Ажилтан</th>
                         </thead>
-                        <tbody id="tbody">
+                        <tbody id="tbody66">
                     
                         
                         </tbody>

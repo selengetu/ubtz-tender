@@ -135,16 +135,36 @@
                 }
             })  
     });
-    $('#formComplaint').submit(function(event){
-        var tender = $('#complaint_tender').val();
+    $('#formProgress').submit(function(event){
+        var tender = $('#progress_tender').val();
         event.preventDefault();
             $.ajax({
                 type: 'POST',
-                url: 'saveComplaint',
-                data: $('form#formComplaint').serialize(),
+                url: 'saveProgress',
+                data: $('form#formProgress').serialize(),
                 success: function(){
                     alert('Амжилттай');
-                    gettendercomplaints(tender);
+                    gettenderprogresses(tender);
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    if (jqXHR.status == 500) {
+                        alert('Internal error: ' + jqXHR.responseText);
+                    } else {
+                        alert('Unexpected error.');
+                    }
+                }
+            })  
+    });
+    $('#formContractProgress').submit(function(event){
+        var con = $('#p_contract_id').val();
+        event.preventDefault();
+            $.ajax({
+                type: 'POST',
+                url: 'saveContractProgress',
+                data: $('form#formContractProgress').serialize(),
+                success: function(){
+                    alert('Амжилттай');
+                    getcontractprogresses(con);
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
                     if (jqXHR.status == 500) {
@@ -407,7 +427,10 @@ $('.orderinformation').on('click',function(){
         $("#infocontract tbody").empty();    
 
         $.get('getContracts/'+itag,function(data){
-           
+            if(data[0]){
+                $("#p_contract_id").val(data[0].contractid);
+                getcontractprogresses(data[0].contractid);
+           }
         $.each(data,function(i,qwe){
             var sHtml = "<tr tag='"+ qwe.contractid +"' id='"+ qwe.contractid +"'>" +
         "   <td> <button class='btn btn-primary btn-xs' data-toggle='modal' onclick='contractEdit("+ qwe.contractid +")' data-target='#contractModal'><i class='fa fa-pen'></i></button></td>"+
@@ -431,7 +454,7 @@ $('.orderinformation').on('click',function(){
 
         $("#infocontract tbody").append(sHtml);    
          });
- 
+        
         });
     }
     function gettenderpacks(hid){
@@ -473,18 +496,18 @@ $('.orderinformation').on('click',function(){
         });
     }
     function getcontractprogresses(hid){
-        $("#tbody3").empty();
+        $("#tbody66").empty();
         $.get('getcontractprogresses/'+hid,function(data){
         $.each(data,function(i,qwe){
             var sHtml = "<tr>" +
+            "   <td class='m3'> <button class='btn btn-primary btn-xs' data-toggle='modal' onclick='contractprogressEdit("+ qwe.progress_id +")' data-target='#contractprogressModal'><i class='fa fa-pen'></i></button></td>"+
         "   <td class='m3'>" + qwe.contract_progress_date + "</td>" +
-        "   <td class='m3'>" + qwe.contract_state + "</td>" +
-        "   <td class='m3'>" + qwe.contract_comment + "</td>" +
-        "   <td class='m3'>" + qwe.contract_employee + "</td>" +
-        "   <td class='m3'> <button class='btn btn-primary btn-xs' data-toggle='modal' onclick='progressEdit("+ qwe.progress_id +")' data-target='#progressModal'><i class='fa fa-pen'></i></button></td>"+
+        "   <td class='m3'>" + qwe.state_name + "</td>" +
+        "   <td class='m3'>" + qwe.contract_progress_comment + "</td>" +
+ 
         "</tr>";
             
-        $("#tbody3").append(sHtml);
+        $("#tbody66").append(sHtml);
                
                
          });
