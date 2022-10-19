@@ -265,7 +265,6 @@ $('.orderinformation').on('click',function(){
                 $('#t_tender_called_at').text('');
                 $('#t_tender_budget').text('');
                 $('#t_tender_invitation').text('');
-                $('#t_tender_invitation_at').text('');
                 $('#t_tender_validdate').text('');
                 $('#t_tender_open_at').text('');
                 $('#t_tender_packcount').text('');
@@ -280,7 +279,6 @@ $('.orderinformation').on('click',function(){
                     $('#t_tender_called_at1').text('');
                     $('#t_tender_budget1').text('');
                     $('#t_tender_invitation1').text('');
-                    $('#t_tender_invitation_at1').text('');
                     $('#t_tender_validdate1').text('');
                     $('#t_tender_open_at1').text('');
                     $('#t_tender_packcount1').text('');
@@ -348,7 +346,6 @@ $('.orderinformation').on('click',function(){
                 $('#t_tender_called_at').text(data[0].tender_call_at);
                 $('#t_tender_budget').text(data[0].tender_budget);
                 $('#t_tender_invitation').text(data[0].tender_invitationcode);
-                $('#t_tender_invitation_at').text(data[0].tender_invitation_at);
                 $('#t_tender_validdate').text(data[0].tender_validdate);
                 $('#t_tender_open_at').text(data[0].tender_open_at);
                 $('#t_tender_packcount').text(data[0].packcount);
@@ -364,7 +361,6 @@ $('.orderinformation').on('click',function(){
                     $('#t_tender_called_at1').text(data[0].tender_call_at);
                     $('#t_tender_budget1').text(data[0].tender_budget);
                     $('#t_tender_invitation1').text(data[0].tender_invitationcode);
-                    $('#t_tender_invitation_at1').text(data[0].tender_invitation_at);
                     $('#t_tender_validdate1').text(data[0].tender_validdate);
                     $('#t_tender_open_at1').text(data[0].tender_open_at);
                     $('#t_tender_packcount1').text(data[0].packcount);
@@ -395,7 +391,6 @@ $('.orderinformation').on('click',function(){
         "   <td>" + qwe.tender_call_at + "</td>"+
         "   <td>" + qwe.tender_budget + "</td>" +
         "   <td>" + qwe.tender_invitationcode + "</td>" +
-        "   <td>" + qwe.tender_invitation_at + "</td>" +
         "   <td>" + qwe.tender_open_at + "</td>" +
         "   <td>" + qwe.tender_validdate + "</td>" +
         "   <td>" + qwe.packcount + "</td>"+
@@ -717,7 +712,6 @@ $('.orderinformation').on('click',function(){
                 $('#tender_budget_source').val(data[0].tender_budget_source).trigger('change');
                 $('#tendertitle').val(data[0].tendertitle);
                 $('#tender_invitationcode').val(data[0].tender_invitationcode);
-                $('#tender_invitation_at').val(data[0].tender_invitation_at);
                 $('#tender_validdate').val(data[0].tender_validdate);
                 $('#packcount').val(data[0].packcount);
                 $('#assessment').val(data[0].assessment);
@@ -735,7 +729,6 @@ $('.orderinformation').on('click',function(){
                 $('#tender_budget').val('');
                 $('#tendertitle').val('');
                 $('#tender_invitationcode').val('');
-                $('#tender_invitation_at').val('');
                 $('#tender_validdate').val('');
                 $('#packcount').val('');
                 $('#assessment').val('');

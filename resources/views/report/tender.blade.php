@@ -73,7 +73,6 @@
                             <th>Төрөл</th>
                             <th>Зарлагдсан огноо</th>
                             <th>Урилгын дугаар</th>
-                            <th>Урилгын огноо</th>
                             <th>Хүчинтэй хугацаа </th>
                             <th>Багцын мэдээлэл</th>
                             <th>Гэрээний дугаар</th>
@@ -101,7 +100,6 @@
                             <td>{{$item->tendertypename}}</td>
                             <td>{{$item->tender_call_at}}</td>
                             <td>{{$item->tender_invitationcode}}</td>
-                            <td>{{$item->tender_invitation_at}}</td>
                             <td>{{$item->tender_validdate}}</td>
                             <td>    @foreach ($item->pack as $packinfo)
                             {{$packinfo->pack_name}} <br>

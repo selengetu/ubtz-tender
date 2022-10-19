@@ -56,12 +56,7 @@
                                 <input type="text" class="form-control" id="tender_invitationcode" name="tender_invitationcode">
                             </div>
                         </div>
-                        <div class="col-3">
-                            <div class="form-group">
-                                 <label>Урилгын огноо</label>
-                                <input type="date" class="form-control" id="tender_invitation_at" name="tender_invitation_at" >
-                            </div>
-                        </div>
+                        
                         <div class="col-3">
                             <div class="form-group">
                                  <label>Тендер нээх хугацаа</label>
