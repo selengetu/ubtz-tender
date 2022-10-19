@@ -15,7 +15,7 @@
                             <div class="form-group">
                                  <label>Огноо</label>
                                 <input type="date" class="form-control" id="contract_progress_date" name="contract_progress_date" >
-                                <input type="hidden" class="form-control" id="contract_progress_tender" name="contract_progress_tender" >
+                                <input type="hidden" class="form-control" id="contract_progress_cid" name="contract_progress_cid" >
                             </div>
                         </div>
                        
