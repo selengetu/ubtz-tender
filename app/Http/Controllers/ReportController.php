@@ -15,6 +15,9 @@ class ReportController extends Controller {
 
     public function reportTender(Request $request)
     {
+        $jobid= Auth::user()->jobid;
+        $id= Auth::user()->id;
+     
         $query = "";
         $query1 = "";
         $sdep ='';
@@ -70,14 +73,22 @@ class ReportController extends Controller {
         {
             $query.=" ";
         }
+        if ($jobid == 4) {
+            $query.=" and order_employee = '". $id."'";
 
-        $tenders=DB::select("SELECT * FROM V_TENDERS t WHERE 1=1 " .$query." ");
+        }
+        else
+        {
+            $query.=" ";
+
+        }
+        $tenders=DB::select("SELECT * FROM V_TENDERS t WHERE 1=1 " .$query." " .$query." ");
        
         foreach ($tenders as $tender) {
           $tender->pack = DB::select('select * from V_TENDER_PACK t where t.pack_tender=' . $tender->tenderid . '');
         }
         foreach ($tenders as $tender) {
-            $tender->detail = DB::select('select * from v_order_detail t where t.order_id=' . $tender->order_id . '');
+            $tender->detail = DB::select('select * from v_order_detail t where t.order_id=' . $tender->order_id . ' ');
 
         }
         foreach ($tenders as $tender) {
@@ -155,7 +166,7 @@ class ReportController extends Controller {
 
         $contracts=DB::select("SELECT * FROM v_contracts t");
         foreach ($contracts as $contract) {
-            $contract->detail = DB::select('select * from v_order_detail t where t.order_id=' . $contract->order_id . '');
+            $contract->detail = DB::select('select * from v_order_detail t where  t.order_id=' . $contract->order_id . '' . $query1. '');
 
         }
         return view('report.contract',compact('contracts','dep','type','tendertype','stendertype','sselection','sdep','sorder_budget_source'));
