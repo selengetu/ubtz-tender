@@ -101,11 +101,26 @@ class ReportController extends Controller {
 
     public function reportTenderDetail(Request $request)
     {
-        $tender=DB::select("select * from V_TENDERS");
+        $jobid= Auth::user()->jobid;
+        $id= Auth::user()->id;
+        $query = "";
+        if ($jobid == 4) {
+            $query.=" and order_employee = '". $id."'";
+
+        }
+        else
+        {
+            $query.=" ";
+
+        }
+
+        $tender=DB::select("select * from V_TENDERS where 1=1  " .$query."");
         return view('report.tenderdetail',compact('tender'));
     }
     public function reportContract(Request $request)
     {
+        $jobid= Auth::user()->jobid;
+        $id= Auth::user()->id;
         $query = "";
         $query1 = "";
         $sdep ='';
@@ -162,9 +177,17 @@ class ReportController extends Controller {
         {
             $query.=" ";
         }
+        if ($jobid == 4) {
+            $query.=" and order_employee = '". $id."'";
 
+        }
+        else
+        {
+            $query.=" ";
 
-        $contracts=DB::select("SELECT * FROM v_contracts t");
+        }
+
+        $contracts=DB::select("SELECT * FROM v_contracts t where 1=1  " .$query."");
         foreach ($contracts as $contract) {
             $contract->detail = DB::select('select * from v_order_detail t where  t.order_id=' . $contract->order_id . '' . $query1. '');
 
@@ -173,6 +196,8 @@ class ReportController extends Controller {
     }
     public function reportProgress(Request $request)
     {
+        $jobid= Auth::user()->jobid;
+        $id= Auth::user()->id;
         $query = "";
         $query1 = "";
         $sdep ='';
@@ -229,7 +254,15 @@ class ReportController extends Controller {
         {
             $query.=" ";
         }
+        if ($jobid == 4) {
+            $query.=" and order_employee = '". $id."'";
 
+        }
+        else
+        {
+            $query.=" ";
+
+        }
 
         $tenders=DB::select("SELECT * FROM V_TENDERS t WHERE 1=1 " .$query." ");
        

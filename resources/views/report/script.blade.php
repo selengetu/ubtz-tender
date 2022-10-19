@@ -172,7 +172,7 @@ $('.orderinformation').on('click',function(){
             var sHtml = "<tr>" +
         "   <td class='m3'>" + qwe.executor_abbr + "</td>" +
          "   <td class='m3'>" + qwe.order_count + "</td>" +
-        "   <td class='m3'>" + qwe.order_budget + "</td>" +
+        "   <td class='m3'>" + qwe.order_budgetcomma + "</td>" +
         "   <td class='m3'>" + qwe.order_performance + "</td>" +
          "</tr>";
 
@@ -246,7 +246,7 @@ $('.orderinformation').on('click',function(){
         "   <td><b style='color:#007bff'><u>" + qwe.tenderno + "</u></b></td>" +
         "   <td>" + qwe.tendertypename + "</td>" +
         "   <td>" + qwe.tender_call_at + "</td>"+
-        "   <td>" + qwe.tender_budget + "</td>" +
+        "   <td>" + qwe.tender_budgetcomma + "</td>" +
         "   <td>" + qwe.tender_invitationcode + "</td>" +
         "   <td>" + qwe.tender_open_at + "</td>" +
         "   <td>" + qwe.tender_validdate + "</td>" +
@@ -272,7 +272,7 @@ $('.orderinformation').on('click',function(){
         "   <td>" + qwe.contract_date + "</td>" +
         "   <td>" + qwe.contract_duration_days + "</td>"+
         "   <td>" + qwe.currency + "</td>" +
-        "   <td>" + qwe.contract_amount + "</td>" +
+        "   <td>" + qwe.contract_amountcomma + "</td>" +
         "   <td>" + qwe.contract_condition + "</td>" +
         "   <td>" + qwe.contract_payment_date + "</td>" +
         "   <td>" + qwe.supplier_condition + "</td>" +
@@ -298,7 +298,7 @@ $('.orderinformation').on('click',function(){
             var sHtml = "<tr>" +
         "   <td class='m3'>" + qwe.pack_name + "</td>" +
         "   <td class='m3'>" + qwe.pack_date + "</td>" +
-        "   <td class='m3'>" + qwe.pack_budget + "</td>" +
+        "   <td class='m3'>" + qwe.pack_budgetcomma + "</td>" +
         "   <td class='m3'>" + qwe.pack_contract_at + "</td>" +
         "   <td class='m3'>" + qwe.pack_suspended_at + "</td>" +
         "   <td class='m3'>" + qwe.pack_complaint_at + "</td>" +
