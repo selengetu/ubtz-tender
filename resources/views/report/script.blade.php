@@ -271,7 +271,7 @@ $('.orderinformation').on('click',function(){
         $.get('getContracts/'+itag,function(data){
            
         $.each(data,function(i,qwe){
-            var sHtml = "<tr  onclick=getcontractinfo("+ qwe.contractid +") tag='"+ qwe.contractid +"' id='"+ qwe.contractid +"'>" +
+            var sHtml = "<tr  onclick=getcontract("+ qwe.contractid +") tag='"+ qwe.contractid +"' id='"+ qwe.contractid +"'>" +
      
         "   <td>" + qwe.contractno + "</td>" +
         "   <td>" + qwe.contract_date + "</td>" +
@@ -341,7 +341,7 @@ $('.orderinformation').on('click',function(){
             var sHtml = "<tr>" +
         "   <td class='m3'>" + qwe.contract_progress_date + "</td>" +
         "   <td class='m3'>" + qwe.contract_state + "</td>" +
-        "   <td class='m3'>" + qwe.contract__comment + "</td>" +
+        "   <td class='m3'>" + qwe.contract_comment + "</td>" +
         "   <td class='m3'>" + qwe.contract_employee + "</td>" +
      
         "</tr>";

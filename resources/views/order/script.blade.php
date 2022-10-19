@@ -387,7 +387,7 @@ $('.orderinformation').on('click',function(){
            }
            
         $.each(data,function(i,qwe){
-        var sHtml = "<tr  onclick=gettenderinfo("+ qwe.tenderid +") tag='"+ qwe.tenderid +"' id='"+ qwe.tenderid +"' class='tendr'>" +
+        var sHtml = "<tr tag='"+ qwe.tenderid +"' id='"+ qwe.tenderid +"' class='tendr'>" +
         "   <td> <button class='btn btn-primary btn-xs' data-toggle='modal' onclick='tenderEdit("+ qwe.tenderid +")' data-target='#tenderModal'><i class='fa fa-pen'></i></button></td>"+
         "   <td>" + qwe.contracttypename + "</td>" +
         "   <td><b style='color:#007bff'><u>" + qwe.tenderno + "</u></b></td>" +
@@ -414,7 +414,7 @@ $('.orderinformation').on('click',function(){
         $.get('getContracts/'+itag,function(data){
            
         $.each(data,function(i,qwe){
-            var sHtml = "<tr  onclick=getcontractinfo("+ qwe.contractid +") tag='"+ qwe.contractid +"' id='"+ qwe.contractid +"'>" +
+            var sHtml = "<tr tag='"+ qwe.contractid +"' id='"+ qwe.contractid +"'>" +
         "   <td> <button class='btn btn-primary btn-xs' data-toggle='modal' onclick='contractEdit("+ qwe.contractid +")' data-target='#contractModal'><i class='fa fa-pen'></i></button></td>"+
         "   <td>" + qwe.contractno + "</td>" +
         "   <td>" + qwe.contract_date + "</td>" +
@@ -484,7 +484,7 @@ $('.orderinformation').on('click',function(){
             var sHtml = "<tr>" +
         "   <td class='m3'>" + qwe.contract_progress_date + "</td>" +
         "   <td class='m3'>" + qwe.contract_state + "</td>" +
-        "   <td class='m3'>" + qwe.contract__comment + "</td>" +
+        "   <td class='m3'>" + qwe.contract_comment + "</td>" +
         "   <td class='m3'>" + qwe.contract_employee + "</td>" +
         "   <td class='m3'> <button class='btn btn-primary btn-xs' data-toggle='modal' onclick='progressEdit("+ qwe.progress_id +")' data-target='#progressModal'><i class='fa fa-pen'></i></button></td>"+
         "</tr>";
@@ -857,7 +857,7 @@ $('.orderinformation').on('click',function(){
             {
                 if(data==1)
                 {
-                    getContracts(tag);
+                    getContracts(order);
                 }
             }); 
         }

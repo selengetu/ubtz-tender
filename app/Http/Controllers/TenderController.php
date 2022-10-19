@@ -31,7 +31,7 @@ class TenderController extends Controller {
                     ->update(['tenderselectioncode' => $request->tenderselectioncode,'tenderno' => $request->tenderno,'tendertypecode' => $request->tendertypecode,'tender_call_at' => $request->tender_call_at,
                     'tender_open_at' =>  $request->tender_open_at,'tender_budget' => $tender_budget,'tendertitle' => $request->tender_title,
                     'tender_invitationcode' => $request->tender_invitationcode,'tender_invitation_at' =>  $request->tender_invitation_at,'tender_validdate' => $request->tender_validdate,'packcount' => $request->packcount
-                    ,'assessment' => $request->assessment,'tender_state' => $request->tender_state,'assessment_at' => $request->assessment_at]);        
+                    ,'assessment' => $request->assessment,'assessment_at' => $request->assessment_at]);        
                 }
 
         return 1;
