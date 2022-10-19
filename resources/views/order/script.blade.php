@@ -32,7 +32,7 @@
                     "previous":   "Өмнөх"
                 },
             },
-            "pageLength": 25
+            "lengthMenu": [ [ -1, 10, 25, 50], ["All", 10, 25, 50 ] ]
         } 
     );
     $('#formTender').submit(function(event){
