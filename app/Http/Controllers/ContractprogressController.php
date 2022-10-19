@@ -37,6 +37,6 @@ class ContractprogressController extends Controller {
     }
     public function getcontractprogress($hid)
     {
-        return DB::select("select * from V_CONTRACT_PROGRESS t where t.progress_id='$hid'");
+        return DB::select("select * from V_CONTRACT_PROGRESS t where t.contract_progress_id='$hid'");
     }
 }

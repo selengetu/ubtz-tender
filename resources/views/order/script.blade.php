@@ -500,7 +500,7 @@ $('.orderinformation').on('click',function(){
         $.get('getcontractprogresses/'+hid,function(data){
         $.each(data,function(i,qwe){
             var sHtml = "<tr>" +
-            "   <td class='m3'> <button class='btn btn-primary btn-xs' data-toggle='modal' onclick='contractprogressEdit("+ qwe.progress_id +")' data-target='#contractprogressModal'><i class='fa fa-pen'></i></button></td>"+
+            "   <td class='m3'> <button class='btn btn-primary btn-xs' data-toggle='modal' onclick='contractprogressEdit("+ qwe.contract_progress_id +")' data-target='#contractprogressModal'><i class='fa fa-pen'></i></button></td>"+
         "   <td class='m3'>" + qwe.contract_progress_date + "</td>" +
         "   <td class='m3'>" + qwe.state_name + "</td>" +
         "   <td class='m3'>" + qwe.contract_progress_comment + "</td>" +
@@ -705,6 +705,23 @@ $('.orderinformation').on('click',function(){
                 $('#progress_id').val('');
         }
     }
+    function contractprogressEdit(hid){
+        if(hid){
+            $.get('getcontractprogress/' + hid, function (data) {
+                $('#contract_progress_date').val(data[0].contract_progress_date);
+                $('#contract_progress_state').val(data[0].contract_progress_state);
+                $('#contract_progress_comment').val(data[0].contract_progress_comment);
+                $('#contract_progress_id').val(data[0].contract_progress_id);
+              
+            });
+        } else {
+               
+                $('#contract_progress_date').val('');
+                $('#contract_progress_state').val('1');
+                $('#contract_progress_comment').val('');
+                $('#contract_progress_id').val('');
+        }
+    }
     function complaintEdit(hid){
         if(hid){
             $.get('getcomplaint/' + hid, function (data) {
@@ -836,14 +853,14 @@ $('.orderinformation').on('click',function(){
     }
     function delProgress(){
         var tag = $('#progress_id').val();
-        var order = $('#torder_id').val();
+        var order = $('#progress_tender').val();
         if(confirm('Явцыг устгах уу?'))
         {
            $.get('{{ route("delProgress") }}/'+tag , function (data) 
             {
                 if(data==1)
                 {
-                    gettenderprogresses(tag);
+                    gettenderprogresses(order);
                 }
             }); 
         }
