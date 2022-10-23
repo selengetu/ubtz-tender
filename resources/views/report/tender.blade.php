@@ -119,7 +119,7 @@
                             <td></td>
                             @endif
                             <td>{{$item->tender_open_at}}</td>
-                            <td>{{$item->order_comment}}</td>
+                            <td>{{$item->tender_comment}}</td>
                         </tr>
                         <?php $no++; ?>
                         @endforeach
