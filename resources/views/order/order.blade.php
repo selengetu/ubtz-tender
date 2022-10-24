@@ -144,42 +144,7 @@
                         </div>
                         </div>
                         <div class="col-md-9">
-                        <div class="card card-primary card-list" style="font-size:12px;" id="card_1">
-                    <div class="card-header">
-                        <h3 class="card-title">Тендерийн мэдээлэл</h3>
-                        <div class="card-tools">
-                        <button class='btn btn-primary btn-xs' data-toggle="modal" data-target="#tenderModal"><i class='fa fa-plus'></i></button>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                    <div class="table-responsive">
-                    <table class="table table-bordered table-striped" id="infotender">
-                        <thead >
-                        <th></th>
-                            <th>Шалгаруулалтын төрөл</th>
-                            <th>Тендерийн №</th>
-                            <th>Төрөл</th>
-                            <th>Зарлагдсан огноо</th>
-                            <th>Батлагдсан төсөвт өртөг</th>
-                            <th>Урилгын №</th>
-                            <th>Тендер нээх хугацаа</th>
-                            <th>Хүчинтэй хугацаа </th>
-                            <th>Багцын тоо </th>
-                            <th>Үнэлгээ</th>
-                            <th>Тайлбар</th>
-                            
-                        </thead>
-                        <tbody id="tbody">
-                    
-                        
-                        </tbody>
-                    </table>
-
-                </div>
-                   
-                    </div>
-                </div>
-                <div class="card card-primary card-list" style="font-size:12px; display:none" id="card_main">
+                        <div class="card card-primary " style="font-size:12px;" id="card_main">
                     <div class="card-header">
                         <h3 class="card-title">Захиалгын мэдээлэл</h3>
                         <div class="card-tools">
@@ -219,6 +184,42 @@
                              </div>
                 
                 </div>
+                        <div class="card card-primary card-list" style="font-size:12px;" id="card_1">
+                    <div class="card-header">
+                        <h3 class="card-title">Тендерийн мэдээлэл</h3>
+                        <div class="card-tools">
+                        <button class='btn btn-primary btn-xs' data-toggle="modal" data-target="#tenderModal"><i class='fa fa-plus'></i></button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                    <div class="table-responsive">
+                    <table class="table table-bordered table-striped" id="infotender">
+                        <thead >
+                        <th></th>
+                            <th>Шалгаруулалтын төрөл</th>
+                            <th>Тендерийн №</th>
+                            <th>Төрөл</th>
+                            <th>Зарлагдсан огноо</th>
+                            <th>Батлагдсан төсөвт өртөг</th>
+                            <th>Урилгын №</th>
+                            <th>Тендер нээх хугацаа</th>
+                            <th>Хүчинтэй хугацаа </th>
+                            <th>Багцын тоо </th>
+                            <th>Үнэлгээ</th>
+                            <th>Тайлбар</th>
+                            
+                        </thead>
+                        <tbody id="tbody">
+                    
+                        
+                        </tbody>
+                    </table>
+
+                </div>
+                   
+                    </div>
+                </div>
+     
                         <div class="card card-primary card-list" style="font-size:12px; display:none" id="card_detail">
                     <div class="card-header">
                         <h3 class="card-title">Захиалгын дэлгэрэнгүй</h3>
