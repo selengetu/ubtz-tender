@@ -25,6 +25,10 @@
     @yield('style')
     <style>
        table {cursor: pointer;}
+       a.disabled {
+        pointer-events: none;
+        cursor: default;
+        }
     </style>
 </head>
 
@@ -81,7 +85,7 @@
                         data-accordion="false">
                         @foreach ($set_menu as $menu)
                         <li class="nav-item has-treeview">
-                            <a href="@if($menu->pg_link) {{ route($menu->pg_link) }} @else # @endif" class="nav-link ">
+                            <a href="@if($menu->pg_link) {{ route($menu->pg_link) }} @else # @endif " class="nav-link ">
                                 <i class="{{ $menu->pg_icon }} left"></i>
                                 <p>{{$menu->pg_name}}</p>
                                 @if(count($menu->childs)>0)
@@ -92,7 +96,7 @@
                             <ul class="nav nav-treeview">
                                 @foreach ($menu->childs as $child )
                                 <li class="nav-item has-treeview"  style="margin-left:1rem;">
-                                    <a   href="@if($child->pg_link) {{ route($child->pg_link) }} @else # @endif" class="nav-link">
+                                    <a   href="@if($child->pg_link) {{ route($child->pg_link) }} @else # @endif" class=" @if($child->is_admin == 1)@if(Auth::user()->jobcode != 5) disabled @endif @endif nav-link">
                                         <i class="{{ $child->pg_icon }}"></i>
                                         <p >
                                             {{ $child->pg_name }}

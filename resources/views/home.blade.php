@@ -91,9 +91,11 @@
        <div class="col-md-6">
        <canvas id="myChart1" style="width:100%;max-width:800px"></canvas>
        </div>
+       @if(Auth::user()->jobcode == 1 or Auth::user()->jobcode == 5)
        <div class="col-md-6">
        <canvas id="myChart2" style="width:100%; max-width:800px;"></canvas>
        </div>
+       @endif
        </div>
             </div>
         </div>
