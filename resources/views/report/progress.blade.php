@@ -65,6 +65,7 @@
                             <th>Тайлбар, тодруулга</th>
                             <th>Төлөвлөгөөнд тусгагдсан төрөл </th>
                             <th>Захиалагч алба</th>
+                            <th>Явц</th>
                         </thead>
                         <tbody id="tbody">
                         <?php $no = 1; ?>
@@ -97,6 +98,7 @@
                             {{$detailinfo->executor_abbr}} <br>
                             @endforeach
                             </td>
+                            <td><b>{{$item->tender_state_name}}</b></td>
                         </tr>
                         <?php $no++; ?>
                         @endforeach

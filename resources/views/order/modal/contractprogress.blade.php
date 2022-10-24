@@ -15,7 +15,7 @@
                             <div class="form-group">
                                  <label>Огноо</label>
                                 <input type="date" class="form-control" id="contract_progress_date" name="contract_progress_date" >
-                                <input type="hidden" class="form-control" id="contract_progress_cid" name="contract_progress_cid" >
+                                <input type="hidden" class="form-control" id="p_contract_id" name="p_contract_id" >
                             </div>
                         </div>
                        
@@ -23,7 +23,7 @@
                             <div class="form-group">
                                  <label>Гэрээний явц</label>
                                 <select class="form-control" name="contract_progress_state" id="contract_progress_state" >
-                                @foreach ($tenderstate as $item)
+                                @foreach ($contractstate as $item)
                                         <option value="{{ $item->state_id }}">{{ $item->state_name }}</option>
                                     @endforeach
                             </select>
@@ -41,7 +41,7 @@
                 <div class="modal-footer">
                     <input type="hidden"  id="contract_progress_id" name="contract_progress_id">
                     @csrf
-                    <button type="button" class="btn btn-danger" onclick="delProgress()">Устгах</button>
+
                     <button type="submit" class="btn btn-primary">Хадгалах</button>
                 </div>
                 </form>

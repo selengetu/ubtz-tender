@@ -26,6 +26,7 @@ class OrderController extends Controller {
         $type= DB::select("select * from CONST_TENDER_TYPES t");
         $tendertype= DB::select("select * from CONST_CONTRACT_TYPES t");
         $tenderstate= DB::select("select t.* from CONST_TENDER_STATE t");
+        $contractstate= DB::select("select t.* from CONST_CONTRACT_STATE t");
         $employee= DB::select("select t.* from V_USERS t where jobcode <5 order by first_name");
         $contract_type= DB::select("select t.* from CONST_CONTRACT_TYPES t");
         if ($jobid == 4) {
@@ -40,7 +41,7 @@ class OrderController extends Controller {
         $order= DB::select("select * from V_ORDERS t where 1=1  $query");
 
       
-        return view('order.order',compact('dep','ostate','source','selection','unit','order','type','tendertype','tenderstate','employee','currency','contract_type','count_order'));
+        return view('order.order',compact('dep','ostate','source','selection','unit','order','type','tendertype','tenderstate','employee','currency','contract_type','count_order','contractstate'));
     }
     public function saveOrder(Request $request)
     {

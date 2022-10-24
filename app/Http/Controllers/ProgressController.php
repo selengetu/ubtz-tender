@@ -22,7 +22,7 @@ class ProgressController extends Controller {
            
             DB::table('Tenders')
             ->where('tenderid', $request->progress_tender)
-            ->update(['tender_state' => $request->progress_state]);        
+            ->update(['tender_state' => $request->progress_state,'tender_comment' => $request->progress_comment]);        
               }
                 else{
         
@@ -31,7 +31,7 @@ class ProgressController extends Controller {
                     ->update(['progress_state' => $request->progress_state,'progress_date' => $request->progress_date,'progress_comment' => $request->progress_comment, 'progress_tender' =>  $request->progress_tender]);   
                     DB::table('Tenders')
                     ->where('tenderid', $request->progress_tender)
-                    ->update(['tender_state' => $request->progress_state]);       
+                    ->update(['tender_state' => $request->progress_state,'tender_comment' => $request->progress_comment]);       
                 }
 
         return 1;

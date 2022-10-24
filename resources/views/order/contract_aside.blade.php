@@ -19,7 +19,6 @@
                            <tr><td>Зарлагдсан огноо:</td><td id="t_tender_called_at1"></td></tr> 
                            <tr><td>Батлагдсан төсөвт өртөг:</td><td  id="t_tender_budget1"></td></tr> 
                            <tr><td>Урилгын №:</td><td id="t_tender_invitation1"></td></tr> 
-                           <tr><td>Урилгын огноо:</td><td id="t_tender_invitation_at1"></td></tr> 
                            <tr><td>Тендер нээх хугацаа:</td><td id="t_tender_open_at1"></td></tr> 
                            <tr><td>Хүчинтэй хугацаа:</td><td id="t_tender_validdate1"></td></tr> 
                            <tr><td>Багцын тоо:</td><td id="t_tender_packcount1"></td></tr> 
