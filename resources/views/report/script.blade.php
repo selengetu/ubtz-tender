@@ -1,5 +1,6 @@
 <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
 <script type='text/javascript' src="https://rawgit.com/RobinHerbots/jquery.inputmask/3.x/dist/jquery.inputmask.bundle.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/v/dt/jszip-2.5.0/dt-1.10.16/b-1.5.1/b-html5-1.5.1/datatables.min.js"></script>
 <script>
    $(document).ready( function () {
    
@@ -14,6 +15,8 @@
     });
     $('#myTable').DataTable(
         {
+            "dom": 'Bflrtip',
+            "buttons": [ 'copy', 'excel', 'csv' ],
             stateSave: true,
             "language": {
                 "lengthMenu": " _MENU_ бичлэг",

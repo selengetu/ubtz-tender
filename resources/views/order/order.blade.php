@@ -64,7 +64,7 @@
                             <td>{{number_format($item->order_thisyear, 2)}}</td>
                             <td>{{$item->order_date}}</td>
                             <td>{{$item->name}}</td>
-                            <td>{{$item->order_comment}}</td> 
+                            <td></td> 
                            
                         </tr>
                         <?php $no++; ?>
