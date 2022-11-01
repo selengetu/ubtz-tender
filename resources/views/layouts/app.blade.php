@@ -96,7 +96,7 @@
                             <ul class="nav nav-treeview">
                                 @foreach ($menu->childs as $child )
                                 <li class="nav-item has-treeview"  style="margin-left:1rem;">
-                                    <a   href="@if($child->pg_link) {{ route($child->pg_link) }} @else # @endif" class=" @if($child->is_admin == 1)@if(Auth::user()->jobcode != 5) disabled @endif @endif nav-link">
+                                    <a   href="@if($child->pg_link) {{ route($child->pg_link) }} @else # @endif" class=" @if($child->is_admin == 1)@if(Auth::user()->jobid < 5)  disabled @endif @endif nav-link">
                                         <i class="{{ $child->pg_icon }}"></i>
                                         <p >
                                             {{ $child->pg_name }}
