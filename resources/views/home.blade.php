@@ -160,7 +160,7 @@ new Chart("myChart", {
     legend: {display: false},
     title: {
       display: true,
-      text: "Гэрээний гүйцэтгэл"
+      text: "Тендерийн мэдээлэл"
     }
   }
 });

@@ -67,9 +67,10 @@
                             <th>Захиалга</th>
                             <th>Захиалагч</th>
                             <th>Тендерийн №</th>
-                            <th>Төлөв</th>
+                        
                             <th>Шалгаруулалтын төрөл</th>
                             <th>Төсөвт өртөг</th>
+                            <th>Тайлбар</th>
                             <th>Төрөл</th>
                             <th>Зарлагдсан огноо</th>
                             <th>Урилгын дугаар</th>
@@ -80,7 +81,7 @@
                             <th>Гэрээний дүн</th>
                             <th>Нийлүүлэгч</th>
                             <th>СЯ уруу төлөвлөгөө явуулсан огноо</th>
-                            <th>Тайлбар</th>
+                            <th>Төлөв</th>
                         </thead>
                         <tbody id="tbody">
                         <?php $no = 1; ?>
@@ -94,9 +95,10 @@
                             @endforeach
                             </td>
                             <td><b>{{$item->tenderno}}</b></td>
-                            <td><b>{{$item->tender_state_name}}</b></td>
+                           
                             <td>{{$item->contracttypename}}</td>
                             <td>{{number_format($item->tender_budget, 2)}}</td>
+                            <td>{{$item->tender_comment}}</td>
                             <td>{{$item->tendertypename}}</td>
                             <td>{{$item->tender_call_at}}</td>
                             <td>{{$item->tender_invitationcode}}</td>
@@ -119,7 +121,7 @@
                             <td></td>
                             @endif
                             <td>{{$item->tender_open_at}}</td>
-                            <td>{{$item->tender_comment}}</td>
+                            <td><b>{{$item->tender_state_name}}</b></td>
                         </tr>
                         <?php $no++; ?>
                         @endforeach
