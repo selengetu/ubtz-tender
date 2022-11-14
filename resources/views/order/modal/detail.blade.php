@@ -15,8 +15,8 @@
                             <div class="form-group">
                                  <label>Алба хэлтэс</label>
                                 <select class="form-control" name="dep_id" id="dep_id" >
-                                @foreach ($dep as $item)
-                                        <option value="{{ $item->dep_id }}">{{ $item->executor_name }}</option>
+                                @foreach ($deps as $item)
+                                        <option value="{{ $item->dep_id }}">{{ $item->dep_name }}</option>
                                     @endforeach
                             </select>
                             </div>

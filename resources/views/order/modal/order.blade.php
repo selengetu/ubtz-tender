@@ -20,6 +20,16 @@
                         </div>
                         <div class="col-3">
                             <div class="form-group">
+                                 <label>Байгууллага</label>
+                                <select class="form-control" name="order_dep" id="order_dep" >
+                                @foreach ($deps as $item)
+                                        <option value="{{ $item->dep_id }}">{{ $item->dep_name }}</option>
+                                    @endforeach
+                            </select>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="form-group">
                                  <label>Хэмжих нэгж</label>
                                 <select class="form-control" name="order_unit" id="order_unit" >
                                 @foreach ($unit as $item)

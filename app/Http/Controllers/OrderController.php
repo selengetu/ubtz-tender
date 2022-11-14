@@ -19,7 +19,7 @@ class OrderController extends Controller {
         $ostate= DB::select("select * from CONST_ORDER_STATE t order by state_name");
         $source= DB::select("select * from CONST_ORDER_BUDGET_SOURCE t");
         $selection= DB::select("select * from CONST_ORDER_SELECTIONS t");
-        $dep= DB::select("select * from MEASINST.V_DEPART t");
+        $deps= DB::select("select * from V_DEPART t");
         $unit= DB::select("select * from CONST_UNIT t");
         $count_order= DB::select("select count(order_id) as count from V_ORDERS t")[0];
         $currency= DB::select("select * from CONST_CURRENCY t order by currency_id");
@@ -41,7 +41,7 @@ class OrderController extends Controller {
         $order= DB::select("select * from V_ORDERS t where 1=1  $query");
 
       
-        return view('order.order',compact('dep','ostate','source','selection','unit','order','type','tendertype','tenderstate','employee','currency','contract_type','count_order','contractstate'));
+        return view('order.order',compact('deps','ostate','source','selection','unit','order','type','tendertype','tenderstate','employee','currency','contract_type','count_order','contractstate'));
     }
     public function saveOrder(Request $request)
     {
@@ -51,16 +51,16 @@ class OrderController extends Controller {
 
         if($request->order_id ==  null){
         DB::insert("insert into ORDERS
-        ( ORDER_NAME, ORDER_DATE, ORDER_UNIT, ORDER_COUNT, ORDER_SELECTION, ORDER_BUDGET_SOURCE, ORDER_BUDGET, ORDER_THISYEAR, ORDER_COMMENT, ORDER_EMPLOYEE, ADDED_USER)
+        ( ORDER_NAME, ORDER_DATE, DEPARTMENT_ID, ORDER_UNIT, ORDER_COUNT, ORDER_SELECTION, ORDER_BUDGET_SOURCE, ORDER_BUDGET, ORDER_THISYEAR, ORDER_COMMENT, ORDER_EMPLOYEE, ADDED_USER)
         values
-        ( '$request->order_name', TO_DATE('$request->order_date', 'yyyy-mm-dd'), $request->order_unit, '$request->order_count', '$request->order_selection', '$request->order_budget_source'
+        ( '$request->order_name', TO_DATE('$request->order_date', 'yyyy-mm-dd'),'$request->order_dep', $request->order_unit, '$request->order_count', '$request->order_selection', '$request->order_budget_source'
         , '$order_budget','$order_thisyear', '$request->order_comment', '$request->order_employee', '$id')");   
           }
             else{
     
                 $orders = DB::table('ORDERS')
                 ->where('order_id', $request->order_id)
-                ->update(['order_name' => $request->order_name,'order_date' => $request->order_date,'order_unit' => $request->order_unit,'order_count' => $request->order_count,
+                ->update(['order_name' => $request->order_name,'order_date' => $request->order_date,'department_id' => $request->order_dep,'order_unit' => $request->order_unit,'order_count' => $request->order_count,
                 'order_selection' => $request->order_selection,'order_budget_source' => $request->order_budget_source,'order_budget' => $order_budget,
                 'order_thisyear' => $order_thisyear,'order_comment' => $request->order_comment]);        
             }

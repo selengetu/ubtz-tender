@@ -555,6 +555,7 @@ $('.orderinformation').on('click',function(){
         if(hid){
             $.get('getorder/' + hid, function (data) {
                 $('#order_employee').val(data[0].order_employee).trigger('change');
+                $('#order_dep').val(data[0].department_id).trigger('change');
                 $('#order_name').val(data[0].order_name);
                 $('#order_unit').val(data[0].order_unit);
                 $('#order_count').val(data[0].order_count);
