@@ -26,8 +26,8 @@
                                     <h6>Байгууллага сонгох :</h6>
                                     <select class="form-control" name="sdep" id="sdep" onchange="javascript:location.href = 'filter_dep/'+this.value;">
                                     <option value="0">Бүгд</option>
-                                    @foreach ($dep as $item)
-                                        <option value="{{ $item->dep_id }}" @if($item->dep_id==$sdep) selected @endif >{{ $item->executor_name }}</option>
+                                    @foreach ($deps as $item)
+                                        <option value="{{ $item->dep_id}}" @if($item->dep_id==$sdep) selected @endif>{{ $item->dep_name }}</option>
                                     @endforeach
                                     </select>
                                 </div>
@@ -48,7 +48,7 @@
                                     <h6>Төрөл :</h6>
                                     <select class="form-control" name="stendertype" id="stendertype"   onchange="javascript:location.href = 'filter_tendertype/'+this.value;">
                                     <option value="0">Бүгд</option>
-                                @foreach ($type as $item)
+                                @foreach ($types as $item)
                                         <option value="{{ $item->tendertypecode }}" @if($item->tendertypecode==$stendertype) selected @endif>{{ $item->tendertypename }}</option>
                                     @endforeach
                             </select>
@@ -67,7 +67,6 @@
                             <th>Захиалга</th>
                             <th>Захиалагч</th>
                             <th>Тендерийн №</th>
-                        
                             <th>Шалгаруулалтын төрөл</th>
                             <th>Төсөвт өртөг</th>
                             <th>Тайлбар</th>
@@ -90,10 +89,7 @@
                             <td>{{$no}}</td>
                             <td>{{$item->order_date}}</td>
                             <td>{{$item->order_name}}</td>
-                            <td>    @foreach ($item->detail as $detailinfo)
-                            {{$detailinfo->executor_abbr}} <br>
-                            @endforeach
-                            </td>
+                            <td>{{$item->dep_name}}  </td>
                             <td><b>{{$item->tenderno}}</b></td>
                            
                             <td>{{$item->contracttypename}}</td>

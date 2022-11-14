@@ -39,6 +39,7 @@
                         <thead style="background-color:#007bff; color:white;">
                             <th>#</th>
                             <th>Нэр</th>
+                            <th>Байгууллага</th>
                             <th>Хэмжих нэгж</th>
                             <th>Тоо хэмжээ</th>
                             <th>Мөрдөх журам</th>
@@ -55,6 +56,7 @@
                          <tr data-toggle='modal' data-target='#detModal' >
                             <td>{{$no}}</td>
                             <td><b style="color:#007bff"><u>{{$item->order_name}}</u></b></td>
+                            <td>{{$item->dep_name}}</td>
                             <td>{{$item->unit_name}}</td>
                             <td>{{$item->order_count}}</td>
                             <td>{{$item->tenderselectionname}}</td>

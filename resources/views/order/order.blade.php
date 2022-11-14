@@ -37,8 +37,9 @@
                     <table class="table table-bordered table-striped" id="myTable">
                         <thead style="background-color:#007bff; color:white;">
                             <th>#</th>
-                            <th>#</th>
+                            <th></th>
                             <th>Нэр</th>
+                            <th>Байгууллага</th>
                             <th>Хэмжих нэгж</th>
                             <th>Тоо хэмжээ</th>
                             <th>Мөрдөх журам</th>
@@ -56,6 +57,7 @@
                             <td>{{$no}}</td>
                             <td class='m3'><button class='btn btn-primary btn-xs' data-toggle='modal' onclick='orderEdit({{$item->order_id}})' data-target='#depModal'><i class='fa fa-pen'></i></button></td>    
                             <td class="orderinformation" onclick="$('#tender-tab').trigger('click')" data-id="{{$item->order_id}}" tag="{{$item->order_id}}" ><b style="color:#007bff"><u>{{$item->order_name}}</u></b></td>
+                            <td>{{$item->dep_name}}</td>
                             <td>{{$item->unit_name}}</td>
                             <td>{{$item->order_count}}</td>
                             <td>{{$item->tenderselectionname}}</td>

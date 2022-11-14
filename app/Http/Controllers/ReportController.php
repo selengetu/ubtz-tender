@@ -24,9 +24,9 @@ class ReportController extends Controller {
         $stendertype = '';
         $sselection = '';
 
-        $dep= DB::select("select * from MEASINST.V_DEPART t ");
+        $deps= DB::select("select * from V_DEPART t ");
       
-        $type= DB::select("select * from CONST_TENDER_TYPES t ");
+        $types= DB::select("select * from CONST_TENDER_TYPES t ");
         $tendertype= DB::select("select * from CONST_CONTRACT_TYPES t ");
 
         if(Session::has('sdep')) {
@@ -50,13 +50,21 @@ class ReportController extends Controller {
         else {
             Session::put('sselection', $sselection);
         }
-        if ($sdep!=NULL && $sdep !=0) {
-            $query1 = "and dep_id = '".$sdep."'";
 
+        if ($sdep!=NULL && $sdep !=0) {
+            $type =DB::select('select t.executor_type from V_DEPART t where t.dep_id =  '. $sdep.'');
+            if ($type[0]->executor_type ==1){
+                $dep =DB::select('select t.dep_id from V_DEPART t where t.dep_id =  '. $sdep.'');
+
+                $query.=" and dep_id in (select dep_id from V_DEPART t where t.executor_par='".$dep[0]->dep_id."')";
+            }
+            else{
+                $query.=" and dep_id = '".$sdep."'";
+            }
         }
         else
         {
-            $query1.=" ";
+            $query.=" ";
 
         }
         if ($stendertype!=NULL && $stendertype !=0) {
@@ -82,7 +90,7 @@ class ReportController extends Controller {
             $query.=" ";
 
         }
-        $tenders=DB::select("SELECT * FROM V_TENDERS t WHERE 1=1 " .$query." " .$query." ");
+        $tenders=DB::select("SELECT * FROM V_TENDERS t WHERE 1=1 " .$query." ");
        
         foreach ($tenders as $tender) {
           $tender->pack = DB::select('select * from V_TENDER_PACK t where t.pack_tender=' . $tender->tenderid . '');
@@ -96,7 +104,7 @@ class ReportController extends Controller {
 
         }
        
-        return view('report.tender',compact('tenders','dep','type','tendertype','stendertype','sselection','sdep'));
+        return view('report.tender',compact('tenders','types','tendertype','stendertype','sselection','sdep','deps'));
     }
 
     public function reportTenderDetail(Request $request)
