@@ -23,7 +23,8 @@ class ReportController extends Controller {
         $sdep ='';
         $stendertype = '';
         $sselection = '';
-
+        $syear = '';
+        $years = DB::select("select * from CONST_YEAR t");
         $deps= DB::select("select * from V_DEPART t ");
       
         $types= DB::select("select * from CONST_TENDER_TYPES t ");
@@ -42,6 +43,11 @@ class ReportController extends Controller {
         }
         else {
             Session::put('stendertype', $stendertype);
+        }
+        if (Session::has('syear')) {
+            $syear = Session::get('syear');
+        } else {
+            Session::put('syear', $syear);
         }
         if(Session::has('sselection')) {
             $sselection = Session::get('sselection');
@@ -67,19 +73,18 @@ class ReportController extends Controller {
             $query.=" ";
 
         }
-        if ($stendertype!=NULL && $stendertype !=0) {
-            $query.=" and tendertypecode = '".$stendertype."'";
-        }
-        else
-        {
-            $query.=" ";
-        }
+      
         if ($sselection!=NULL && $sselection !=0) {
             $query.=" and tenderselectioncode = '".$sselection."'";
         }
         else
         {
             $query.=" ";
+        }
+        if ($syear!= NULL && $syear != 0) {
+            $query .= " and order_year = '" . $syear . "'";
+        } else {
+            $query .= " ";
         }
         if ($jobid == 4) {
             $query.=" and order_employee = '". $id."'";
@@ -90,6 +95,7 @@ class ReportController extends Controller {
             $query.=" ";
 
         }
+        
         $tenders=DB::select("SELECT * FROM V_TENDERS t WHERE 1=1 " .$query." ");
        
         foreach ($tenders as $tender) {
@@ -104,7 +110,7 @@ class ReportController extends Controller {
 
         }
        
-        return view('report.tender',compact('tenders','types','tendertype','stendertype','sselection','sdep','deps'));
+        return view('report.tender',compact('tenders','types','tendertype','stendertype','sselection','sdep','deps', 'syear', 'years'));
     }
 
     public function reportTenderDetail(Request $request)
@@ -209,21 +215,28 @@ class ReportController extends Controller {
         $query = "";
         $query1 = "";
         $sdep ='';
+        $syear= '';
         $stendertype = '';
         $sselection = '';
         $sorder_budget_source = '';
 
         $dep= DB::select("select * from MEASINST.V_DEPART t ");
-      
+        $years = DB::select("select * from CONST_YEAR t");
         $type= DB::select("select * from CONST_TENDER_TYPES t ");
         $tendertype= DB::select("select * from CONST_CONTRACT_TYPES t ");
 
         if(Session::has('sdep')) {
             $sdep = Session::get('sdep');
 
-        }
-        else {
+        } else {
             Session::put('sdep', $sdep);
+        }
+        
+        if (Session::has('syear')) {
+            $syear = Session::get('syear');
+        } 
+        else {
+            Session::put('syear', $syear);
         }
         if(Session::has('stendertype')) {
             $stendertype = Session::get('stendertype');
@@ -301,6 +314,11 @@ class ReportController extends Controller {
     }
     public function filter_selection($sselection) {
         Session::put('sselection',$sselection);
+        return back();
+    }
+    public function filter_year($syear)
+    {
+        Session::put('syear', $syear);
         return back();
     }
     public function reportOrder(Request $request)

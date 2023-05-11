@@ -20,7 +20,17 @@
 
 @section('content')
 <div class="row">
-       
+           <div class="col-sm-2">
+                                <div class="form-group">
+                                    <h6>Он :</h6>
+                                    <select class="form-control" name="syear" id="syear"   onchange="javascript:location.href = 'filter_year/'+this.value;">
+                                    <option value="0">Бүгд</option>
+                                @foreach ($years as $item)
+                                        <option value="{{ $item->year_no }}" @if($item->year_no==$syear) selected @endif>{{ $item->year_name }}</option>
+                                    @endforeach
+                            </select>
+                                </div>
+                            </div>
                         <div class="col-sm-2">
                                 <div class="form-group">
                                     <h6>Байгууллага сонгох :</h6>

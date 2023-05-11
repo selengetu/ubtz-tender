@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use Auth;
+use Session;
 class OrderController extends Controller {
 
     public function __construct() {
@@ -13,6 +14,7 @@ class OrderController extends Controller {
 
     public function index(Request $request)
     {
+        
         $jobid= Auth::user()->jobid;
         $id= Auth::user()->id;
         $query = "";
@@ -20,8 +22,8 @@ class OrderController extends Controller {
         $source= DB::select("select * from CONST_ORDER_BUDGET_SOURCE t");
         $selection= DB::select("select * from CONST_ORDER_SELECTIONS t");
         $deps= DB::select("select * from V_DEPART t");
+        $years = DB::select("select * from CONST_YEAR t");
         $unit= DB::select("select * from CONST_UNIT t");
-        $count_order= DB::select("select count(order_id) as count from V_ORDERS t")[0];
         $currency= DB::select("select * from CONST_CURRENCY t order by currency_id");
         $type= DB::select("select * from CONST_TENDER_TYPES t");
         $tendertype= DB::select("select * from CONST_CONTRACT_TYPES t");
@@ -29,6 +31,9 @@ class OrderController extends Controller {
         $contractstate= DB::select("select t.* from CONST_CONTRACT_STATE t");
         $employee= DB::select("select t.* from V_USERS t where jobcode <5 order by first_name");
         $contract_type= DB::select("select t.* from CONST_CONTRACT_TYPES t");
+        $sdep = '';
+        $syear = '';
+        $sselection = '';
         if ($jobid == 4) {
             $query.=" and order_employee = '". $id."'";
 
@@ -38,10 +43,39 @@ class OrderController extends Controller {
             $query.=" ";
 
         }
-        $order= DB::select("select * from V_ORDERS t where 1=1  $query");
+        if (Session::has('sdep')) {
+            $sdep = Session::get('sdep');
+        } else {
+            Session::put('sdep', $sdep);
+        }
+        if (Session::has('syear')) {
+            $syear = Session::get('syear');
+        } else {
+            Session::put('syear', $syear);
+        }
+        if (Session::has('sselection')) {
+            $sselection = Session::get('sselection');
+        } else {
+            Session::put('sselection', $sselection);
+        }
 
+       
+        if ($syear != NULL && $syear != 0) {
+            $query .= " and order_year = '" . $syear . "'";
+        } else {
+            $query .= " ";
+        }
+    
+        if ($jobid == 4
+        ) {
+            $query .= " and order_employee = '" . $id . "'";
+        } else {
+            $query .= " ";
+        }
+        $order= DB::select("select * from V_ORDERS t where 1=1  $query");
+        $count_order = DB::select("select count(order_id) as count from V_ORDERS t where 1=1  $query")[0];
       
-        return view('order.order',compact('deps','ostate','source','selection','unit','order','type','tendertype','tenderstate','employee','currency','contract_type','count_order','contractstate'));
+        return view('order.order',compact('deps', 'years', 'ostate','source','selection','unit','order','type','tendertype','tenderstate','employee','currency','contract_type','count_order','contractstate', 'sselection', 'sdep', 'syear'));
     }
     public function saveOrder(Request $request)
     {
@@ -51,9 +85,9 @@ class OrderController extends Controller {
 
         if($request->order_id ==  null){
         DB::insert("insert into ORDERS
-        ( ORDER_NAME, ORDER_DATE, DEPARTMENT_ID, ORDER_UNIT, ORDER_COUNT, ORDER_SELECTION, ORDER_BUDGET_SOURCE, ORDER_BUDGET, ORDER_THISYEAR, ORDER_COMMENT, ORDER_EMPLOYEE, ADDED_USER)
+        ( ORDER_NAME,ORDER_YEAR, ORDER_DATE, DEPARTMENT_ID, ORDER_UNIT, ORDER_COUNT, ORDER_SELECTION, ORDER_BUDGET_SOURCE, ORDER_BUDGET, ORDER_THISYEAR, ORDER_COMMENT, ORDER_EMPLOYEE, ADDED_USER)
         values
-        ( '$request->order_name', TO_DATE('$request->order_date', 'yyyy-mm-dd'),'$request->order_dep', $request->order_unit, '$request->order_count', '$request->order_selection', '$request->order_budget_source'
+        ( '$request->order_name', '2023', TO_DATE('$request->order_date', 'yyyy-mm-dd'),'$request->order_dep', $request->order_unit, '$request->order_count', '$request->order_selection', '$request->order_budget_source'
         , '$order_budget','$order_thisyear', '$request->order_comment', '$request->order_employee', '$id')");   
           }
             else{

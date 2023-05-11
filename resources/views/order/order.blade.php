@@ -31,9 +31,25 @@
                 </ul>
                 <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                    <br>
-                   <b> Нийт: {{$count_order->count}} </b> <br><br>
+                  <br>
+                   <div class="row">
+                      <div class="col-sm-3">
+                                <div class="form-group">
+                                    <h6>Он :</h6>
+                                    <select class="form-control" name="syear" id="syear"   onchange="javascript:location.href = 'filter_year/'+this.value;">
+                                    <option value="0">Бүгд</option>
+                                @foreach ($years as $item)
+                                        <option value="{{ $item->year_no }}" @if($item->year_no==$syear) selected @endif>{{ $item->year_name }}</option>
+                                    @endforeach
+                            </select>
+                                </div>
+                            </div>
+                   
+                          
+                   </div>
                 <div class="table-responsive">
+                      
+                   <b> Нийт: {{$count_order->count}} </b> <br><br>
                     <table class="table table-bordered table-striped" id="myTable">
                         <thead style="background-color:#007bff; color:white;">
                             <th>#</th>

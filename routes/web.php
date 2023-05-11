@@ -122,6 +122,7 @@ Route::get('/reportOrder', [App\Http\Controllers\ReportController::class, 'repor
 Route::get('/filter_dep/{id?}', [App\Http\Controllers\ReportController::class, 'filter_dep']);
 Route::get('/filter_tendertype/{id?}', [App\Http\Controllers\ReportController::class, 'filter_tendertype']);
 Route::get('/filter_selection/{id?}', [App\Http\Controllers\ReportController::class, 'filter_selection']);
+Route::get('/filter_year/{id?}', [App\Http\Controllers\ReportController::class, 'filter_year']);
 
 Route::post('/saveTenderState', [App\Http\Controllers\TenderStateController::class, 'saveTenderState'])->name('saveTenderState');
 Route::get('/getTenderState/{hid?}', [App\Http\Controllers\TenderStateController::class, 'getTenderState'])->name('getTenderState');
